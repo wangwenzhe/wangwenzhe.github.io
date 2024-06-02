@@ -1,0 +1,657 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.28.1" theme-name="Stellar" theme-version="1.28.1">
+  
+  <meta name="generator" content="Hexo 7.2.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f9fafb">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  
+  <title>Log4j - BigWorld</title>
+
+  
+    <meta name="description" content="参考https:&#x2F;&#x2F;www.cnblogs.com&#x2F;ArtsCrafts&#x2F;archive&#x2F;2013&#x2F;06&#x2F;07&#x2F;log4j5.html maven12345&lt;dependency&gt;    &lt;groupId&gt;log4j&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;log4j&lt;&#x2F;artifactId&gt;    &lt;version&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Log4j">
+<meta property="og:url" content="http://example.com/2020/07/24/Log4j/index.html">
+<meta property="og:site_name" content="BigWorld">
+<meta property="og:description" content="参考https:&#x2F;&#x2F;www.cnblogs.com&#x2F;ArtsCrafts&#x2F;archive&#x2F;2013&#x2F;06&#x2F;07&#x2F;log4j5.html maven12345&lt;dependency&gt;    &lt;groupId&gt;log4j&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;log4j&lt;&#x2F;artifactId&gt;    &lt;version&amp;gt">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-24T15:30:02.000Z">
+<meta property="article:modified_time" content="2020-12-25T06:27:51.546Z">
+<meta property="article:author" content="王钦培">
+<meta property="article:tag" content="Log4j">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+  <meta name="keywords" content="Log4j">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.28.1">
+
+  
+
+  
+
+  
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/about/logo.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">BigWorld</div><div class="sub cap">程序猿的成长之路</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/06/02/Docsify-%E6%96%87%E6%A1%A3%E7%BD%91%E7%AB%99/"><span class="title">Docsify-文档网站</span></a><a class="item title" href="/2020/11/16/Docsite-%E6%96%87%E6%A1%A3%E7%BD%91%E7%AB%99/"><span class="title">Docsite-搭建静态站点</span></a><a class="item title" href="/2024/06/02/Http%E6%A0%87%E5%87%86%E5%B1%9E%E6%80%A7/"><span class="title">Http标准属性</span></a><a class="item title" href="/2021/10/21/OSS-%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/"><span class="title">OSS-阿里云对象存储</span></a><a class="item title" href="/2020/11/19/Http/"><span class="title">Http</span></a><a class="item title" href="/2020/09/26/Https/"><span class="title">Https</span></a><a class="item title" href="/2024/05/25/OnlyOffice/"><span class="title">OnlyOffice</span></a><a class="item title" href="/2024/06/01/Vim/"><span class="title">Vim</span></a><a class="item title" href="/2021/06/28/VSCode/"><span class="title">VSCode</span></a><a class="item title" href="/2021/10/13/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E7%82%B9/"><span class="title">前端技术点</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2020-07-24T15:30:02.000Z">2020-07-24</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2020-12-25T06:27:51.546Z">2020-12-25</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Log4j</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ArtsCrafts/archive/2013/06/07/log4j5.html">https://www.cnblogs.com/ArtsCrafts/archive/2013/06/07/log4j5.html</a></p>
+<h2 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.17<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.log4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> Logger.getLogger(Test.class.getClass());</span><br><span class="line">  </span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testLog</span><span class="params">()</span>&#123;</span><br><span class="line">		log.debug(<span class="string">&quot;debug&quot;</span>);</span><br><span class="line">		log.error(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="log4j-properties"><a href="#log4j-properties" class="headerlink" title="log4j.properties"></a>log4j.properties</h2><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>重点：rootLogger 中第一个参数为输出日志的级别，是全局的。XXX.Threshold 是指定输出项的输出日志级别，是局部的。输出结果以两者中「更严格」的级别输出。 DEBUG - INFO - WARN- ERROR 严格程度依次递增</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">log4j.rootLogger</span>=<span class="string">DEBUG,Console,Daily_Rolling</span></span><br><span class="line"></span><br><span class="line"><span class="attr">log4j.appender.Console</span>=<span class="string">org.apache.log4j.ConsoleAppender</span></span><br><span class="line"><span class="attr">log4j.appender.Console.Target</span>=<span class="string">System.out</span></span><br><span class="line"><span class="attr">log4j.appender.Console.Threshold</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="attr">log4j.appender.Console.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="attr">log4j.appender.Console.layout.ConversionPattern</span>=<span class="string">[%p][%d&#123;yyyy-MM-dd HH\:mm\:ss,SSS&#125;][%c]%m%n</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#输出到滚动文件</span></span><br><span class="line"><span class="attr">log4j.appender.Daily_Rolling</span>=<span class="string">org.apache.log4j.DailyRollingFileAppender</span></span><br><span class="line"><span class="comment">#DEBUG以上才使用</span></span><br><span class="line"><span class="attr">log4j.appender.Daily_Rolling.Threshold</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="comment">#滚动文件名</span></span><br><span class="line"><span class="attr">log4j.appender.Daily_Rolling.File</span>=<span class="string">./logs/log4j.log</span></span><br><span class="line"><span class="comment">#追加方式</span></span><br><span class="line"><span class="attr">log4j.appender.Daily_Rolling.Append</span>=<span class="string">true</span></span><br><span class="line"><span class="comment">#滚动日期格式</span></span><br><span class="line"><span class="attr">log4j.appender.Daily_Rolling.DatePattern</span>=<span class="string">.yyyy-MM-dd</span></span><br><span class="line"><span class="comment"># 输出日期格式</span></span><br><span class="line"><span class="attr">log4j.appender.Daily_Rolling.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="attr">log4j.appender.Daily_Rolling.layout.ConversionPattern</span>=<span class="string">%-d&#123;yyyy-MM-dd HH\:mm\:ss,SSS&#125; [%C]-[%p] %m%n</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#会输出到Console,Daily_Rolling</span></span><br><span class="line"><span class="attr">log4j.logger.druid.sql</span>=<span class="string">error</span></span><br><span class="line"><span class="attr">log4j.logger.druid.sql.DataSource</span>=<span class="string">error</span></span><br><span class="line"><span class="attr">log4j.logger.druid.sql.Connection</span>=<span class="string">error</span></span><br><span class="line"><span class="attr">log4j.logger.druid.sql.Statement</span>=<span class="string">debug</span></span><br><span class="line"><span class="attr">log4j.logger.druid.sql.ResultSet</span>=<span class="string">error</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#设置dao包的日志配置</span></span><br><span class="line"><span class="comment">#log4j.logger.com.theking.xxx.dao = debug, Daily_Rolling</span></span><br><span class="line"><span class="comment">#设置service包的日志配置</span></span><br><span class="line"><span class="comment">#log4j.logger.com.theking.xxx.service = info, Daily_Rolling</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="输出地-Appender"><a href="#输出地-Appender" class="headerlink" title="输出地 Appender"></a>输出地 Appender</h4><p>Appender 为日志输出目的地，Log4j 提供的 appender 有以下几种：</p>
+<ul>
+<li>org.apache.log4j.ConsoleAppender（控制台）</li>
+<li>org.apache.log4j.FileAppender（文件）</li>
+<li>org.apache.log4j.RollingFileAppender（文件大小到达指定尺寸的时候产生一个新的文件）</li>
+<li>org.apache.log4j.DailyRollingFileAppender（每天产生一个日志文件）</li>
+<li>org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指定的地方）</li>
+<li>org.apache.log4j.jdbc.JDBCAppender（输出到数据库）</li>
+</ul>
+<h4 id="输出到控制台"><a href="#输出到控制台" class="headerlink" title="输出到控制台"></a>输出到控制台</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#跟记录器,ERROR,输出到A1</span></span><br><span class="line"><span class="attr">log4j.rootLogger</span>=<span class="string">ERROR,Console</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#本记录器为DEBUG级别</span></span><br><span class="line"><span class="attr">log4j.category.com.log4j.test</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#控制台输出</span></span><br><span class="line"><span class="attr">log4j.appender.Console</span>=<span class="string">org.apache.log4j.ConsoleAppender</span></span><br><span class="line"><span class="comment">#DEBUG以上级别是输出</span></span><br><span class="line"><span class="attr">log4j.appender.Console.Threshold</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="comment">#编码方式</span></span><br><span class="line"><span class="attr">log4j.appender.Console.Encoding</span>=<span class="string">UTF-8</span></span><br><span class="line"><span class="comment">#是否立即输出</span></span><br><span class="line"><span class="attr">log4j.appender.Console.ImmediateFlush</span>=<span class="string">true</span></span><br><span class="line"><span class="comment">#使用System.err输出</span></span><br><span class="line"><span class="attr">log4j.appender.Console.Target</span>=<span class="string">System.err</span></span><br><span class="line"><span class="comment">#输出格式,表达式配置</span></span><br><span class="line"><span class="attr">log4j.appender.Console.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="attr">log4j.appender.Console.ConversionPattern</span>=<span class="string">%-d&#123;yyyy-MM-d  HH:mm:ss, SSS&#125;[%C]-[%p] %m%n</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出到文件"><a href="#输出到文件" class="headerlink" title="输出到文件"></a>输出到文件</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">log4j.logger.com.log4j.test.Log4jTest</span>=<span class="string">DEBUG, File</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#输出到文件</span></span><br><span class="line"><span class="attr">log4j.appender.File</span>=<span class="string">org.apache.log4j.FileAppender</span></span><br><span class="line"><span class="comment">#文件位置</span></span><br><span class="line"><span class="attr">log4j.appender.File.File</span>=<span class="string">./logs/log4j.log</span></span><br><span class="line"><span class="comment">#追加文件内容</span></span><br><span class="line"><span class="attr">log4j.appender.File.Append</span>=<span class="string">true</span></span><br><span class="line"><span class="comment">#输出格式表达式</span></span><br><span class="line"><span class="attr">log4j.appender.File.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="attr">log4j.appender.File.layout.ConversionPattern</span>=<span class="string">%-d&#123;yyyy-MM-dd HH\:mm\:ss,SSS&#125; [%C]-[%p] %m%n</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出为-HTML-文件"><a href="#输出为-HTML-文件" class="headerlink" title="输出为 HTML 文件"></a>输出为 HTML 文件</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">log4j.rootLogger</span>=<span class="string">DEBUG, HTML</span></span><br><span class="line"></span><br><span class="line"><span class="attr">log4j.appender.HTML</span>=<span class="string">org.apache.log4j.FileAppender</span></span><br><span class="line"><span class="attr">log4j.appender.HTML.File</span>=<span class="string">./logs/log4j.log</span></span><br><span class="line"><span class="attr">log4j.appender.HTML.Append</span>=<span class="string">false</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#不配置这个会乱码</span></span><br><span class="line"><span class="attr">log4j.appender.HTML.Encoding</span>=<span class="string">GBK</span></span><br><span class="line"><span class="comment">#HTMLLayout 布局</span></span><br><span class="line"><span class="attr">log4j.appender.HTML.layout</span>=<span class="string">org.apache.log4j.HTMLLayout</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出到按大小滚动文件"><a href="#输出到按大小滚动文件" class="headerlink" title="输出到按大小滚动文件"></a>输出到按大小滚动文件</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#DEBUG 级别，两个输出：文件与滚动文件</span></span><br><span class="line"><span class="attr">log4j.rootLooger</span>=<span class="string">DEBUG, Rolling_File</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#输出到滚动文件</span></span><br><span class="line"><span class="attr">log4j.appender.Rolling_File</span>=<span class="string">org.apache.log4j.RollingFileAppender</span></span><br><span class="line"><span class="comment">#DEBUG以上才使用</span></span><br><span class="line"><span class="attr">log4j.appender.Rolling_File.Threshold</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="comment">#滚动文件名</span></span><br><span class="line"><span class="attr">log4j.appender.Rolling_File.File</span>=<span class="string">./logs/log4j.log</span></span><br><span class="line"><span class="comment">#追加方式</span></span><br><span class="line"><span class="attr">log4j.appender.Rolling_File.Append</span>=<span class="string">true</span></span><br><span class="line"><span class="comment">#文件达到10MB就自动命名</span></span><br><span class="line"><span class="attr">log4j.appender.Rolling_File.MaxFileSize</span>=<span class="string">10MB</span></span><br><span class="line"><span class="comment">#最多备份100个文件</span></span><br><span class="line"><span class="attr">log4j.appender.Rolling_File.MaxBackupIndex</span>=<span class="string">100</span></span><br><span class="line"><span class="attr">log4j.appender.Rolling_File.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="attr">log4j.appender.Rolling_File.layout.ConversionPattern</span>=<span class="string">%-d&#123;yyyy-MM-dd HH\:mm\:ss,SSS&#125; [%C]-[%p] %m%n</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出到按日期滚动文件"><a href="#输出到按日期滚动文件" class="headerlink" title="输出到按日期滚动文件"></a>输出到按日期滚动文件</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#DEBUG 级别，两个输出：文件与滚动文件</span></span><br><span class="line"><span class="attr">log4j.rootLooger</span>=<span class="string">DEBUG, Daily_Rolling</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#输出到滚动文件</span></span><br><span class="line"><span class="attr">log4j.appender.Daily_Rolling</span>=<span class="string">org.apache.log4j.DailyRollingFileAppender</span></span><br><span class="line"><span class="comment">#DEBUG以上才使用</span></span><br><span class="line"><span class="attr">log4j.appender.Daily_Rolling.Threshold</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="comment">#滚动文件名</span></span><br><span class="line"><span class="attr">log4j.appender.Daily_Rolling.File</span>=<span class="string">./logs/log4j.log</span></span><br><span class="line"><span class="comment">#追加方式</span></span><br><span class="line"><span class="attr">log4j.appender.Daily_Rolling.Append</span>=<span class="string">true</span></span><br><span class="line"><span class="comment">#滚动日期格式</span></span><br><span class="line"><span class="attr">log4j.appender.Daily_Rolling.DatePattern</span>=<span class="string">.yyyy-MM-dd</span></span><br><span class="line"><span class="comment"># 输出日期格式</span></span><br><span class="line"><span class="attr">log4j.appender.Daily_Rolling.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="attr">log4j.appender.Daily_Rolling.layout.ConversionPattern</span>=<span class="string">%-d&#123;yyyy-MM-dd HH\:mm\:ss,SSS&#125; [%C]-[%p] %m%n</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出到-JDBC-数据库"><a href="#输出到-JDBC-数据库" class="headerlink" title="输出到 JDBC 数据库"></a>输出到 JDBC 数据库</h4><h5 id="创建数据库表"><a href="#创建数据库表" class="headerlink" title="创建数据库表"></a>创建数据库表</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database log4j;</span><br><span class="line">use log4j;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb_log(id <span class="type">int</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">                    <span class="type">date</span> <span class="type">varchar</span>(<span class="number">255</span>),</span><br><span class="line">                    priority <span class="type">varchar</span>(<span class="number">255</span>),</span><br><span class="line">                    message text,</span><br><span class="line">                    classname <span class="type">varchar</span>(<span class="number">255</span>));</span><br></pre></td></tr></table></figure>
+
+<h5 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h5><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置rootLogger为ALL级别,输出到 DATABASE</span></span><br><span class="line"><span class="attr">log4j.rootLogger</span>=<span class="string">ALL, DATABASE</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#数据库输出</span></span><br><span class="line"><span class="attr">log4j.appender.DATABASE</span>=<span class="string">org.apache.log4j.jdbc.JDBCAppender</span></span><br><span class="line"><span class="attr">log4j.appender.DATABASE.Threshold</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#数据库连接URL</span></span><br><span class="line"><span class="attr">log4j.appender.DATABASE.URL</span>=<span class="string">jdbc:mysql://localhost:3306/log4j</span></span><br><span class="line"><span class="comment">#数据库驱动</span></span><br><span class="line"><span class="attr">log4j.appender.DATABASE.driver</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="comment">#用户名</span></span><br><span class="line"><span class="attr">log4j.appender.DATABASE.user</span>=<span class="string">root</span></span><br><span class="line"><span class="comment">#用户密码</span></span><br><span class="line"><span class="attr">log4j.appender.DATABASE.password</span>=<span class="string">password</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#执行SQL语句,列内容为表达式</span></span><br><span class="line"><span class="attr">log4j.appender.DATABASE.sql</span>=<span class="string">insert into tb_log(date, priority, message, classname) values(&#x27;%d&#x27;, &#x27;%p&#x27;, &#x27;%m&#x27;, &#x27;%c&#x27;)</span></span><br><span class="line"><span class="comment">#输出格式</span></span><br><span class="line"><span class="attr">log4j.appender.DATABASE.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="attr">log4j.appender.DATABASE.layout.ConversionPattern</span>=<span class="string">%-d&#123;yyyy-MM-dd HH\:mm\:ss,SSS&#125; [%C]-[%p] %m%n</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="日志格式化器-Layout"><a href="#日志格式化器-Layout" class="headerlink" title="日志格式化器 Layout"></a>日志格式化器 Layout</h4><p>Layout：日志输出格式，Log4j 提供的 layout 有以下几种：</p>
+<ul>
+<li>org.apache.log4j.HTMLLayout（以 HTML 表格形式布局）</li>
+<li>org.apache.log4j.PatternLayout（可以灵活地指定布局模式）</li>
+<li>org.apache.log4j.SimpleLayout（包含日志信息的级别和信息字符串）</li>
+<li>org.apache.log4j.TTCCLayout（包含日志产生的时间、线程、类别等等信息）</li>
+</ul>
+<h5 id="PatternLayout-是最常用的格式化器"><a href="#PatternLayout-是最常用的格式化器" class="headerlink" title="PatternLayout 是最常用的格式化器"></a>PatternLayout 是最常用的格式化器</h5><p>用户可以自定义输出信息，例如日期，时间，所在的线程，类名，文件名，方法名，信息级别，文件级别，文件行数</p>
+<p>Log4j 中 ConversionPattern 常用的参数表:</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>c</td>
+<td>输出 Logger 所在的类别 (即 Logger 的名字)。允许使用 % c {数字} 输出部分的名字 (从右边往左边数)。见实例</td>
+<td>% c 将输出 com.log4j.Log4jTest% c {1} 将输出 Log4jTest% c {2} 将输出 log4j.Log4jTest% c {3} 将输出 com.log4j.Log4jTest</td>
+</tr>
+<tr>
+<td>C</td>
+<td>输出 Logger 所在类的名称有时候 Logger 的名称不同于类名，例如 Hibernate 中用 org.hibernate.SQL 作为所有输出 DML 语句的 Logger 的名称，便于控制。允许使用 % C {数字} 输出部分的名称 (从右边往左边)。见实例</td>
+<td>% C 将输出 com.log4j.Log4jTest% C {1} 将输出 Log4jTest% C {2} 将输出 log4j.Log4jTest% C {3} 将输出 com.log4j.Log4jTest</td>
+</tr>
+<tr>
+<td>d</td>
+<td>输出日期。允许使用 % d {yyyy-MM-dd HH:mm:ss} 格式化日期。% d 不仅支持 JDKSimpleDateFormat 的日期格式，还支持 log4j 自己的日期格式，例如 ABSOLUTE,DATE,ISO8601 等</td>
+<td>% d 将输出 2013-06-06 22:24:25,353% d {yyyy-MM-dd} 将输出 2013-06-06% d {ABSOLUTE} 将输出 22:24:25,353% d {DATE} 将输出 06 六月 2013 22:24:25,253</td>
+</tr>
+<tr>
+<td>F</td>
+<td>输出所在的类文件名称</td>
+<td>% F 将输出 Log4jTest.java</td>
+</tr>
+<tr>
+<td>l</td>
+<td>输出语句所在的行数，包括类名，方法名，文件名，行数等</td>
+<td>% l 将输出 com.log4j.test.Log4jTest.main (Log4jTest.java:50)</td>
+</tr>
+<tr>
+<td>L</td>
+<td>输出语句所在的行数，只输出数字</td>
+<td>% L 将输出 50</td>
+</tr>
+<tr>
+<td>m</td>
+<td>输出日志</td>
+<td>输出日志，即 log.info (“”),log.debug (“”) 参数</td>
+</tr>
+<tr>
+<td>M</td>
+<td>输出方法名</td>
+<td>% M 将输出 main</td>
+</tr>
+<tr>
+<td>n</td>
+<td>换行.Windows 下输出 \r\n,Linux 下输出 \n</td>
+<td>含行</td>
+</tr>
+<tr>
+<td>p</td>
+<td>输出日志级别 (prioriry)</td>
+<td>DEBUG,INFO,ERROR,FITAL 等</td>
+</tr>
+<tr>
+<td>r</td>
+<td>输出从程序启动到输出该日志之间的时间间隔，单位毫秒</td>
+<td>% r 将输出 300</td>
+</tr>
+<tr>
+<td>t</td>
+<td>输出当前的线程名称</td>
+<td>% t 将输出 main,Thread-0,Thread-1 等</td>
+</tr>
+<tr>
+<td>%</td>
+<td>%% 用来输出百分号</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>  以 % p 为例，所有的调整格式见表:</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>对齐方式</th>
+<th>最小宽度</th>
+<th>最大宽度</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[%10p]</td>
+<td>右对齐</td>
+<td>10</td>
+<td></td>
+<td>正数右对齐，最小宽度</td>
+<td>[   ERROR]</td>
+</tr>
+<tr>
+<td>[%-10p]</td>
+<td>左对齐</td>
+<td>10</td>
+<td></td>
+<td>负数左对齐，最小宽度</td>
+<td>[ERROR   ]</td>
+</tr>
+<tr>
+<td>[%.4p]</td>
+<td></td>
+<td></td>
+<td>4</td>
+<td>最大宽度</td>
+<td>[ERROR]</td>
+</tr>
+<tr>
+<td>[%10.20p]</td>
+<td>右对齐</td>
+<td>10</td>
+<td>20</td>
+<td>正数右对齐，最大最小宽度</td>
+<td>[   ERROR]</td>
+</tr>
+<tr>
+<td>[%-10.20p]</td>
+<td>左对齐</td>
+<td>10</td>
+<td>20</td>
+<td>负数左对齐，最大最小宽度</td>
+<td>[ERROR   ]</td>
+</tr>
+</tbody></table>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>原创内容，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2020/07/25/Http-Forest/">Http-Forest</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2020/07/22/JMeter/">JMeter</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">本站</span><a href="/">近期</a><a href="/categories">分类</a><a href="/tags">标签</a><a href="/archives">归档</a><a href="/about">关于我</a></div><div class="sitemap-group"><span class="fs15">友链</span><a target="_blank" rel="noopener" href="https://hao.panziye.com/">程序员导航</a><a target="_blank" rel="noopener" href="https://https://www.liaoxuefeng.com/">廖雪峰</a><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/home.html">阮一峰</a></div></div><div class="text"><p>本站所有文章由 <a href="/">王钦培</a> 原创，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maven"><span class="toc-text">maven</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-text">使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#log4j-properties"><span class="toc-text">log4j.properties</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E5%9C%B0-Appender"><span class="toc-text">输出地 Appender</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E5%88%B0%E6%8E%A7%E5%88%B6%E5%8F%B0"><span class="toc-text">输出到控制台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E5%88%B0%E6%96%87%E4%BB%B6"><span class="toc-text">输出到文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E4%B8%BA-HTML-%E6%96%87%E4%BB%B6"><span class="toc-text">输出为 HTML 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E5%88%B0%E6%8C%89%E5%A4%A7%E5%B0%8F%E6%BB%9A%E5%8A%A8%E6%96%87%E4%BB%B6"><span class="toc-text">输出到按大小滚动文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E5%88%B0%E6%8C%89%E6%97%A5%E6%9C%9F%E6%BB%9A%E5%8A%A8%E6%96%87%E4%BB%B6"><span class="toc-text">输出到按日期滚动文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E5%88%B0-JDBC-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">输出到 JDBC 数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8"><span class="toc-text">创建数据库表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-1"><span class="toc-text">配置</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%99%A8-Layout"><span class="toc-text">日志格式化器 Layout</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#PatternLayout-%E6%98%AF%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%99%A8"><span class="toc-text">PatternLayout 是最常用的格式化器</span></a></li></ol></li></ol></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.46 1.25h3.08c1.603 0 2.86 0 3.864.095c1.023.098 1.861.3 2.6.752a5.75 5.75 0 0 1 1.899 1.899c.452.738.654 1.577.752 2.6c.095 1.004.095 2.261.095 3.865v1.067c0 1.141 0 2.036-.05 2.759c-.05.735-.153 1.347-.388 1.913a5.75 5.75 0 0 1-3.112 3.112c-.805.334-1.721.408-2.977.43a10.81 10.81 0 0 0-.929.036c-.198.022-.275.054-.32.08c-.047.028-.112.078-.224.232c-.121.166-.258.396-.476.764l-.542.916c-.773 1.307-2.69 1.307-3.464 0l-.542-.916a10.605 10.605 0 0 0-.476-.764c-.112-.154-.177-.204-.224-.232c-.045-.026-.122-.058-.32-.08c-.212-.023-.49-.03-.93-.037c-1.255-.021-2.171-.095-2.976-.429A5.75 5.75 0 0 1 1.688 16.2c-.235-.566-.338-1.178-.389-1.913c-.049-.723-.049-1.618-.049-2.76v-1.066c0-1.604 0-2.86.095-3.865c.098-1.023.3-1.862.752-2.6a5.75 5.75 0 0 1 1.899-1.899c.738-.452 1.577-.654 2.6-.752C7.6 1.25 8.857 1.25 10.461 1.25M6.739 2.839c-.914.087-1.495.253-1.959.537A4.25 4.25 0 0 0 3.376 4.78c-.284.464-.45 1.045-.537 1.96c-.088.924-.089 2.11-.089 3.761v1c0 1.175 0 2.019.046 2.685c.045.659.131 1.089.278 1.441a4.25 4.25 0 0 0 2.3 2.3c.515.214 1.173.294 2.429.316h.031c.398.007.747.013 1.037.045c.311.035.616.104.909.274c.29.17.5.395.682.645c.169.232.342.525.538.856l.559.944a.52.52 0 0 0 .882 0l.559-.944c.196-.331.37-.624.538-.856c.182-.25.392-.476.682-.645c.293-.17.598-.24.909-.274c.29-.032.639-.038 1.037-.045h.032c1.255-.022 1.913-.102 2.428-.316a4.25 4.25 0 0 0 2.3-2.3c.147-.352.233-.782.278-1.441c.046-.666.046-1.51.046-2.685v-1c0-1.651 0-2.837-.089-3.762c-.087-.914-.253-1.495-.537-1.959a4.25 4.25 0 0 0-1.403-1.403c-.464-.284-1.045-.45-1.96-.537c-.924-.088-2.11-.089-3.761-.089h-3c-1.651 0-2.837 0-3.762.089" clip-rule="evenodd"/><path fill="currentColor" d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><span>参与讨论</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.28.1" async></script>
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

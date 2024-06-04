@@ -99,22 +99,21 @@
 <h2 id="不定混合参数"><a href="#不定混合参数" class="headerlink" title="不定混合参数"></a>不定混合参数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span>  <span class="title function_">f2</span> = (<span class="params">fun, afterFun</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(...<span class="variable language_">arguments</span>)</span><br><span class="line">    fun.<span class="title function_">apply</span>(<span class="variable language_">this</span>, <span class="variable language_">arguments</span>);</span><br><span class="line"></span><br><span class="line">    afterFun.<span class="title function_">apply</span>(<span class="variable language_">this</span>, <span class="variable language_">arguments</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">f2</span>(f1, <span class="keyword">function</span> (<span class="params">...result</span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(...result)</span><br><span class="line">&#125;).<span class="title function_">call</span>(<span class="variable language_">this</span>, <span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>);</span><br><span class="line"><span class="comment">// f2(f1, function (...result)&#123;</span></span><br><span class="line"><span class="comment">//     console.log(...result)</span></span><br><span class="line"><span class="comment">// &#125;).apply(this, [10, 20, 30, 40]);</span></span><br></pre></td></tr></table></figure>
 
 
-<div class="article-footer fs14">
-    <section id="license">
-      <div class="header"><span>许可协议</span></div>
-      <div class="body"><p>原创内容，转载请注明出处。</p>
-</div>
-    </section>
-    </div>
+
 </article>
 <div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2021/09/15/ESLint/">ESLint</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2021/09/14/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83-Java/">Java代码规范</a></div></section></div>
 
+<div class="related-wrap" id="related-posts">
+    <section class='header'>
+      <div class='title cap theme'>您可能感兴趣的文章</div>
+    </section>
+    <section class='body'>
+    <div class="related-posts"><a class="item" href="/2021/07/20/JS-文本比较/" title="JS-文本比较"><span class="title">JS-文本比较</span></a></div></section></div>
 
 
 
 
-
-<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">本站</span><a href="/">近期</a><a href="/categories">分类</a><a href="/tags">标签</a><a href="/archives">归档</a><a href="/about">关于我</a></div><div class="sitemap-group"><span class="fs15">友链</span><a target="_blank" rel="noopener" href="https://hao.panziye.com/">程序员导航</a><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/">廖雪峰</a><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/home.html">阮一峰</a></div></div><div class="text"><p>本站所有文章由 <a href="/">王钦培</a> 原创，转载请注明出处。</p>
+<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">本站</span><a href="/">近期</a><a href="/categories">分类</a><a href="/tags">标签</a><a href="/archives">归档</a><a href="/about">关于我</a></div><div class="sitemap-group"><span class="fs15">友链</span><a target="_blank" rel="noopener" href="https://hao.panziye.com/">程序员导航</a><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/">廖雪峰</a><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/home.html">阮一峰</a></div></div><div class="text"><p>本站所有文章由 <a href="/">王钦培</a> 创作整理，内容仅供参考。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
 <div class="widgets">

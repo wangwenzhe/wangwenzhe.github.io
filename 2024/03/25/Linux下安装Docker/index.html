@@ -110,22 +110,16 @@
 <h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 将镜像 tar 文件上传到内网服务器上</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 加载镜像</span></span><br><span class="line">docker load &lt; ./docker-onlyoffice-ds-7.4.1.36.tar</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 使用 docker images 命令查看本机的镜像，检查刚才load的镜像有没有加载进来</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">发现加载进来的镜像名称、标签均为 none</span></span><br><span class="line">docker images</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4. 修改为原来的镜像名称和标签名称，69decbd8d448 为images <span class="built_in">id</span></span></span><br><span class="line">docker tag 69decbd8d448 docker-onlyoffice-ds:7.4.1.36</span><br></pre></td></tr></table></figure>
 
 
-<div class="article-footer fs14">
-    <section id="license">
-      <div class="header"><span>许可协议</span></div>
-      <div class="body"><p>原创内容，转载请注明出处。</p>
-</div>
-    </section>
-    </div>
+
 </article>
 <div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/04/02/Docker%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85-CentOS7%E7%8E%AF%E5%A2%83/">Docker离线安装-CentOS7</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/02/19/Java-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95-JMH/">Java-性能测试-JMH</a></div></section></div>
 
+<div class="related-wrap" id="related-posts"></div>
 
 
 
 
-
-<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">本站</span><a href="/">近期</a><a href="/categories">分类</a><a href="/tags">标签</a><a href="/archives">归档</a><a href="/about">关于我</a></div><div class="sitemap-group"><span class="fs15">友链</span><a target="_blank" rel="noopener" href="https://hao.panziye.com/">程序员导航</a><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/">廖雪峰</a><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/home.html">阮一峰</a></div></div><div class="text"><p>本站所有文章由 <a href="/">王钦培</a> 原创，转载请注明出处。</p>
+<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">本站</span><a href="/">近期</a><a href="/categories">分类</a><a href="/tags">标签</a><a href="/archives">归档</a><a href="/about">关于我</a></div><div class="sitemap-group"><span class="fs15">友链</span><a target="_blank" rel="noopener" href="https://hao.panziye.com/">程序员导航</a><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/">廖雪峰</a><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/home.html">阮一峰</a></div></div><div class="text"><p>本站所有文章由 <a href="/">王钦培</a> 创作整理，内容仅供参考。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
 <div class="widgets">

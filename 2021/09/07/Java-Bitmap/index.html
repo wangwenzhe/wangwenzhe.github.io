@@ -96,22 +96,16 @@
 
 <h2 id="Drawable缩放"><a href="#Drawable缩放" class="headerlink" title="Drawable缩放"></a>Drawable缩放</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Drawable <span class="title function_">zoomDrawable</span><span class="params">(Drawable drawable, <span class="type">int</span> w, <span class="type">int</span> h)</span> &#123;</span><br><span class="line">  <span class="type">int</span> <span class="variable">width</span> <span class="operator">=</span> drawable.getIntrinsicWidth();</span><br><span class="line">  <span class="type">int</span> <span class="variable">height</span> <span class="operator">=</span> drawable.getIntrinsicHeight();</span><br><span class="line">  <span class="comment">// drawable转换成bitmap</span></span><br><span class="line">  <span class="type">Bitmap</span> <span class="variable">oldbmp</span> <span class="operator">=</span> drawableToBitmap(drawable);</span><br><span class="line">  <span class="comment">// 创建操作图片用的Matrix对象</span></span><br><span class="line">  <span class="type">Matrix</span> <span class="variable">matrix</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Matrix</span>();</span><br><span class="line">  <span class="comment">// 计算缩放比例</span></span><br><span class="line">  <span class="type">float</span> <span class="variable">sx</span> <span class="operator">=</span> ((<span class="type">float</span>) w / width);</span><br><span class="line">  <span class="type">float</span> <span class="variable">sy</span> <span class="operator">=</span> ((<span class="type">float</span>) h / height);</span><br><span class="line">  <span class="comment">// 设置缩放比例</span></span><br><span class="line">  matrix.postScale(sx, sy);</span><br><span class="line">  <span class="comment">// 建立新的bitmap，其内容是对原bitmap的缩放后的图</span></span><br><span class="line">  <span class="type">Bitmap</span> <span class="variable">newbmp</span> <span class="operator">=</span> Bitmap.createBitmap(oldbmp, <span class="number">0</span>, <span class="number">0</span>, width, height,matrix, <span class="literal">true</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">BitmapDrawable</span>(newbmp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<div class="article-footer fs14">
-    <section id="license">
-      <div class="header"><span>许可协议</span></div>
-      <div class="body"><p>原创内容，转载请注明出处。</p>
-</div>
-    </section>
-    </div>
+
 </article>
 <div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2021/09/07/Android-%E6%8E%A7%E4%BB%B6/">Android-控件</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2021/09/06/Uniapp-%E7%A6%BB%E7%BA%BF%E6%89%93%E5%8C%85%E3%80%81%E5%8D%87%E7%BA%A7/">Uniapp-离线打包</a></div></section></div>
 
+<div class="related-wrap" id="related-posts"></div>
 
 
 
 
-
-<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">本站</span><a href="/">近期</a><a href="/categories">分类</a><a href="/tags">标签</a><a href="/archives">归档</a><a href="/about">关于我</a></div><div class="sitemap-group"><span class="fs15">友链</span><a target="_blank" rel="noopener" href="https://hao.panziye.com/">程序员导航</a><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/">廖雪峰</a><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/home.html">阮一峰</a></div></div><div class="text"><p>本站所有文章由 <a href="/">王钦培</a> 原创，转载请注明出处。</p>
+<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">本站</span><a href="/">近期</a><a href="/categories">分类</a><a href="/tags">标签</a><a href="/archives">归档</a><a href="/about">关于我</a></div><div class="sitemap-group"><span class="fs15">友链</span><a target="_blank" rel="noopener" href="https://hao.panziye.com/">程序员导航</a><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/">廖雪峰</a><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/home.html">阮一峰</a></div></div><div class="text"><p>本站所有文章由 <a href="/">王钦培</a> 创作整理，内容仅供参考。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
 <div class="widgets">

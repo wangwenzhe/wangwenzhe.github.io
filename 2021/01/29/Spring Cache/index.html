@@ -28,7 +28,7 @@
 <meta property="og:description" content="Spring Cachehttps:&#x2F;&#x2F;www.cnblogs.com&#x2F;fashflying&#x2F;p&#x2F;6908028.html Cache 存储方式CacheManager 是 Spring 定义的一个用来管理 Cache 的接口。Spring 自身已经为我们提供了两种 CacheManager 的实现，一种是基于 Java API 的 ConcurrentMap，另一种是基于Ehcache的 Cac">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-29T15:27:02.000Z">
-<meta property="article:modified_time" content="2023-06-06T06:20:05.562Z">
+<meta property="article:modified_time" content="2024-06-05T23:52:57.889Z">
 <meta property="article:author" content="王钦培">
 <meta property="article:tag" content="Spring Cache">
 <meta name="twitter:card" content="summary">
@@ -64,7 +64,7 @@
 <div class="widgets">
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2023/05/10/Spring-%E6%B3%A8%E8%A7%A3/"><span class="title">Spring-注解</span></a><a class="item title" href="/2020/12/04/Spring-AOP/"><span class="title">Spring-AOP</span></a><a class="item title" href="/2020/05/28/Spring-Data-JPA/"><span class="title">Spring Data JPA</span></a><a class="item title" href="/2022/09/07/Spring-Event/"><span class="title">Spring-Event</span></a><a class="item title" href="/2020/07/29/Spring-MyBatis%E7%BC%93%E5%AD%98/"><span class="title">Spring-MyBatis缓存</span></a><a class="item title" href="/2023/09/15/Spring-redis-key%E8%BF%87%E6%9C%9F%E7%9B%91%E5%90%AC/"><span class="title">Spring-redis-key过期监听</span></a><a class="item title" href="/2019/08/28/Spring-Redis/"><span class="title">Spring Redis</span></a><a class="item title" href="/2020/06/13/Spring-session-redis/"><span class="title">Spring-session-redis</span></a><a class="item title" href="/2020/07/03/Spring/"><span class="title">Spring</span></a><a class="item title" href="/2020/12/24/Springboot-%E6%89%93%E5%8C%85%E5%BC%95%E5%85%A5%E7%AC%AC%E4%B8%89%E6%96%B9jar%E5%8C%85/"><span class="title">SpringBoot-打包引入第三方jar包</span></a></div></widget>
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2020/05/09/Windows-winrar%E6%89%93%E5%8C%85exe/"><span class="title">Windows-winrar打包exe</span></a><a class="item title" href="/2020/12/06/Windows-Service/"><span class="title">Windows-Service</span></a><a class="item title" href="/2021/02/03/Windows-ping%E6%B5%8B%E8%AF%95/"><span class="title">Windows-ping测试</span></a><a class="item title" href="/2021/02/03/Windows-IIS/"><span class="title">Windows-IIS</span></a><a class="item title" href="/2020/08/20/Windows-Hyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA/"><span class="title">Windows-Hyper-V虚拟机</span></a><a class="item title" href="/2020/08/12/Windows-FTP/"><span class="title">Win10-FTP开启</span></a><a class="item title" href="/2020/05/20/Windows-cmd/"><span class="title">Windows-cmd</span></a><a class="item title" href="/2023/05/19/Windows-AutoIt3-%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/"><span class="title">Windows-AutoIt3-自动化脚本</span></a><a class="item title" href="/2020/07/13/Windows-%E7%B3%BB%E7%BB%9F/"><span class="title">Windows-问题汇总</span></a><a class="item title" href="/2020/07/20/Windows-%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD%E6%B5%8B%E8%AF%95/"><span class="title">Windows-网络带宽测试</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -76,8 +76,8 @@
 <div class="article banner top">
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
-<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2021-01-29T15:27:02.000Z">2021-01-29</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2023-06-06T06:20:05.562Z">2023-06-06</time></span></div></div></div>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Spring/">Spring</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/Spring/Cache%E7%BC%93%E5%AD%98/">Cache缓存</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2021-01-29T15:27:02.000Z">2021-01-29</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-06-05T23:52:57.889Z">2024-06-06</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -88,7 +88,7 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="Spring-Cache"><a href="#Spring-Cache" class="headerlink" title="Spring Cache"></a>Spring Cache</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fashflying/p/6908028.html">https://www.cnblogs.com/fashflying/p/6908028.html</a></p>
+  </div><article class="md-text content heti"><h2 id="Spring-Cache"><a href="#Spring-Cache" class="headerlink" title="Spring Cache"></a>Spring Cache</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fashflying/p/6908028.html">https://www.cnblogs.com/fashflying/p/6908028.html</a></p>
 <h2 id="Cache-存储方式"><a href="#Cache-存储方式" class="headerlink" title="Cache 存储方式"></a>Cache 存储方式</h2><p>CacheManager 是 Spring 定义的一个用来管理 Cache 的接口。Spring 自身已经为我们提供了两种 CacheManager 的实现，一种是基于 Java API 的 ConcurrentMap，另一种是基于Ehcache的 Cache 实现。如果我们需要使用其它类型的缓存时，我们可以自己来实现 Spring 的 CacheManager 接口或 AbstractCacheManager 抽象类。下面分别来看看 Spring 已经为我们实现好了的两种 CacheManager 的配置示例</p>
 <h3 id="基于-Java-API-的-ConcurrentMap"><a href="#基于-Java-API-的-ConcurrentMap" class="headerlink" title="基于 Java API 的 ConcurrentMap"></a>基于 Java API 的 ConcurrentMap</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;cacheManager&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.cache.support.SimpleCacheManager&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;caches&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean&quot;</span> <span class="attr">p:name</span>=<span class="string">&quot;xxx&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">##上面的配置使用的是一个 SimpleCacheManager，其中包含一个名为 “xxx” 的 ConcurrentMapCache</span><br></pre></td></tr></table></figure>
 
@@ -133,12 +133,7 @@
 </article>
 <div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2021/01/31/KKfileview-%E6%96%87%E6%A1%A3%E5%9C%A8%E7%BA%BF%E9%A2%84%E8%A7%88/">kkfileview-文档在线预览</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2021/01/28/Springboot-%E5%8A%A8%E6%80%81%E6%95%B0%E6%8D%AE%E6%BA%90/">Springboot-动态数据源</a></div></section></div>
 
-<div class="related-wrap" id="related-posts">
-    <section class='header'>
-      <div class='title cap theme'>您可能感兴趣的文章</div>
-    </section>
-    <section class='body'>
-    <div class="related-posts"><a class="item" href="/2021/05/18/5-App-uniapp-UrlSchemes/" title="5+App-uniapp-UrlSchemes"><span class="title">5+App-uniapp-UrlSchemes</span></a></div></section></div>
+
 
 
 
@@ -520,6 +515,26 @@
       };
       utils.js('/js/plugins/copycode.js');
     }
+  });
+</script><script>
+  utils.css(`https://unpkg.com/heti@0.9.2/umd/heti.min.css`);
+  utils.js(`https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js`, { defer: true }).then(function () {
+    const heti = new Heti('.heti');
+    
+    // Copied from heti.autoSpacing() without DOMContentLoaded.
+    // https://github.com/sivan/heti/blob/eadee6a3b748b3b7924a9e7d5b395d4bce479c9a/js/heti-addon.js
+    //
+    // We managed to minimize the code modification to ensure .autoSpacing()
+    // is synced with upstream; therefore, we use `.bind()` to emulate the 
+    // behavior of .autoSpacing() so we can even modify almost no code.
+    void (function () {
+      const $$rootList = document.querySelectorAll(this.rootSelector)
+
+      for (let $$root of $$rootList) {
+        this.spacingElement($$root)
+      }
+    }).bind(heti)();
+    
   });
 </script>
 

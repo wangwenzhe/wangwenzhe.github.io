@@ -64,7 +64,7 @@
 <div class="widgets">
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2023/05/10/Spring-%E6%B3%A8%E8%A7%A3/"><span class="title">Spring-注解</span></a><a class="item title" href="/2020/12/04/Spring-AOP/"><span class="title">Spring-AOP</span></a><a class="item title" href="/2020/05/28/Spring-Data-JPA/"><span class="title">Spring Data JPA</span></a><a class="item title" href="/2022/09/07/Spring-Event/"><span class="title">Spring-Event</span></a><a class="item title" href="/2020/07/29/Spring-MyBatis%E7%BC%93%E5%AD%98/"><span class="title">Spring-MyBatis缓存</span></a><a class="item title" href="/2023/09/15/Spring-redis-key%E8%BF%87%E6%9C%9F%E7%9B%91%E5%90%AC/"><span class="title">Spring-redis-key过期监听</span></a><a class="item title" href="/2019/08/28/Spring-Redis/"><span class="title">Spring Redis</span></a><a class="item title" href="/2020/06/13/Spring-session-redis/"><span class="title">Spring-session-redis</span></a><a class="item title" href="/2020/07/03/Spring/"><span class="title">Spring</span></a><a class="item title" href="/2020/12/24/Springboot-%E6%89%93%E5%8C%85%E5%BC%95%E5%85%A5%E7%AC%AC%E4%B8%89%E6%96%B9jar%E5%8C%85/"><span class="title">SpringBoot-打包引入第三方jar包</span></a></div></widget>
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2020/05/09/Windows-winrar%E6%89%93%E5%8C%85exe/"><span class="title">Windows-winrar打包exe</span></a><a class="item title" href="/2020/12/06/Windows-Service/"><span class="title">Windows-Service</span></a><a class="item title" href="/2021/02/03/Windows-ping%E6%B5%8B%E8%AF%95/"><span class="title">Windows-ping测试</span></a><a class="item title" href="/2021/02/03/Windows-IIS/"><span class="title">Windows-IIS</span></a><a class="item title" href="/2020/08/20/Windows-Hyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA/"><span class="title">Windows-Hyper-V虚拟机</span></a><a class="item title" href="/2020/08/12/Windows-FTP/"><span class="title">Win10-FTP开启</span></a><a class="item title" href="/2020/05/20/Windows-cmd/"><span class="title">Windows-cmd</span></a><a class="item title" href="/2023/05/19/Windows-AutoIt3-%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/"><span class="title">Windows-AutoIt3-自动化脚本</span></a><a class="item title" href="/2020/07/13/Windows-%E7%B3%BB%E7%BB%9F/"><span class="title">Windows-问题汇总</span></a><a class="item title" href="/2020/07/20/Windows-%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD%E6%B5%8B%E8%AF%95/"><span class="title">Windows-网络带宽测试</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -88,7 +88,7 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h1 id="Java-多线程同步控制"><a href="#Java-多线程同步控制" class="headerlink" title="Java 多线程同步控制"></a>Java 多线程同步控制</h1><p> 随着多核 CPU 的发展，多线程编程越来越重要。在多线程编程中，同步控制是非常重要的，它可以保证程序的正确性和可靠性。在本文中，我们将简单介绍一些常见的 Java 多线程同步控制方法，并提供一些使用示例。</p>
+  </div><article class="md-text content heti"><h1 id="Java-多线程同步控制"><a href="#Java-多线程同步控制" class="headerlink" title="Java 多线程同步控制"></a>Java 多线程同步控制</h1><p> 随着多核 CPU 的发展，多线程编程越来越重要。在多线程编程中，同步控制是非常重要的，它可以保证程序的正确性和可靠性。在本文中，我们将简单介绍一些常见的 Java 多线程同步控制方法，并提供一些使用示例。</p>
 <h2 id="原子操作"><a href="#原子操作" class="headerlink" title="原子操作"></a>原子操作</h2><p> 原子操作是指不可分割的操作，它们要么全部执行，要么全部不执行，不会发生中间状态。在 Java 中，常用的原子操作包括原子赋值操作、原子递增操作、原子递减操作等。Java 提供了  <code>java.util.concurrent.atomic</code>  包，其中的  <code>AtomicBoolean</code> 、 <code>AtomicInteger</code> 、 <code>AtomicLong</code>  等类可以帮助我们进行原子操作。下面是一个使用  <code>AtomicInteger</code>  进行原子递增的示例：<br>import java.util.concurrent.atomic.AtomicInteger;<br> public class AtomicExample {<br>    private AtomicInteger count &#x3D; new AtomicInteger(0);<br>     public void increment() {<br>        count.incrementAndGet();<br>    }<br>     public int getCount() {<br>        return count.get();<br>    }<br>}<br>在上述示例中，我们使用  <code>AtomicInteger</code>  类来实现了一个  <code>increment()</code>  方法，该方法可以帮助我们进行原子递增操作，而不会出现线程安全问题。</p>
 <h2 id="synchronized-关键字"><a href="#synchronized-关键字" class="headerlink" title="synchronized 关键字"></a>synchronized 关键字</h2><p>  <code>synchronized</code>  关键字是 Java 中最基本的同步控制方法之一。当一个方法或代码块被标记为  <code>synchronized</code>  时，它就成为了一个临界区，多个线程不能同时进入该临界区，从而保证了线程安全。下面是一个使用  <code>synchronized</code>  实现的多线程同步示例：<br>public class SynchronizedExample {<br>    private int count &#x3D; 0;<br>     public synchronized void increment() {<br>        count++;<br>    }<br>     public int getCount() {<br>        return count;<br>    }<br>}<br>在上述示例中，我们使用  <code>synchronized</code>  关键字标记了  <code>increment()</code>  方法，从而避免了多个线程同时访问该方法时出现线程安全问题。</p>
 <h2 id="Lock-接口"><a href="#Lock-接口" class="headerlink" title="Lock 接口"></a>Lock 接口</h2><p>  <code>Lock</code>  接口是 Java 提供的另一种同步控制方法。与  <code>synchronized</code>  关键字不同的是， <code>Lock</code>  接口提供了更细粒度的控制，可以灵活地控制锁定和解锁。下面是一个使用  <code>Lock</code>  接口实现的多线程同步示例：<br>import java.util.concurrent.locks.Lock;<br>import java.util.concurrent.locks.ReentrantLock;<br> public class LockExample {<br>    private int count &#x3D; 0;<br>    private Lock lock &#x3D; new ReentrantLock();<br>     public void increment() {<br>        lock.lock();<br>        try {<br>            count++;<br>        } finally {<br>            lock.unlock();<br>        }<br>    }<br>     public int getCount() {<br>        return count;<br>    }<br>}<br>在上述示例中，我们使用  <code>Lock</code>  接口实现了一个  <code>increment()</code>  方法，该方法可以帮助我们进行线程同步操作， <code>lock.lock()</code>  方法可以获得锁， <code>lock.unlock()</code>  方法可以释放锁，从而保证了线程安全。</p>
@@ -98,7 +98,7 @@
 </article>
 <div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/05/04/Java-%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/">Java-函数式接口</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/04/25/Curl/">curl</a></div></section></div>
 
-<div class="related-wrap" id="related-posts"></div>
+
 
 
 
@@ -480,6 +480,26 @@
       };
       utils.js('/js/plugins/copycode.js');
     }
+  });
+</script><script>
+  utils.css(`https://unpkg.com/heti@0.9.2/umd/heti.min.css`);
+  utils.js(`https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js`, { defer: true }).then(function () {
+    const heti = new Heti('.heti');
+    
+    // Copied from heti.autoSpacing() without DOMContentLoaded.
+    // https://github.com/sivan/heti/blob/eadee6a3b748b3b7924a9e7d5b395d4bce479c9a/js/heti-addon.js
+    //
+    // We managed to minimize the code modification to ensure .autoSpacing()
+    // is synced with upstream; therefore, we use `.bind()` to emulate the 
+    // behavior of .autoSpacing() so we can even modify almost no code.
+    void (function () {
+      const $$rootList = document.querySelectorAll(this.rootSelector)
+
+      for (let $$root of $$rootList) {
+        this.spacingElement($$root)
+      }
+    }).bind(heti)();
+    
   });
 </script>
 

@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdn.net/20161024174706396">
 <meta property="article:published_time" content="2021-08-09T09:26:49.000Z">
-<meta property="article:modified_time" content="2024-06-03T01:47:50.957Z">
+<meta property="article:modified_time" content="2024-06-05T04:46:47.777Z">
 <meta property="article:author" content="王钦培">
 <meta property="article:tag" content="Android-Canvas、Bitmap">
 <meta name="twitter:card" content="summary">
@@ -66,7 +66,7 @@
 <div class="widgets">
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2023/05/10/Spring-%E6%B3%A8%E8%A7%A3/"><span class="title">Spring-注解</span></a><a class="item title" href="/2020/12/04/Spring-AOP/"><span class="title">Spring-AOP</span></a><a class="item title" href="/2020/05/28/Spring-Data-JPA/"><span class="title">Spring Data JPA</span></a><a class="item title" href="/2022/09/07/Spring-Event/"><span class="title">Spring-Event</span></a><a class="item title" href="/2020/07/29/Spring-MyBatis%E7%BC%93%E5%AD%98/"><span class="title">Spring-MyBatis缓存</span></a><a class="item title" href="/2023/09/15/Spring-redis-key%E8%BF%87%E6%9C%9F%E7%9B%91%E5%90%AC/"><span class="title">Spring-redis-key过期监听</span></a><a class="item title" href="/2019/08/28/Spring-Redis/"><span class="title">Spring Redis</span></a><a class="item title" href="/2020/06/13/Spring-session-redis/"><span class="title">Spring-session-redis</span></a><a class="item title" href="/2020/07/03/Spring/"><span class="title">Spring</span></a><a class="item title" href="/2020/12/24/Springboot-%E6%89%93%E5%8C%85%E5%BC%95%E5%85%A5%E7%AC%AC%E4%B8%89%E6%96%B9jar%E5%8C%85/"><span class="title">SpringBoot-打包引入第三方jar包</span></a></div></widget>
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2020/05/09/Windows-winrar%E6%89%93%E5%8C%85exe/"><span class="title">Windows-winrar打包exe</span></a><a class="item title" href="/2020/12/06/Windows-Service/"><span class="title">Windows-Service</span></a><a class="item title" href="/2021/02/03/Windows-ping%E6%B5%8B%E8%AF%95/"><span class="title">Windows-ping测试</span></a><a class="item title" href="/2021/02/03/Windows-IIS/"><span class="title">Windows-IIS</span></a><a class="item title" href="/2020/08/20/Windows-Hyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA/"><span class="title">Windows-Hyper-V虚拟机</span></a><a class="item title" href="/2020/08/12/Windows-FTP/"><span class="title">Win10-FTP开启</span></a><a class="item title" href="/2020/05/20/Windows-cmd/"><span class="title">Windows-cmd</span></a><a class="item title" href="/2023/05/19/Windows-AutoIt3-%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/"><span class="title">Windows-AutoIt3-自动化脚本</span></a><a class="item title" href="/2020/07/13/Windows-%E7%B3%BB%E7%BB%9F/"><span class="title">Windows-问题汇总</span></a><a class="item title" href="/2020/07/20/Windows-%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD%E6%B5%8B%E8%AF%95/"><span class="title">Windows-网络带宽测试</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -78,8 +78,8 @@
 <div class="article banner top">
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
-<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Android/">Android</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2021-08-09T09:26:49.000Z">2021-08-09</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-06-03T01:47:50.957Z">2024-06-03</time></span></div></div></div>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Android/">Android</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/Android/Canvas-Bitmap/">Canvas&Bitmap</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2021-08-09T09:26:49.000Z">2021-08-09</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-06-05T04:46:47.777Z">2024-06-05</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -90,7 +90,7 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="Bitmap「白纸」"><a href="#Bitmap「白纸」" class="headerlink" title="Bitmap「白纸」"></a>Bitmap「白纸」</h2><p>我们在屏幕上看到的图像，都是由一个一个的像素组成的，那么这些像素是从哪来的？由上面这句话，我们就知道答案了，这些像素就是存放在 Bitmap 中的，由此，我们可以认为 Bitmap 就是用来直接展示在窗口上的一个显示对象，它是一个最终的产品</p>
+  </div><article class="md-text content heti"><h2 id="Bitmap「白纸」"><a href="#Bitmap「白纸」" class="headerlink" title="Bitmap「白纸」"></a>Bitmap「白纸」</h2><p>我们在屏幕上看到的图像，都是由一个一个的像素组成的，那么这些像素是从哪来的？由上面这句话，我们就知道答案了，这些像素就是存放在 Bitmap 中的，由此，我们可以认为 Bitmap 就是用来直接展示在窗口上的一个显示对象，它是一个最终的产品</p>
 <h2 id="Canvas「画板」"><a href="#Canvas「画板」" class="headerlink" title="Canvas「画板」"></a>Canvas「画板」</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Bitmap bitmap = Bitmap.createBitmap(width, height, Config.ARGB_8888);        </span><br><span class="line">Canvas canvas = new Canvas(bitmap);</span><br></pre></td></tr></table></figure>
 
 <p>上面是创建 Canvas 的一段代码，由这，我们知道，要创建 Canvas，必须先创建一个 Bitmap 对象，并将其作为参数传给 Canvas。<br>那么，我们可以只创建 Canvas，然后不给其传递 Bitmap 对象吗？<br>不可以！<br>为什么？<br>Canvas 本意是画布的意思，但是在 Android 中，它就只是一个媒介，可以通过 Canvas 来调用 drawRect,drawCircle 等等，但是实际上画的这些东西最终展现的时候，<br>都是像素，但是只有 Bitmap 才能保存像素，而 Canvas 并不行，所以在创建 Canvas 的时候，就必须传递一个 Bitmap，用来承载画的内容。<br>可以这么理解，现在在我们面前有一张空白的纸 (Bitmap)，但是我们不能将画笔直接点到上面，我们必须先在这张纸上面放一块画布（Canvas），然后我们在这张画布上</p>
@@ -122,12 +122,7 @@
 </article>
 <div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2021/08/11/EasyUI-DataGrid%E8%B0%83%E6%95%B4%E5%88%97%E9%A1%BA%E5%BA%8F/">EasyUI-DataGrid调整列顺序</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2021/08/02/WebGL/">WebGL</a></div></section></div>
 
-<div class="related-wrap" id="related-posts">
-    <section class='header'>
-      <div class='title cap theme'>您可能感兴趣的文章</div>
-    </section>
-    <section class='body'>
-    <div class="related-posts"><a class="item" href="/2021/09/29/Android-AndroidX/" title="Android-AndroidX"><span class="title">Android-AndroidX</span></a></div></section></div>
+
 
 
 
@@ -509,6 +504,26 @@
       };
       utils.js('/js/plugins/copycode.js');
     }
+  });
+</script><script>
+  utils.css(`https://unpkg.com/heti@0.9.2/umd/heti.min.css`);
+  utils.js(`https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js`, { defer: true }).then(function () {
+    const heti = new Heti('.heti');
+    
+    // Copied from heti.autoSpacing() without DOMContentLoaded.
+    // https://github.com/sivan/heti/blob/eadee6a3b748b3b7924a9e7d5b395d4bce479c9a/js/heti-addon.js
+    //
+    // We managed to minimize the code modification to ensure .autoSpacing()
+    // is synced with upstream; therefore, we use `.bind()` to emulate the 
+    // behavior of .autoSpacing() so we can even modify almost no code.
+    void (function () {
+      const $$rootList = document.querySelectorAll(this.rootSelector)
+
+      for (let $$root of $$rootList) {
+        this.spacingElement($$root)
+      }
+    }).bind(heti)();
+    
   });
 </script>
 

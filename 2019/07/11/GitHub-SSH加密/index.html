@@ -64,7 +64,7 @@
 <div class="widgets">
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2023/05/10/Spring-%E6%B3%A8%E8%A7%A3/"><span class="title">Spring-注解</span></a><a class="item title" href="/2020/12/04/Spring-AOP/"><span class="title">Spring-AOP</span></a><a class="item title" href="/2020/05/28/Spring-Data-JPA/"><span class="title">Spring Data JPA</span></a><a class="item title" href="/2022/09/07/Spring-Event/"><span class="title">Spring-Event</span></a><a class="item title" href="/2020/07/29/Spring-MyBatis%E7%BC%93%E5%AD%98/"><span class="title">Spring-MyBatis缓存</span></a><a class="item title" href="/2023/09/15/Spring-redis-key%E8%BF%87%E6%9C%9F%E7%9B%91%E5%90%AC/"><span class="title">Spring-redis-key过期监听</span></a><a class="item title" href="/2019/08/28/Spring-Redis/"><span class="title">Spring Redis</span></a><a class="item title" href="/2020/06/13/Spring-session-redis/"><span class="title">Spring-session-redis</span></a><a class="item title" href="/2020/07/03/Spring/"><span class="title">Spring</span></a><a class="item title" href="/2020/12/24/Springboot-%E6%89%93%E5%8C%85%E5%BC%95%E5%85%A5%E7%AC%AC%E4%B8%89%E6%96%B9jar%E5%8C%85/"><span class="title">SpringBoot-打包引入第三方jar包</span></a></div></widget>
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2020/05/09/Windows-winrar%E6%89%93%E5%8C%85exe/"><span class="title">Windows-winrar打包exe</span></a><a class="item title" href="/2020/12/06/Windows-Service/"><span class="title">Windows-Service</span></a><a class="item title" href="/2021/02/03/Windows-ping%E6%B5%8B%E8%AF%95/"><span class="title">Windows-ping测试</span></a><a class="item title" href="/2021/02/03/Windows-IIS/"><span class="title">Windows-IIS</span></a><a class="item title" href="/2020/08/20/Windows-Hyper-V%E8%99%9A%E6%8B%9F%E6%9C%BA/"><span class="title">Windows-Hyper-V虚拟机</span></a><a class="item title" href="/2020/08/12/Windows-FTP/"><span class="title">Win10-FTP开启</span></a><a class="item title" href="/2020/05/20/Windows-cmd/"><span class="title">Windows-cmd</span></a><a class="item title" href="/2023/05/19/Windows-AutoIt3-%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/"><span class="title">Windows-AutoIt3-自动化脚本</span></a><a class="item title" href="/2020/07/13/Windows-%E7%B3%BB%E7%BB%9F/"><span class="title">Windows-问题汇总</span></a><a class="item title" href="/2020/07/20/Windows-%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD%E6%B5%8B%E8%AF%95/"><span class="title">Windows-网络带宽测试</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -88,7 +88,7 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><ol>
+  </div><article class="md-text content heti"><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><ol>
 <li>客户端使用 SSH 生成非对称密钥对，其中公钥信息保存在 GitHub 站点密钥中。</li>
 <li>客户端发送数据「代码」前，使用本地私钥加密，GitHub 收到数据后，使用对应公钥解密得到源代码。</li>
 </ol>
@@ -104,7 +104,7 @@
 </li>
 <li><p>使用notepad++ 打开 id_rsa.pub，拷贝内容</p>
 </li>
-<li><p>登录 GitHub ，点击右上角头像，选择 Setting，点击 SSH and GPG keys，点击 New SSH key，Title 输入 <a href="mailto:&#119;&#97;&#x6e;&#x67;&#119;&#122;&#50;&#48;&#49;&#x32;&#x40;&#x73;&#x69;&#110;&#x61;&#46;&#99;&#110;">&#119;&#97;&#x6e;&#x67;&#119;&#122;&#50;&#48;&#49;&#x32;&#x40;&#x73;&#x69;&#110;&#x61;&#46;&#99;&#110;</a>「客户端账户标识」，将步骤5中拷贝内容粘贴至Key 文本域中，点击 Add SSH key </p>
+<li><p>登录 GitHub ，点击右上角头像，选择 Setting，点击 SSH and GPG keys，点击 New SSH key，Title 输入 <a href="mailto:&#119;&#x61;&#x6e;&#x67;&#x77;&#122;&#x32;&#48;&#x31;&#x32;&#64;&#x73;&#105;&#110;&#97;&#46;&#x63;&#x6e;">&#119;&#x61;&#x6e;&#x67;&#x77;&#122;&#x32;&#48;&#x31;&#x32;&#64;&#x73;&#105;&#110;&#97;&#46;&#x63;&#x6e;</a>「客户端账户标识」，将步骤5中拷贝内容粘贴至Key 文本域中，点击 Add SSH key </p>
 </li>
 <li><p>测试 ssh key 是否配置成功</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">Hi wangwenzhe! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
@@ -120,12 +120,7 @@
 </article>
 <div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2019/07/12/Typora/">Typora</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2019/07/07/%E8%AF%BB%E4%B9%A6201906/">爱上读书2019-06</a></div></section></div>
 
-<div class="related-wrap" id="related-posts">
-    <section class='header'>
-      <div class='title cap theme'>您可能感兴趣的文章</div>
-    </section>
-    <section class='body'>
-    <div class="related-posts"><a class="item" href="/2020/06/03/GitHub/" title="GitHub"><span class="title">GitHub</span></a></div></section></div>
+
 
 
 
@@ -507,6 +502,26 @@
       };
       utils.js('/js/plugins/copycode.js');
     }
+  });
+</script><script>
+  utils.css(`https://unpkg.com/heti@0.9.2/umd/heti.min.css`);
+  utils.js(`https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js`, { defer: true }).then(function () {
+    const heti = new Heti('.heti');
+    
+    // Copied from heti.autoSpacing() without DOMContentLoaded.
+    // https://github.com/sivan/heti/blob/eadee6a3b748b3b7924a9e7d5b395d4bce479c9a/js/heti-addon.js
+    //
+    // We managed to minimize the code modification to ensure .autoSpacing()
+    // is synced with upstream; therefore, we use `.bind()` to emulate the 
+    // behavior of .autoSpacing() so we can even modify almost no code.
+    void (function () {
+      const $$rootList = document.querySelectorAll(this.rootSelector)
+
+      for (let $$root of $$rootList) {
+        this.spacingElement($$root)
+      }
+    }).bind(heti)();
+    
   });
 </script>
 

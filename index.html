@@ -52,7 +52,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-08-22 22:44:09'
+  postUpdate: '2024-08-22 22:45:33'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -217,16 +217,7 @@ https://ts.yayujs.com/
 
 解密后存储到缓存「不推荐」与上述方案类似，但将解密后的数据放入 Redis 中，虽然解决了多服务实例时数据一致性问题，但解密后的数据放入 Redis，这本身就带来了数据泄露的隐患
 使用数据库DES、AES 加密解密函数「不推荐」
-在 MySQL 中使用DES_ENCRYPT或DES_DECRYPT 函数，或者更安 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1de34d81.html" title="Java全栈-下">Java全栈-下</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-01T22:36:31.000Z" title="发表于 2024-07-02 06:36:31">2024-07-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java%E5%85%A8%E6%A0%88/">Java全栈</a></span></div><div class="content">开发基础常用类库基础
-Hutool：国产后起之秀，Hutool是一个小而全的Java工具类库，通过静态方法封装，降低相关API的学习成本，提高工作效率
-Google Guava：Guava工程包含了若干被Google的 Java项目广泛依赖 的核心库，例如：集合 [collections] 、缓存 [caching] 、原生类型支持 [primitives support] 、并发库 [concurrency libraries] 、通用注解 [common annotations] 、字符串处理 [string processing] 、I&#x2F;O 等等
-
-
-Apache Commons：Apache Commons是对JDK的拓展，包含了很多开源的工具，用于解决平时编程经常会遇到的问题，减少重复劳动
-Spring常用工具类：Spring作为常用的开发框架，在Spring框架应用中，排在ApacheCommon，Guava, Huool等通用库后，第二优先级可以考虑使用Spring-core-xxx.jar中的util包
-
-JSON库org.json
-这是一个非常基础且轻量级的 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/6ae47d17.html" title="Java全栈-上">Java全栈-上</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-01T22:36:31.000Z" title="发表于 2024-07-02 06:36:31">2024-07-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java%E5%85%A8%E6%A0%88/">Java全栈</a></span></div><div class="content">Java 基础语法基础面向对象特性
+在 MySQL 中使用DES_ENCRYPT或DES_DECRYPT 函数，或者更安 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/6ae47d17.html" title="Java全栈-上">Java全栈-上</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-01T22:36:31.000Z" title="发表于 2024-07-02 06:36:31">2024-07-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java%E5%85%A8%E6%A0%88/">Java全栈</a></span></div><div class="content">Java 基础语法基础面向对象特性
 封装：将数据和业务逻辑细节封装到类中，对外提供一些方法。1. 简化操作 2. 保护数据 3. 可复用性
 继承：类是单继承，接口支持多继承。父类引用指向子类对象称为 向上转型
 多态：编译时多态和运行时多态。编译时多态就是方法的重载：方法名一样，但参数不一致。运行时多态就是在运行期间才确定具体对象类型，三个条件：继承、重写、向上转型
@@ -243,7 +234,16 @@ private：仅在类内部可以访问
 如何理解private所修饰的方法是隐式的finalprivate 修饰的方法，子类无法继承，更不能重写，所以可以看成是 final 的
 final 类如何拓展?final 类无法被继承，但可以使用外观模式进行拓展
 final方法可以被重载吗?父类的final方法是不能够被子类重写的，那么final方法可以被重载吗? 答案是可以的，也就是编译时多态
-Java 内存模型 JMMJava内存模型（Java Memory Mod ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/4642b068.html" title="我对ai的几点认识">我对ai的几点认识</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-06-26T06:38:26.000Z" title="发表于 2024-06-26 14:38:26">2024-06-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%88%91%E5%AF%B9ai%E7%9A%84%E5%87%A0%E7%82%B9%E8%AE%A4%E8%AF%86/">我对ai的几点认识</a></span></div><div class="content">
+Java 内存模型 JMMJava内存模型（Java Memory Mod ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1de34d81.html" title="Java全栈-下">Java全栈-下</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-01T22:36:31.000Z" title="发表于 2024-07-02 06:36:31">2024-07-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java%E5%85%A8%E6%A0%88/">Java全栈</a></span></div><div class="content">开发基础常用类库基础
+Hutool：国产后起之秀，Hutool是一个小而全的Java工具类库，通过静态方法封装，降低相关API的学习成本，提高工作效率
+Google Guava：Guava工程包含了若干被Google的 Java项目广泛依赖 的核心库，例如：集合 [collections] 、缓存 [caching] 、原生类型支持 [primitives support] 、并发库 [concurrency libraries] 、通用注解 [common annotations] 、字符串处理 [string processing] 、I&#x2F;O 等等
+
+
+Apache Commons：Apache Commons是对JDK的拓展，包含了很多开源的工具，用于解决平时编程经常会遇到的问题，减少重复劳动
+Spring常用工具类：Spring作为常用的开发框架，在Spring框架应用中，排在ApacheCommon，Guava, Huool等通用库后，第二优先级可以考虑使用Spring-core-xxx.jar中的util包
+
+JSON库org.json
+这是一个非常基础且轻量级的 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/4642b068.html" title="我对ai的几点认识">我对ai的几点认识</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-06-26T06:38:26.000Z" title="发表于 2024-06-26 14:38:26">2024-06-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%88%91%E5%AF%B9ai%E7%9A%84%E5%87%A0%E7%82%B9%E8%AE%A4%E8%AF%86/">我对ai的几点认识</a></span></div><div class="content">
 很多人只是把 AI 当成一个工具，这太低估 AI 了，简直是一种侮辱
 我认为生成式 AI 技术是技术演进过程中的一个巨大里程碑，具有划时代的重大意义
 

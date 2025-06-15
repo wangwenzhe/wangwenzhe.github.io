@@ -1,0 +1,338 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Kettle-数据库同步 | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="概述 关系型数据库如 Oracle、MySQL、sqlserver 等之间数据同步   从关系型数据库导出到 Excel 支持数据转换：比如字典转换，text 与 value 间转换 配置定时任务，定时同步  官网Kettle kettle中文网 kettle入门实战 - 知乎 (zhihu.com) 下载kettle7.1官网下载地址 Kettle其他版本下载地址 安装 将下载后的「pdi-ce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kettle-数据库同步">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/f360d6b8.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="概述 关系型数据库如 Oracle、MySQL、sqlserver 等之间数据同步   从关系型数据库导出到 Excel 支持数据转换：比如字典转换，text 与 value 间转换 配置定时任务，定时同步  官网Kettle kettle中文网 kettle入门实战 - 知乎 (zhihu.com) 下载kettle7.1官网下载地址 Kettle其他版本下载地址 安装 将下载后的「pdi-ce">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2021-10-26T06:23:24.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.735Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="Kettle">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/f360d6b8.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Kettle-数据库同步',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Kettle-数据库同步</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-26T06:23:24.000Z" title="发表于 2021-10-26 14:23:24">2021-10-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.735Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BF%90%E7%BB%B4/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8C%E6%AD%A5/">数据库同步</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Kettle-数据库同步"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>关系型数据库如 <code>Oracle</code>、<code>MySQL</code>、<code>sqlserver</code> 等之间数据同步</li>
+</ul>
+<ul>
+<li>从关系型数据库导出到 Excel</li>
+<li>支持数据转换：比如字典转换，text 与 value 间转换</li>
+<li>配置定时任务，定时同步</li>
+</ul>
+<h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a target="_blank" rel="noopener" href="http://www.kettle.be/">Kettle</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.kettle.net.cn/">kettle中文网</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/137383200">kettle入门实战 - 知乎 (zhihu.com)</a></p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a target="_blank" rel="noopener" href="https://nchc.dl.sourceforge.net/project/pentaho/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip">kettle7.1官网下载地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/pentaho/files/">Kettle其他版本下载地址</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li>将下载后的「pdi-ce-7.1.0.0-12.zip」文件解压得到 「data-integration7.1」</li>
+<li>进入文件夹 「data-integration7.1」 <ol>
+<li>Windows系统 找到「Spoon.bat」 </li>
+<li>Linux&#x2F;Mac系统 找到「spoon.sh」</li>
+</ol>
+</li>
+<li>运行 Spoon 脚本文件即可启动 Kettle</li>
+</ol>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="数据同步配置"><a href="#数据同步配置" class="headerlink" title="数据同步配置"></a>数据同步配置</h3><blockquote>
+<p>使用 Kettle 完成将 MySql 数据库中某表中的数据传输到 Oracle 某表</p>
+</blockquote>
+<ol>
+<li><p>配置数据源</p>
+<blockquote>
+<p>配置源数据库和目标数据库</p>
+</blockquote>
+<ol>
+<li><p>找到左侧「主对象树」中的「DB连接」双击打开弹窗</p>
+</li>
+<li><p>在弹窗中填写连接信息，点击测试成功后，点击确认</p>
+<p>连接方式：Native (JDBC)</p>
+</li>
+<li><p>将用到的数据源都配置完毕后进行下一步骤</p>
+</li>
+</ol>
+</li>
+<li><p>新建转换</p>
+<p>点击头部菜单「文件」「新建」「转换」 即可创建一个转换程序</p>
+</li>
+<li><p>配置表输入</p>
+<blockquote>
+<p>表输入的理解：源数据库，从数据库表里读取信息。单张表</p>
+</blockquote>
+<ol>
+<li>点击左侧「核心对象」找到「输入」中的「表输入」，双击或者拖动到右侧的转换主界面，双击主界面的「表输入」</li>
+<li>选择数据库连接「这里选择MySQL」，点击「获取SQL查询语句」弹出「数据库浏览器」窗口，选择需要同步的表，即可生成SQL语句</li>
+<li>上面步骤完毕，检查获取的SQL语句正确，即可点击确定保存</li>
+</ol>
+</li>
+<li><p>配置表输出</p>
+<blockquote>
+<p>表输出的理解：目标数据库，写信息到一个数据库表。单张表</p>
+</blockquote>
+<ol>
+<li>点击左侧「核心对象」找到「输出」中的「表输出」，双击或者拖动到右侧的转换主界面，双击主界面的「表输入」</li>
+<li>选择「数据库连接」这里选择Oracle，选择「目标模式」，选择「目标表」，勾选「指定数据库字段」</li>
+<li>在下方「数据库字段」一栏中点击「输入字段映射」，弹出弹窗可进行字段映射配置</li>
+<li>配置完毕点击确定即可完成表输出配置</li>
+</ol>
+</li>
+<li><p>保存转换文件</p>
+<p>表输入—&gt;表输出（按住shift，鼠标点击“表输入”向“表输出”拖动，即可连接为一条线）</p>
+<p>CTRL+S 保存 .ktr 格式的文件</p>
+</li>
+<li><p>执行转换文件</p>
+<p>点击转换主界面左上角的执行图标即可</p>
+<p>运行时要注意，每个步骤之间的连接线必须为有效的『蓝色实线』，灰色线或无连接线可能导致执行失败</p>
+</li>
+</ol>
+<h3 id="值映射"><a href="#值映射" class="headerlink" title="值映射"></a>值映射</h3><blockquote>
+<p>在进行输入输出同步的过程中，可能会遇到某些字段的转换。比如 需要在执行转换的同时自动将汉字应为特定标识，可使用“值映射”</p>
+<p>例：输入表中的性别“男”、“女”对应输出表的“1”、“0”</p>
+<p>一个值映射对应一个字段的转换，多个字段需要转换时，则配置多个值映射</p>
+</blockquote>
+<ol>
+<li><p>继上次保存的转换程序操作</p>
+</li>
+<li><p>在左侧的「核心对象」中找到「转换」下的「值映射」，鼠标将其拖动到「表输入」与「表输出」中间连线的部位，提示「拆分节点」，选择「是」即可。多个字段可创建多个映射，如下图所示：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tva1.sinaimg.cn/large/008i3skNly1gvrpk2dlv1j31im0qq40n.jpg" alt="image-20211025175727328" style="zoom:33%;" />
+</li>
+<li><p>双击主界面的「值映射」进行配置，根据业务需求选择或填写「使用的字段名称」「不匹配时的默认值」『字段值「源值」「目标值」』等信息，点击确定<br>具体如下图所示：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tva1.sinaimg.cn/large/008i3skNly1gvrpkialtkj31un0u0tbq.jpg" alt="image-20211025175753293" style="zoom: 33%;" />
+</li>
+<li><p>运行转换</p>
+</li>
+</ol>
+<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h3><blockquote>
+<p>执行数据同步前需要对输出表的旧数据进行删除操作，可基于关键字删除</p>
+</blockquote>
+<ol>
+<li>继上次保存的转换程序操作</li>
+<li>在左侧的「核心对象」中找到「输出」下的「删除」，鼠标将其拖动到「表输入」之前并连线</li>
+<li>双击主界面的「删除」打开弹窗，上方配置数据源，下方「查询值所需的关键字」一栏中可配置删除条件</li>
+<li>运行转换</li>
+</ol>
+<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><blockquote>
+<p>定时执行某个转换流程文件</p>
+</blockquote>
+<ol>
+<li><p>新建作业</p>
+<p>点击头部菜单「文件」「新建」「作业」 注意这里跟上面不一样这里是 <code>新建作业</code></p>
+</li>
+<li><p>配置定时任务</p>
+<ol>
+<li><p>找到左侧「核心对象」树下「通用」中的『「START」「转换」』分别拖动到作业主界面，并将两者连线</p>
+</li>
+<li><p>双击 「START」 图标 ，在类型中可以选择是否需要定时执行，如下图所示</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tva1.sinaimg.cn/large/008i3skNly1gvrps9cqjdj30tw0n6abl.jpg" alt="image-20211025180520371" style="zoom: 33%;" />
+</li>
+<li><p>双击转换进行配置，在「Transformation」一行点击「浏览」选择要执行的 .ktr 转换文件</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tva1.sinaimg.cn/large/008i3skNly1gvrpt0005sj30yk0ka402.jpg" alt="image-20211025180603140" style="zoom: 50%;" /></li>
+</ol>
+</li>
+<li><p>运行作业</p>
+</li>
+</ol>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><p>Mac&#x2F;Linux 可能出现闪退启动失败</p>
+<p>可尝试下载最新的 eclipse.swt 包，替换 kettle 中的原文件</p>
+<p>将下载好的文件重命名 swt.jar <a target="_blank" rel="noopener" href="https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.swt.cocoa.macosx.x86_64">下载地址</a></p>
+<p>替换 data-integration7.1&#x2F;libswt&#x2F;osx64&#x2F;swt.jar</p>
+</li>
+<li><p>连接数据库时出现驱动异常等情况</p>
+<p>MySQL 驱动地址 <a target="_blank" rel="noopener" href="https://mvnrepository.com/artifact/mysql/mysql-connector-java">mysql-connector-java</a></p>
+<p>Oracle  驱动地址 <a target="_blank" rel="noopener" href="https://mvnrepository.com/search?q=ojdbc6">ojdbc6</a></p>
+<p>将下载好的驱动放在 data-integration7.1&#x2F;lib&#x2F; 下即可</p>
+<p>不同的数据源可能使用驱动的版本有所差别，建议下载使用适合自己版本的驱动</p>
+</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li>入门：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7021116791287971848">分享一个简单好用的ETL工具：PDI(Kettle)</a></li>
+<li>进阶：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6956412708858101773">Kettle实战视频教程-全部为实战项目</a></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/f360d6b8.html">https://wangwenzhe.github.io/posts/f360d6b8.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Kettle/">Kettle</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/e3cc554d.html" title="视频对接-海康智能应用平台"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">视频对接-海康智能应用平台</div></div></a></div><div class="next-post pull-right"><a href="/posts/3c4f21f2.html" title="个人成长-2021-10-26"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">个人成长-2021-10-26</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E7%BD%91"><span class="toc-number">2.</span> <span class="toc-text">官网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">3.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE"><span class="toc-number">5.1.</span> <span class="toc-text">数据同步配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%BC%E6%98%A0%E5%B0%84"><span class="toc-number">5.2.</span> <span class="toc-text">值映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C"><span class="toc-number">5.3.</span> <span class="toc-text">删除操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="toc-number">5.4.</span> <span class="toc-text">定时任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">5.5.</span> <span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

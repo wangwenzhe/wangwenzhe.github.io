@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Uniapp-Android原生插件开发 | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="开发教程https:&#x2F;&#x2F;nativesupport.dcloud.net.cn&#x2F;NativePlugin&#x2F;README uni 原生插件类型 Module 模式「类似于前端里的 js sdk」：能力扩展，无嵌入窗体的 UI 控件。大部分插件都是属于此类，比如调用计步器 API。代码写法为通过 js 进行 require，然后调用该插件对象的方法。如涉及一些弹出框、全屏 ui，也仍然属于 Modul">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Uniapp-Android原生插件开发">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/643288eb.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="开发教程https:&#x2F;&#x2F;nativesupport.dcloud.net.cn&#x2F;NativePlugin&#x2F;README uni 原生插件类型 Module 模式「类似于前端里的 js sdk」：能力扩展，无嵌入窗体的 UI 控件。大部分插件都是属于此类，比如调用计步器 API。代码写法为通过 js 进行 require，然后调用该插件对象的方法。如涉及一些弹出框、全屏 ui，也仍然属于 Modul">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2021-03-26T06:45:36.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.784Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="Uniapp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/643288eb.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Uniapp-Android原生插件开发',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Uniapp-Android原生插件开发</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-26T06:45:36.000Z" title="发表于 2021-03-26 14:45:36">2021-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.784Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/uniapp/">uniapp</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/uniapp/Android%E5%8E%9F%E7%94%9F%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/">Android原生插件开发</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Uniapp-Android原生插件开发"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="开发教程"><a href="#开发教程" class="headerlink" title="开发教程"></a>开发教程</h2><p><a target="_blank" rel="noopener" href="https://nativesupport.dcloud.net.cn/NativePlugin/README">https://nativesupport.dcloud.net.cn/NativePlugin/README</a></p>
+<h2 id="uni-原生插件类型"><a href="#uni-原生插件类型" class="headerlink" title="uni 原生插件类型"></a>uni 原生插件类型</h2><ul>
+<li>Module 模式「类似于前端里的 js sdk」：能力扩展，无嵌入窗体的 UI 控件。大部分插件都是属于此类，比如调用计步器 API。代码写法为通过 js 进行 require，然后调用该插件对象的方法。如涉及一些弹出框、全屏 ui，也仍然属于 Module 模式</li>
+<li>Component 模式「类似于前端里的 vue 组件」：在窗体中内嵌显示某个原生 ui 组件。比如窗体局部内嵌某个地图厂商的 map 组件，上下混排其他前端内容，就需要把这个原生地图 sdk 封装为 Component 模式。代码写法与 vue 组件相同，在 template 里写组件标签</li>
+</ul>
+<p>uni-app 在 App 端支持双渲染引擎，支持 vue 和 nvue 两种页面，vue 页面基于 webview 排版引擎渲染，nvue 页面基于优化版的 weex 原生排版引擎渲染，weex 的插件也可以拿到 <code>uni-app</code> 生态中使用。</p>
+<ul>
+<li>vue 页面中仅支持使用 Module 类型的原生插件，不支持调用同步方法返回数据</li>
+<li>nvue 页面中支持使用 Module 和 Component 两种类型的原生插件。也就是如需实现嵌入页面的 ui 组件，前提是该页面需要使用 nvue 编写。</li>
+</ul>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><ol>
+<li>页面逻辑调试在 HbuilderX 中完成，可以查看 App 页面，弹出信息，查看HbuilderX 输出的日志信息</li>
+<li>调试插件中代码逻辑时，在 Android studio 中完成。与 Android 原生开发调试一样，设置断点，查看变量，输出日志等</li>
+<li>可以通过 Android Studio 制作自定义基座。在 HBuilderX  中运行时选择自定义基座，然后调试页面和插件交互功能，但 HBuilderX  控制台不再输出信息，只能通过弹窗形式查看过程信息</li>
+</ol>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>在现有 Android 项目中创建 library 的 module，例如 <code>uniplugin_module</code></p>
+</li>
+<li><p>配置 module 的 build.gradle 信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//导入aar需要的配置</span><br><span class="line">repositories &#123;</span><br><span class="line">    flatDir &#123;</span><br><span class="line">        dirs &#x27;libs&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">dependencies &#123;</span><br><span class="line">    //必须添加的依赖</span><br><span class="line">    compileOnly &#x27;com.android.support:recyclerview-v7:28.0.0&#x27;</span><br><span class="line">    compileOnly &#x27;com.android.support:support-v4:28.0.0&#x27;</span><br><span class="line">    compileOnly &#x27;com.android.support:appcompat-v7:28.0.0&#x27;</span><br><span class="line">    compileOnly &#x27;com.alibaba:fastjson:1.1.46.android&#x27;</span><br><span class="line"></span><br><span class="line">    compileOnly fileTree(include: [&#x27;uniapp-v8-release.aar&#x27;], dir: &#x27;../app/libs&#x27;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建插件类，必须继承 UniModule 类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class TestModule extends UniModule</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>扩展方法必须加上 @UniJSMethod (uiThread &#x3D; false or true) 注解。UniApp 会根据注解来判断当前方法是否要运行在 UI 线程，和当前方法是否是扩展方法</p>
+</li>
+<li><p>UniApp 是根据反射来进行调用 Module 扩展方法，所以 Module 中的扩展方法必须是 public 类型</p>
+</li>
+<li><p>方法参考可以是 int, double, float, String, Map, List ,com.alibaba.fastjson.JSONObject 类型</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//run ui thread</span><br><span class="line">@UniJSMethod(uiThread = true)</span><br><span class="line">public void testAsyncFunc(JSONObject options, UniJSCallback callback) &#123;</span><br><span class="line">    Log.e(TAG, &quot;testAsyncFunc--&quot;+options);</span><br><span class="line">    if(callback != null) &#123;</span><br><span class="line">        JSONObject data = new JSONObject();</span><br><span class="line">        data.put(&quot;code&quot;, &quot;success&quot;);</span><br><span class="line">        callback.invoke(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//run JS thread</span><br><span class="line">@UniJSMethod (uiThread = false)</span><br><span class="line">public JSONObject testSyncFunc()&#123;</span><br><span class="line">    JSONObject data = new JSONObject();</span><br><span class="line">    data.put(&quot;code&quot;, &quot;success&quot;);</span><br><span class="line">    return data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="globalEvent-事件"><a href="#globalEvent-事件" class="headerlink" title="globalEvent 事件"></a>globalEvent 事件</h3><p>用于页面监听持久性事件，例如定位信息，陀螺仪等的变化。</p>
+<p><strong>示例：</strong></p>
+<p>页面监听 event 事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> globalEvent = uni.<span class="title function_">requireNativePlugin</span>(<span class="string">&#x27;globalEvent&#x27;</span>);</span><br><span class="line">globalEvent.<span class="title function_">addEventListener</span>(<span class="string">&#x27;myEvent&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;myEvent&#x27;</span>+<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(e));</span><br><span class="line">&#125;);<span class="title class_">Copy</span> to clipboardErrorCopied</span><br></pre></td></tr></table></figure>
+
+<p>插件 原生代码发出 <code>myEvent</code> 事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,Object&gt; params=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">params.put(<span class="string">&quot;key&quot;</span>,<span class="string">&quot;value&quot;</span>);</span><br><span class="line">mUniSDKInstance.fireGlobalEventCallback(<span class="string">&quot;myEvent&quot;</span>, params);Copy to clipboardErrorCopied</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong> globalEvent 事件只能通过页面的 UniSDKInstance 实例给当前页面发送 globalEvent 事件。其他页面无法接受。</p>
+</li>
+<li><p>本地插件注册</p>
+<ul>
+<li>在 UniPlugin-Hello-AS 工程下 “app” Module 根目录 assets&#x2F;dcloud_uniplugins.json 文件。 在 moudles 节点下 添加你要注册的 Module 或 Component</li>
+</ul>
+</li>
+<li><h3 id="集成-uni-app-项目测试插件"><a href="#集成-uni-app-项目测试插件" class="headerlink" title="集成 uni-app 项目测试插件"></a>集成 uni-app 项目测试插件</h3><ol>
+<li>创建 uni-app 工程或在已有的 uni-app 工程编写相关的.nvue 和.vue 文件。使用 uni-app 插件中的 module 或 component</li>
+<li>选择 发行 —&gt; 原生 APP - 本地打包 —&gt; 生成本地打包 App 资源 等待资源生成！</li>
+<li>把 APP 资源文件放入到 UniPlugin-Hello-AS 工程下 <code>app</code> Module 根目录 assets&#x2F;apps&#x2F; 测试工程 appid&#x2F;www 对应目录下，再修改 assets&#x2F;data&#x2F;dcloud_control.xml! 修改其中 appid&#x3D;“测试工程 appid”!, 测试工程 UniPlugin-Hello-AS 已有相关配置可参考</li>
+<li>appid 注意 一定要统一否则会导致应用无法正常运行</li>
+<li>配置 “app”Module 下的 build.gradle. 在 dependencies 节点添加插件 project 引用 （以 uniplugin_richalert 为例）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 添加uni-app插件</span><br><span class="line">implementation project(&#x27;:uniplugin_richalert&#x27;)</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>运行测试。测试运行时一切要以真机运行为主。</li>
+</ol>
+</li>
+</ol>
+<h2 id="插件-module-打包成-aar"><a href="#插件-module-打包成-aar" class="headerlink" title="插件 module 打包成 aar"></a>插件 module 打包成 aar</h2><ul>
+<li><p>选择 Gradle—&gt; 插件 module—&gt;Tasks—&gt;build—&gt;assembleRelease 编译 module 的 aar 文件</p>
+<p><strong>注意：新版本 Android studio 将 assembleRelease 放入 other 中了</strong></p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/643288eb.html">https://wangwenzhe.github.io/posts/643288eb.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Uniapp/">Uniapp</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/7f589312.html" title="Android-模块化开发之aar"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Android-模块化开发之aar</div></div></a></div><div class="next-post pull-right"><a href="/posts/9a7f448e.html" title="Jenkins"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Jenkins</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/8bee0151.html" title="Uniapp-接入企业微信客服"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-08-05</div><div class="title">Uniapp-接入企业微信客服</div></div></a></div><div><a href="/posts/e127557f.html" title="Uniapp-UrlSchemes调用协议"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-22</div><div class="title">Uniapp-UrlSchemes调用协议</div></div></a></div><div><a href="/posts/5c64735d.html" title="Uniapp-生命周期"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-22</div><div class="title">Uniapp-生命周期</div></div></a></div><div><a href="/posts/8ba4f02c.html" title="Uniapp-uniui"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-02</div><div class="title">Uniapp-uniui</div></div></a></div><div><a href="/posts/a40e319.html" title="Uniapp-H5"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-24</div><div class="title">Uniapp-H5</div></div></a></div><div><a href="/posts/3369e1ba.html" title="Uniapp-离线打包"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-06</div><div class="title">Uniapp-离线打包</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">开发教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uni-%E5%8E%9F%E7%94%9F%E6%8F%92%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">uni 原生插件类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">3.</span> <span class="toc-text">注意</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E8%AF%95"><span class="toc-number">3.1.</span> <span class="toc-text">调试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">4.</span> <span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#globalEvent-%E4%BA%8B%E4%BB%B6"><span class="toc-number">4.1.</span> <span class="toc-text">globalEvent 事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E6%88%90-uni-app-%E9%A1%B9%E7%9B%AE%E6%B5%8B%E8%AF%95%E6%8F%92%E4%BB%B6"><span class="toc-number">4.2.</span> <span class="toc-text">集成 uni-app 项目测试插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6-module-%E6%89%93%E5%8C%85%E6%88%90-aar"><span class="toc-number">5.</span> <span class="toc-text">插件 module 打包成 aar</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

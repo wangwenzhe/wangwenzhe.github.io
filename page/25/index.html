@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>王文哲的博客 - 程序猿的成长之路</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="王文哲的博客">
+<meta property="og:url" content="https://wangwenzhe.github.io/page/25/index.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="技术分享、成长随笔">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/page/25/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '王文哲的博客',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2025-06-15 22:34:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">王文哲的博客</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/438b4dd5.html" title="Duboo">Duboo</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-08-15T07:36:20.000Z" title="发表于 2021-08-15 15:36:20">2021-08-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/Dubbo-Java-RPC%E6%A1%86%E6%9E%B6/">Dubbo-Java RPC框架</a></span></div><div class="content">说明Apache Dubbo (incubating) |ˈdʌbəʊ| 是一款高性能、轻量级的开源 Java RPC 框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及服务自动注册和发现。简单来说 Dubbo 是一个分布式服务框架，致力于提供高性能和透明化的 RPC 远程服务调用方案，以及 SOA 服务治理方案。
+Dubbo 目前已经有接近 23k 的 Star ，Dubbo 的 Github 地址：https://github.com/apache/inc...。另外，在开源中国举行的 2018 年度最受欢迎中国开源软件这个活动的评选中，Dubbo 更是凭借其超高人气仅次于 vue.js 和 ECharts 获得第三名的好成绩。
+Dubbo 是由阿里开源，后来加入了 Apache 。正式由于 Dubbo 的出现，才使得越来越多的公司开始使用以及接受分布式架构。
+为什么用
+负载均衡 —— 同一个服务部署在不同的机器时该调用那一台机器上的服务
+服务调用链路生成 —— 服务之间互相是如何调用的
+服务访问压力以及时长统计 —— 当前系统的压力主要在哪里，如何来扩容 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/b829b66a.html" title="Zookeeper">Zookeeper</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-08-15T07:27:06.000Z" title="发表于 2021-08-15 15:27:06">2021-08-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/Zookeeper/">Zookeeper</a></span></div><div class="content">说明
+Zookeeper 是一个分布式的、开源的程序协调服务，是 hadoop 项目下的一个子项目。他提供的主要功 能包括：配置管理、名字服务、服务动态上下线、软负载均衡
+
+下载https://zookeeper.apache.org/releases.html
+Linux 安装
+CentOS 7.4 阿里云服务器
+
+1. 下载通过 http://mirror.bit.edu.cn/apache/zookeeper/ 这个链接下载，然后上传到 Linux 上。（可以说那个 Xhell 附带的文件传输功能）
+
+或者直接在 Linux 中使用 wget https://archive.apache.org/dist/zookeeper/zookeeper-3.4.12/zookeeper-3.4.12.tar.gz 命令下载（版本号 3.4.12 是我写这篇文章的时候最新的稳定版本，各位可以根据实际情况修改）
+2. 解压1tar -zxvf zookeeper-3.4.12-alpha.tar.gz
+
+
+解压完毕之后修改一下解压之后所得的文件夹名
+1mv zookeeper-3.4.12  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/64b6c8f8.html" title="SpringBoot-async">SpringBoot-async</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-08-15T02:38:23.000Z" title="发表于 2021-08-15 10:38:23">2021-08-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SpringBoot/">SpringBoot</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SpringBoot/Async%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/">Async异步任务</a></span></div><div class="content">说明
+此 demo 主要演示了 Spring Boot 如何使用原生提供的异步任务支持，实现异步执行任务
+
+注意事项在使用 Spring Async 进行异步编程时，需要注意以下几点：
+
+使用 @Async 注解将方法标记为异步方法。
+异步方法必须在 public 方法中定义，并且不能在同一类中调用本类中的其他异步方法，否则其将会同步执行。
+Spring Async 默认的执行器是 SimpleAsyncTaskExecutor，可以通过配置实现使用自定义的执行器。
+异步方法无法获取其返回值，必须通过 Future 或 CompletableFuture 来获取其执行结果。
+异步方法在抛出异常时，异常会被封装到 Future 或 CompletableFuture 中，必须使用 try-catch 或者通过 Future 或 CompletableFuture 的回调方法来处理异常
+
+pom.xml12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/bf48ac41.html" title="SpringBoot-mongodb">SpringBoot-mongodb</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-08-15T02:09:56.000Z" title="发表于 2021-08-15 10:09:56">2021-08-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SpringBoot/">SpringBoot</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SpringBoot/MongoDB/">MongoDB</a></span></div><div class="content">说明 Spring Boot 如何集成 MongoDB，使用官方的 starter 实现增删改查
+注意
+参考 《MongoDB》
+
+作者编写本demo时，MongoDB 最新版本为 4.1，使用 docker 运行，下面是所有步骤：
+
+下载镜像：docker pull mongo:4.1
+运行容器：docker run -d -p 27017:27017 -v /Users/yangkai.shen/docker/mongo/data:/data/db --name mongo-4.1 mongo:4.1
+停止容器：docker stop mongo-4.1
+启动容器：docker start mongo-4.1
+
+pom.xml123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF- ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/355f2ed8.html" title="SpringBoot-https">SpringBoot-https</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-08-15T01:38:10.000Z" title="发表于 2021-08-15 09:38:10">2021-08-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SpringBoot/">SpringBoot</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SpringBoot/https/">https</a></span></div><div class="content">生成证书首先使用 jdk 自带的 keytool 命令生成证书复制到项目的 resources 目录下（生成的证书一般在用户目录下 C:\Users\Administrator\server.keystore）
+
+自己生成的证书浏览器会有危险提示,去ssl网站上申请则不会「付费」
+
+123456789101112131415161718192021222324keytool -genkey -alias bjtcrj -dname &quot;CN=Andy,OU=kfit,O=kfit,L=HaiDian,ST=BeiJing,C=CN&quot; -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore server.p12 -validity 365//输入密钥库口令：bjtcrj// key-alias  bjtcrj// key-store  server.p12// key-store-type: PKCS12// key-store-password: bjtcrj-genkey ：生成key；-alias ：key的别名 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/f319618f.html" title="Java-iText">Java-iText</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-08-13T09:09:42.000Z" title="发表于 2021-08-13 17:09:42">2021-08-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java%E5%BA%93/">Java库</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java%E5%BA%93/iText/">iText</a></span></div><div class="content">说明iText 是Java 操作 PDF 的工具，提供编辑 PDF，包括添加文字、图片等功能
+maven 依赖1234567891011121314151617 &lt;dependency&gt;   &lt;groupId&gt;com.itextpdf&lt;/groupId&gt;   &lt;artifactId&gt;itextpdf&lt;/artifactId&gt;   &lt;version&gt;5.5.13&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt;  &lt;groupId&gt;com.itextpdf&lt;/groupId&gt;  &lt;artifactId&gt;itext-asian&lt;/artifactId&gt;  &lt;version&gt;5.2.0&lt;/version&gt;&lt;/dependency&gt; &lt;dependency&gt;   &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;   &lt;a ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/fbce5d5c.html" title="Uniapp-文件上传">Uniapp-文件上传</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-08-12T02:58:04.000Z" title="发表于 2021-08-12 10:58:04">2021-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/uniapp/">uniapp</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/uniapp/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">文件上传</a></span></div><div class="content">从相册选取图片上传选取第一个上传123456789101112131415161718uni.chooseImage(&#123;  count: 4, //默认9  sizeType: [&#x27;original&#x27;, &#x27;compressed&#x27;], //可以指定是原图还是压缩图，默认二者都有  sourceType: [&#x27;album&#x27;], //从相册选择  success: (res) =&gt; &#123;    that.$http.upload(that.$config.uploadUrl, &#123;      filePath: res.tempFilePaths[0],      name: &#x27;file&#x27;    &#125;)      .then(res =&gt; &#123;      that.myFormData.avatar=res.data.message;    &#125;)      .catch(err =&gt; &#123;      that.$tip.error(er ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/9fd3cba3.html" title="EasyUI-DataGrid调整列顺序">EasyUI-DataGrid调整列顺序</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-08-11T01:57:10.000Z" title="发表于 2021-08-11 09:57:10">2021-08-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/EasyUI-DataGrid%E8%B0%83%E6%95%B4%E5%88%97%E9%A1%BA%E5%BA%8F/">EasyUI-DataGrid调整列顺序</a></span></div><div class="content">新增数据库表1key userid columns
+
+扩展 datagrid 方法，拖动列的顺序并保存到数据库12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788$.extend($.fn.datagrid.methods, &#123;	columnMoving: function(jq, key)&#123;		return jq.each(function()&#123;			var target = this;			var cells = $(this).datagrid(&#x27;getPanel&#x27;).find(&#x27;div.datagrid-header td[field]&#x27;);			cells.draggable(&#123;				revert:true,				c ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/611517e1.html" title="Android-Canvas、Bitmap">Android-Canvas、Bitmap</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-08-09T09:26:49.000Z" title="发表于 2021-08-09 17:26:49">2021-08-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Android/">Android</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Android/Canvas-Bitmap/">Canvas&amp;Bitmap</a></span></div><div class="content">Bitmap「白纸」我们在屏幕上看到的图像，都是由一个一个的像素组成的，那么这些像素是从哪来的？由上面这句话，我们就知道答案了，这些像素就是存放在 Bitmap 中的，由此，我们可以认为 Bitmap 就是用来直接展示在窗口上的一个显示对象，它是一个最终的产品
+Canvas「画板」12Bitmap bitmap = Bitmap.createBitmap(width, height, Config.ARGB_8888);        Canvas canvas = new Canvas(bitmap);
+
+上面是创建 Canvas 的一段代码，由这，我们知道，要创建 Canvas，必须先创建一个 Bitmap 对象，并将其作为参数传给 Canvas。那么，我们可以只创建 Canvas，然后不给其传递 Bitmap 对象吗？不可以！为什么？Canvas 本意是画布的意思，但是在 Android 中，它就只是一个媒介，可以通过 Canvas 来调用 drawRect,drawCircle 等等，但是实际上画的这些东西最终展现的时候，都是像素，但是只有 Bitmap 才能保存像素，而 Ca ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/cbe828c0.html" title="WebGL">WebGL</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-08-02T13:12:35.000Z" title="发表于 2021-08-02 21:12:35">2021-08-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/WebGL/">WebGL</a></span></div><div class="content">说明WebGL 是基于 OpenGL 设计的面向 web 的图形标准，提供了一系列 JavaScript API，通过这些 API 进行图形渲染将得以利用图形硬件从而获得较高性能。
+</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/24/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/#content-inner">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/#content-inner">26</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/#content-inner">59</a><a class="extend next" rel="next" href="/page/26/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/"><span class="card-archive-list-date">2025</span><span class="card-archive-list-count">12</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/"><span class="card-archive-list-date">2024</span><span class="card-archive-list-count">66</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/"><span class="card-archive-list-date">2023</span><span class="card-archive-list-count">44</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/"><span class="card-archive-list-date">2022</span><span class="card-archive-list-count">38</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/"><span class="card-archive-list-date">2021</span><span class="card-archive-list-count">219</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/"><span class="card-archive-list-date">2020</span><span class="card-archive-list-count">166</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/"><span class="card-archive-list-date">2019</span><span class="card-archive-list-count">43</span></a></li></ul></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["世界匆忙，你我慢享，真我自在其中。","老友重逢般温馨，拂尘埃，微笑绽放。"])
+  } else {
+    document.getElementById("subtitle").textContent = "世界匆忙，你我慢享，真我自在其中。"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

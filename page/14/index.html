@@ -1,0 +1,343 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>王文哲的博客 - 程序猿的成长之路</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="王文哲的博客">
+<meta property="og:url" content="https://wangwenzhe.github.io/page/14/index.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="技术分享、成长随笔">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/page/14/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '王文哲的博客',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2025-06-15 22:34:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">王文哲的博客</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/a40e319.html" title="Uniapp-H5">Uniapp-H5</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-24T04:11:40.000Z" title="发表于 2022-08-24 12:11:40">2022-08-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Uniapp/">Uniapp</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Uniapp/H5/">H5</a></span></div><div class="content">发布H5版
+点击 发行-网站-PC Web或手机H5(仅适用于uni-app)
+H5 手机版发行，输入 网站标题，网站域名可以不填，点击 发行
+控制台输出，打开目录 h5
+
+注意
+默认 h5 目录的资源要发布到 web 容器根目录，才能正常访问
+
+HBuilderX 打开项目 mainfest.json ，切换到 H5配置：推荐配置为 .&#x2F;  可以部署在任意目录下
+
+运行的基础路径
+如 &#x2F;h5&#x2F;,代表在域名的&#x2F;h5目录下部署运行
+如设为.&#x2F;,则代表相对路径,支持File协议打开,此时路由模式强制为hash模式
+
+
+
+调试技巧
+浏览器安装 vue 插件 DevTools
+
+组件：以目录+文件名作为组件名，例如 pages&#x2F;index&#x2F;index.vue 页面组件为 PagesIndexIndex 
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/dff7cab9.html" title="ES-elasticdump数据迁移">ES-elasticdump数据迁移</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-24T03:16:03.000Z" title="发表于 2022-08-24 11:16:03">2022-08-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B7%A5%E5%85%B7/ES%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/">ES数据迁移</a></span></div><div class="content">ElasticDump插件目的是为了导入&#x2F;导出ElasticSearch数据，方便数据迁移
+注意⚠️需要node环境安装此插件
+安装
+在线安装（有互联网）
+12345# 通过npm命令 安装npm install elasticdump -g# 安装成功elasticdump --help
+
+离线安装（无互联网）
+注意⚠️前提是都要安装node环境
+
+先找一台联网的设备安装
+123456789101112# 安装npm-pack-allnpm install -g npm-pack-all# 安装elasticdumpnpm install elasticdump -g# 查看安装目录npm list -g --depth=0# 进入elasticdump安装目录打开命令窗口执行# 示例进入目录：/Users/wangwz/.nvm/versions/node/v16.11.0/lib/node_modules/elasticdumpnpm-pack-all
+
+即可生成对应的.tgz文件，例如：elasticdump-6.xx.x.tgz
+
+将生成的.tgz文件上传到未联网设 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/579de07b.html" title="Javascript-小技巧">Javascript-小技巧</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-16T23:28:48.000Z" title="发表于 2022-08-17 07:28:48">2022-08-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/JavaScript/">JavaScript</a></span></div><div class="content">原文20 个既简单又实用的 JavaScript 小技巧 (qq.com)
+详解1.滚动到页面顶部我们可以使用 window.scrollTo() 平滑滚动到页面顶部
+123const scrollToTop = () =&gt; &#123;  window.scrollTo(&#123; top: 0, left: 0, behavior: &quot;smooth&quot; &#125;);&#125;;
+
+2.滚动到页面底部当然，如果知道页面的高度，也可以平滑滚动到页面底部
+1234567const scrollToBottom = () =&gt; &#123;  window.scrollTo(&#123;    top: document.documentElement.offsetHeight,    left: 0,    behavior: &quot;smooth&quot;,  &#125;);&#125;;
+
+3.滚动元素到可见区域有时我们需要将元素滚动到可见区域，我们应该怎么做？使用 scrollIntoView 就足够了
+12345const smoot ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/883c230d.html" title="html2file-html转文档服务">html2file-html转文档服务</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-12T02:04:25.000Z" title="发表于 2022-08-12 10:04:25">2022-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/html2file-html%E8%BD%AC%E6%96%87%E6%A1%A3%E6%9C%8D%E5%8A%A1/">html2file-html转文档服务</a></span></div><div class="content">githubpetterobam&#x2F;html2file: 收集一系列html转文档的开源插件，做成html页面转文件的微服务集成Web应用，目前包含 html转PDF、html转图片、html转markdown、html转word、excel等等。 (github.com)
+说明自己用java写文档转化生成果然有很多弊端和不兼容的地方，而一些开源插件转这些东西还是效果蛮不错，于是心生收集各种插件（兼容windows和linux）并封装成服务的想法
+这里我将收集一系列html转文档的开源插件，做成html页面转文件的微服务集成Web应用，预计包含：
+
+网页转PDF
+网页转图片
+网页转TEXT
+网页转WORD
+网页转markdown
+网页转excel
+网页转…
+
+目前支1.网页转PDF（wkhtml2pdf插件
+1例如：http://localhost:7800/html2pdf?pageUrl=https://wkhtmltopdf.org
+
+2.网页转图片（wkhtml2pdf插件）
+1例如：http://localhost:7800/html2image?pageUrl=ht ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/a95527c.html" title="Doctron-Html2Pdf-Html2Img">Doctron-Html2Pdf-Html2Img</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-12T01:59:40.000Z" title="发表于 2022-08-12 09:59:40">2022-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Doctron%E5%AE%9E%E7%8E%B0Html2Pdf/">Doctron实现Html2Pdf</a></span></div><div class="content">githubdoctron&#x2F;README_ZH.md at master · lampnick&#x2F;doctron (github.com)
+特性
+使用chrome内核保证高质量将HTML转为pdf&#x2F;图片。
+简易部署(提供docker镜像,Dockerfile以及k8s yaml配置文件)。
+支持丰富的转换参数。
+转为pdf和图片支持自定义大小。
+无状态服务支持。
+
+安装
+使用Docker
+
+123456#使用默认配置docker run -p 8080:8080 --rm --name doctron-alpine lampnick/doctron  #使用自定义配置文件docker run -p 8080:8080 --rm --name doctron-alpine \-v &lt;本地doctron.yaml配置文件&gt;:/doctron.yaml \lampnick/doctron  
+
+
+使用k8s
+
+1kubectl apply -f https://raw.githubusercontent.com/lampnick/doctron/mas ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/153cc7ca.html" title="dynamic-datasource-动态数据源">dynamic-datasource-动态数据源</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-05T08:02:02.000Z" title="发表于 2022-08-05 16:02:02">2022-08-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java%E5%BA%93/">Java库</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java%E5%BA%93/dynamic-datasource/">dynamic-datasource</a></span></div><div class="content">参考基础必读（免费） · dynamic-datasource · 看云 (kancloud.cn)
+常见问题之-切换数据源失败 · dynamic-datasource · 看云 (kancloud.cn)
+集成ShardingJdbc：集成ShardingJdbc · dynamic-datasource · 看云 (kancloud.cn)
+自动读写分离：mybatis下读写分离 · dynamic-datasource · 看云 (kancloud.cn)
+数据源知识库 · dynamic-datasource · 看云 (kancloud.cn)
+注入多数据源123456789101112public class A&#123;    // 注入多数据源    @Autowired    private DataSource dataSource;    public void dosomething&#123;         //使用的时候需要强转        DynamicRoutingDataSource ds = (DynamicRoutingDataSource ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/7c3ed27.html" title="SpringBoot-logback">SpringBoot-logback</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-04T14:44:24.000Z" title="发表于 2022-08-04 22:44:24">2022-08-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SpringBoot/">SpringBoot</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SpringBoot/Logback/">Logback</a></span></div><div class="content">说明
+SpringBoot logback 日志输出到控制台、文件、mysql数据库
+
+配置文件：logback-spring.xml
+
+配置文件修改后，项目会自动重新加载，所以不需要手动重启项目
+
+可以控制输出日志的级别 &lt;root level=&quot;INFO&quot;&gt;
+
+
+步骤添加数据库连接池 dbcp - pom.xml12345&lt;dependency&gt;  &lt;groupId&gt;commons-dbcp&lt;/groupId&gt;  &lt;artifactId&gt;commons-dbcp&lt;/artifactId&gt;  &lt;version&gt;1.4&lt;/version&gt;&lt;/dependency&gt;
+
+创建数据库和日志记录表1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556create database `run_log_scm` defau ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/d33c3eca.html" title="Vue-clipboard剪切板">Vue-clipboard剪切板</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-19T14:19:44.000Z" title="发表于 2022-07-19 22:19:44">2022-07-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/">Vue</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/clipboard%E5%89%AA%E5%88%87%E6%9D%BF/">clipboard剪切板</a></span></div><div class="content">官方clipboard.js — Copy to clipboard without Flash (clipboardjs.com)
+步骤
+安装依赖
+1npm install clipboard --save
+
+导入组件
+1import Clipboard from &#x27;clipboard&#x27;
+
+使用
+1&lt;a class=&quot;fileUrl&quot; @click=&quot;copy(record)&quot;&gt;复制url&lt;/a&gt;
+
+123456789101112131415161718192021// 复制文本copy(record) &#123;  let clipboard = new Clipboard(&#x27;.fileUrl&#x27;, &#123;    text: function() &#123;      // 要复制的文本源      return record.fileUrl;    &#125;  &#125;);  let that = this  clipboard.on(&#x27;success ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/955b8d7e.html" title="SpringBoot-看门狗">SpringBoot-看门狗</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-13T10:41:24.000Z" title="发表于 2022-07-13 18:41:24">2022-07-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SpringBoot/">SpringBoot</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SpringBoot/%E7%9C%8B%E9%97%A8%E7%8B%97/">看门狗</a></span></div><div class="content">在Spring Boot应用中实现看门狗（Watchdog）功能，主要是为了监控应用状态并在应用发生异常或无响应时自动重启应用，确保服务的高可用性。
+Spring Boot本身并不直接提供看门狗功能，但你可以通过几种方式来实现这一需求：
+1. 使用Spring Boot Actuator和External ToolsSpring Boot Actuator 提供了一系列端点（Endpoints）来监控应用的健康状况，其中 /health 端点可以用来检查应用的健康状态。你可以结合外部工具（如cron作业、Systemd服务、Docker的健康检查机制或云平台的监控服务）定期调用这个端点，并根据返回的状态决定是否重启应用。
+示例配置Actuator在application.properties或application.yml中启用Actuator的健康检查端点：
+Properties
+1management.endpoints.web.exposure.include=health
+
+然后，使用外部工具编写脚本来定期检查该端点，并在需要时重启应用。
+2. 使用Spring Cloud C ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/c08a993.html" title="SSL证书">SSL证书</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-29T07:47:41.000Z" title="发表于 2022-06-29 15:47:41">2022-06-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/">数据安全</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/SSL%E8%AF%81%E4%B9%A6/">SSL证书</a></span></div><div class="content">参考阿里云：免费SSL证书概述 (aliyun.com)
+汇智云安 - 知乎 (zhihu.com)
+申请SSL证书，建议先看完这14个问题 - 知乎 (zhihu.com)
+SSL 证书 域名型（DV）SSL 证书提交流程-证书申请-文档中心-腾讯云 (tencent.com)
+SSL 证书 Nginx 服务器 SSL 证书安装部署-证书安装-文档中心-腾讯云 (tencent.com)
+简介1 . 什么是SSL证书通俗的说，只要有网站就需要SSL证书。它是帮助网站从不安全的http协议变为安全的https协议的一种数字证书。SSL证书以pem&#x2F;pfx&#x2F;cer&#x2F;crt&#x2F;jks等格式的文件部署在网站的服务器上。
+SSL证书就是利用Web服务器与浏览器以及客户端之间建立加密链接的加密技术，通过配置和应用SSL证书来启用HTTPS协议，来保证互联网数据传输安全的行之有效的解决方案。
+2 . 关于SSL证书有效期由于SSL证书行业规则调整，自2020年9月1日起，SSL证书一次性最多只能签发1年（准确的说是13 个月），但您依然可以一次性采购1-6年， ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/13/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/#content-inner">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/#content-inner">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/#content-inner">59</a><a class="extend next" rel="next" href="/page/15/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/"><span class="card-archive-list-date">2025</span><span class="card-archive-list-count">12</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/"><span class="card-archive-list-date">2024</span><span class="card-archive-list-count">66</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/"><span class="card-archive-list-date">2023</span><span class="card-archive-list-count">44</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/"><span class="card-archive-list-date">2022</span><span class="card-archive-list-count">38</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/"><span class="card-archive-list-date">2021</span><span class="card-archive-list-count">219</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/"><span class="card-archive-list-date">2020</span><span class="card-archive-list-count">166</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/"><span class="card-archive-list-date">2019</span><span class="card-archive-list-count">43</span></a></li></ul></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["世界匆忙，你我慢享，真我自在其中。","老友重逢般温馨，拂尘埃，微笑绽放。"])
+  } else {
+    document.getElementById("subtitle").textContent = "世界匆忙，你我慢享，真我自在其中。"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

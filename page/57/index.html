@@ -1,0 +1,386 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>王文哲的博客 - 程序猿的成长之路</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="王文哲的博客">
+<meta property="og:url" content="https://wangwenzhe.github.io/page/57/index.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="技术分享、成长随笔">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/page/57/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '王文哲的博客',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2025-06-15 22:34:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">王文哲的博客</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/75b148de.html" title="ElasticSearch7">ElasticSearch7</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-26T11:35:52.000Z" title="发表于 2019-07-26 19:35:52">2019-07-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/ElasticSearch/">ElasticSearch</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/ElasticSearch/%E5%BF%85%E8%AF%BB/">必读</a></span></div><div class="content">参考强烈推荐：Elasticsearch 快速入门，掌握这些刚刚好
+全面掌握：https://mp.weixin.qq.com/s/wGlGroNcpQg555nOkKum7A
+Easy-ES:Easy-Es
+参考：docker部署Elasticsearch 7.16.2、kibana、cerebro、Logstash_鬼鸮的博客-CSDN博客
+阮一峰：https://www.ruanyifeng.com/blog/2017/08/elasticsearch.html
+[Index APIs | Java REST Client 7.15] | Elastic
+下载各版本：
+https://www.elastic.co/cn/downloads/past-releases#elasticsearch
+注意
+创建索引时，指定索引结构信息时，字段为中文，类型都是文本（text），需要指定中文分词器，不能使用默认的英文分词器
+Elastic 6.x 版只允许每个 Index 包含一个 Type，7.x 版将会彻底移除 Type
+不能使用 root 启动 https://www.cnblogs ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/a541262a.html" title="Spring Boot">Spring Boot</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-25T14:11:28.000Z" title="发表于 2019-07-25 22:11:28">2019-07-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SpringBoot/">SpringBoot</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/SpringBoot/%E5%9F%BA%E7%A1%80/">基础</a></span></div><div class="content">Idea 配置阿里云初始化创建 springboot 项目创建项目 - Spring Initializr - Server URL 设置，修改为 https://start.aliyun.com/
+SpringBoot瘦身（lib和程序分离）http://doc.jeecg.com/2043890
+druid 数据库密码加密http://doc.jeecg.com/2043967
+跨域http://www.spring4all.com/article/177
+
+前端  JSONP
+反向代理
+CORS 「跨域资源共享」
+浏览器支持 CORS
+服务端增加一个特殊的 Header [Access-Control-Allow-Origin]
+
+
+
+下面介绍 4 种方法：
+1. 返回新的CorsFilter（全局跨域）在任意配置类中返回一个新的CorsFilter Bean，并添加映射路径和具体的CORS配置信息。
+123456789101112131415161718192021222324252627282930313233package com.bjtcrj.files.config;i ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/f8e09374.html" title="Vue">Vue</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-25T14:11:12.000Z" title="发表于 2019-07-25 22:11:12">2019-07-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/">Vue</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Vue/%E5%9F%BA%E7%A1%80/">基础</a></span></div><div class="content">参考
+官方教程： https://cn.vuejs.org/v2/guide/
+API：https://cn.vuejs.org/v2/api/#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE
+
+污染方式业务页面，包括大屏页面，样式书写规范如下【避免样式污染】：
+
+页面样式，不需要被其它页面引用，直接在 vue 页面  标签内书写
+与某些页面共用样式，封装到公用 xxx.less 文件中。这些 vue 页面 最外层div 加上类似 containerXXX 的 class 限定，less 文件中 将内部样式 包裹在 .containerXXX 内部
+
+public 目录中静态资源引用方式12例如 public/static/logo/logo.png 在 Vue 页面中引用路径为 &#x27;./static/logo/logo.png&#x27;
+
+样式背景图片
+123456789&lt;style lang=&quot;less&quot; scoped&gt;.container &#123;  position: relative;  width: 1 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/f5f9fa9b.html" title="Docker">Docker</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-25T14:11:01.000Z" title="发表于 2019-07-25 22:11:01">2019-07-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Docker/">Docker</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Docker/%E5%9F%BA%E7%A1%80/">基础</a></span></div><div class="content">教程「入门强烈推荐」全面：菜鸟教程
+狂神说 docker https://www.bilibili.com/video/BV1og4y1q7M4
+阮一峰入门教程
+Docker 入门
+下载
+Mac
+
+Windows
+
+
+
+
+Ubuntu
+
+Debian
+
+CentOS
+
+Fedora
+
+其他 Linux 发行版
+
+
+安装CentOSCentOS Docker 安装 | 菜鸟教程 (runoob.com)
+卸载12345# 删除安装包：yum remove docker-ce# 删除镜像、容器、配置文件等内容：rm -rf /var/lib/docker
+
+安装Docker 支持以下的 64 位 CentOS 版本：CentOS 7、CentOS 8、更高版本…使用官方安装脚本自动安装，安装命令如下：
+123curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun# 也可以使用国内 daocloud 一键安装命令：curl -sSL https://get.daocloud.io/docker | sh
+
+启动12 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/89accb84.html" title="JUnit">JUnit</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-25T01:36:03.000Z" title="发表于 2019-07-25 09:36:03">2019-07-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</a></span></div><div class="content">说明测试代码「src/test」中文件不会打入 jar包
+1mvn clean package -Dmaven.test.skip=true
+
+注意项目中同一个src 下 test 测试类中可以访问 main中资源文件
+classpath:spring.xml
+IDEA 安装 JUnit 插件
+安装 JUnitGenerator V2.0，已有的 JUnit 保留
+
+配置
+
+
+
+SSMmaven依赖引入spring-test、 JUnit
+1234567891011&lt;dependency&gt;  &lt;groupId&gt;org.springframework&lt;/groupId&gt;  &lt;artifactId&gt;spring-test&lt;/artifactId&gt;  &lt;version&gt;4.2.0.RELEASE&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt;    &lt;groupId&gt;junit&lt;/groupId&gt;    &lt;artifactId&gt; ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/c24675b4.html" title="MySQL">MySQL</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-17T07:21:43.000Z" title="发表于 2019-07-17 15:21:43">2019-07-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E6%80%BB%E7%BB%93/">MySQL总结</a></span></div><div class="content">参考资料
+廖雪峰：https://www.liaoxuefeng.com/wiki/1177760294764384
+MySQL 教程：https://www.runoob.com/mysql/mysql-install.html
+视频教程：https://www.bilibili.com/video/BV12h411Q7Yq
+
+快速创建数据库、用户、授权123456789101112create database `tcboot_scm` default character set utf8mb4 collate utf8mb4_general_ci;CREATE USER &#x27;tcboot_scm&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;tcboot_scm&#x27;;GRANT ALL ON tcboot_scm.* TO &#x27;tcboot_scm&#x27;@&#x27;%&#x27;;GRANT PROCESS ON *.* TO &#x27;tcboot_scm&#x27;@&#x27;%&#x27;; # 支持 m ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/65b69107.html" title="Nginx">Nginx</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-17T05:21:48.000Z" title="发表于 2019-07-17 13:21:48">2019-07-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Nginx/">Nginx</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Nginx/%E5%9F%BA%E7%A1%80/">基础</a></span></div><div class="content">说明web 服务器「静态代理」、反向代理服务器、负载均衡「轮训、ip哈希、加权轮训、随机、最少连接」、限流、缓存「浏览器缓存、代理层缓存」、黑白名单
+下载nginx: download
+参考Nginx 通关攻略
+超实用的 Nginx 极简教程，覆盖了常用场景https://mp.weixin.qq.com/s/RfaPtO3VWDozIZvGxN2ASQ
+
+
+基础入门：http://wiki.jikexueyuan.com/project/nginx/overwise.html
+
+Nginx 是一款轻量级的 Web 服务器、反向代理服务器，由于它的内存占用少，启动极快，高并发能力强，在互联网项目中广泛应用
+正向代理“代理”的是客户端，而且客户端是知道目标的，而目标是不知道客户端是通过VPN访问的
+反向代理“代理”的是服务器端，而且这一个过程对于客户端而言是透明的
+
+在线配置以后配置Nginx 用这款神器！ (qq.com)
+$host、$http_host和$proxy_host区别
+
+
+变量
+是否显示端口
+值
+
+
+
+$host
+不显示端口
+浏览器请求的ip，不显示端口
+
+
+$http ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/747d7228.html" title="Node.js">Node.js</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-16T01:03:24.000Z" title="发表于 2019-07-16 09:03:24">2019-07-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Node/">Node</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Node/%E5%9F%BA%E7%A1%80/">基础</a></span></div><div class="content">教程
+廖雪峰 https://www.liaoxuefeng.com/wiki/1022910821149312/1023025235359040
+基础入门：http://doc.javaex.cn/nodejs
+
+下载https://nodejs.org/en/download/
+安装Mac12345brew install node   //sudo 使用admin权限#安装成功后node -v:查看node版本npm -v：查看npm版本
+
+配置 Nodejs 镜像12345npm config set registry https://registry.npm.taobao.org --globalnpm config set disturl https://npm.taobao.org/dist --globalyarn config set registry https://registry.npm.taobao.org --globalyarn config set disturl https://npm.taobao.org/dist --global
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/381d7f41.html" title="爱上读书2019-07">爱上读书2019-07</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-13T10:46:22.000Z" title="发表于 2019-07-13 18:46:22">2019-07-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%88%90%E9%95%BF%E7%AC%94%E8%AE%B0/">成长笔记</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%88%90%E9%95%BF%E7%AC%94%E8%AE%B0/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a></span></div><div class="content">
+戒掉情绪
+更加关注自我，自我健康、自我成长
+成为一个更加正直、勤奋的人，即使被一些人嘲弄
+心大一些，世界才会更大
+人可以笨，但不能蠢。对于前者，我相信勤能补拙。后者一般有两大特征，一、情绪化 二、不思进取
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/dd170fc7.html" title="Typora">Typora</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-12T00:53:09.000Z" title="发表于 2019-07-12 08:53:09">2019-07-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tomcat/">Tomcat</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tomcat/%E5%9F%BA%E7%A1%80/">基础</a></span></div><div class="content">
+安装后设置：文件-偏好设置-通用-自动检查更新不要勾选
+
+快捷键Window
+Ctrl + 1  一级标题
+Ctrl + 2  二级标题
+Ctrl + 3  三级标题
+Ctrl + 4  四级标题
+Ctrl + 5  五级标题
+Ctrl + 6  六级标题
+Ctrl + 0  段落
+Ctrl + &#x3D;  提升标题级别
+Ctrl + -   降低标题级别
+Ctrl + T  表格
+Ctrl + Shift + K 代码块
+Ctrl + B  加粗
+Ctrl + I   斜体
+Ctrl + U 下划线
+Ctrl + Shift + &#96;  代码
+Ctrl + ]  列表向右缩进
+Ctrl + [  列表向左缩进
+Alt + Shift + 5 删除线
+Ctrl + Shift +L 显示&#x2F;隐藏侧边栏
+[TOC] 内容目录
+*** 或 — 分割线
+Ctrl + &#x2F;  源代码模式
+
+Mac段落
+Command + 1  一级标题
+Command + 2  二级标题
+Command + 3  三级标题
+Command + 4  四级标题
+Command + 5 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/56/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/#content-inner">56</a><span class="page-number current">57</span><a class="page-number" href="/page/58/#content-inner">58</a><a class="page-number" href="/page/59/#content-inner">59</a><a class="extend next" rel="next" href="/page/58/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/"><span class="card-archive-list-date">2025</span><span class="card-archive-list-count">12</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/"><span class="card-archive-list-date">2024</span><span class="card-archive-list-count">66</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/"><span class="card-archive-list-date">2023</span><span class="card-archive-list-count">44</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/"><span class="card-archive-list-date">2022</span><span class="card-archive-list-count">38</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/"><span class="card-archive-list-date">2021</span><span class="card-archive-list-count">219</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/"><span class="card-archive-list-date">2020</span><span class="card-archive-list-count">166</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/"><span class="card-archive-list-date">2019</span><span class="card-archive-list-count">43</span></a></li></ul></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["世界匆忙，你我慢享，真我自在其中。","老友重逢般温馨，拂尘埃，微笑绽放。"])
+  } else {
+    document.getElementById("subtitle").textContent = "世界匆忙，你我慢享，真我自在其中。"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

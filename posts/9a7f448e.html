@@ -1,0 +1,286 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Jenkins | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="简介 最流行的开源免费持续集成工具 java语言开发，用于监控持续重复的工作，包括：持续的软件版本发布&#x2F;测试项目，监控外部调用执行的工作  Centos7 + docker 搭建 jenkinsSpring Boot(十六)：使用 Jenkins 部署 Spring Boot - 纯洁的微笑 - 博客园 (cnblogs.com) Jenkins一键打包部署SpringBoot应用（精简">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jenkins">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/9a7f448e.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="简介 最流行的开源免费持续集成工具 java语言开发，用于监控持续重复的工作，包括：持续的软件版本发布&#x2F;测试项目，监控外部调用执行的工作  Centos7 + docker 搭建 jenkinsSpring Boot(十六)：使用 Jenkins 部署 Spring Boot - 纯洁的微笑 - 博客园 (cnblogs.com) Jenkins一键打包部署SpringBoot应用（精简">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2021-03-25T01:00:36.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.734Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="Jenkins">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/9a7f448e.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Jenkins',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Jenkins</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-25T01:00:36.000Z" title="发表于 2021-03-25 09:00:36">2021-03-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.734Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">869</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Jenkins"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li>最流行的<strong>开源免费持续集成工具</strong></li>
+<li>java语言开发，用于监控持续重复的工作，包括：持续的<strong>软件版本发布</strong>&#x2F;测试项目，监控外部调用执行的工作</li>
+</ul>
+<h2 id="Centos7-docker-搭建-jenkins"><a href="#Centos7-docker-搭建-jenkins" class="headerlink" title="Centos7 + docker 搭建 jenkins"></a>Centos7 + docker 搭建 jenkins</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ityouknow/archive/2017/11/26/7899349.html">Spring Boot(十六)：使用 Jenkins 部署 Spring Boot - 纯洁的微笑 - 博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37613503/article/details/106210944">Jenkins一键打包部署SpringBoot应用（精简版）_大菜的博客-CSDN博客_jenkins打包springboot</a></p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a target="_blank" rel="noopener" href="https://jenkins.io/download/%EF%BC%8C%E9%80%89%E6%8B%A9windows%E7%89%88%E6%9C%AC">https://jenkins.io/download/，选择windows版本</a></p>
+<h2 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h2><ol>
+<li>安装 jenkins，安装完成之后，浏览器访问 <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a> jekins默认8080端口，可以通过修改安装目录下的jenkins.xml文件中的 –httpPort&#x3D;8081，修改之后重启服务</li>
+<li>解锁jenkins，找到指定文件<code>Jenkins/secrets/initialAdminPassword</code> ，将文件内容复制到输入框中</li>
+<li>安装插件，选择推荐插件即可</li>
+<li>创建登陆用户（遇到登陆成功后空白页面，重启jenkins）</li>
+<li>设置中文，安装新插件Locale Plugin。在菜单manage jenkins -&gt; config System 找到Locale ，输入zh_CN，并把下面的复选框勾住。然后就可以了</li>
+<li>设置环境变量 菜单 管理Jekins -&gt; 全局工具配置，给对应的工具 JDK、Maven 配置本地路径</li>
+</ol>
+<h2 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h2><p>jenkins 服务器的网址 url 地址后加上 命令</p>
+<ol>
+<li><p>关闭服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">restart</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重载配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reload</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="系统管理「Manage-Jenkins」"><a href="#系统管理「Manage-Jenkins」" class="headerlink" title="系统管理「Manage Jenkins」"></a>系统管理「Manage Jenkins」</h2><h3 id="全局配置「System-Configuration」"><a href="#全局配置「System-Configuration」" class="headerlink" title="全局配置「System Configuration」"></a>全局配置「System Configuration」</h3><h4 id="全局配置「Configure-System」"><a href="#全局配置「Configure-System」" class="headerlink" title="全局配置「Configure System」"></a>全局配置「Configure System」</h4><ul>
+<li><p>Maven 项目配置-本地 maven 仓库，支持 3 种方式：</p>
+<ul>
+<li><p>默认目录或者 maven conf&#x2F;settings.xml 配置的目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;localRepository&gt;D:\.m2\repository&lt;/localRepository&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定位到执行器</p>
+</li>
+<li><p>定位到 workspace 目录</p>
+</li>
+</ul>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20210325213407_image-20210325213407136.png" alt="image-20210325213407136" style="zoom:50%;" /></li>
+</ul>
+<h4 id="工具配置「Global-Tool-Configuration」"><a href="#工具配置「Global-Tool-Configuration」" class="headerlink" title="工具配置「Global Tool Configuration」"></a>工具配置「Global Tool Configuration」</h4><p>配置：JDK、Maven</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20210325212011_image-20210325212011353.png" alt="image-20210325212011353" style="zoom:50%;" />
+
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20210325212032_image-20210325212032689.png" alt="image-20210325212032689" style="zoom:50%;" />
+
+<h4 id="管理插件「Manage-Plugins」"><a href="#管理插件「Manage-Plugins」" class="headerlink" title="管理插件「Manage Plugins」"></a>管理插件「Manage Plugins」</h4><ul>
+<li>第一次打开时默认安装插件</li>
+<li>额外安装插件： Subversion、Deploy to container Plugin</li>
+</ul>
+<h4 id="管理节点或云「Manage-Nodes-and-Clouds」"><a href="#管理节点或云「Manage-Nodes-and-Clouds」" class="headerlink" title="管理节点或云「Manage Nodes and Clouds」"></a>管理节点或云「Manage Nodes and Clouds」</h4><p>管理或监控 jenkins 运行的节点</p>
+<h3 id="安全配置「Security」"><a href="#安全配置「Security」" class="headerlink" title="安全配置「Security」"></a>安全配置「Security」</h3><h4 id="管理用户「Manage-Users」"><a href="#管理用户「Manage-Users」" class="headerlink" title="管理用户「Manage Users」"></a>管理用户「Manage Users」</h4><p>增、删、改系统用户</p>
+<h4 id="管理认证「Manage-Credentials」"><a href="#管理认证「Manage-Credentials」" class="headerlink" title="管理认证「Manage Credentials」"></a>管理认证「Manage Credentials」</h4><p>管理账号「SVN、Git」，注意在新建任务时添加</p>
+<h4 id="配置安全「Configure-Global-Security」"><a href="#配置安全「Configure-Global-Security」" class="headerlink" title="配置安全「Configure Global Security」"></a>配置安全「Configure Global Security」</h4><p>定义能访问或操作系统的用户</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20210325210334_image-20210325210334536.png" alt="image-20210325210334536" style="zoom:50%;" />
+
+<h2 id="创建构建任务"><a href="#创建构建任务" class="headerlink" title="创建构建任务"></a>创建构建任务</h2><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weferxe/article/details/88827697">windows使用jenkins构建springboot项目并运行_weferxe的博客-CSDN博客</a></p>
+<h3 id="源码管理"><a href="#源码管理" class="headerlink" title="源码管理"></a>源码管理</h3><ul>
+<li>配置从 Git 或 SVN 拉去代码，并配置账号信息</li>
+<li>版本管理工具(SCM)</li>
+</ul>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20210922120919_image-20210922120919391.png" alt="image-20210922120919391" style="zoom:50%;" />
+
+<h3 id="构建触发器"><a href="#构建触发器" class="headerlink" title="构建触发器"></a>构建触发器</h3><p>Pull SCM</p>
+<p>日程表：示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 每隔 5 分钟扫码一下，扫描 SVN 代码有没有变更，变更则构建</span><br><span class="line">H/5 * * * *</span><br></pre></td></tr></table></figure>
+
+<h3 id="构建前操作"><a href="#构建前操作" class="headerlink" title="构建前操作"></a>构建前操作</h3><p>关闭 SpringBoot 进程「Windows 服务器」</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//根据端口，关闭进程</span><br><span class="line">@echo off</span><br><span class="line">set port=8080</span><br><span class="line">for /f &quot;tokens=1-5&quot; %%i in (&#x27;netstat -ano^|findstr &quot;:%port%&quot;&#x27;) do (</span><br><span class="line">    echo kill the process %%m who use the port %port%</span><br><span class="line">    taskkill /pid %%m</span><br><span class="line">)</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<h3 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h3><p>Root Pom：pom.xml</p>
+<p>Goals and options： clean package</p>
+<h3 id="构建后操作"><a href="#构建后操作" class="headerlink" title="构建后操作"></a>构建后操作</h3><h4 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h4><p>选择 Execute Windows batch command，输入命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//默认项目根目录</span><br><span class="line">cd xxx/target</span><br><span class="line">java -jar xxx.jar</span><br></pre></td></tr></table></figure>
+
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20210922121634_image-20210922121634091.png" alt="image-20210922121634091" style="zoom:50%;" />
+
+<h4 id="Deploy-war-ear-to-a-container"><a href="#Deploy-war-ear-to-a-container" class="headerlink" title="Deploy war&#x2F;ear to a container"></a>Deploy war&#x2F;ear to a container</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scm-web/target/scm-web.war  # 基于项目路径</span><br><span class="line">**/*.war 多级目录</span><br></pre></td></tr></table></figure>
+
+<p>选择 Tomcat 版本，配置 Tomcat 地址和账号信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:8080/admin/</span><br><span class="line">admin admin123456</span><br></pre></td></tr></table></figure>
+
+<h2 id="构建历史"><a href="#构建历史" class="headerlink" title="构建历史"></a>构建历史</h2><p>查看构建历史记录：控制台输出、文本方式查看</p>
+<h2 id="Tomcat-配置「允许远程部署」"><a href="#Tomcat-配置「允许远程部署」" class="headerlink" title="Tomcat 配置「允许远程部署」"></a>Tomcat 配置「允许远程部署」</h2><p>Tomcat 的 conf 目录下 tomcat-users.xml 要添加个管理员，注意改了要重启 Tomcat</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;user username=&quot;admin&quot; password=&quot;admin123456&quot; roles=&quot;manager-gui,manager-script&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Tomcat 远程无法访问情况，如果防火墙打开，注意将 Tomcat 端口添加到「入站规则」中</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/9a7f448e.html">https://wangwenzhe.github.io/posts/9a7f448e.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Jenkins/">Jenkins</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/643288eb.html" title="Uniapp-Android原生插件开发"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Uniapp-Android原生插件开发</div></div></a></div><div class="next-post pull-right"><a href="/posts/ee69e452.html" title="CSS"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CSS</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Centos7-docker-%E6%90%AD%E5%BB%BA-jenkins"><span class="toc-number">2.</span> <span class="toc-text">Centos7 + docker 搭建 jenkins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">3.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">安装配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1"><span class="toc-number">5.</span> <span class="toc-text">服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E3%80%8CManage-Jenkins%E3%80%8D"><span class="toc-number">6.</span> <span class="toc-text">系统管理「Manage Jenkins」</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E3%80%8CSystem-Configuration%E3%80%8D"><span class="toc-number">6.1.</span> <span class="toc-text">全局配置「System Configuration」</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E3%80%8CConfigure-System%E3%80%8D"><span class="toc-number">6.1.1.</span> <span class="toc-text">全局配置「Configure System」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE%E3%80%8CGlobal-Tool-Configuration%E3%80%8D"><span class="toc-number">6.1.2.</span> <span class="toc-text">工具配置「Global Tool Configuration」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6%E3%80%8CManage-Plugins%E3%80%8D"><span class="toc-number">6.1.3.</span> <span class="toc-text">管理插件「Manage Plugins」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E8%8A%82%E7%82%B9%E6%88%96%E4%BA%91%E3%80%8CManage-Nodes-and-Clouds%E3%80%8D"><span class="toc-number">6.1.4.</span> <span class="toc-text">管理节点或云「Manage Nodes and Clouds」</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE%E3%80%8CSecurity%E3%80%8D"><span class="toc-number">6.2.</span> <span class="toc-text">安全配置「Security」</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E7%94%A8%E6%88%B7%E3%80%8CManage-Users%E3%80%8D"><span class="toc-number">6.2.1.</span> <span class="toc-text">管理用户「Manage Users」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E8%AE%A4%E8%AF%81%E3%80%8CManage-Credentials%E3%80%8D"><span class="toc-number">6.2.2.</span> <span class="toc-text">管理认证「Manage Credentials」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%89%E5%85%A8%E3%80%8CConfigure-Global-Security%E3%80%8D"><span class="toc-number">6.2.3.</span> <span class="toc-text">配置安全「Configure Global Security」</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%9E%84%E5%BB%BA%E4%BB%BB%E5%8A%A1"><span class="toc-number">7.</span> <span class="toc-text">创建构建任务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E7%AE%A1%E7%90%86"><span class="toc-number">7.1.</span> <span class="toc-text">源码管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">7.2.</span> <span class="toc-text">构建触发器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E5%89%8D%E6%93%8D%E4%BD%9C"><span class="toc-number">7.3.</span> <span class="toc-text">构建前操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA"><span class="toc-number">7.4.</span> <span class="toc-text">构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E5%90%8E%E6%93%8D%E4%BD%9C"><span class="toc-number">7.5.</span> <span class="toc-text">构建后操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringBoot"><span class="toc-number">7.5.1.</span> <span class="toc-text">SpringBoot</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Deploy-war-ear-to-a-container"><span class="toc-number">7.5.2.</span> <span class="toc-text">Deploy war&#x2F;ear to a container</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E5%8E%86%E5%8F%B2"><span class="toc-number">8.</span> <span class="toc-text">构建历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tomcat-%E9%85%8D%E7%BD%AE%E3%80%8C%E5%85%81%E8%AE%B8%E8%BF%9C%E7%A8%8B%E9%83%A8%E7%BD%B2%E3%80%8D"><span class="toc-number">9.</span> <span class="toc-text">Tomcat 配置「允许远程部署」</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

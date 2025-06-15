@@ -1,0 +1,650 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>IDEA | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="配置阿里云初始化创建 springboot 项目创建项目 - Spring Initializr - Server URL 设置，修改为 https:&#x2F;&#x2F;start.aliyun.com&#x2F; IDEA 使用技巧总结「强烈推荐」https:&#x2F;&#x2F;www.imooc.com&#x2F;video&#x2F;16213 卸载123456卸载软件后，执行如下命令cd &#x2F;Users&#x2F;wangwz&#x2F;Library&#x2F;rm -fr Lo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IDEA">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/3c1e27f1.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="配置阿里云初始化创建 springboot 项目创建项目 - Spring Initializr - Server URL 设置，修改为 https:&#x2F;&#x2F;start.aliyun.com&#x2F; IDEA 使用技巧总结「强烈推荐」https:&#x2F;&#x2F;www.imooc.com&#x2F;video&#x2F;16213 卸载123456卸载软件后，执行如下命令cd &#x2F;Users&#x2F;wangwz&#x2F;Library&#x2F;rm -fr Lo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2019-07-05T04:39:10.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.713Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="IDEA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/3c1e27f1.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'IDEA',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">IDEA</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-07-05T04:39:10.000Z" title="发表于 2019-07-05 12:39:10">2019-07-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.713Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/">IDEA</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="IDEA"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="配置阿里云初始化创建-springboot-项目"><a href="#配置阿里云初始化创建-springboot-项目" class="headerlink" title="配置阿里云初始化创建 springboot 项目"></a>配置阿里云初始化创建 springboot 项目</h2><p>创建项目 - Spring Initializr - Server URL 设置，修改为 <a target="_blank" rel="noopener" href="https://start.aliyun.com/">https://start.aliyun.com/</a></p>
+<h3 id="IDEA-使用技巧总结「强烈推荐」"><a href="#IDEA-使用技巧总结「强烈推荐」" class="headerlink" title="IDEA 使用技巧总结「强烈推荐」"></a>IDEA 使用技巧总结「强烈推荐」</h3><p><a target="_blank" rel="noopener" href="https://www.imooc.com/video/16213">https://www.imooc.com/video/16213</a></p>
+<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">卸载软件后，执行如下命令</span><br><span class="line"></span><br><span class="line">cd /Users/wangwz/Library/</span><br><span class="line">rm -fr Logs/JetBrains</span><br><span class="line">rm -fr ApplicationSupport/JetBrains</span><br><span class="line">rm -fr Caches/JetBrains</span><br></pre></td></tr></table></figure>
+
+<h3 id="IDEA-安装注册"><a href="#IDEA-安装注册" class="headerlink" title="IDEA 安装注册"></a>IDEA 安装注册</h3><h3 id="IDEA-快捷键—windows"><a href="#IDEA-快捷键—windows" class="headerlink" title="IDEA 快捷键—windows"></a>IDEA 快捷键—windows</h3><blockquote>
+<p>以下快捷键是根据自己使用习惯配置的，仅供参考</p>
+</blockquote>
+<ol>
+<li><p>双击 Shift 查找文件</p>
+</li>
+<li><p><strong>Ctrl + E 最近打开文件</strong></p>
+</li>
+<li><p>Ctrl + D 复制当前行</p>
+</li>
+<li><p><del>Ctrl + W 删除光标前 word「word之间一般以空格或逗号分隔」</del></p>
+</li>
+<li><p>Ctrl + W 关闭 Editor Tab<code>Close</code></p>
+</li>
+<li><p>Ctrl + Shift + W 关闭所有 Editor Tab <code>Close All</code></p>
+</li>
+<li><p>Ctrl + Z 撤销</p>
+</li>
+<li><p>Ctrl + Y 恢复撤销</p>
+</li>
+<li><p>Ctrl + F 当前文件范围内查找</p>
+</li>
+<li><p>Ctrl + R 当前文件范围内替换</p>
+</li>
+<li><p>Ctrl + Shift + F 全局范围内查找</p>
+</li>
+<li><p>Ctrl + Shift + R 全局范围内替换</p>
+</li>
+<li><p>Ctrl + G 定位到指定行</p>
+</li>
+<li><p>Ctrl + &#x2F; 单行注释与反注释</p>
+</li>
+<li><p>Ctrl + Shift + &#x2F; 块注释与反注释</p>
+</li>
+<li><p><strong>Alt+Shift + 鼠标左键选择或左键双击  选中多个单词或代码块</strong></p>
+</li>
+<li><p>Ctrl + 鼠标左键 进入方法定义代码处; Show usages … 「定位到使用的代码处」</p>
+</li>
+<li><p>Ctrl + 鼠标右键 进入方法实现类定义代码处</p>
+</li>
+<li><p>Ctrl + H 查看类或接口继承关系</p>
+</li>
+<li><p>Ctrl + Alt + H 查看方法被调用关系</p>
+</li>
+<li><p>Ctrl + Alt + 方向下键 复制所在行或选中行</p>
+</li>
+<li><p>Alt + 方向左键&#x2F;右键 回退&#x2F;前进</p>
+</li>
+<li><p>Alt + 方向上键&#x2F;下键 移动所在行或选中行 <code>Move Line Down/Up</code></p>
+</li>
+<li><p>Alt + U 切换大小写</p>
+</li>
+<li><p>Alt + F  代码格式化</p>
+</li>
+<li><p>Alt + S Surround With…</p>
+</li>
+<li><p>Alt + G Generate</p>
+</li>
+<li><p>F4 打开文件所在目录 Show in Explorer</p>
+</li>
+<li><p>F2 文件重命名</p>
+</li>
+<li><p>F5 进入函数</p>
+</li>
+<li><p>F6 单步执行</p>
+</li>
+<li><p>F7 跳出函数</p>
+</li>
+<li><p>F8 运行至下一个断点</p>
+</li>
+<li><p>Alt + R  运行 Run</p>
+</li>
+<li><p>for 循环</p>
+<ol>
+<li>100.for</li>
+<li>array.for</li>
+<li>list.for</li>
+<li>map.for</li>
+</ol>
+</li>
+<li><p>psvm 生成 main 方法</p>
+</li>
+<li><p>sout 生成代码 <code>System.out.println();</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangwenzhe.oss-cn-beijing.aliyuncs.com/UTOOLS1576590198001.png" alt="UTOOLS1576590198001.png"></p>
+</li>
+<li><p>IDEA 默认自动保存，所以不用 Ctrl + S 手动保存了</p>
+</li>
+<li><p>在打开文件页签上右键，Split Vertically 竖向分隔 和 Split Horizontally 横向分隔</p>
+</li>
+<li><p>Ctrl + Alt +M 代码块抽离成函数</p>
+</li>
+<li><p>Ctrl + Alt + S  <code>Settings</code></p>
+</li>
+<li><p>Alt + V <code>Split Vertically</code></p>
+</li>
+<li><p>Alt + H <code>Split Horizontally</code></p>
+</li>
+<li><p><strong>Ctrl + Shift + M 代码窗口最大化</strong> <code>Hide All Tool Windows</code></p>
+</li>
+</ol>
+<h3 id="IDEA-快捷键—Mac"><a href="#IDEA-快捷键—Mac" class="headerlink" title="IDEA 快捷键—Mac"></a>IDEA 快捷键—Mac</h3><ol>
+<li><p>以下快捷键是IDEA 默认快捷键+根据自己使用习惯配置快捷键，仅供参考</p>
+</li>
+<li><p>根据快捷键查询操作</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20201205080746_image-20201205080745410.png" alt="image-20201205080745410" style="zoom:50%;" /></li>
+</ol>
+<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><ol>
+<li><p>双击 Shift 查找文件</p>
+</li>
+<li><p>Command + F 当前文件范围内查找 <code>Find...</code></p>
+</li>
+<li><p>Command + Shift + F 全局范围内查找 <code>Find in Path...</code></p>
+</li>
+<li><p>Command + E  最近打开过的文件</p>
+<p>勾选 Show changed only ，过滤修改过的文件</p>
+</li>
+<li><p>Command + \  查询接口位置</p>
+</li>
+</ol>
+<h4 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h4><ol>
+<li>Command + R 当前文件范围内替换 <code>Replace...</code></li>
+<li>Command + Shift + R 全局范围内替换 <code>Replace in Path...</code></li>
+</ol>
+<h4 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h4><ol>
+<li><p>Command + D 复制当前行或选中行</p>
+</li>
+<li><p>Command + Delete  删除光标所在行或选中行（一行或多行）</p>
+</li>
+<li><p>Option + Shift + ⇧ <code>Move Line Up</code></p>
+</li>
+<li><p>Option + Shift + ⇩ <code>Move Line Down</code></p>
+</li>
+<li><p>Command + Option + L 代码格式化 <code>Reformat Code</code></p>
+</li>
+<li><p>Command + Shift + U  切换大小写</p>
+</li>
+<li><p>Command + Z 撤销 <code>Undo</code></p>
+</li>
+<li><p>Command + Y 恢复撤销 Redo</p>
+</li>
+<li><p><strong>Command + Option + T  <code>Surround With</code>…</strong></p>
+</li>
+<li><p><strong>Command + N <code>Generate</code></strong></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20201207150609_image-20201207150608835.png" alt="image-20201207150608835" style="zoom:50%;" /></li>
+</ol>
+<h4 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h4><ol>
+<li>F2  重命名</li>
+<li>F4  打开文件所在位置 <code>Reveal in Finder</code></li>
+</ol>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><ol>
+<li>Command + &#x2F;   单行注释</li>
+<li>Command + Option + &#x2F;  块注释</li>
+</ol>
+<h4 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h4><ol>
+<li>Command + 左键  进入函数定义或使用「调用」</li>
+<li>Command + Option + 鼠标左键 进入函数实现</li>
+<li>Command + L 定位到行 <code>Line/Column...</code></li>
+<li>Control + N&#x2F;P  搜索结果向下&#x2F;上切换选择</li>
+<li>Option + J  智能提示下拉框向下切换，与方向键 ↓ 一样</li>
+<li>Option + K  智能提示下拉框向上切换，与方向键 ↑ 一样</li>
+</ol>
+<h4 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h4><h5 id="项目之间跳转"><a href="#项目之间跳转" class="headerlink" title="项目之间跳转"></a>项目之间跳转</h5><ol>
+<li>Command + Option + ]  下一个项目窗口「自行设置快捷键：Main menu-windows-Next Project Window」</li>
+<li>Command + Option + [  上一个项目窗口「自行设置快捷键：Main menu-windows-Previous Project Window」</li>
+</ol>
+<h5 id="文件Tab之间跳转"><a href="#文件Tab之间跳转" class="headerlink" title="文件Tab之间跳转"></a>文件Tab之间跳转</h5><ol>
+<li>Command + Shift + ]  下一个文件</li>
+<li>Command + Shift + ]  上一个文件</li>
+</ol>
+<h5 id="修改位置跳转"><a href="#修改位置跳转" class="headerlink" title="修改位置跳转"></a>修改位置跳转</h5><ol>
+<li>Command + Ctrl +  →  下一个编辑位置</li>
+<li>Command + Ctrl +  ←  上一个编辑位置</li>
+</ol>
+<h5 id="浏览位置跳转"><a href="#浏览位置跳转" class="headerlink" title="浏览位置跳转"></a>浏览位置跳转</h5><ol>
+<li>Command + Option +  →  下一个位置</li>
+<li>Command + Option +  ←  上一个位置</li>
+</ol>
+<h5 id="行内跳转"><a href="#行内跳转" class="headerlink" title="行内跳转"></a>行内跳转</h5><ol>
+<li>Command + ←  行首</li>
+<li>Command + →  行尾</li>
+<li>Option + →  跳到下一个单词</li>
+<li>Option + ←   跳到上一个单词</li>
+</ol>
+<h4 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h4><ol>
+<li>Command + Shift + ←  选中到行首</li>
+<li>Command + Shift + →  选中到行尾</li>
+<li>Option + Shift + ←  选中上一个单词</li>
+<li>Option + Shift + →  选中下一个单词</li>
+<li>Ctrl + G  选中更多相同</li>
+<li>Command + Ctrl + G  选中所有相同</li>
+<li>Option+Shift + 鼠标左键选择或左键双击  选中多个单词或代码块</li>
+</ol>
+<h4 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h4><ol>
+<li><strong>Shift + F6  变量名重构</strong> 「表名重构」</li>
+<li><strong>Command + F6 方法重构</strong></li>
+<li>Command + Option + V 重构成局部变量</li>
+<li>Command + Option + F 重构成成员变量 </li>
+<li>Command + Option + C 重构成静态常量</li>
+<li>Command + Option + P 重构成方法参数</li>
+<li>Command + Option + M 代码块抽离成方法</li>
+</ol>
+<h4 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h4><ol>
+<li>代码编辑窗口左侧栏右键-annotate 查看版本修改人</li>
+<li>Command + Option + Z 撤销修改</li>
+<li>Command + D  查看版本差异</li>
+<li>Local History</li>
+</ol>
+<h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><ol>
+<li>Option + V <code>Split Vertically</code></li>
+<li>Option + H <code>Split Horizontally</code></li>
+</ol>
+<h4 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a>结构图</h4><ol>
+<li>Ctrl + H  类的继承关系「所有直属父类+所有子类」</li>
+<li>Command + Option + U  图表查看继承关系</li>
+</ol>
+<h4 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h4><ol>
+<li><strong>Command + 1 Project 「项目导航」</strong></li>
+<li>Command + 2 Favorites</li>
+<li><strong>Command + 7 Structures 「 结构-成员变量+方法」</strong></li>
+<li><strong>Command + 9 Subversion 「版本控制」</strong></li>
+</ol>
+<h4 id="Tab-页签"><a href="#Tab-页签" class="headerlink" title="Tab 页签"></a>Tab 页签</h4><ol>
+<li>Command + W  <code>Close</code></li>
+<li>Command + Shift + W  <code>Close All</code></li>
+<li>Command + Shift + O  <code>Close Others</code></li>
+<li>Command + Shift + F12 代码窗口最大化<code>Hide All Tool Windows</code></li>
+</ol>
+<h4 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h4><ol>
+<li>Find Action   <code>Ctrl + Shift + A</code></li>
+</ol>
+<h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><ol>
+<li>点击窗口左侧栏，添加或删除断点；右键-可以设置为条件断点</li>
+<li>F7 进入函数</li>
+<li>Shift + F7 跳出函数</li>
+<li>F8 单步执行</li>
+<li>F9 运行至下一个断点</li>
+<li>Shift + F8  运行 Run</li>
+<li>Shift + F9  运行 Debug</li>
+<li>Command + F2  Stop</li>
+</ol>
+<h3 id="杂项小技巧"><a href="#杂项小技巧" class="headerlink" title="杂项小技巧"></a>杂项小技巧</h3><ul>
+<li>TODO功能</li>
+<li>书签功能 - Bookmarks</li>
+<li>Structure - 类结构</li>
+<li>选中2个文件，右键-比对文件</li>
+<li>复制源码后，选中某包，右键-粘贴，会自动生成类文件</li>
+</ul>
+<h3 id="热部署-spring-boot-devtools"><a href="#热部署-spring-boot-devtools" class="headerlink" title="热部署-spring-boot-devtools"></a>热部署-spring-boot-devtools</h3><p> <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/8lJ_WgCuI1q07zdg2N1CVg">https://mp.weixin.qq.com/s/8lJ_WgCuI1q07zdg2N1CVg</a></p>
+<p>spring-boot-devtools的原理，它之所以能快速热部署，在于它对ClassLoader做了区分处理（见下图），一个ClassLoader加载那些不会改变的类（第三方Jar包），另一个称为RestartClassLoader加载会更改的类，这样当代码有所改动时，原先的ClassLoader便会被gc清除，重新创建一个新的RestartClassLoader，这样加载的类相对较少，因而能快速重启。</p>
+<ol>
+<li><p>在pom.xml文件，加入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fork</span>&gt;</span>true<span class="tag">&lt;/<span class="name">fork</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置IDEA的自动编译，File-&gt;Settings-&gt;Compiler勾选 Build Project automatically</p>
+</li>
+<li><p>使用快捷键ctrl+alt+shift+&#x2F;，选择选项Registry，打开下面的界面 并找到图中红框的选项”compller.automake.allow.when.app.running”并勾选</p>
+</li>
+</ol>
+<h3 id="Live-Template"><a href="#Live-Template" class="headerlink" title="Live Template"></a>Live Template</h3><ul>
+<li>支持已定义代码生成模板</li>
+<li>通过输入关键词实现快速生成</li>
+<li>示例：fori、sout、soutv、soutf、、、、sl「sleep」、ifn、inn、lst、main、psvm、psf、psfs、psfi</li>
+</ul>
+<h3 id="Postfix-Completion"><a href="#Postfix-Completion" class="headerlink" title="Postfix Completion"></a>Postfix Completion</h3><ul>
+<li>与Live Template类似</li>
+<li>示例：for、fori、forf、sout、soutv、var、field、return、cast、castvar、try、throw、synchronized、switch、if、null、nn、not、iter、instanceof</li>
+<li>函数参数名.field 生成成员变量，并在此处将参数赋值给成员变量</li>
+</ul>
+<h3 id="Option-Enter"><a href="#Option-Enter" class="headerlink" title="Option + Enter"></a>Option + Enter</h3><p>智能提示修改</p>
+<h3 id="关联-Spring"><a href="#关联-Spring" class="headerlink" title="关联 Spring"></a>关联 Spring</h3><h3 id="关联数据库"><a href="#关联数据库" class="headerlink" title="关联数据库"></a>关联数据库</h3><ol>
+<li>配置 Database</li>
+<li>重构表名「Shift + F6」</li>
+<li>重构字段名「Shift + F6」</li>
+</ol>
+<h3 id="代码格式-以-javascript-为例"><a href="#代码格式-以-javascript-为例" class="headerlink" title="代码格式-以 javascript 为例"></a>代码格式-以 javascript 为例</h3><p>设置- Editor- Code Style - JavaScript</p>
+<p>快捷键：Command + Option + L</p>
+<h3 id="IDEA-必看配置"><a href="#IDEA-必看配置" class="headerlink" title="IDEA 必看配置"></a>IDEA 必看配置</h3><p>参考： <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/JnEow9mPyEjM-W9DnMkt1Q">https://mp.weixin.qq.com/s/JnEow9mPyEjM-W9DnMkt1Q</a></p>
+<h4 id="启动时不打开上次打开的项目"><a href="#启动时不打开上次打开的项目" class="headerlink" title="启动时不打开上次打开的项目"></a>启动时不打开上次打开的项目</h4><p>设置-Appearance &amp; Behavior-System Settings-Reopen projects on startup 取消勾选</p>
+<h4 id="设置编码为-utf-8-编码"><a href="#设置编码为-utf-8-编码" class="headerlink" title="设置编码为 utf-8 编码"></a>设置编码为 utf-8 编码</h4><p><code>File-&gt;Settings-&gt;Editor-&gt;File Encodings</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangwenzhe.oss-cn-beijing.aliyuncs.com/UTOOLS1576592423060.png" alt="UTOOLS1576592423060.png"></p>
+<h4 id="添加过滤文件或目录"><a href="#添加过滤文件或目录" class="headerlink" title="添加过滤文件或目录"></a>添加过滤文件或目录</h4><p>Settings→Editor→File Types</p>
+<p>在窗口最下方 “Ignore files and folders” 一栏中添加如下忽略： 「千万不要添加 *.class 类型」</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*.iml;*.idea;*.gitignore;*.sh;*.classpath;*.project;*.settings;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自动编译开关"><a href="#自动编译开关" class="headerlink" title="自动编译开关"></a>自动编译开关</h4><ol>
+<li><p>设置-Build-Compiler-勾选中 Build project automatically</p>
+</li>
+<li><p>Command+Option+Shift+&#x2F;  开启运行时自动编译</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20200925111654_image-20200925111653898.png" alt="image-20200925111653898" style="zoom:50%;" /></li>
+</ol>
+<h4 id="忽略大小写开关"><a href="#忽略大小写开关" class="headerlink" title="忽略大小写开关"></a>忽略大小写开关</h4><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20200929095405_image-20200929095405109.png" alt="image-20200929095405109" style="zoom:50%;" />
+
+<h4 id="智能导包开关"><a href="#智能导包开关" class="headerlink" title="智能导包开关"></a>智能导包开关</h4><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20200929094845_image-20200929094844962.png" alt="image-20200929094844962" style="zoom:50%;" />
+
+<h4 id="取消单行显示tabs的操作"><a href="#取消单行显示tabs的操作" class="headerlink" title="取消单行显示tabs的操作"></a>取消单行显示tabs的操作</h4><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20200929095536_image-20200929095536529.png" alt="image-20200929095536529" style="zoom:50%;" />
+
+<h4 id="IDEA-设置-tab-为-4-个空格"><a href="#IDEA-设置-tab-为-4-个空格" class="headerlink" title="IDEA 设置 tab 为 4 个空格"></a>IDEA 设置 tab 为 4 个空格</h4><p><font color=red>请勿勾选Use tab character</font></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20201120114822_image-20201120114822370.png" alt="image-20201120114822370" style="zoom:50%;" />
+
+<h4 id="注释的双斜线与注释内容之间有且仅有一个空格"><a href="#注释的双斜线与注释内容之间有且仅有一个空格" class="headerlink" title="注释的双斜线与注释内容之间有且仅有一个空格"></a>注释的双斜线与注释内容之间有且仅有一个空格</h4><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20201120115826_image-20201120115825926.png" alt="image-20201120115825926" style="zoom:50%;" />
+
+<h4 id="修改-IntelliJ-IDEA-默认配置路径"><a href="#修改-IntelliJ-IDEA-默认配置路径" class="headerlink" title="修改 IntelliJ IDEA 默认配置路径"></a>修改 IntelliJ IDEA 默认配置路径</h4><blockquote>
+<p>修改 {IDEA 安装目录}&#x2F;bin&#x2F;idea.properties 文件</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">idea.config.path=D:/Java/JetBrains/.IntelliJIdea2018.1/config</span><br><span class="line">idea.system.path=D:/Java/JetBrains/.IntelliJIdea2018.1/system</span><br><span class="line">idea.plugins.path=$&#123;idea.config.path&#125;/plugins</span><br><span class="line">idea.log.path=$&#123;idea.system.path&#125;/log</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件修改之后颜色变化设置"><a href="#文件修改之后颜色变化设置" class="headerlink" title="文件修改之后颜色变化设置"></a>文件修改之后颜色变化设置</h4><ul>
+<li>Version Control - 勾选 「Show directories with changed descendants」</li>
+<li>Version Control - File Status Colors 设置不同状态文件颜色</li>
+</ul>
+<h4 id="IDEA-操作体验优化"><a href="#IDEA-操作体验优化" class="headerlink" title="IDEA 操作体验优化"></a>IDEA 操作体验优化</h4><ol start="2">
+<li><p>关闭不用的插件</p>
+</li>
+<li><p>选中项目，鼠标右键，Load&#x2F;Unload Modules，只导入需要的模块</p>
+</li>
+<li><p>点击 idea 右下角头像标志，调整 idea 检查级别</p>
+</li>
+</ol>
+<h4 id="JVM-内存配置"><a href="#JVM-内存配置" class="headerlink" title="JVM 内存配置"></a>JVM 内存配置</h4><ol>
+<li><p>Help-Edit Custom VM Options….</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-Xms1024m</span><br><span class="line">-Xmx2048m</span><br><span class="line">-XX:ReservedCodeCacheSize=1024m</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Help-Change Memory Settings</p>
+</li>
+<li><p>查看JVM 占用情况：View-Appearance-Status Bar Widgets-Memory Indicator</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20210128091331_image-20210128091329735.png" alt="image-20210128091329735" style="zoom:50%;" /></li>
+</ol>
+<h3 id="调试技巧"><a href="#调试技巧" class="headerlink" title="调试技巧"></a>调试技巧</h3><p>参考  <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/aBMnMqao-ZLeUZa6hzrhIw">https://mp.weixin.qq.com/s/aBMnMqao-ZLeUZa6hzrhIw</a></p>
+<ol>
+<li><p>设置条件断点</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20210909102414_image-20210909102414164.png" alt="image-20210909102414164" style="zoom:50%;" />
+</li>
+<li><p>回到上一步。多用于方法套方法，从下级方法回到上级方法。drop frame</p>
+</li>
+<li><p>强制返回指定值</p>
+</li>
+<li><p>模拟抛出异常</p>
+</li>
+<li><p>多线程调试</p>
+</li>
+<li><p>远程调试</p>
+</li>
+<li><p>Evaluate Expression 查看和设置变量值</p>
+</li>
+</ol>
+<h3 id="编写json字符串"><a href="#编写json字符串" class="headerlink" title="编写json字符串"></a>编写json字符串</h3><ol>
+<li><p>将鼠标光标放在空字符串中间然后按快捷键Alt + 回车，选择 <code>Inject language or reference</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String json = &quot;&quot;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选择 JSON 类型</p>
+</li>
+<li><p>再次按 Alt + 回车，选择 <code>Edit JSON Fragment</code></p>
+</li>
+<li><p>在 JSON 编辑框中粘贴或编写 json 即可</p>
+</li>
+</ol>
+<h3 id="idea对于freemarker文件高亮展示"><a href="#idea对于freemarker文件高亮展示" class="headerlink" title="idea对于freemarker文件高亮展示"></a>idea对于freemarker文件高亮展示</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设置- Editor-File Types- FreeMarker Template - *.vuei vue</span><br></pre></td></tr></table></figure>
+
+<h3 id="Analyze-Inspect-Code-代码分析"><a href="#Analyze-Inspect-Code-代码分析" class="headerlink" title="Analyze Inspect Code - 代码分析"></a>Analyze Inspect Code - 代码分析</h3><p>集成了各种语言的代码质量分析，包括自行安装的第三方代码质量检查工具，如阿里巴巴代码规范插件「Java」、ESLint 插件「前端」等</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20210923170525_image-20210923170524998.png" alt="image-20210923170524998" style="zoom:50%;" />
+
+<h3 id="Subversion"><a href="#Subversion" class="headerlink" title="Subversion"></a>Subversion</h3><blockquote>
+<p>svn 命令位置：&#x2F;usr&#x2F;local&#x2F;bin&#x2F;svn</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzIzMjI4MzEyMg==&mid=2247487913&idx=2&sn=6894c4512c442331cf6a13341cc75745&chksm=e8961f34dfe1962297ed6e269536a61c4fc7491f765747701a7d0f9a36a01bc88dbb8bdbbd96&mpshare=1&scene=23&srcid=0715h9CzZpR1ggcmvK4rmF5E&sharer_sharetime=1594810826272&sharer_shareid=16528a282b16ff19bf19092da87399ff%23rd">IDEA 中使用 Git 完整入门教程！</a></p>
+<p>目标：将本地项目导入到版本库中「版本库必须存在，且为空」，并更新至本地项目</p>
+<ol>
+<li><p>VCS &gt; Import into Version Control &gt; Import into Subversion…  选择目标版本库「可新建远程目录」</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20201120141219_image-20201120141219713.png" alt="image-20201120141219713" style="zoom:50%;" />
+</li>
+<li><p>VCS &gt; Get from Version Control… 选择本地项目路径</p>
+</li>
+</ol>
+<h4 id="relocate"><a href="#relocate" class="headerlink" title="relocate"></a>relocate</h4><p>打开项目，左侧选中项目-点击菜单 SVN - Subversion - Relocate，修改 IP地址，确定</p>
+<h3 id="其它使用"><a href="#其它使用" class="headerlink" title="其它使用"></a>其它使用</h3><h4 id="发布其它项目"><a href="#发布其它项目" class="headerlink" title="发布其它项目"></a>发布其它项目</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangwenzhe.oss-cn-beijing.aliyuncs.com/UTOOLS1576592547822.png" alt="UTOOLS1576592547822.png"></p>
+<h4 id="远程部署"><a href="#远程部署" class="headerlink" title="远程部署"></a>远程部署</h4><ol>
+<li>自带工具 Deployment</li>
+<li>Cloud Toolkit</li>
+</ol>
+<h4 id="反编译-jar-包，查看源码"><a href="#反编译-jar-包，查看源码" class="headerlink" title="反编译 jar 包，查看源码"></a>反编译 jar 包，查看源码</h4><p>可以点击 <code>File-Open</code> 或者 拖拽文件到窗口中，选择文件，右键 <code>Add as Library...</code> <code>ok</code> 即可展开<code>jar</code>文件查看源码</p>
+<h4 id="序列化类快速生成-serialVersionUID"><a href="#序列化类快速生成-serialVersionUID" class="headerlink" title="序列化类快速生成 serialVersionUID"></a>序列化类快速生成 serialVersionUID</h4><ol>
+<li><p>设置序列化的类无 <code>serialVersionUID</code> 的提醒</p>
+<p>关键词 <code>Inspections</code> <code>serialVersionUID</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/UTOOLS1577257188189.png" alt="UTOOLS1577257188189.png"></p>
+</li>
+<li><p>类名有黄色提醒，光标放在类名上，按下 Alt + Enter，提示添加 serialVersionUID </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/UTOOLS1577158522536.png" alt="UTOOLS1577158522536.png"></p>
+</li>
+</ol>
+<h3 id="问题汇总"><a href="#问题汇总" class="headerlink" title="问题汇总"></a>问题汇总</h3><h4 id="idea反编译出现-compiled-code"><a href="#idea反编译出现-compiled-code" class="headerlink" title="idea反编译出现&#x2F;* compiled code*&#x2F;"></a>idea反编译出现&#x2F;* compiled code*&#x2F;</h4><p>问题：idea使用自带的反编译插件只有函数名，而函数体出现&#x2F;* compiled code*&#x2F;。这通常是多个反编译插件混淆导致</p>
+<p>解决方法：file-&gt;settings-&gt;plugins 禁用掉‘Java Decompiler Intellij Plugin’,重启即可</p>
+<h4 id="全局搜索快捷键-Ctrl-Shift-F-不起作用"><a href="#全局搜索快捷键-Ctrl-Shift-F-不起作用" class="headerlink" title="全局搜索快捷键 Ctrl + Shift + F 不起作用"></a>全局搜索快捷键 Ctrl + Shift + F 不起作用</h4><blockquote>
+<p>与输入法简繁体切换快捷键冲突，可以把输入法中该快捷键停掉「毕竟不常用」</p>
+</blockquote>
+<h4 id="某模块提示-Java-编译版本过低，不支持-XXX"><a href="#某模块提示-Java-编译版本过低，不支持-XXX" class="headerlink" title="某模块提示 Java 编译版本过低，不支持 XXX"></a>某模块提示 Java 编译版本过低，不支持 XXX</h4><ol>
+<li><p>查看 Java 编译版本，此处修改也可，但有问题的模块都要修改</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangwenzhe.oss-cn-beijing.aliyuncs.com/UTOOLS1576592602212.jpg" alt="UTOOLS1576592602212.jpg"></p>
+</li>
+<li><p>最快解决方法：在工程的 pom.xml 中添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">	&lt;plugins&gt;</span><br><span class="line">		&lt;plugin&gt;</span><br><span class="line">			&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;version&gt;3.3&lt;/version&gt;</span><br><span class="line">			&lt;configuration&gt;</span><br><span class="line">				&lt;source&gt;1.8&lt;/source&gt;</span><br><span class="line">				&lt;target&gt;1.8&lt;/target&gt;</span><br><span class="line">			&lt;/configuration&gt;</span><br><span class="line">		&lt;/plugin&gt;</span><br><span class="line">	&lt;/plugins&gt;</span><br><span class="line">&lt;/build&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="修改-jsp、js等前台文件后没有手动重启情况下，没有生效"><a href="#修改-jsp、js等前台文件后没有手动重启情况下，没有生效" class="headerlink" title="修改 jsp、js等前台文件后没有手动重启情况下，没有生效"></a>修改 jsp、js等前台文件后没有手动重启情况下，没有生效</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangwenzhe.oss-cn-beijing.aliyuncs.com/UTOOLS1576592650703.jpg" alt="UTOOLS1576592650703.jpg"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangwenzhe.oss-cn-beijing.aliyuncs.com/UTOOLS1576592716228.gif" alt="UTOOLS1576592716228.gif"></p>
+<h4 id="IntelliJ-IDEA-中用谷歌浏览器打开页面，出现-windows-找不到文件-chrome"><a href="#IntelliJ-IDEA-中用谷歌浏览器打开页面，出现-windows-找不到文件-chrome" class="headerlink" title="IntelliJ IDEA 中用谷歌浏览器打开页面，出现 windows 找不到文件 chrome"></a>IntelliJ IDEA 中用谷歌浏览器打开页面，出现 windows 找不到文件 chrome</h4><ol>
+<li><p>右击谷歌浏览器快捷方式打开文件位置「确定 Chrome 位置」</p>
+</li>
+<li><p>打开 IntelliJ IDEA 软件，找到 file–&gt;settings–&gt; 找到 Web Browsers</p>
+<p>在 chrome 那一栏最右边的 path 中选择上步骤中位置的 chrome.exe 文件</p>
+</li>
+<li><p>保存，然后再次点击编辑器页面悬浮的 chrome 按钮 即可打开</p>
+</li>
+</ol>
+<h4 id="Open-Recent"><a href="#Open-Recent" class="headerlink" title="Open Recent"></a>Open Recent</h4><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangwenzhe.oss-cn-beijing.aliyuncs.com/UTOOLS1576637586789.png" alt="UTOOLS1576637586789.png" style="zoom:50%;" />
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G:\JavaDevelop\IntelliJIdeaConfig\config\options\recentProjects.xml</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改默认的-Maven-配置"><a href="#修改默认的-Maven-配置" class="headerlink" title="修改默认的 Maven 配置"></a>修改默认的 Maven 配置</h4><p>每次新建项目或导入项目时，IDEA会使用默认的 Maven 配置</p>
+<p>![image-20200106141413044](&#x2F;Users&#x2F;mac126&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20200106141413044.png)</p>
+<p>![image-20200106141604581](&#x2F;Users&#x2F;mac126&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20200106141604581.png)</p>
+<h4 id="清除-svn-保存的账号密码信息"><a href="#清除-svn-保存的账号密码信息" class="headerlink" title="清除 svn 保存的账号密码信息"></a>清除 svn 保存的账号密码信息</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20200527092415_image-20200527092414829.png" alt="image-20200527092414829"></p>
+<h4 id="idea-svn-连接-https-报错问题-E230001-Server-SSL-certificate-verification-failed-certificate-issued"><a href="#idea-svn-连接-https-报错问题-E230001-Server-SSL-certificate-verification-failed-certificate-issued" class="headerlink" title="idea svn 连接 https 报错问题: E230001: Server SSL certificate verification failed: certificate issued"></a>idea svn 连接 https 报错问题: E230001: Server SSL certificate verification failed: certificate issued</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cmd 打开运行窗口，执行以下命令</span><br><span class="line"></span><br><span class="line">//xxx 是具体的 svn 项目地址</span><br><span class="line">svn ls https://xxx</span><br><span class="line"></span><br><span class="line">最后会显示 (R) eject, accept (t) emporarily or accept (p) ermanently?</span><br><span class="line">输入 p</span><br><span class="line">然后根据提示输入 svn 账户名 userName 和密码 password</span><br><span class="line"></span><br><span class="line">最后 checkout from subversion 刷新一下就好了</span><br></pre></td></tr></table></figure>
+
+<h4 id="不识别代码"><a href="#不识别代码" class="headerlink" title="不识别代码"></a><strong>不识别代码</strong></h4><p>偏好设置：Editor-File Types-Ignore Files and Folders中加入了<code>*.class</code>,导致 IDEA 忽略了编译后文件，而无法正常识别代码</p>
+<h4 id="maven-多模块开发：某模块依赖指定-jar-文件，如何引入「不通过pom-xml」"><a href="#maven-多模块开发：某模块依赖指定-jar-文件，如何引入「不通过pom-xml」" class="headerlink" title="maven 多模块开发：某模块依赖指定 jar 文件，如何引入「不通过pom.xml」"></a>maven 多模块开发：某模块依赖指定 jar 文件，如何引入「不通过pom.xml」</h4><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20200604125508_image-20200604125508031.png" alt="image-20200604125508031" style="zoom:50%;" />
+
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20200604135027_image-20200604135026881.png" alt="image-20200604135026881" style="zoom:50%;" />
+
+<h4 id="Intellij-idea-报错：Error-java-不支持发行版本-5"><a href="#Intellij-idea-报错：Error-java-不支持发行版本-5" class="headerlink" title="Intellij idea 报错：Error : java 不支持发行版本 5"></a>Intellij idea 报错：Error : java 不支持发行版本 5</h4><ol>
+<li>File –&gt;Project Structure，看一下 <code>Project</code> 和 <code>Module</code> 栏目中 Java 版本是否与本地一致</li>
+<li>Settings–&gt;Bulid, Execution,Deployment”–&gt;Java Compiler，<strong>Target bytecode version</strong> 设为本地 Java 版本。包括 Default Settings中该配置</li>
+</ol>
+<h4 id="设置-Build-Compiler-Java-Compiler"><a href="#设置-Build-Compiler-Java-Compiler" class="headerlink" title="设置-Build-Compiler-Java Compiler"></a>设置-Build-Compiler-Java Compiler</h4><ul>
+<li>Main 方法临时测试中包含长字符串时，Use compiler 可以选择 Eclipse </li>
+<li>项目运行、打包时，Use compiler 必须是 Javac，否则会出现莫名其妙的错误</li>
+</ul>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><h4 id="Http-Client"><a href="#Http-Client" class="headerlink" title="Http Client"></a>Http Client</h4><p><em>IDEA 自带 Http Client 工具，<code>Tools</code> - &gt; <code>Http Client-&gt; Test RESTful Web Service</code></em></p>
+<p>参考：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000021357738">https://segmentfault.com/a/1190000021357738</a></p>
+<h4 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h4><ol>
+<li>支持多种数据库</li>
+<li>数据导出，可选择导出数据的格式，可选择导出到文件或剪切板</li>
+<li>数据排序，支持多字段</li>
+</ol>
+<h5 id="执行-SQL"><a href="#执行-SQL" class="headerlink" title="执行 SQL"></a>执行 SQL</h5><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20210701161419_image-20210701161419301.png" alt="image-20210701161419301" style="zoom:50%;" />
+
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20210701161431_image-20210701161431295.png" alt="image-20210701161431295" style="zoom:50%;" />
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/3c1e27f1.html">https://wangwenzhe.github.io/posts/3c1e27f1.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/IDEA/">IDEA</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/69c3279c.html" title="Git"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Git</div></div></a></div><div class="next-post pull-right"><a href="/posts/95ecbeba.html" title="Tomcat"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Tomcat</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%9B%E5%BB%BA-springboot-%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">配置阿里云初始化创建 springboot 项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IDEA-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93%E3%80%8C%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90%E3%80%8D"><span class="toc-number">1.1.</span> <span class="toc-text">IDEA 使用技巧总结「强烈推荐」</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IDEA-%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8C"><span class="toc-number">2.1.</span> <span class="toc-text">IDEA 安装注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDEA-%E5%BF%AB%E6%8D%B7%E9%94%AE%E2%80%94windows"><span class="toc-number">2.2.</span> <span class="toc-text">IDEA 快捷键—windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDEA-%E5%BF%AB%E6%8D%B7%E9%94%AE%E2%80%94Mac"><span class="toc-number">2.3.</span> <span class="toc-text">IDEA 快捷键—Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.3.1.</span> <span class="toc-text">查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2"><span class="toc-number">2.3.2.</span> <span class="toc-text">替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%BE%91"><span class="toc-number">2.3.3.</span> <span class="toc-text">编辑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-number">2.3.4.</span> <span class="toc-text">文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-number">2.3.5.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA"><span class="toc-number">2.3.6.</span> <span class="toc-text">导航</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%B3%E8%BD%AC"><span class="toc-number">2.3.7.</span> <span class="toc-text">跳转</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%B9%8B%E9%97%B4%E8%B7%B3%E8%BD%AC"><span class="toc-number">2.3.7.1.</span> <span class="toc-text">项目之间跳转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%87%E4%BB%B6Tab%E4%B9%8B%E9%97%B4%E8%B7%B3%E8%BD%AC"><span class="toc-number">2.3.7.2.</span> <span class="toc-text">文件Tab之间跳转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%BD%8D%E7%BD%AE%E8%B7%B3%E8%BD%AC"><span class="toc-number">2.3.7.3.</span> <span class="toc-text">修改位置跳转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E4%BD%8D%E7%BD%AE%E8%B7%B3%E8%BD%AC"><span class="toc-number">2.3.7.4.</span> <span class="toc-text">浏览位置跳转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E8%B7%B3%E8%BD%AC"><span class="toc-number">2.3.7.5.</span> <span class="toc-text">行内跳转</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E6%8B%A9"><span class="toc-number">2.3.8.</span> <span class="toc-text">选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E6%9E%84"><span class="toc-number">2.3.9.</span> <span class="toc-text">重构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">2.3.10.</span> <span class="toc-text">版本控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-number">2.3.11.</span> <span class="toc-text">视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%9B%BE"><span class="toc-number">2.3.12.</span> <span class="toc-text">结构图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3"><span class="toc-number">2.3.13.</span> <span class="toc-text">窗口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tab-%E9%A1%B5%E7%AD%BE"><span class="toc-number">2.3.14.</span> <span class="toc-text">Tab 页签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%AE%E5%8A%A9"><span class="toc-number">2.3.15.</span> <span class="toc-text">帮助</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E8%AF%95"><span class="toc-number">2.3.16.</span> <span class="toc-text">调试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%82%E9%A1%B9%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="toc-number">2.4.</span> <span class="toc-text">杂项小技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E9%83%A8%E7%BD%B2-spring-boot-devtools"><span class="toc-number">2.5.</span> <span class="toc-text">热部署-spring-boot-devtools</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Live-Template"><span class="toc-number">2.6.</span> <span class="toc-text">Live Template</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Postfix-Completion"><span class="toc-number">2.7.</span> <span class="toc-text">Postfix Completion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Option-Enter"><span class="toc-number">2.8.</span> <span class="toc-text">Option + Enter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E8%81%94-Spring"><span class="toc-number">2.9.</span> <span class="toc-text">关联 Spring</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.10.</span> <span class="toc-text">关联数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F-%E4%BB%A5-javascript-%E4%B8%BA%E4%BE%8B"><span class="toc-number">2.11.</span> <span class="toc-text">代码格式-以 javascript 为例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDEA-%E5%BF%85%E7%9C%8B%E9%85%8D%E7%BD%AE"><span class="toc-number">2.12.</span> <span class="toc-text">IDEA 必看配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%97%B6%E4%B8%8D%E6%89%93%E5%BC%80%E4%B8%8A%E6%AC%A1%E6%89%93%E5%BC%80%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.12.1.</span> <span class="toc-text">启动时不打开上次打开的项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%BC%96%E7%A0%81%E4%B8%BA-utf-8-%E7%BC%96%E7%A0%81"><span class="toc-number">2.12.2.</span> <span class="toc-text">设置编码为 utf-8 编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%BF%87%E6%BB%A4%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95"><span class="toc-number">2.12.3.</span> <span class="toc-text">添加过滤文件或目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91%E5%BC%80%E5%85%B3"><span class="toc-number">2.12.4.</span> <span class="toc-text">自动编译开关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%BD%E7%95%A5%E5%A4%A7%E5%B0%8F%E5%86%99%E5%BC%80%E5%85%B3"><span class="toc-number">2.12.5.</span> <span class="toc-text">忽略大小写开关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%AF%BC%E5%8C%85%E5%BC%80%E5%85%B3"><span class="toc-number">2.12.6.</span> <span class="toc-text">智能导包开关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%96%E6%B6%88%E5%8D%95%E8%A1%8C%E6%98%BE%E7%A4%BAtabs%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">2.12.7.</span> <span class="toc-text">取消单行显示tabs的操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IDEA-%E8%AE%BE%E7%BD%AE-tab-%E4%B8%BA-4-%E4%B8%AA%E7%A9%BA%E6%A0%BC"><span class="toc-number">2.12.8.</span> <span class="toc-text">IDEA 设置 tab 为 4 个空格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A%E7%9A%84%E5%8F%8C%E6%96%9C%E7%BA%BF%E4%B8%8E%E6%B3%A8%E9%87%8A%E5%86%85%E5%AE%B9%E4%B9%8B%E9%97%B4%E6%9C%89%E4%B8%94%E4%BB%85%E6%9C%89%E4%B8%80%E4%B8%AA%E7%A9%BA%E6%A0%BC"><span class="toc-number">2.12.9.</span> <span class="toc-text">注释的双斜线与注释内容之间有且仅有一个空格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-IntelliJ-IDEA-%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E8%B7%AF%E5%BE%84"><span class="toc-number">2.12.10.</span> <span class="toc-text">修改 IntelliJ IDEA 默认配置路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%E4%B9%8B%E5%90%8E%E9%A2%9C%E8%89%B2%E5%8F%98%E5%8C%96%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.12.11.</span> <span class="toc-text">文件修改之后颜色变化设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IDEA-%E6%93%8D%E4%BD%9C%E4%BD%93%E9%AA%8C%E4%BC%98%E5%8C%96"><span class="toc-number">2.12.12.</span> <span class="toc-text">IDEA 操作体验优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JVM-%E5%86%85%E5%AD%98%E9%85%8D%E7%BD%AE"><span class="toc-number">2.12.13.</span> <span class="toc-text">JVM 内存配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7"><span class="toc-number">2.13.</span> <span class="toc-text">调试技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E5%86%99json%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.14.</span> <span class="toc-text">编写json字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#idea%E5%AF%B9%E4%BA%8Efreemarker%E6%96%87%E4%BB%B6%E9%AB%98%E4%BA%AE%E5%B1%95%E7%A4%BA"><span class="toc-number">2.15.</span> <span class="toc-text">idea对于freemarker文件高亮展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze-Inspect-Code-%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">2.16.</span> <span class="toc-text">Analyze Inspect Code - 代码分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Subversion"><span class="toc-number">2.17.</span> <span class="toc-text">Subversion</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#relocate"><span class="toc-number">2.17.1.</span> <span class="toc-text">relocate</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E4%BD%BF%E7%94%A8"><span class="toc-number">2.18.</span> <span class="toc-text">其它使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E5%85%B6%E5%AE%83%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.18.1.</span> <span class="toc-text">发布其它项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E9%83%A8%E7%BD%B2"><span class="toc-number">2.18.2.</span> <span class="toc-text">远程部署</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E7%BC%96%E8%AF%91-jar-%E5%8C%85%EF%BC%8C%E6%9F%A5%E7%9C%8B%E6%BA%90%E7%A0%81"><span class="toc-number">2.18.3.</span> <span class="toc-text">反编译 jar 包，查看源码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E7%B1%BB%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90-serialVersionUID"><span class="toc-number">2.18.4.</span> <span class="toc-text">序列化类快速生成 serialVersionUID</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="toc-number">2.19.</span> <span class="toc-text">问题汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#idea%E5%8F%8D%E7%BC%96%E8%AF%91%E5%87%BA%E7%8E%B0-compiled-code"><span class="toc-number">2.19.1.</span> <span class="toc-text">idea反编译出现&#x2F;* compiled code*&#x2F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2%E5%BF%AB%E6%8D%B7%E9%94%AE-Ctrl-Shift-F-%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8"><span class="toc-number">2.19.2.</span> <span class="toc-text">全局搜索快捷键 Ctrl + Shift + F 不起作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%90%E6%A8%A1%E5%9D%97%E6%8F%90%E7%A4%BA-Java-%E7%BC%96%E8%AF%91%E7%89%88%E6%9C%AC%E8%BF%87%E4%BD%8E%EF%BC%8C%E4%B8%8D%E6%94%AF%E6%8C%81-XXX"><span class="toc-number">2.19.3.</span> <span class="toc-text">某模块提示 Java 编译版本过低，不支持 XXX</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-jsp%E3%80%81js%E7%AD%89%E5%89%8D%E5%8F%B0%E6%96%87%E4%BB%B6%E5%90%8E%E6%B2%A1%E6%9C%89%E6%89%8B%E5%8A%A8%E9%87%8D%E5%90%AF%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E6%B2%A1%E6%9C%89%E7%94%9F%E6%95%88"><span class="toc-number">2.19.4.</span> <span class="toc-text">修改 jsp、js等前台文件后没有手动重启情况下，没有生效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IntelliJ-IDEA-%E4%B8%AD%E7%94%A8%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%93%E5%BC%80%E9%A1%B5%E9%9D%A2%EF%BC%8C%E5%87%BA%E7%8E%B0-windows-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%96%87%E4%BB%B6-chrome"><span class="toc-number">2.19.5.</span> <span class="toc-text">IntelliJ IDEA 中用谷歌浏览器打开页面，出现 windows 找不到文件 chrome</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Open-Recent"><span class="toc-number">2.19.6.</span> <span class="toc-text">Open Recent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E7%9A%84-Maven-%E9%85%8D%E7%BD%AE"><span class="toc-number">2.19.7.</span> <span class="toc-text">修改默认的 Maven 配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%85%E9%99%A4-svn-%E4%BF%9D%E5%AD%98%E7%9A%84%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E4%BF%A1%E6%81%AF"><span class="toc-number">2.19.8.</span> <span class="toc-text">清除 svn 保存的账号密码信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#idea-svn-%E8%BF%9E%E6%8E%A5-https-%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98-E230001-Server-SSL-certificate-verification-failed-certificate-issued"><span class="toc-number">2.19.9.</span> <span class="toc-text">idea svn 连接 https 报错问题: E230001: Server SSL certificate verification failed: certificate issued</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E8%AF%86%E5%88%AB%E4%BB%A3%E7%A0%81"><span class="toc-number">2.19.10.</span> <span class="toc-text">不识别代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#maven-%E5%A4%9A%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%EF%BC%9A%E6%9F%90%E6%A8%A1%E5%9D%97%E4%BE%9D%E8%B5%96%E6%8C%87%E5%AE%9A-jar-%E6%96%87%E4%BB%B6%EF%BC%8C%E5%A6%82%E4%BD%95%E5%BC%95%E5%85%A5%E3%80%8C%E4%B8%8D%E9%80%9A%E8%BF%87pom-xml%E3%80%8D"><span class="toc-number">2.19.11.</span> <span class="toc-text">maven 多模块开发：某模块依赖指定 jar 文件，如何引入「不通过pom.xml」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Intellij-idea-%E6%8A%A5%E9%94%99%EF%BC%9AError-java-%E4%B8%8D%E6%94%AF%E6%8C%81%E5%8F%91%E8%A1%8C%E7%89%88%E6%9C%AC-5"><span class="toc-number">2.19.12.</span> <span class="toc-text">Intellij idea 报错：Error : java 不支持发行版本 5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE-Build-Compiler-Java-Compiler"><span class="toc-number">2.19.13.</span> <span class="toc-text">设置-Build-Compiler-Java Compiler</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">2.20.</span> <span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Http-Client"><span class="toc-number">2.20.1.</span> <span class="toc-text">Http Client</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Database"><span class="toc-number">2.20.2.</span> <span class="toc-text">Database</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C-SQL"><span class="toc-number">2.20.2.1.</span> <span class="toc-text">执行 SQL</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

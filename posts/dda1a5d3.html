@@ -1,0 +1,334 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DM | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="参考快速上手 | 达梦技术文档 (dameng.com) 函数 | 达梦技术文档 (dameng.com) DMGEO 包 | 达梦技术文档 (dameng.com) 创建表空间 | 达梦技术文档 (dameng.com) DM8达梦数据库版本区别：开发版、标准版、企业版、安全版 - 墨天轮 (modb.pro) 附录 | 达梦技术文档 (dameng.com) 下载产品下载-达梦数据 (dame">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DM">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/dda1a5d3.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="参考快速上手 | 达梦技术文档 (dameng.com) 函数 | 达梦技术文档 (dameng.com) DMGEO 包 | 达梦技术文档 (dameng.com) 创建表空间 | 达梦技术文档 (dameng.com) DM8达梦数据库版本区别：开发版、标准版、企业版、安全版 - 墨天轮 (modb.pro) 附录 | 达梦技术文档 (dameng.com) 下载产品下载-达梦数据 (dame">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2020-09-04T02:57:59.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.697Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="DM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/dda1a5d3.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'DM',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">DM</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-04T02:57:59.000Z" title="发表于 2020-09-04 10:57:59">2020-09-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.697Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/DM/">DM</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="DM"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://eco.dameng.com/document/dm/zh-cn/start/">快速上手 | 达梦技术文档 (dameng.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://eco.dameng.com/document/dm/zh-cn/sql-dev/practice-func.html">函数 | 达梦技术文档 (dameng.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://eco.dameng.com/document/dm/zh-cn/pm/dmgeo-package.html">DMGEO 包 | 达梦技术文档 (dameng.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://eco.dameng.com/document/dm/zh-cn/start/dm-create-tablespace.html">创建表空间 | 达梦技术文档 (dameng.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.modb.pro/db/44103">DM8达梦数据库版本区别：开发版、标准版、企业版、安全版 - 墨天轮 (modb.pro)</a></p>
+<p><a target="_blank" rel="noopener" href="https://eco.dameng.com/document/dm/zh-cn/pm/sql-appendix.html">附录 | 达梦技术文档 (dameng.com)</a></p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a target="_blank" rel="noopener" href="https://www.dameng.com/list_103.html">产品下载-达梦数据 (dameng.com)</a></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>DM数据库</li>
+<li>试用期限1年</li>
+</ul>
+<h2 id="安装数据库"><a href="#安装数据库" class="headerlink" title="安装数据库"></a>安装数据库</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>包含服务器、客户端等组件，可选择安装</p>
+<ol>
+<li>解压，选择文件 <code>dm8_setup_win64_ent_8.1.1.45_20191121.iso</code> 右键，安装</li>
+<li>选择语言与时区</li>
+<li>下一步</li>
+<li>指定 key 文件</li>
+<li>选择组件，例如客户端安装</li>
+<li>选择安装位置</li>
+<li>安装</li>
+</ol>
+<h3 id="麒麟操作系统"><a href="#麒麟操作系统" class="headerlink" title="麒麟操作系统"></a>麒麟操作系统</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/88223100/p/Install-DAMENG-DM8-Database-On-Kylin-System.html">银河麒麟V10安装达梦数据库DM8 - 古道轻风 - 博客园 (cnblogs.com)</a></p>
+<h2 id="创建数据库实例"><a href="#创建数据库实例" class="headerlink" title="创建数据库实例"></a>创建数据库实例</h2><blockquote>
+<p>使用 DM 数据库配置助手</p>
+<p>数据页大小：默认<br>数据簇大小：默认<br>字符集类型：默认 GB18030<br>VARCHAR长度是否以字符为单位：是<br>大小写敏感：是</p>
+</blockquote>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/EvDbum.png" alt="EvDbum" style="zoom:50%;" />
+
+<pre><code>    &lt;img src=&quot;http://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/ASo6yE.png&quot; alt=&quot;ASo6yE&quot; style=&quot;zoom:50%;&quot; /&gt;
+</code></pre>
+<h2 id="启动数据库"><a href="#启动数据库" class="headerlink" title="启动数据库"></a>启动数据库</h2><h4 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service DmServiceDMSERVER start</span><br></pre></td></tr></table></figure>
+
+<h4 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在终端进入 DM 安装目录下的 bin 目录，执行</span><br><span class="line">./dmserver /home/dmdba/dmdbms/DAMENG/dm.ini &amp;</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ps axu|grep dmserver</span><br><span class="line">或</span><br><span class="line">netstat -lnp|grep 5236</span><br><span class="line"></span><br><span class="line">dmdba    18337  0.2  6.9 2092592 558124 ?      Sl   15:45   0:05 ./dmserver ../DAMENG/dm.ini</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h2><h3 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h3><blockquote>
+<p>使用可视化客户端工具，例如达梦自带「DM管理工具」或者使用 DataGrip 通过 SYSDBA 管理员登录</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create tablespace SGP datafile &#x27;/home/dmdba/dmdbms/DAMENG/SGP.DBF&#x27; SIZE 128;</span><br><span class="line">create tablespace SCM datafile &#x27;/home/dmdba/dmdbms/DAMENG/SCM.DBF&#x27; SIZE 128;</span><br><span class="line"></span><br><span class="line">alter tablespace SGP datafile &#x27;/home/dmdba/dmdbms/DAMENG/SGP.DBF&#x27; autoextend on;</span><br><span class="line">alter tablespace SCM datafile &#x27;/home/dmdba/dmdbms/DAMENG/SCM.DBF&#x27; autoextend on;</span><br><span class="line"></span><br><span class="line">create tablespace SGP datafile &#x27;E:\dm8\data\DAMENG\SGP.DBF&#x27; SIZE 128;</span><br><span class="line">create tablespace SCM datafile &#x27;E:\dm8\data\DAMENG\SCM.DBF&#x27; SIZE 128;</span><br><span class="line">alter tablespace SGP datafile &#x27;E:\dm8\data\DAMENG\SGP.DBF&#x27; autoextend on;</span><br><span class="line">alter tablespace SCM datafile &#x27;E:\dm8\data\DAMENG\SCM.DBF&#x27; autoextend on;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建用户并授权"><a href="#创建用户并授权" class="headerlink" title="创建用户并授权"></a>创建用户并授权</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create user sgp identified by sgp123456 default tablespace SGP;</span><br><span class="line">create user scm identified by scm123456 default tablespace SCM;</span><br><span class="line">create user gms9x identified by gms9x123456 default tablespace SGP;</span><br><span class="line"></span><br><span class="line">create user &quot;SCM_LINZE&quot; identified by &quot;Root@123456&quot; default tablespace &quot;SCM&quot;;</span><br><span class="line">grant public, resource, dba to &quot;SCM_LINZE&quot;;</span><br><span class="line"></span><br><span class="line">grant public, resource, dba to sgp;</span><br><span class="line">grant public, resource, dba to scm;</span><br><span class="line">grant public, resource, dba to gms9x;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据库迁移"><a href="#数据库迁移" class="headerlink" title="数据库迁移"></a>数据库迁移</h2><p> <code>DM数据迁移工具</code> 功能</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20200926115150_image-20200926115149554.png" alt="image-20200926115149554" style="zoom:50%;" />
+
+<h2 id="可视化客户端工具"><a href="#可视化客户端工具" class="headerlink" title="可视化客户端工具"></a>可视化客户端工具</h2><blockquote>
+<p>DataGrip 或 IDEA Database 工具使用</p>
+</blockquote>
+<ol>
+<li><p>创建 DM 数据库驱动 —— 选择驱动文件「Custom JARS…」，Class 会自动加载出来</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/YO9xjo.png" alt="YO9xjo" style="zoom:50%;" />
+</li>
+<li><p>创建 DM 数据库连接</p>
+<p><code>jdbc:dm://ip:5236/DMSERVER?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8</code></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/opa4Tv.png" alt="opa4Tv" style="zoom:50%;" /></li>
+</ol>
+<h2 id="项目调整"><a href="#项目调整" class="headerlink" title="项目调整"></a>项目调整</h2><h3 id="工程配置"><a href="#工程配置" class="headerlink" title="工程配置"></a>工程配置</h3><ol>
+<li><p>项目<code>pom.xml</code> 引入 达梦数据库驱动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 达梦jdbc驱动--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;com.dameng&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;Dm8JdbcDriver18&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;8.1.1.49&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新增 <code>jdbc_dmdb.properties</code> 配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db.driverClassName=dm.jdbc.driver.DmDriver</span><br><span class="line">db.validationQuery=SELECT 1 FROM DUAL</span><br><span class="line">db.jdbc_url=jdbc:dm://ip:5236/DMSERVER?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8</span><br><span class="line">db.jdbc_username=sgp</span><br><span class="line">db.publickey=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALlz/vMS4EeJf2SIPm+7WyZYz9kBB7x2oKa06xm3pw9pnNKioVqFBNsNH8+s+r+Zc8G/oM9MFcjGeOuXegVbpCkCAwEAAQ\=\=</span><br><span class="line">db.jdbc_password=LGXikmXhCxNrjN6RBf0R4IyFzCytJLk90h2bod4T/F2/Fy9qXaDEKhC184vOwxFA0sjLy4neCPjRKrUicg0gdg\=\=</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>spring-mybatis.xml</code> 中 dataSource 配置中 oracle 改为 db</p>
+</li>
+</ol>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><blockquote>
+<p>ctrl + shift + R  全局替换</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">Oracle</th>
+<th align="center">DM</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">NLS_UPPER</td>
+<td align="center">UCASE</td>
+<td align="center">转换为大写</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h3 id="数据库厂商标识"><a href="#数据库厂商标识" class="headerlink" title="数据库厂商标识"></a>数据库厂商标识</h3><ol>
+<li><p>spring-mybatis.xml 新增及修改配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- myBatis文件 --&gt;</span><br><span class="line">	&lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</span><br><span class="line">		&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</span><br><span class="line">		&lt;!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 --&gt;</span><br><span class="line">		&lt;property name=&quot;mapperLocations&quot; value=&quot;classpath:mapping/*.xml&quot; /&gt;</span><br><span class="line">		&lt;property name=&quot;databaseIdProvider&quot; ref=&quot;databaseIdProvider&quot; /&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!--	多数据库支持--&gt;</span><br><span class="line">	&lt;bean id=&quot;vendorProperties&quot;</span><br><span class="line">		  class=&quot;org.springframework.beans.factory.config.PropertiesFactoryBean&quot;&gt;</span><br><span class="line">		&lt;property name=&quot;properties&quot;&gt;</span><br><span class="line">			&lt;props&gt;</span><br><span class="line">				&lt;prop key=&quot;Oracle&quot;&gt;oracle&lt;/prop&gt;</span><br><span class="line">				&lt;prop key=&quot;Dm&quot;&gt;dm&lt;/prop&gt;</span><br><span class="line">			&lt;/props&gt;</span><br><span class="line">		&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">	&lt;bean id=&quot;databaseIdProvider&quot; class=&quot;org.apache.ibatis.mapping.VendorDatabaseIdProvider&quot;&gt;</span><br><span class="line">		&lt;property name=&quot;properties&quot; ref=&quot;vendorProperties&quot; /&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>***Dao.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;choose&gt;</span><br><span class="line">  &lt;when test=&quot;_databaseId == &#x27;oracle&#x27;&quot;&gt;</span><br><span class="line">    NLS_UPPER(LOGINNAME) &amp;lt;&amp;gt; &#x27;ROOT&#x27;</span><br><span class="line">  &lt;/when&gt;</span><br><span class="line">  &lt;otherwise&gt;</span><br><span class="line">    UCASE(LOGINNAME) &amp;lt;&amp;gt; &#x27;ROOT&#x27;</span><br><span class="line">  &lt;/otherwise&gt;</span><br><span class="line">&lt;/choose&gt;</span><br><span class="line"></span><br><span class="line">&lt;choose&gt;</span><br><span class="line">  &lt;when test=&quot;_databaseId == &#x27;oracle&#x27;&quot;&gt;</span><br><span class="line">  	NLS_UPPER(u.LOGINNAME) &amp;lt;&amp;gt; &#x27;ROOT&#x27; and NLS_UPPER(u.LOGINNAME) &amp;lt;&amp;gt; &#x27;ADMIN&#x27;</span><br><span class="line">  &lt;/when&gt;</span><br><span class="line">  &lt;otherwise&gt;</span><br><span class="line">  	UCASE(u.LOGINNAME) &amp;lt;&amp;gt; &#x27;ROOT&#x27; and UCASE(u.LOGINNAME) &amp;lt;&amp;gt; &#x27;ADMIN&#x27;</span><br><span class="line">  &lt;/otherwise&gt;</span><br><span class="line">&lt;/choose&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="DM-中关键字"><a href="#DM-中关键字" class="headerlink" title="DM 中关键字"></a>DM 中关键字</h3><p>数据库 138 sgp 和 达梦数据库 sgp</p>
+<ol>
+<li><p>*PERCENT —— 获取用户下所有表字段（percent字段）</p>
+<blockquote>
+<p>select * from user_tab_columns where nls_upper(COLUMN_NAME)&#x3D;’PERCENT’</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>select * from user_tab_columns where UCASE(COLUMN_NAME)&#x3D;’PERCENT’</p>
+</blockquote>
+<p>   sgp_eventconfig percent 字段改为 perc</p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">  drop table SGP_EVENTCONFIG;</span><br><span class="line">  create table SGP_EVENTCONFIG</span><br><span class="line">  (</span><br><span class="line">  	ECID VARCHAR2(16) not null,</span><br><span class="line">  	TARGETFLAG CHAR(1),</span><br><span class="line">  	ASSESSTYPE CHAR(1),</span><br><span class="line">  	PERC NUMBER(2),</span><br><span class="line">  	PERIODUNIT VARCHAR2(10),</span><br><span class="line">  	COMPONENTSWITCH CHAR(1),</span><br><span class="line">  	constraint PK_SGP_EVENTCONFIG primary key(ECID)</span><br><span class="line">  );</span><br><span class="line">  </span><br><span class="line">  drop table SCM_EVENTCONFIG;</span><br><span class="line">  create table SCM_EVENTCONFIG</span><br><span class="line">  (</span><br><span class="line">  	ECID VARCHAR2(16) not null,</span><br><span class="line">  	TARGETFLAG CHAR(1),</span><br><span class="line">  	ASSESSTYPE CHAR(1),</span><br><span class="line">  	PERC NUMBER(2),</span><br><span class="line">  	PERIODUNIT VARCHAR2(10),</span><br><span class="line">COMPONENTSWITCH CHAR(1),</span><br><span class="line">  	constraint PK_SCM_EVENTCONFIG primary key(ECID)</span><br><span class="line">  );</span><br></pre></td></tr></table></figure>
+
+<h2 id="DMDB-数据库备份恢复"><a href="#DMDB-数据库备份恢复" class="headerlink" title="DMDB 数据库备份恢复"></a>DMDB 数据库备份恢复</h2><p><a target="_blank" rel="noopener" href="https://www.modb.pro/db/23507">https://www.modb.pro/db/23507</a></p>
+<h2 id="与MySQL-数据库-SQL-中差异"><a href="#与MySQL-数据库-SQL-中差异" class="headerlink" title="与MySQL 数据库 SQL 中差异"></a>与MySQL 数据库 SQL 中差异</h2><h3 id="geo"><a href="#geo" class="headerlink" title="geo"></a>geo</h3><ul>
+<li>geo 类型由 point 改为 st_point(max)</li>
+</ul>
+<h3 id="FIND-IN-SET"><a href="#FIND-IN-SET" class="headerlink" title="FIND_IN_SET"></a>FIND_IN_SET</h3><blockquote>
+<p>自建 <strong>FIND_IN_SET()函数</strong></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">FUNCTION</span> FIND_IN_SET</span><br><span class="line">                (</span><br><span class="line">                        piv_str1 varchar2,</span><br><span class="line">                        piv_str2 varchar2,</span><br><span class="line">                        p_sep    varchar2 :<span class="operator">=</span> <span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">                <span class="keyword">RETURN</span> NUMBER</span><br><span class="line">                            <span class="keyword">IS</span></span><br><span class="line">                l_idx     number:<span class="operator">=</span><span class="number">0</span>;                 <span class="comment">-- 用于计算piv_str2中分隔符的位置</span></span><br><span class="line">                str       varchar2(<span class="number">500</span>);             <span class="comment">-- 根据分隔符截取的子字符串</span></span><br><span class="line">                piv_str   varchar2(<span class="number">500</span>) :<span class="operator">=</span> piv_str2; <span class="comment">-- 将piv_str2赋值给piv_str</span></span><br><span class="line">                res       number        :<span class="operator">=</span><span class="number">0</span>;         <span class="comment">-- 返回结果</span></span><br><span class="line">                loopIndex number        :<span class="operator">=</span><span class="number">0</span>;</span><br><span class="line">        <span class="keyword">BEGIN</span></span><br><span class="line">                <span class="comment">-- 如果piv_str中没有分割符，直接判断piv_str1和piv_str是否相等，相等 res=1</span></span><br><span class="line">                IF instr(piv_str, p_sep, <span class="number">1</span>) <span class="operator">=</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">                        IF piv_str          <span class="operator">=</span> piv_str1 <span class="keyword">THEN</span></span><br><span class="line">                                res        :<span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">END</span> IF;</span><br><span class="line">                <span class="keyword">ELSE</span></span><br><span class="line">                        <span class="comment">-- 循环按分隔符截取piv_str</span></span><br><span class="line">                        LOOP</span><br><span class="line">                                l_idx    :<span class="operator">=</span> instr(piv_str, p_sep);</span><br><span class="line">                                loopIndex:<span class="operator">=</span>loopIndex<span class="operator">+</span><span class="number">1</span>;</span><br><span class="line">                                <span class="comment">-- 当piv_str中还有分隔符时</span></span><br><span class="line">                                IF l_idx <span class="operator">&gt;</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">                                        <span class="comment">-- 截取第一个分隔符前的字段str</span></span><br><span class="line">                                        str:<span class="operator">=</span> substr(piv_str, <span class="number">1</span>, l_idx<span class="number">-1</span>);</span><br><span class="line">                                        <span class="comment">-- 判断 str 和piv_str1 是否相等，相等 res=1 并结束循环判断</span></span><br><span class="line">                                        IF str      <span class="operator">=</span> piv_str1 <span class="keyword">THEN</span></span><br><span class="line">                                                res:<span class="operator">=</span> loopIndex;</span><br><span class="line">                                                EXIT;</span><br><span class="line">                                        <span class="keyword">END</span> IF;</span><br><span class="line">                                        piv_str :<span class="operator">=</span> substr(piv_str, l_idx<span class="operator">+</span>length(p_sep));</span><br><span class="line">                                <span class="keyword">ELSE</span></span><br><span class="line">                                        <span class="comment">-- 当截取后的piv_str 中不存在分割符时，判断piv_str和piv_str1是否相等，相等 res=1</span></span><br><span class="line">                                        IF piv_str  <span class="operator">=</span> piv_str1 <span class="keyword">THEN</span></span><br><span class="line">                                                res:<span class="operator">=</span> loopIndex;</span><br><span class="line">                                        <span class="keyword">END</span> IF;</span><br><span class="line">                                        <span class="comment">-- 无论最后是否相等，都跳出循环</span></span><br><span class="line">                                        EXIT;</span><br><span class="line">                                <span class="keyword">END</span> IF;</span><br><span class="line">                        <span class="keyword">END</span> LOOP;</span><br><span class="line">                        <span class="comment">-- 结束循环</span></span><br><span class="line">                <span class="keyword">END</span> IF;</span><br><span class="line">                <span class="comment">-- 返回res</span></span><br><span class="line">                <span class="keyword">RETURN</span> res;</span><br><span class="line">        <span class="keyword">END</span> FIND_IN_SET;</span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="DM中关键字排查"><a href="#DM中关键字排查" class="headerlink" title="DM中关键字排查"></a>DM中关键字排查</h2><ul>
+<li>comment 改为 comment_result</li>
+</ul>
+<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><ol>
+<li>SRID 空间参考坐标系 ID 参数值 0 ？4326？</li>
+<li></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/dda1a5d3.html">https://wangwenzhe.github.io/posts/dda1a5d3.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/DM/">DM</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/345c5d.html" title="RSA"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">RSA</div></div></a></div><div class="next-post pull-right"><a href="/posts/6e95d93e.html" title="IDEA-破解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">IDEA-破解</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1c595890.html" title="DM-Linux环境下安装与卸载"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-23</div><div class="title">DM-Linux环境下安装与卸载</div></div></a></div><div><a href="/posts/3dbe92fd.html" title="DM-Docker"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-07</div><div class="title">DM-Docker</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">3.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.</span> <span class="toc-text">安装数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows"><span class="toc-number">4.1.</span> <span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BA%92%E9%BA%9F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.2.</span> <span class="toc-text">麒麟操作系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E4%BE%8B"><span class="toc-number">5.</span> <span class="toc-text">创建数据库实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">6.</span> <span class="toc-text">启动数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="toc-number">6.0.1.</span> <span class="toc-text">方式一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C"><span class="toc-number">6.0.2.</span> <span class="toc-text">方式二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B"><span class="toc-number">6.0.3.</span> <span class="toc-text">查看进程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="toc-number">7.</span> <span class="toc-text">数据库配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%A1%A8%E7%A9%BA%E9%97%B4"><span class="toc-number">7.1.</span> <span class="toc-text">创建表空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%B9%B6%E6%8E%88%E6%9D%83"><span class="toc-number">7.2.</span> <span class="toc-text">创建用户并授权</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB"><span class="toc-number">8.</span> <span class="toc-text">数据库迁移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B7%A5%E5%85%B7"><span class="toc-number">9.</span> <span class="toc-text">可视化客户端工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E8%B0%83%E6%95%B4"><span class="toc-number">10.</span> <span class="toc-text">项目调整</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E7%A8%8B%E9%85%8D%E7%BD%AE"><span class="toc-number">10.1.</span> <span class="toc-text">工程配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">10.2.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%82%E5%95%86%E6%A0%87%E8%AF%86"><span class="toc-number">10.3.</span> <span class="toc-text">数据库厂商标识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DM-%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">10.4.</span> <span class="toc-text">DM 中关键字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DMDB-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E6%81%A2%E5%A4%8D"><span class="toc-number">11.</span> <span class="toc-text">DMDB 数据库备份恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8EMySQL-%E6%95%B0%E6%8D%AE%E5%BA%93-SQL-%E4%B8%AD%E5%B7%AE%E5%BC%82"><span class="toc-number">12.</span> <span class="toc-text">与MySQL 数据库 SQL 中差异</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#geo"><span class="toc-number">12.1.</span> <span class="toc-text">geo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FIND-IN-SET"><span class="toc-number">12.2.</span> <span class="toc-text">FIND_IN_SET</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DM%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97%E6%8E%92%E6%9F%A5"><span class="toc-number">13.</span> <span class="toc-text">DM中关键字排查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%96%91%E9%97%AE"><span class="toc-number">14.</span> <span class="toc-text">疑问</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>XJar-jar加密避免反编译源码泄漏 | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="XJar GitHub: https:&#x2F;&#x2F;github.com&#x2F;core-lib&#x2F;xjar Spring Boot JAR 安全加密运行工具, 同时支持的原生JAR.基于对JAR包内资源的加密以及拓展ClassLoader来构建的一套程序加密启动, 动态解密运行的方案, 避免源码泄露以及反编译.功能特性 无代码侵入, 只需要把编译好的JAR包通过工具加密即可. 完全内存解密, 降低源码以及字节码泄">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XJar-jar加密避免反编译源码泄漏">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/6afdc5a3.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="XJar GitHub: https:&#x2F;&#x2F;github.com&#x2F;core-lib&#x2F;xjar Spring Boot JAR 安全加密运行工具, 同时支持的原生JAR.基于对JAR包内资源的加密以及拓展ClassLoader来构建的一套程序加密启动, 动态解密运行的方案, 避免源码泄露以及反编译.功能特性 无代码侵入, 只需要把编译好的JAR包通过工具加密即可. 完全内存解密, 降低源码以及字节码泄">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2022-03-12T15:27:41.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.798Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="XJar">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/6afdc5a3.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'XJar-jar加密避免反编译源码泄漏',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">XJar-jar加密避免反编译源码泄漏</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-12T15:27:41.000Z" title="发表于 2022-03-12 23:27:41">2022-03-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.798Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/">数据安全</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/XJar-jar%E5%8A%A0%E5%AF%86%E9%81%BF%E5%85%8D%E5%8F%8D%E7%BC%96%E8%AF%91%E6%BA%90%E7%A0%81%E6%B3%84%E6%BC%8F/">XJar-jar加密避免反编译源码泄漏</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="XJar-jar加密避免反编译源码泄漏"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="XJar"><a href="#XJar" class="headerlink" title="XJar "></a>XJar <a target="_blank" rel="noopener" href="https://jitpack.io/#core-lib/xjar"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jitpack.io/v/core-lib/xjar.svg"></a></h1><p>GitHub: <a target="_blank" rel="noopener" href="https://github.com/core-lib/xjar">https://github.com/core-lib/xjar</a></p>
+<h3 id="Spring-Boot-JAR-安全加密运行工具-同时支持的原生JAR"><a href="#Spring-Boot-JAR-安全加密运行工具-同时支持的原生JAR" class="headerlink" title="Spring Boot JAR 安全加密运行工具, 同时支持的原生JAR."></a>Spring Boot JAR 安全加密运行工具, 同时支持的原生JAR.</h3><h3 id="基于对JAR包内资源的加密以及拓展ClassLoader来构建的一套程序加密启动-动态解密运行的方案-避免源码泄露以及反编译"><a href="#基于对JAR包内资源的加密以及拓展ClassLoader来构建的一套程序加密启动-动态解密运行的方案-避免源码泄露以及反编译" class="headerlink" title="基于对JAR包内资源的加密以及拓展ClassLoader来构建的一套程序加密启动, 动态解密运行的方案, 避免源码泄露以及反编译."></a>基于对JAR包内资源的加密以及拓展ClassLoader来构建的一套程序加密启动, 动态解密运行的方案, 避免源码泄露以及反编译.</h3><h2 id="功能特性"><a href="#功能特性" class="headerlink" title="功能特性"></a>功能特性</h2><ul>
+<li>无代码侵入, 只需要把编译好的JAR包通过工具加密即可.</li>
+<li>完全内存解密, 降低源码以及字节码泄露或反编译的风险.</li>
+<li>支持所有JDK内置加解密算法.</li>
+<li>可选择需要加解密的字节码或其他资源文件.</li>
+<li>支持Maven插件, 加密更加便捷.</li>
+<li>动态生成Go启动器, 保护密码不泄露.</li>
+</ul>
+<h2 id="环境依赖"><a href="#环境依赖" class="headerlink" title="环境依赖"></a>环境依赖</h2><p>JDK 1.7 +</p>
+<h2 id="代码方式加密"><a href="#代码方式加密" class="headerlink" title="代码方式加密"></a>代码方式加密</h2><h4 id="1-添加依赖"><a href="#1-添加依赖" class="headerlink" title="1. 添加依赖"></a>1. 添加依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">project</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 设置 jitpack.io 仓库 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>jitpack.io<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://jitpack.io<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 添加 XJar 依赖 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.core-lib<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xjar<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- &lt;scope&gt;test&lt;/scope&gt; --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>必须添加 <a target="_blank" rel="noopener" href="https://jitpack.io/">https://jitpack.io</a> Maven仓库.</li>
+<li>如果使用 JUnit 测试类来运行加密可以将 XJar 依赖的 scope 设置为 test.</li>
+</ul>
+<h4 id="2-加密-jar"><a href="#2-加密-jar" class="headerlink" title="2. 加密 jar"></a>2. 加密 jar</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">XCryptos.encryption()</span><br><span class="line">        .from(<span class="string">&quot;/path/to/read/plaintext.jar&quot;</span>)</span><br><span class="line">        .use(<span class="string">&quot;io.xjar&quot;</span>)</span><br><span class="line">        .include(<span class="string">&quot;/io/xjar/**/*.class&quot;</span>)</span><br><span class="line">        .include(<span class="string">&quot;/mapper/**/*Mapper.xml&quot;</span>)</span><br><span class="line">        .exclude(<span class="string">&quot;/static/**/*&quot;</span>)</span><br><span class="line">        .exclude(<span class="string">&quot;/conf/*&quot;</span>)</span><br><span class="line">        .to(<span class="string">&quot;/path/to/save/encrypted.jar&quot;</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+    <tr>
+        <th>方法名称</th><th>参数列表</th><th>是否必选</th><th>方法说明</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>from</td><td>(String jar)</td><td rowspan="2">二选一</td><td>指定待加密JAR包路径</td>
+    </tr>
+    <tr>
+        <td>from</td><td>(File jar)</td><td>指定待加密JAR包文件</td>
+    </tr>
+    <tr>
+        <td>use</td><td>(String password)</td><td rowspan="2">二选一</td><td>指定加密密码</td>
+    </tr>
+    <tr>
+        <td>use</td><td>(String algorithm, int keysize, int ivsize, String password)</td><td>指定加密算法及加密密码</td>
+    </tr>
+    <tr>
+        <td>include</td><td>(String ant)</td><td>可多次调用</td><td>指定要加密的资源相对于classpath的ANT路径表达式</td>
+    </tr>
+    <tr>
+        <td>include</td><td>(Pattern regex)</td><td>可多次调用</td><td>指定要加密的资源相对于classpath的正则路径表达式</td>
+    </tr>
+    <tr>
+        <td>exclude</td><td>(String ant)</td><td>可多次调用</td><td>指定不加密的资源相对于classpath的ANT路径表达式</td>
+    </tr>
+    <tr>
+        <td>exclude</td><td>(Pattern regex)</td><td>可多次调用</td><td>指定不加密的资源相对于classpath的正则路径表达式</td>
+    </tr>
+    <tr>
+        <td>to</td><td>(String xJar)</td><td rowspan="2">二选一</td><td>指定加密后JAR包输出路径, 并执行加密.</td>
+    </tr>
+    <tr>
+        <td>to</td><td>(File xJar)</td><td>指定加密后JAR包输出文件, 并执行加密.</td>
+    </tr>
+</tbody>
+</table>
+
+<ul>
+<li>指定加密算法的时候密钥长度以及向量长度必须在算法可支持范围内, 具体加密算法的密钥及向量长度请自行百度或谷歌.</li>
+<li>include 和 exclude 同时使用时即加密在include的范围内且排除了exclude的资源.</li>
+</ul>
+<h4 id="3-编译-go-脚本，获取启动程序"><a href="#3-编译-go-脚本，获取启动程序" class="headerlink" title="3. 编译 go 脚本，获取启动程序"></a>3. 编译 go 脚本，获取启动程序</h4><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go build xjar.go</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过步骤2加密成功后XJar会在输出的JAR包同目录下生成一个名为 xjar.go 的的Go启动器源码文件.</li>
+<li>将 xjar.go 在不同的平台进行编译即可得到不同平台的启动器可执行文件, 其中Windows下文件名为 xjar.exe 而Linux下为 xjar.</li>
+<li>用于编译的机器需要安装 Go 环境, 用于运行的机器则可不必安装 Go 环境, 具体安装教程请自行搜索.</li>
+<li>由于启动器自带JAR包防篡改校验, 故启动器无法通用, 即便密码相同也不行.</li>
+</ul>
+<h4 id="4-启动运行"><a href="#4-启动运行" class="headerlink" title="4. 启动运行"></a>4. 启动运行</h4><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/path/to/xjar /path/to/java [OPTIONS] -jar /path/to/encrypted.jar [ARGS]</span><br><span class="line"></span><br><span class="line">/path/to/xjar /path/to/javaw [OPTIONS] -jar /path/to/encrypted.jar [ARGS]</span><br><span class="line"></span><br><span class="line">nohup /path/to/xjar /path/to/java [OPTIONS] -jar /path/to/encrypted.jar [ARGS]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 Java 启动命令前加上编译好的Go启动器可执行文件名(xjar)即可启动运行加密后的JAR包.</li>
+<li>若使用 nohup 方式启动则 nohup 要放在Go启动器可执行文件名(xjar)之前.</li>
+<li>若Go启动器可执行文件名(xjar)不在当前命令行所在目录则要通过绝对路径或相对路径指定.</li>
+<li>仅支持通过 -jar 方式启动, 不支持-cp或-classpath的方式.</li>
+<li>-jar 后面必须紧跟着启动的加密jar文件路径</li>
+<li>例子: 如果当前命令行就在 xjar 所在目录, java 环境变量也设置好了 .&#x2F;xjar java -Xms256m -Xmx1024m -jar &#x2F;path&#x2F;to&#x2F;encrypted.jar</li>
+</ul>
+<h2 id="插件方式加密【推荐】"><a href="#插件方式加密【推荐】" class="headerlink" title="插件方式加密【推荐】"></a>插件方式加密【推荐】</h2><p>Maven项目可通过集成 <a target="_blank" rel="noopener" href="https://github.com/core-lib/xjar-maven-plugin">xjar-maven-plugin</a> 以免去每次加密都要执行一次上述的代码, 随着Maven构建自动生成加密后的JAR和Go启动器源码文件</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/core-lib/xjar-maven-plugin">xjar-maven-plugin</a> GitHub: <a target="_blank" rel="noopener" href="https://github.com/core-lib/xjar-maven-plugin">https://github.com/core-lib/xjar-maven-plugin</a></p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">project</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 设置 jitpack.io 插件仓库 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginRepositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pluginRepository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>jitpack.io<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://jitpack.io<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">pluginRepository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">pluginRepositories</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 添加 XJar Maven 插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.core-lib<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xjar-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">goal</span>&gt;</span>build<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                        <span class="comment">&lt;!-- 或使用</span></span><br><span class="line"><span class="comment">                        &lt;phase&gt;install&lt;/phase&gt;</span></span><br><span class="line"><span class="comment">                        --&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                            <span class="comment">&lt;!--&lt;password&gt;io.xjar&lt;/password&gt;</span></span><br><span class="line"><span class="comment">                             optional</span></span><br><span class="line"><span class="comment">                            &lt;algorithm/&gt;</span></span><br><span class="line"><span class="comment">                            &lt;keySize/&gt;</span></span><br><span class="line"><span class="comment">                            &lt;ivSize/&gt;</span></span><br><span class="line"><span class="comment">                            &lt;includes&gt;</span></span><br><span class="line"><span class="comment">                                &lt;include/&gt;</span></span><br><span class="line"><span class="comment">                            &lt;/includes&gt;</span></span><br><span class="line"><span class="comment">                            &lt;excludes&gt;</span></span><br><span class="line"><span class="comment">                                &lt;exclude/&gt;</span></span><br><span class="line"><span class="comment">                            &lt;/excludes&gt;</span></span><br><span class="line"><span class="comment">                            &lt;sourceDir/&gt;</span></span><br><span class="line"><span class="comment">                            &lt;sourceJar/&gt;</span></span><br><span class="line"><span class="comment">                            &lt;targetDir/&gt;</span></span><br><span class="line"><span class="comment">                            &lt;targetJar/&gt;</span></span><br><span class="line"><span class="comment">                            --&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">output 目录下会生成 xjar.go 脚本、加密后的程序jar文件demo-0.0.1-SNAPSHOT.xjar</span></span><br><span class="line">mvn clean package -Dxjar.password=123456 -Dxjar.targetDir=/path/output</span><br></pre></td></tr></table></figure>
+
+<h3 id="编译-go-脚本，获取启动程序"><a href="#编译-go-脚本，获取启动程序" class="headerlink" title="编译 go 脚本，获取启动程序"></a>编译 go 脚本，获取启动程序</h3><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">生成启动程序，Windows下文件名为 xjar.exe 而Linux下为 xjar</span></span><br><span class="line">go build xjar.go</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过步骤2加密成功后XJar会在输出的JAR包同目录下生成一个名为 xjar.go 的的Go启动器源码文件.</li>
+<li>将 xjar.go 在不同的平台进行编译即可得到不同平台的启动器可执行文件, 其中Windows下文件名为 xjar.exe 而Linux下为 xjar.</li>
+<li>用于编译的机器需要安装 Go 环境, 用于运行的机器则可不必安装 Go 环境, 具体安装教程请自行搜索.</li>
+<li>由于启动器自带JAR包防篡改校验, 故启动器无法通用, 即便密码相同也不行.</li>
+</ul>
+<h3 id="启动运行"><a href="#启动运行" class="headerlink" title="启动运行"></a>启动运行</h3><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xjar java [OPTIONS] -jar /path/output/demo-0.0.1-SNAPSHOT.xjar</span><br><span class="line"></span><br><span class="line">xjar javaw [OPTIONS] -jar /path/output/demo-0.0.1-SNAPSHOT.xjar</span><br><span class="line"></span><br><span class="line">nohup xjar java [OPTIONS] -jar /path/output/demo-0.0.1-SNAPSHOT.xjar</span><br></pre></td></tr></table></figure>
+
+<h2 id="强烈建议"><a href="#强烈建议" class="headerlink" title="强烈建议"></a>强烈建议</h2><p>强烈建议不要在 pom.xml 的 xjar-maven-plugin 配置中写上密码，这样会导致打包出来的 xjar 包中的 pom.xml 文件保留着密码，极其容易暴露密码！强烈推荐通过 mvn 命令来指定加密密钥！</p>
+<h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><table>
+<thead>
+<tr>
+<th align="left">参数名称</th>
+<th align="left">命令参数名称</th>
+<th align="left">参数说明</th>
+<th align="left">参数类型</th>
+<th align="left">缺省值</th>
+<th align="left">示例值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">password</td>
+<td align="left">-Dxjar.password</td>
+<td align="left">密码字符串</td>
+<td align="left">String</td>
+<td align="left">必须</td>
+<td align="left">任意字符串, io.xjar</td>
+</tr>
+<tr>
+<td align="left">algorithm</td>
+<td align="left">-Dxjar.algorithm</td>
+<td align="left">加密算法名称</td>
+<td align="left">String</td>
+<td align="left">AES&#x2F;CBC&#x2F;PKCS5Padding</td>
+<td align="left">JDK内置加密算法, 如：AES&#x2F;CBC&#x2F;PKCS5Padding 和 DES&#x2F;CBC&#x2F;PKCS5Padding</td>
+</tr>
+<tr>
+<td align="left">keySize</td>
+<td align="left">-Dxjar.keySize</td>
+<td align="left">密钥长度</td>
+<td align="left">int</td>
+<td align="left">128</td>
+<td align="left">根据加密算法而定, 56, 128, 256</td>
+</tr>
+<tr>
+<td align="left">ivSize</td>
+<td align="left">-Dxjar.ivSize</td>
+<td align="left">密钥向量长度</td>
+<td align="left">int</td>
+<td align="left">128</td>
+<td align="left">根据加密算法而定, 128</td>
+</tr>
+<tr>
+<td align="left">sourceDir</td>
+<td align="left">-Dxjar.sourceDir</td>
+<td align="left">源jar所在目录</td>
+<td align="left">File</td>
+<td align="left">${project.build.directory}</td>
+<td align="left">文件目录</td>
+</tr>
+<tr>
+<td align="left">sourceJar</td>
+<td align="left">-Dxjar.sourceJar</td>
+<td align="left">源jar名称</td>
+<td align="left">String</td>
+<td align="left">${project.build.finalName}.jar</td>
+<td align="left">文件名称</td>
+</tr>
+<tr>
+<td align="left">targetDir</td>
+<td align="left">-Dxjar.targetDir</td>
+<td align="left">目标jar存放目录</td>
+<td align="left">File</td>
+<td align="left">${project.build.directory}</td>
+<td align="left">文件目录</td>
+</tr>
+<tr>
+<td align="left">targetJar</td>
+<td align="left">-Dxjar.targetJar</td>
+<td align="left">目标jar名称</td>
+<td align="left">String</td>
+<td align="left">${project.build.finalName}.xjar</td>
+<td align="left">文件名称</td>
+</tr>
+<tr>
+<td align="left">includes</td>
+<td align="left">-Dxjar.includes</td>
+<td align="left">需要加密的资源路径表达式</td>
+<td align="left">String[]</td>
+<td align="left">无</td>
+<td align="left">io&#x2F;xjar&#x2F;** , mapper&#x2F;*Mapper.xml , 支持Ant表达式</td>
+</tr>
+<tr>
+<td align="left">excludes</td>
+<td align="left">-Dxjar.excludes</td>
+<td align="left">无需加密的资源路径表达式</td>
+<td align="left">String[]</td>
+<td align="left">无</td>
+<td align="left">static&#x2F;** , META-INF&#x2F;resources&#x2F;** , 支持Ant表达式</td>
+</tr>
+</tbody></table>
+<ul>
+<li>指定加密算法的时候密钥长度以及向量长度必须在算法可支持范围内, 具体加密算法的密钥及向量长度请自行百度或谷歌.</li>
+<li>当 includes 和 excludes 同时使用时即加密在includes的范围内且排除了excludes的资源.</li>
+</ul>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h4 id="1-不兼容-spring-boot-maven-plugin-的-executable-true-以及-embeddedLaunchScript"><a href="#1-不兼容-spring-boot-maven-plugin-的-executable-true-以及-embeddedLaunchScript" class="headerlink" title="1. 不兼容 spring-boot-maven-plugin 的 executable &#x3D; true 以及 embeddedLaunchScript"></a>1. 不兼容 spring-boot-maven-plugin 的 executable &#x3D; true 以及 embeddedLaunchScript</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 需要将executable和embeddedLaunchScript参数删除, 目前还不能支持对该模式Jar的加密！后面可能会支持该方式的打包. </span></span><br><span class="line"><span class="comment">    &lt;configuration&gt;</span></span><br><span class="line"><span class="comment">        &lt;executable&gt;true&lt;/executable&gt;</span></span><br><span class="line"><span class="comment">        &lt;embeddedLaunchScript&gt;...&lt;/embeddedLaunchScript&gt;</span></span><br><span class="line"><span class="comment">    &lt;/configuration&gt;</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Spring-Boot-JPA-Hibernate-启动报错问题"><a href="#2-Spring-Boot-JPA-Hibernate-启动报错问题" class="headerlink" title="2. Spring Boot + JPA(Hibernate) 启动报错问题"></a>2. Spring Boot + JPA(Hibernate) 启动报错问题</h4><p>如果项目中使用了 JPA 且实现为Hibernate时, 由于Hibernate自己解析加密后的Jar文件, 所以无法正常启动, 可以采用以下解决方案:</p>
+<ol>
+<li>clone <a target="_blank" rel="noopener" href="https://github.com/core-lib/xjar-agent-hibernate">XJar-Agent-Hibernate</a> , 使用 mvn clean package 编译出 xjar-agent-hibernate-${version}.jar 文件</li>
+<li>采用 xjar java -javaagent:xjar-agent-hibernate-${version}.jar -jar your-spring-boot-app.jar 命令启动</li>
+</ol>
+<h4 id="3-静态文件浏览器无法加载完成问题"><a href="#3-静态文件浏览器无法加载完成问题" class="headerlink" title="3. 静态文件浏览器无法加载完成问题"></a>3. 静态文件浏览器无法加载完成问题</h4><p>由于静态文件被加密后文件体积变大, Spring Boot 会采用文件的大小作为 Content-Length 头返回给浏览器,<br>但实际上通过 XJar 加载解密后文件大小恢复了原本的大小, 所以浏览器认为还没接收完导致一直等待服务端.<br>由此我们需要在加密时忽略静态文件的加密, 实际上静态文件也没加密的必要, 因为即便加密了用户在浏览器<br>查看源代码也是能看到完整的源码.通常情况下静态文件都会放在 static&#x2F; 和 META-INF&#x2F;resources&#x2F; 目录下,<br>我们只需要在加密时通过 exclude 方法排除这些资源即可, 可以参考以下例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">XCryptos.encryption()</span><br><span class="line">        .from(<span class="string">&quot;/path/to/read/plaintext.jar&quot;</span>)</span><br><span class="line">        .use(<span class="string">&quot;io.xjar&quot;</span>)</span><br><span class="line">        .exclude(<span class="string">&quot;/static/**/*&quot;</span>)</span><br><span class="line">        .exclude(<span class="string">&quot;/META-INF/resources/**/*&quot;</span>)</span><br><span class="line">        .to(<span class="string">&quot;/path/to/save/encrypted.jar&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-JDK-9及以上版本由于模块化导致XJar无法使用-jdk-internal-loader-包的问题解决方案"><a href="#4-JDK-9及以上版本由于模块化导致XJar无法使用-jdk-internal-loader-包的问题解决方案" class="headerlink" title="4. JDK-9及以上版本由于模块化导致XJar无法使用 jdk.internal.loader 包的问题解决方案"></a>4. JDK-9及以上版本由于模块化导致XJar无法使用 jdk.internal.loader 包的问题解决方案</h4><p>在启动时添加参数 –add-opens java.base&#x2F;jdk.internal.loader&#x3D;ALL-UNNAMED</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xjar java --add-opens java.base/jdk.internal.loader=ALL-UNNAMED -jar /path/to/encrypted.jar</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-由于使用了阿里云Maven镜像导致无法从-jitpack-io-下载-XJar-依赖的问题"><a href="#5-由于使用了阿里云Maven镜像导致无法从-jitpack-io-下载-XJar-依赖的问题" class="headerlink" title="5. 由于使用了阿里云Maven镜像导致无法从 jitpack.io 下载 XJar 依赖的问题"></a>5. 由于使用了阿里云Maven镜像导致无法从 jitpack.io 下载 XJar 依赖的问题</h4><p>参考如下设置, 在镜像配置的 mirrorOf 元素中加入 ,!jitpack.io 结尾.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central,!jitpack.io<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/repositories/central/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>更多文档：[xjar-maven-plugin]</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/6afdc5a3.html">https://wangwenzhe.github.io/posts/6afdc5a3.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/XJar/">XJar</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/f41d66d2.html" title="knife4j"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">knife4j</div></div></a></div><div class="next-post pull-right"><a href="/posts/1c6ba3e2.html" title="Netty"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Netty</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#XJar"><span class="toc-number">1.</span> <span class="toc-text">XJar </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Boot-JAR-%E5%AE%89%E5%85%A8%E5%8A%A0%E5%AF%86%E8%BF%90%E8%A1%8C%E5%B7%A5%E5%85%B7-%E5%90%8C%E6%97%B6%E6%94%AF%E6%8C%81%E7%9A%84%E5%8E%9F%E7%94%9FJAR"><span class="toc-number">1.0.1.</span> <span class="toc-text">Spring Boot JAR 安全加密运行工具, 同时支持的原生JAR.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%AF%B9JAR%E5%8C%85%E5%86%85%E8%B5%84%E6%BA%90%E7%9A%84%E5%8A%A0%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%8B%93%E5%B1%95ClassLoader%E6%9D%A5%E6%9E%84%E5%BB%BA%E7%9A%84%E4%B8%80%E5%A5%97%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%AF%86%E5%90%AF%E5%8A%A8-%E5%8A%A8%E6%80%81%E8%A7%A3%E5%AF%86%E8%BF%90%E8%A1%8C%E7%9A%84%E6%96%B9%E6%A1%88-%E9%81%BF%E5%85%8D%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2%E4%BB%A5%E5%8F%8A%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-number">1.0.2.</span> <span class="toc-text">基于对JAR包内资源的加密以及拓展ClassLoader来构建的一套程序加密启动, 动态解密运行的方案, 避免源码泄露以及反编译.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">功能特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96"><span class="toc-number">1.2.</span> <span class="toc-text">环境依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F%E5%8A%A0%E5%AF%86"><span class="toc-number">1.3.</span> <span class="toc-text">代码方式加密</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%B7%BB%E5%8A%A0%E4%BE%9D%E8%B5%96"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">1. 添加依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%8A%A0%E5%AF%86-jar"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">2. 加密 jar</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%BC%96%E8%AF%91-go-%E8%84%9A%E6%9C%AC%EF%BC%8C%E8%8E%B7%E5%8F%96%E5%90%AF%E5%8A%A8%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">3. 编译 go 脚本，获取启动程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%90%AF%E5%8A%A8%E8%BF%90%E8%A1%8C"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">4. 启动运行</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E6%96%B9%E5%BC%8F%E5%8A%A0%E5%AF%86%E3%80%90%E6%8E%A8%E8%8D%90%E3%80%91"><span class="toc-number">1.4.</span> <span class="toc-text">插件方式加密【推荐】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%8C%85"><span class="toc-number">1.4.2.</span> <span class="toc-text">打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91-go-%E8%84%9A%E6%9C%AC%EF%BC%8C%E8%8E%B7%E5%8F%96%E5%90%AF%E5%8A%A8%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.4.3.</span> <span class="toc-text">编译 go 脚本，获取启动程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E8%BF%90%E8%A1%8C"><span class="toc-number">1.4.4.</span> <span class="toc-text">启动运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E7%83%88%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.5.</span> <span class="toc-text">强烈建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">1.6.</span> <span class="toc-text">参数说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.7.</span> <span class="toc-text">注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%B8%8D%E5%85%BC%E5%AE%B9-spring-boot-maven-plugin-%E7%9A%84-executable-true-%E4%BB%A5%E5%8F%8A-embeddedLaunchScript"><span class="toc-number">1.7.0.1.</span> <span class="toc-text">1. 不兼容 spring-boot-maven-plugin 的 executable &#x3D; true 以及 embeddedLaunchScript</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Spring-Boot-JPA-Hibernate-%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.0.2.</span> <span class="toc-text">2. Spring Boot + JPA(Hibernate) 启动报错问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E6%B5%8F%E8%A7%88%E5%99%A8%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E5%AE%8C%E6%88%90%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.0.3.</span> <span class="toc-text">3. 静态文件浏览器无法加载完成问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-JDK-9%E5%8F%8A%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E7%94%B1%E4%BA%8E%E6%A8%A1%E5%9D%97%E5%8C%96%E5%AF%BC%E8%87%B4XJar%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8-jdk-internal-loader-%E5%8C%85%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.7.0.4.</span> <span class="toc-text">4. JDK-9及以上版本由于模块化导致XJar无法使用 jdk.internal.loader 包的问题解决方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E7%94%B1%E4%BA%8E%E4%BD%BF%E7%94%A8%E4%BA%86%E9%98%BF%E9%87%8C%E4%BA%91Maven%E9%95%9C%E5%83%8F%E5%AF%BC%E8%87%B4%E6%97%A0%E6%B3%95%E4%BB%8E-jitpack-io-%E4%B8%8B%E8%BD%BD-XJar-%E4%BE%9D%E8%B5%96%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.0.5.</span> <span class="toc-text">5. 由于使用了阿里云Maven镜像导致无法从 jitpack.io 下载 XJar 依赖的问题</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Windows-问题汇总 | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="系统Win7 PPTP VPN 连接操作步骤http:&#x2F;&#x2F;nic.upc.edu.cn&#x2F;2018&#x2F;0315&#x2F;c7809a137813&#x2F;page.htm 一、配置 PPTP VPN 步骤：  右键右下角有线网络图标（或无线网络图标），点击 打开网络与共享中心（或右键桌面上的 网络，点击 属性，进入 网络与共享中心 页面)，并点击 设置新的连接或网络，如下图所示：    选择 连接到工作区，点击 下一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows-问题汇总">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/5ff118f8.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="系统Win7 PPTP VPN 连接操作步骤http:&#x2F;&#x2F;nic.upc.edu.cn&#x2F;2018&#x2F;0315&#x2F;c7809a137813&#x2F;page.htm 一、配置 PPTP VPN 步骤：  右键右下角有线网络图标（或无线网络图标），点击 打开网络与共享中心（或右键桌面上的 网络，点击 属性，进入 网络与共享中心 页面)，并点击 设置新的连接或网络，如下图所示：    选择 连接到工作区，点击 下一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2020-07-13T05:46:54.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.796Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="Windows">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/5ff118f8.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Windows-问题汇总',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Windows-问题汇总</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-07-13T05:46:54.000Z" title="发表于 2020-07-13 13:46:54">2020-07-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.796Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Windows/">Windows</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Windows/%E7%B3%BB%E7%BB%9F/">系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Windows-问题汇总"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h2><h3 id="Win7-PPTP-VPN-连接操作步骤"><a href="#Win7-PPTP-VPN-连接操作步骤" class="headerlink" title="Win7 PPTP VPN 连接操作步骤"></a>Win7 PPTP VPN 连接操作步骤</h3><p><a target="_blank" rel="noopener" href="http://nic.upc.edu.cn/2018/0315/c7809a137813/page.htm">http://nic.upc.edu.cn/2018/0315/c7809a137813/page.htm</a></p>
+<p>一、配置 PPTP VPN 步骤：</p>
+<ol>
+<li>右键右下角有线网络图标<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://nic.upc.edu.cn/_upload/article/images/dd/19/7a8a5e354dbdbb6d674e9973807d/08562e4f-3105-4bce-8f86-93f89beece29.png" alt="img">（或无线网络图标），点击 打开网络与共享中心（或右键桌面上的 网络，点击 属性，进入 网络与共享中心 页面)，并点击 设置新的连接或网络，如下图所示：</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://nic.upc.edu.cn/_upload/article/images/dd/19/7a8a5e354dbdbb6d674e9973807d/25d7e745-021c-4d2b-87f2-5d5fbfdcf0ba.png" alt="img"></p>
+<ol start="2">
+<li>选择 连接到工作区，点击 下一步。如下图所示：</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://nic.upc.edu.cn/_upload/article/images/dd/19/7a8a5e354dbdbb6d674e9973807d/f411a859-7efe-4fd2-a750-912b894c45af.png" alt="img"></p>
+<ol start="3">
+<li>选择 使用我的 Internet 连接（VPN）(I)，如下图所示：</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://nic.upc.edu.cn/_upload/article/images/dd/19/7a8a5e354dbdbb6d674e9973807d/58e1d814-543f-4a7e-a030-75ac042bd395.png" alt="img"></p>
+<ol start="4">
+<li>在 Internet 地址中输入 VPN 服务器的地址：vpn.upc.edu.cn，下面三个选项选择 “现在不连接；仅进行设置以便稍后连接”，点下一步，如下图所示：</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://nic.upc.edu.cn/_upload/article/images/dd/19/7a8a5e354dbdbb6d674e9973807d/769d1e18-773f-4278-80ff-cf26789d9ffc.png" alt="img"></p>
+<ol start="5">
+<li>在弹出的对话框中，不输入用户名和密码，直接点创建，如下图所示：</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://nic.upc.edu.cn/_upload/article/images/dd/19/7a8a5e354dbdbb6d674e9973807d/f678faa9-900c-438c-9b44-cfca1ebb658d.png" alt="img"></p>
+<ol start="6">
+<li>在跳转到的页面点 关闭。如下图所示：</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://nic.upc.edu.cn/_upload/article/images/dd/19/7a8a5e354dbdbb6d674e9973807d/d9edada7-cab9-461d-96f3-273a4ba8ff1f.png" alt="img"></p>
+<p>二、连接 VPN 步骤：</p>
+<ol>
+<li>找到 “网络和共享中心”，点击左侧 “ 更改适配器设置 ”，如下图所示：</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://nic.upc.edu.cn/_upload/article/images/dd/19/7a8a5e354dbdbb6d674e9973807d/59aaafea-1316-4d2e-b163-d41ea7d24497.png" alt="img"></p>
+<ol start="2">
+<li>右键 VPN 连接，打开属性选项卡中安全选项，在 VPN 类型中，选择 “点对点隧道协议（PPTP）”，在数据加密中，选择 “可选加密（没有加密也可以连接）”，在允许使用这些协议中，勾选 “未加密的密码（PAP）” 和 “质询握手身份验证协议（CHAP）”，如下图所示：</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://nic.upc.edu.cn/_upload/article/images/dd/19/7a8a5e354dbdbb6d674e9973807d/9f277d32-564c-4b2b-96cf-78975ded2756.png" alt="img"></p>
+<ol start="3">
+<li>双击 VPN 连接，在弹出窗口，输入 VPN 用户名和密码，点连接，完成 VPN 连接。如下图所示：</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://nic.upc.edu.cn/_upload/article/images/dd/19/7a8a5e354dbdbb6d674e9973807d/f5cb57e1-5021-472d-8f9d-380c97def31f.png" alt="img"></p>
+<h3 id="win7-系统怎么从家庭普通版升级到旗舰版"><a href="#win7-系统怎么从家庭普通版升级到旗舰版" class="headerlink" title="win7 系统怎么从家庭普通版升级到旗舰版"></a>win7 系统怎么从家庭普通版升级到旗舰版</h3><p>控制面板 ——&gt; 系统和安全 ——&gt; Windows Anytime Upgrade ——&gt; 输入升级密钥 ——&gt; 输入 <code>RHTBY-VWY6D-QJRJ9-JGQ3X-Q2289</code> ——&gt; 耐心等待系统的升级完成</p>
+<h3 id="修改-hosts-立即生效"><a href="#修改-hosts-立即生效" class="headerlink" title="修改 hosts 立即生效"></a>修改 hosts 立即生效</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 显示所有 dns 内容</span><br><span class="line">ipconfig /displaydns</span><br><span class="line"></span><br><span class="line"># 刷新所有 dns 内容</span><br><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure>
+
+<h3 id="win10-操作中心开关呈灰色无法打开"><a href="#win10-操作中心开关呈灰色无法打开" class="headerlink" title="win10 操作中心开关呈灰色无法打开"></a>win10 操作中心开关呈灰色无法打开</h3><ol>
+<li>运行 gpedit.msc</li>
+<li>用户配置 - 管理模板 - “开始”菜单和任务栏-右侧设置中「删除通知和操作中心」-双击打开新窗口-来回切换至「未配置」-确定</li>
+<li>设置-任务栏通知区域-打开或关闭系统图标-操作中心</li>
+</ol>
+<h3 id="若提示因为计算机中丢失MSVCR120-dll"><a href="#若提示因为计算机中丢失MSVCR120-dll" class="headerlink" title="若提示因为计算机中丢失MSVCR120.dll"></a>若提示因为计算机中丢失MSVCR120.dll</h3><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/image-20200717221401757.png" alt="image-20200717221401757" style="zoom:50%;" />
+
+<p>解决：下载 <code>msvcr120.dll</code>，放到 <code>C:\Windows\System32\msvcr120.dll</code></p>
+<h3 id="无法删除文件或文件夹，提示无权限"><a href="#无法删除文件或文件夹，提示无权限" class="headerlink" title="无法删除文件或文件夹，提示无权限"></a>无法删除文件或文件夹，提示无权限</h3><ol>
+<li><p>当前账号切换为 <code>administrator</code>，没有 <code>administrator</code> 的，需要先激活</p>
+</li>
+<li><p>修改文件夹所有者为<code>administrator</code></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20200526173939_image-20200526173939578.png" alt="image-20200526173939578" style="zoom:50%;" /></li>
+</ol>
+<h2 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h2><h3 id="win10-创建管理员账户（非-administrator）"><a href="#win10-创建管理员账户（非-administrator）" class="headerlink" title="win10 创建管理员账户（非 administrator）"></a>win10 创建管理员账户（非 administrator）</h3><p>控制面板-用户账户-管理其他账户-在电脑设置中添加新用户-将其他人添加到这台电脑-本地用户和组（本地）-用户-右键新用户-创建-选择用户右键-属性-隶属于-Users删除-添加-输入对象名称来选择-administrators-确定</p>
+<h3 id="Win7-管理员-Administrator-用户启用、禁用"><a href="#Win7-管理员-Administrator-用户启用、禁用" class="headerlink" title="Win7 管理员 Administrator 用户启用、禁用"></a>Win7 管理员 Administrator 用户启用、禁用</h3><ul>
+<li><p>启用 Administrator</p>
+<blockquote>
+<p>net user administrator &#x2F;active:yes</p>
+</blockquote>
+</li>
+<li><p>禁用 Administrator </p>
+<blockquote>
+<p> net user administrator &#x2F;active:no</p>
+</blockquote>
+</li>
+<li><p>图形界面操作</p>
+<blockquote>
+<p> 计算机管理-系统工具-本地用户和组-用户</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangwenzhe.oss-cn-beijing.aliyuncs.com/UTOOLS1576651521807.png" alt="UTOOLS1576651521807.png"></p>
+</li>
+</ul>
+<h2 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h2><h3 id="修改鼠标滚动方向"><a href="#修改鼠标滚动方向" class="headerlink" title="修改鼠标滚动方向"></a>修改鼠标滚动方向</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\HID\VID_046D&amp;PID_C534&amp;MI_01&amp;Col01\7&amp;dc2f557&amp;0&amp;0000\Device Parameters</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangwenzhe.oss-cn-beijing.aliyuncs.com/UTOOLS1576651532373.png" alt="UTOOLS1576651532373.png"></p>
+<h2 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h2><h3 id="搜狗输入法中文状态下无法输入中文"><a href="#搜狗输入法中文状态下无法输入中文" class="headerlink" title="搜狗输入法中文状态下无法输入中文"></a>搜狗输入法中文状态下无法输入中文</h3><blockquote>
+<p>ctrl+shift+E 切换下即可「属性设置-高级-系统功能快捷键-英文输入法」</p>
+</blockquote>
+<h2 id="远程"><a href="#远程" class="headerlink" title="远程"></a>远程</h2><h3 id="Windows-远程桌面-出现-身份验证错误，要求的函数不受支持"><a href="#Windows-远程桌面-出现-身份验证错误，要求的函数不受支持" class="headerlink" title="Windows 远程桌面 出现 身份验证错误，要求的函数不受支持"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/raswin/p/9018388.html">Windows 远程桌面 出现 身份验证错误，要求的函数不受支持</a></h3><p>解决方法：运行 gpedit.msc 本地组策略：计算机配置 &gt; 管理模板 &gt; 系统 &gt; 凭据分配 &gt; 加密 Oracle 修正，选择启用并选择易受攻击</p>
+<p>如果没有本地组策略，可能是因为当前 Windows 是家庭版，例如 Windows 7 家庭版，参考上面『win7 系统怎么从家庭普通版升级到旗舰版』，升级后就可以进行后面的操作了</p>
+<h3 id="Mac-通过-AnyDesk-远程连接Windows，键盘无法输入密码"><a href="#Mac-通过-AnyDesk-远程连接Windows，键盘无法输入密码" class="headerlink" title="Mac 通过 AnyDesk 远程连接Windows，键盘无法输入密码"></a>Mac 通过 AnyDesk 远程连接Windows，键盘无法输入密码</h3><blockquote>
+<p>把 Mac 输入法暂调为英文键盘即可</p>
+</blockquote>
+<h2 id="模拟器"><a href="#模拟器" class="headerlink" title="模拟器"></a>模拟器</h2><h3 id="运行安卓模拟器蓝屏解决方案"><a href="#运行安卓模拟器蓝屏解决方案" class="headerlink" title="运行安卓模拟器蓝屏解决方案"></a>运行安卓模拟器蓝屏解决方案</h3><p>关闭 Hyper-V 和 Windows 沙盒，运行以下命令，重启电脑</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DISM /Online /Disable-Feature /FeatureName:&quot;Containers-DisposableClientVM&quot;</span><br><span class="line">DISM /Online /Disable-Feature /FeatureName:&quot;Microsoft-Hyper-V-All&quot;</span><br><span class="line">DISM /Online /Disable-Feature /FeatureName:&quot;VirtualMachinePlatform&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="中文乱码"><a href="#中文乱码" class="headerlink" title="中文乱码"></a>中文乱码</h2><p>使用 notepad++ 打开，<code>编码-转为 UTF-8 编码</code></p>
+<h2 id="程序和功能"><a href="#程序和功能" class="headerlink" title="程序和功能"></a>程序和功能</h2><h3 id="‘telnet’-不是内部或外部命令，也不是可运行的程序或批处理文件"><a href="#‘telnet’-不是内部或外部命令，也不是可运行的程序或批处理文件" class="headerlink" title="‘telnet’ 不是内部或外部命令，也不是可运行的程序或批处理文件"></a>‘telnet’ 不是内部或外部命令，也不是可运行的程序或批处理文件</h3><p>解决方法：控制面板——&gt; 程序和功能——&gt; 启动或关闭 Windows 功能——&gt; 勾选 Telnet</p>
+<h2 id="NET-Framework"><a href="#NET-Framework" class="headerlink" title="NET Framework"></a>NET Framework</h2><p>若要运行此应用程序，您必须首先安装.NET Framework 的以下版本之一</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/image-20200702134439059.png" alt="image-20200702134439059" style="zoom:50%;" />
+
+<p>解决方法：根据提示安装.net FrameWork 即可 ，下载<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/download/details.aspx?id=17718">Microsoft .NET Framework 4（独立安装程序）</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/5ff118f8.html">https://wangwenzhe.github.io/posts/5ff118f8.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Windows/">Windows</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/64f6e382.html" title="Windows-开发软件"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Windows-开发软件</div></div></a></div><div class="next-post pull-right"><a href="/posts/d6497a66.html" title="Spring-事务"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Spring-事务</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/20e8a7f3.html" title="Windows安装emqx"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-23</div><div class="title">Windows安装emqx</div></div></a></div><div><a href="/posts/b0e9b234.html" title="Windows-AutoIt3-自动化脚本"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-19</div><div class="title">Windows-AutoIt3-自动化脚本</div></div></a></div><div><a href="/posts/6f4a6ad9.html" title="Windows精选软件"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-31</div><div class="title">Windows精选软件</div></div></a></div><div><a href="/posts/4540715a.html" title="Windows-禁止访问指定域名或ip地址"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-28</div><div class="title">Windows-禁止访问指定域名或ip地址</div></div></a></div><div><a href="/posts/fc910c42.html" title="Windows-IIS"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-03</div><div class="title">Windows-IIS</div></div></a></div><div><a href="/posts/734bcb48.html" title="Windows-ping测试"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-03</div><div class="title">Windows-ping测试</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Win7-PPTP-VPN-%E8%BF%9E%E6%8E%A5%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.1.</span> <span class="toc-text">Win7 PPTP VPN 连接操作步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#win7-%E7%B3%BB%E7%BB%9F%E6%80%8E%E4%B9%88%E4%BB%8E%E5%AE%B6%E5%BA%AD%E6%99%AE%E9%80%9A%E7%89%88%E5%8D%87%E7%BA%A7%E5%88%B0%E6%97%97%E8%88%B0%E7%89%88"><span class="toc-number">1.2.</span> <span class="toc-text">win7 系统怎么从家庭普通版升级到旗舰版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-hosts-%E7%AB%8B%E5%8D%B3%E7%94%9F%E6%95%88"><span class="toc-number">1.3.</span> <span class="toc-text">修改 hosts 立即生效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#win10-%E6%93%8D%E4%BD%9C%E4%B8%AD%E5%BF%83%E5%BC%80%E5%85%B3%E5%91%88%E7%81%B0%E8%89%B2%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80"><span class="toc-number">1.4.</span> <span class="toc-text">win10 操作中心开关呈灰色无法打开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8B%A5%E6%8F%90%E7%A4%BA%E5%9B%A0%E4%B8%BA%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E4%B8%A2%E5%A4%B1MSVCR120-dll"><span class="toc-number">1.5.</span> <span class="toc-text">若提示因为计算机中丢失MSVCR120.dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E6%88%96%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E6%8F%90%E7%A4%BA%E6%97%A0%E6%9D%83%E9%99%90"><span class="toc-number">1.6.</span> <span class="toc-text">无法删除文件或文件夹，提示无权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7"><span class="toc-number">2.</span> <span class="toc-text">用户</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#win10-%E5%88%9B%E5%BB%BA%E7%AE%A1%E7%90%86%E5%91%98%E8%B4%A6%E6%88%B7%EF%BC%88%E9%9D%9E-administrator%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">win10 创建管理员账户（非 administrator）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Win7-%E7%AE%A1%E7%90%86%E5%91%98-Administrator-%E7%94%A8%E6%88%B7%E5%90%AF%E7%94%A8%E3%80%81%E7%A6%81%E7%94%A8"><span class="toc-number">2.2.</span> <span class="toc-text">Win7 管理员 Administrator 用户启用、禁用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87"><span class="toc-number">3.</span> <span class="toc-text">设备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%BC%A0%E6%A0%87%E6%BB%9A%E5%8A%A8%E6%96%B9%E5%90%91"><span class="toc-number">3.1.</span> <span class="toc-text">修改鼠标滚动方向</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">输入法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%E4%B8%AD%E6%96%87%E7%8A%B6%E6%80%81%E4%B8%8B%E6%97%A0%E6%B3%95%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87"><span class="toc-number">4.1.</span> <span class="toc-text">搜狗输入法中文状态下无法输入中文</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text">远程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows-%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2-%E5%87%BA%E7%8E%B0-%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E9%94%99%E8%AF%AF%EF%BC%8C%E8%A6%81%E6%B1%82%E7%9A%84%E5%87%BD%E6%95%B0%E4%B8%8D%E5%8F%97%E6%94%AF%E6%8C%81"><span class="toc-number">5.1.</span> <span class="toc-text">Windows 远程桌面 出现 身份验证错误，要求的函数不受支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac-%E9%80%9A%E8%BF%87-AnyDesk-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5Windows%EF%BC%8C%E9%94%AE%E7%9B%98%E6%97%A0%E6%B3%95%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81"><span class="toc-number">5.2.</span> <span class="toc-text">Mac 通过 AnyDesk 远程连接Windows，键盘无法输入密码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E5%99%A8"><span class="toc-number">6.</span> <span class="toc-text">模拟器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%93%9D%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">6.1.</span> <span class="toc-text">运行安卓模拟器蓝屏解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="toc-number">7.</span> <span class="toc-text">中文乱码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%92%8C%E5%8A%9F%E8%83%BD"><span class="toc-number">8.</span> <span class="toc-text">程序和功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%98telnet%E2%80%99-%E4%B8%8D%E6%98%AF%E5%86%85%E9%83%A8%E6%88%96%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4%EF%BC%8C%E4%B9%9F%E4%B8%8D%E6%98%AF%E5%8F%AF%E8%BF%90%E8%A1%8C%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%88%96%E6%89%B9%E5%A4%84%E7%90%86%E6%96%87%E4%BB%B6"><span class="toc-number">8.1.</span> <span class="toc-text">‘telnet’ 不是内部或外部命令，也不是可运行的程序或批处理文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NET-Framework"><span class="toc-number">9.</span> <span class="toc-text">NET Framework</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

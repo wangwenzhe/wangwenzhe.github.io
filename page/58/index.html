@@ -1,0 +1,408 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>王文哲的博客 - 程序猿的成长之路</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="王文哲的博客">
+<meta property="og:url" content="https://wangwenzhe.github.io/page/58/index.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="技术分享、成长随笔">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/page/58/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '王文哲的博客',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2025-06-15 22:34:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">王文哲的博客</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/84842544.html" title="GitHub-SSH加密">GitHub-SSH加密</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-11T08:31:11.000Z" title="发表于 2019-07-11 16:31:11">2019-07-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/GitHub/">GitHub</a></span></div><div class="content">原理
+客户端使用 SSH 生成非对称密钥对，其中公钥信息保存在 GitHub 站点密钥中。
+客户端发送数据「代码」前，使用本地私钥加密，GitHub 收到数据后，使用对应公钥解密得到源代码。
+
+Windows 生成密钥对
+安装 git 工具
+
+右键选择「Git Bash here」，打开终端
+
+进入 C:\Users\Administrator\.ssh 目录，没有则手动创建「Linux 为 ~&#x2F;.ssh」
+
+生成 key
+123ssh-keygen -t rsa -C &quot;wangwz2012@sina.cn&quot;连续按三次回车默认生成即可，在 ~/.ssh/ 目录下生成 id_rsa 和 id_rsa.pub
+
+使用notepad++ 打开 id_rsa.pub，拷贝内容
+
+登录 GitHub ，点击右上角头像，选择 Setting，点击 SSH and GPG keys，点击 New SSH key，Title 输入 &#119;&#97;&#110;&#x67;&#119;&#x7a;&#50;&#x30;&#x31;&#x32;&#x40;&#115; ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/9c11ffec.html" title="非对称密钥RSA在GitHub中的使用">非对称密钥RSA在GitHub中的使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-11T08:31:11.000Z" title="发表于 2019-07-11 16:31:11">2019-07-11</time></span></div><div class="content">原理
+客户端使用 SSH 生成非对称密钥对，其中公钥信息保存在 GitHub 站点密钥中。
+客户端发送数据「代码」前，使用本地私钥加密，GitHub 收到数据后，使用对应公钥解密得到源代码。
+
+Windows 生成密钥对
+安装 git 工具
+
+右键选择「Git Bash here」，打开终端
+
+进入 C:\Users\Administrator\.ssh 目录，没有则手动创建「Linux 为 ~&#x2F;.ssh」
+
+生成 key
+123ssh-keygen -t rsa -C &quot;wangwz2012@sina.cn&quot;连续按三次回车默认生成即可，在 .ssh 目录下生成 id_rsa 和 id_rsa.pub
+
+使用notepad++ 打开 id_rsa.pub，拷贝内容
+
+登录 GitHub ，点击右上角头像，选择 Setting，点击 SSH and GPG keys，点击 New SSH key，Title 输入 &#x77;&#97;&#110;&#103;&#x77;&#122;&#x32;&#48;&#x31;&#50;&#x40;&#x73;&#10 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/4f1a4fd7.html" title="爱上读书2019-06">爱上读书2019-06</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-07T06:12:22.000Z" title="发表于 2019-07-07 14:12:22">2019-07-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%88%90%E9%95%BF%E7%AC%94%E8%AE%B0/">成长笔记</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%88%90%E9%95%BF%E7%AC%94%E8%AE%B0/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a></span></div><div class="content">
+这世界到处是情绪失控的人，随处释放着情绪的垃圾，试图给你呈现出一个悲惨世界。
+
+我也知道，中年人对年轻人有所告诫的样子，往往是面目可憎的。在酒桌上，油头胖脸的中年男人最招人烦的三件事，就是跟同龄人吹牛逼，跟小姑娘讲荤段子，跟小伙子讲“我在你这个岁数的时候”。
+
+成长中必须学会的
+
+即便已经一败涂地你仍然要坚持奋斗
+曾经有一个记者问拳王阿里：你每天做多少个仰卧起坐？阿里回答道：「我从来不数自己做了多少个仰卧起坐，我会一直做到肌肉痛到实在无法坚持，这才是关键。」其实在职场上也一样，在很多艰难时刻你都会面临两种选择：要么是含着眼泪硬扛下去，要么是让困难、痛苦把你打倒在地。人是一种习惯的动物，一旦你开始为自己的失败找理由，有困难就逃跑将会成为你的本能。换句话说，如果你总是坚持让自己扛过苦难，那你最终才能够成就伟大。
+
+
+你必须晚点吃棉花糖
+斯坦福大学有一个非常著名的「棉花糖」实验，实验者会让一个孩子独自在一个房间里面对一块棉花糖 15 分钟。实验者离开之前会告诉这个孩子，如果你忍不住了你可以吃掉它，但是如果你 15 分钟不吃这块棉花糖，那你就会得到两块棉花糖作奖励。斯坦福棉花糖实验中三分之一 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/69c3279c.html" title="Git">Git</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-07T06:06:28.000Z" title="发表于 2019-07-07 14:06:28">2019-07-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Git/">Git</a></span></div><div class="content">参考
+廖雪峰 https://www.liaoxuefeng.com/wiki/896043488029600/897889638509536
+https://mp.weixin.qq.com/s/caVfg8qCRjSiogD-jitIeA
+https://mp.weixin.qq.com/s/XcmrClMqqTWoDIDitXEcmQ
+https://learnku.com/articles/22068
+
+简易的命令行入门教程Git 全局设置:
+12git config --global user.name &quot;张三&quot;git config --global user.email &quot;1234@qq.com&quot;
+
+创建 git 仓库:
+12345678mkdir testcd testgit inittouch README.mdgit add README.mdgit commit -m &quot;first commit&quot;git remote add origin https://gitee.com/zhangsan/test.gi ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3c1e27f1.html" title="IDEA">IDEA</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-05T04:39:10.000Z" title="发表于 2019-07-05 12:39:10">2019-07-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/">IDEA</a></span></div><div class="content">配置阿里云初始化创建 springboot 项目创建项目 - Spring Initializr - Server URL 设置，修改为 https://start.aliyun.com/
+IDEA 使用技巧总结「强烈推荐」https://www.imooc.com/video/16213
+卸载123456卸载软件后，执行如下命令cd /Users/wangwz/Library/rm -fr Logs/JetBrainsrm -fr ApplicationSupport/JetBrainsrm -fr Caches/JetBrains
+
+IDEA 安装注册IDEA 快捷键—windows
+以下快捷键是根据自己使用习惯配置的，仅供参考
+
+
+双击 Shift 查找文件
+
+Ctrl + E 最近打开文件
+
+Ctrl + D 复制当前行
+
+Ctrl + W 删除光标前 word「word之间一般以空格或逗号分隔」
+
+Ctrl + W 关闭 Editor TabClose
+
+Ctrl + Shift + W 关闭所有 Editor Tab Close All
+
+Ctrl + Z 撤销
+
+Ctrl ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/95ecbeba.html" title="Tomcat">Tomcat</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-05T03:45:32.000Z" title="发表于 2019-07-05 11:45:32">2019-07-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tomcat/">Tomcat</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tomcat/%E5%9F%BA%E7%A1%80/">基础</a></span></div><div class="content">下载镜像仓库：https://mirrors.cnnic.cn/apache/tomcat/
+所有版本：https://archive.apache.org/dist/tomcat/
+https://tomcat.apache.org/download-90.cgi
+推荐 Windows 安装文件版本
+
+
+安装apache-tomcat-9.0.36.exe
+启动
+
+
+JVM 可视化工具参考 《Java-JVM》，使用 JDK 自带工具 jconsole.exe和jvisualvm.exe
+线程、连接数、最大上传大小连接数配置「提高 CPU 利用率」
+Apache Tomcat 9 Configuration Reference
+server.xml
+1&lt;Connector connectionTimeout=&quot;20000&quot; port=&quot;8000&quot; protocol=&quot;HTTP/1.1&quot; maxPostSize=&quot;20485760&quot; URIEncoding=&quot;UTF-8&quot; redi ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/d6131e6d.html" title="爱上读书2019-05">爱上读书2019-05</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-06-22T05:41:18.000Z" title="发表于 2019-06-22 13:41:18">2019-06-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%88%90%E9%95%BF%E7%AC%94%E8%AE%B0/">成长笔记</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%88%90%E9%95%BF%E7%AC%94%E8%AE%B0/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a></span></div><div class="content">
+山本耀司说：“自己这个东西是看不见的,撞上一些别的什么,反弹回来,才会了解自己。
+
+孔子对儿子孔鲤说：“不读《诗》，无以言。
+
+互联网既不安全也不永久。它不可能永远保存数据，用户不应该有这种想法。
+
+一个人的命运啊,当然要靠自我奋斗,但是也要考虑到历史的行程。
+
+跟技术人讨论技术，跟业务人员讨论业务，跟产品人讨论产品，跟不相关人员谈论天气就好。
+
+这世间，太少的相濡以沫，太多的相忘江湖
+
+不要太执着于让别人同意你，越是在庸庸碌碌人前越少说话，没那么多人愿意当你的观众。寻找到适合你的观众，而不是改变本来就不属于你的观众。
+
+那些赚到大钱的人，没有一个是靠时间换取收入的。他们要么通过积累资产致富，要么购买他人的时间，为自己创造财富。你应该警惕，不要落入“时间换取收入”的陷井，不要只顾着为别人生产代码，而要注意积累自己的资产，以及适时开展属于自己的业务。
+
+开发软件是一件很棒的事情，但绝不会像写一本能存活几个世纪的著作那样伟大，最终总是会有新的软件取代它。所以，有时我相信，我所做的一切最终都是徒劳的。– antirez[58]，Redis 的发明者
+
+知识广义上来讲可以分为五类：数据、信息 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/ec3edfbe.html" title="SVN">SVN</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-06-11T02:26:08.000Z" title="发表于 2019-06-11 10:26:08">2019-06-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/SVN/">SVN</a></span></div><div class="content">下载Apache Subversion Binary Packages
+VisualSVN Server 服务端
+仓库
+用户
+用户组
+任务
+
+
+迁移仓库「不包含用户、组信息」
+https://www.jianshu.com/p/295b423d50ad
+
+迁移SVN Server 重新安装【3.9.6及之前的版本没有人数限制】
+停止SVN服务器
+备份版本库文件夹，将文件夹压缩存放 【建议】
+卸载 SVN Server
+安装 SVN Server，指定仓库地址为原地址 D:\VisualServer\Repositories 【关键】
+启动服务，测试
+
+A服务器迁移至B服务器svn服务器 重装系统后,VisualSVN Server迁移至新服务器_weixin_39922476的博客-CSDN博客
+
+停止源SVN服务器 A
+备份源版本库文件夹，将文件夹压缩存放
+在目标服务器安装 SVN Server B
+将备份好的文件复制至服务器B，将解压后覆盖至B服务器的Repositories文件夹。覆盖“authz”和“htpasswd”等文件
+打开B上的VisualSVN Server Mana ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/54b865ca.html" title="签名证书生成与SHA1获取">签名证书生成与SHA1获取</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-06-11T02:13:10.000Z" title="发表于 2019-06-11 10:13:10">2019-06-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AD%BE%E5%90%8D%E8%AF%81%E4%B9%A6/">签名证书</a></span></div><div class="content">生成签名证书文件
+打开 DOS 窗口
+运行如下命令：
+keytool -genkey -alias XXX -keyalg RSA -keysize 2048 -validity 36500 -keystore XXX.keystore
+
+
+
+确认[否] y
+
+-alias android.keystore 签名证书别名
+-keyalg RSA  签名算法
+-validity 36500 代表有效期天数
+-keystore android.keystore  证书文件名
+
+
+执行完成后，当前目录中会生成 android.keystore 文件
+
+获取 SHA1 或 MD5命令获取
+进入证书文件所在目录，打开 DOS 窗口
+
+运行命令
+
+keytool -list -v -keystore 证书文件名
+
+
+输入密码 「123456」 即可
+
+
+Android Studio「获取 debug 版签名」
+android studio debug 签名文件路径示例
+D:.AndroidStudio\avd.android\debug.keystore
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/f83978c1.html" title="爱上读书2018">爱上读书2018</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-06-05T06:13:39.000Z" title="发表于 2019-06-05 14:13:39">2019-06-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%88%90%E9%95%BF%E7%AC%94%E8%AE%B0/">成长笔记</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%88%90%E9%95%BF%E7%AC%94%E8%AE%B0/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a></span></div><div class="content">学习技术的三个阶段1234567what、how、why第一阶段，了解概念，是什么第二阶段，作为工具，怎么用第三阶段，了解原理，为什么
+
+
+人可以笨，但不能蠢。笨是老天决定的，蠢是自己的。
+
+书里藏著的是智慧，这要比钱或钻石贵重得多，而智慧是任何人都抢不走的。
+
+生活不是用来熬的，生活是用来过得！有困难，必须主动跨过去！
+
+时间从来不说谎，你的时间花在哪里，你就会成为什么样的人。
+
+做一件事最好的机会是在昨天，然后就是现在。
+
+如今我才顿悟，所谓“1万个小时”背后的专注理论，只能帮助你在原有的赛道里比周围人强，但不能帮助你在平行竞争中取得“裂变式成长”。
+
+最近在天津和保利合作在北京和方兴合作在无锡和绿城合作。大家之所以能合作是因为互相都有合作精神。我理解合作精神一是合作一定要双赢，一方合适的合作长不了；二是合作一定要算大帐不算小帐，大小帐一起算算不清：三是不管多大问题全放桌面上直接说，一定能解决；四是求同存异，两口子也不能全一致。
+
+去年12月31号参加完绿城年会，老宋送我上车去机场，我说他厚道，老宋说正因为厚道才可以对大家严厉要求。我脾气也不好，不时发火，越是离我近的人越容易挨骂， ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/57/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/#content-inner">57</a><span class="page-number current">58</span><a class="page-number" href="/page/59/#content-inner">59</a><a class="extend next" rel="next" href="/page/59/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/"><span class="card-archive-list-date">2025</span><span class="card-archive-list-count">12</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/"><span class="card-archive-list-date">2024</span><span class="card-archive-list-count">66</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/"><span class="card-archive-list-date">2023</span><span class="card-archive-list-count">44</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/"><span class="card-archive-list-date">2022</span><span class="card-archive-list-count">38</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/"><span class="card-archive-list-date">2021</span><span class="card-archive-list-count">219</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/"><span class="card-archive-list-date">2020</span><span class="card-archive-list-count">166</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/"><span class="card-archive-list-date">2019</span><span class="card-archive-list-count">43</span></a></li></ul></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["世界匆忙，你我慢享，真我自在其中。","老友重逢般温馨，拂尘埃，微笑绽放。"])
+  } else {
+    document.getElementById("subtitle").textContent = "世界匆忙，你我慢享，真我自在其中。"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

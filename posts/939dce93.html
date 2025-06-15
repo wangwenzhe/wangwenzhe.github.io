@@ -1,0 +1,379 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>开源精选.md | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前端学习教程GitHub - mqyqingfeng&#x2F;Blog: 冴羽写博客的地方，预计写四个系列：JavaScript深入系列、JavaScript专题系列、ES6系列、React系列。 Web示例https:&#x2F;&#x2F;gitee.com&#x2F;championwang&#x2F;Web.git  RTSP、RTMP视频流播放  SuperMap 基于数据服务的查询示例  牛牛截图示例   UniappuV">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开源精选.md">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/939dce93.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="前端学习教程GitHub - mqyqingfeng&#x2F;Blog: 冴羽写博客的地方，预计写四个系列：JavaScript深入系列、JavaScript专题系列、ES6系列、React系列。 Web示例https:&#x2F;&#x2F;gitee.com&#x2F;championwang&#x2F;Web.git  RTSP、RTMP视频流播放  SuperMap 基于数据服务的查询示例  牛牛截图示例   UniappuV">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2023-04-17T14:15:51.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.885Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="开源精选.md">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/939dce93.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '开源精选.md',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">开源精选.md</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-17T14:15:51.000Z" title="发表于 2023-04-17 22:15:51">2023-04-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.885Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BC%80%E6%BA%90%E7%B2%BE%E9%80%89/">开源精选</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>18分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="开源精选.md"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="学习教程"><a href="#学习教程" class="headerlink" title="学习教程"></a>学习教程</h3><p><a target="_blank" rel="noopener" href="https://github.com/mqyqingfeng/Blog">GitHub - mqyqingfeng&#x2F;Blog: 冴羽写博客的地方，预计写四个系列：JavaScript深入系列、JavaScript专题系列、ES6系列、React系列。</a></p>
+<h3 id="Web示例"><a href="#Web示例" class="headerlink" title="Web示例"></a>Web示例</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/championwang/Web.git">https://gitee.com/championwang/Web.git</a></p>
+<ul>
+<li><p>RTSP、RTMP视频流播放</p>
+</li>
+<li><p>SuperMap 基于数据服务的查询示例</p>
+</li>
+<li><p>牛牛截图示例</p>
+</li>
+</ul>
+<h3 id="Uniapp"><a href="#Uniapp" class="headerlink" title="Uniapp"></a>Uniapp</h3><p><a target="_blank" rel="noopener" href="https://www.uviewui.com/">uView 2.0 - 全面兼容 nvue 的 uni-app 生态框架 - uni-app UI 框架 (uviewui.com)</a></p>
+<p>图鸟UI：<a target="_blank" rel="noopener" href="https://vue2.tuniaokj.com/components/intro.html">介绍 | TuniaoUI (tuniaokj.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://ext.dcloud.net.cn/plugin?id=239">ColorUI-UniApp - DCloud 插件市场</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/kevin_chou/qdpz">前端铺子-uniapp移动端: 项目基于vue，使用colorUi与uView，完美支持微信小程序，包含功能：聊天室、金融量化、抽奖、地图轨迹回放、电子签名、图片&#x2F;海报编辑器、自定义相机&#x2F;键盘、拍照图片水印、智能抠图、照片墙、在线答题、证件识别、周边定位查询、文档预览、各种图表、行政区域、海报生成器、视频播放、主题切换、时间轴、瀑布流、排行榜、课程表、简历、商城、登录页、加载动画、请求封装等 🔝 右上角点个 Star 关注更新 (gitee.com)</a></p>
+<p>[萤火商城V2.0-uniapp端: 萤火商城v2.0版 <a target="_blank" rel="noopener" href="https://gitee.com/xany/yoshop2.0-uniapp">uniapp端] (gitee.com)</a></p>
+<h3 id="Vant"><a href="#Vant" class="headerlink" title="Vant"></a>Vant</h3><blockquote>
+<p>移动端 Vue 组件库【不建议在 uniapp 中集成，存在兼容性bug】</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/v2/#/zh-CN/">Vant 2 - 轻量、可靠的移动端组件库 (gitee.io)</a></p>
+<h3 id="大数据可视化"><a href="#大数据可视化" class="headerlink" title="大数据可视化"></a>大数据可视化</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/MTrun/big-screen-vue-datav">vue-big-screen: 🔥一个基于 vue、datav、Echart 框架的大数据可视化（大屏展示）模板，提供数据动态刷新渲染、屏幕适应、内部图表自由替换、Mixins注入等功能，持续更新…. (gitee.com)</a></p>
+<h3 id="大屏报表"><a href="#大屏报表" class="headerlink" title="大屏报表"></a>大屏报表</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/explore/reporting-tools">报表工具 - 报表工具 - 开源软件 - Gitee.com</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/anji-plus/report">AJ-Report: AJ-Report是一个完全开源，拖拽编辑的可视化设计工具。三步快速完成大屏：配置数据源—-&gt;写SQL配置数据集—-&gt;拖拽生成大屏。让管理层随时随地掌控业务动态，让每个决策都有数据支撑。 (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/jeecg/JimuReport">JimuReport: 🔥「低代码可视化报表」类似excel操作风格，在线拖拽完成设计！功能涵盖: 报表设计、图形报表、打印设计、大屏设计等，完全免费！秉承“简单、易用、专业”的产品理念，极大的降低报表开发难度、缩短开发周期、解决各类报表难题。 (gitee.com)</a></p>
+<h3 id="前端工具"><a href="#前端工具" class="headerlink" title="前端工具"></a>前端工具</h3><h4 id="用户引导"><a href="#用户引导" class="headerlink" title="用户引导"></a>用户引导</h4><p><a target="_blank" rel="noopener" href="https://driver.employleague.cn/">Driver.js中文网 (employleague.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Mjhuu/vue-intro-step">GitHub - Mjhuu&#x2F;vue-intro-step: 基于vue2的系统引导步骤组件。</a></p>
+<h4 id="天气插件"><a href="#天气插件" class="headerlink" title="天气插件"></a>天气插件</h4><p><a target="_blank" rel="noopener" href="https://tianqi.2345.com/plugin/setting.htm?style=classicSmall3day">天气预报代码,随IP地址变化的天气预报代码,免费天气预报插件调用-2345天气预报</a></p>
+<h4 id="H5-手写签名"><a href="#H5-手写签名" class="headerlink" title="H5 手写签名"></a>H5 手写签名</h4><p><a target="_blank" rel="noopener" href="https://github.com/linjc/smooth-signature">linjc&#x2F;smooth-signature: H5带笔锋手写签名，支持PC端和移动端，任何前端框架均可使用 (github.com)</a></p>
+<p>特性：带笔锋手写签名，效果很棒！！！</p>
+<h4 id="在线-Excel"><a href="#在线-Excel" class="headerlink" title="在线 Excel"></a>在线 Excel</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/mengshukeji/Luckysheet">Luckysheet: 🚀Luckysheet ，一款纯前端类似excel的在线表格，功能强大、配置简单、完全开源。 (gitee.com)</a></p>
+<ul>
+<li><strong>格式设置</strong>：样式，条件格式，文本对齐及旋转，文本截断、溢出、自动换行，多种数据类型，单元格内多样式</li>
+<li><strong>单元格</strong>：拖拽，下拉填充，多选区，查找和替换，定位，合并单元格，数据验证</li>
+<li><strong>行和列操作</strong>：隐藏、插入、删除行或列，冻结，文本分列</li>
+<li><strong>操作体验</strong>：撤销、重做，复制、粘贴、剪切，快捷键，格式刷，选区拖拽</li>
+<li><strong>公式和函数</strong>：内置公式，远程公式，自定义公式</li>
+<li><strong>表格操作</strong>：筛选，排序</li>
+<li><strong>增强功能</strong>：数据透视表，图表，评论，共享编辑，插入图片，矩阵计算，截图，复制到其他格式，EXCEL导入及导出等</li>
+</ul>
+<h4 id="文档在线预览"><a href="#文档在线预览" class="headerlink" title="文档在线预览"></a>文档在线预览</h4><p><a target="_blank" rel="noopener" href="https://kkfileview.keking.cn/zh-cn/docs/home.html">kkFileView - 在线文件预览 (keking.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mozilla/pdf.js">mozilla&#x2F;pdf.js: PDF Reader in JavaScript (github.com)</a></p>
+<blockquote>
+<p>使用 HTML5 构建的PDF文件查看器</p>
+</blockquote>
+<h4 id="H5-转-PDF"><a href="#H5-转-PDF" class="headerlink" title="H5 转 PDF"></a>H5 转 PDF</h4><blockquote>
+<p>原理：内部依赖 html2canvas、jsPDF、es6-promise</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/eKoopmans/html2pdf.js">eKoopmans&#x2F;html2pdf.js: Client-side HTML-to-PDF rendering using pure JS. (github.com)</a></p>
+<h4 id="html2canvas"><a href="#html2canvas" class="headerlink" title="html2canvas"></a>html2canvas</h4><p><a target="_blank" rel="noopener" href="http://html2canvas.hertzen.com/">html2canvas - Screenshots with JavaScript (hertzen.com)</a></p>
+<h4 id="jsPDF"><a href="#jsPDF" class="headerlink" title="jsPDF"></a>jsPDF</h4><p><a target="_blank" rel="noopener" href="https://github.com/parallax/jsPDF">parallax&#x2F;jsPDF: Client-side JavaScript PDF generation for everyone. (github.com)</a></p>
+<h4 id="H5-Table-转-PDF"><a href="#H5-Table-转-PDF" class="headerlink" title="H5 Table 转 PDF"></a>H5 Table 转 PDF</h4><blockquote>
+<p>原理：jspdf、jspdf-autotable</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/simonbengtsson/jsPDF-AutoTable">simonbengtsson&#x2F;jsPDF-AutoTable: jsPDF plugin for generating PDF tables with javascript (github.com)</a></p>
+<h4 id="H5-实现-PDF风格页面"><a href="#H5-实现-PDF风格页面" class="headerlink" title="H5 实现 PDF风格页面"></a>H5 实现 PDF风格页面</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/wuxue107/bookjs-eazy">bookjs-eazy: WEB打印，HTML转PDF工具。适配chrome headless和wkhtmltopdf docker镜像在线生成PDF 1. 只需专注用H5构建你的PDF内容,而无需关心分页及内容截断问题，内容满了，自动换页,支持预览、WEB打印、页码&#x2F;目录、自定义页眉页脚。2.前后端皆可生成PDF,命令行PDF生成工具 (gitee.com)</a></p>
+<p>特性：</p>
+<ul>
+<li>自动换页、手动换页</li>
+<li>自定义页眉页脚、页码&#x2F;目录</li>
+<li>支持设置背景图片、水印</li>
+<li>调用浏览器默认的打印</li>
+<li>支持服务端生成 PDF 文件【需要部署打印服务】</li>
+<li>用途：在线电子书、发票、数据表格</li>
+</ul>
+<h4 id="Html-Css实现Word风格页面"><a href="#Html-Css实现Word风格页面" class="headerlink" title="Html+Css实现Word风格页面"></a>Html+Css实现Word风格页面</h4><p><a target="_blank" rel="noopener" href="https://github.com/delight-im/HTML-Sheets-of-Paper">delight-im&#x2F;HTML-Sheets-of-Paper: Word processor in your browser using HTML and CSS (for invoices, legal notices, etc.) (github.com)</a></p>
+<h4 id="禁用Web开发者工具"><a href="#禁用Web开发者工具" class="headerlink" title="禁用Web开发者工具"></a>禁用Web开发者工具</h4><p><a target="_blank" rel="noopener" href="https://github.com/theajack/disable-devtool">theajack&#x2F;disable-devtool: Disable web developer tools from the f12 button, right-click and browser menu (github.com)</a></p>
+<blockquote>
+<p>引入一个script就可以了</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 默认禁用开发者工具</span></span><br><span class="line">&lt;script disable-devtool-auto src=<span class="string">&#x27;https://cdn.jsdelivr.net/npm/disable-devtool/disable-devtool.min.js&#x27;</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 支持绕过禁用</span></span><br><span class="line"><span class="number">1.</span> 获取 md5 值</span><br><span class="line"><span class="title class_">DisableDevtool</span>.<span class="property">isSuspend</span> = <span class="literal">true</span>; <span class="comment">// 挂起，关闭禁用功能。方便打开控制台查看 md5 值</span></span><br><span class="line"><span class="comment">// DisableDevtool.isSuspend = false; // 非挂起</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">DisableDevtool</span>.<span class="title function_">md5</span>(<span class="string">&#x27;bjtc&#x27;</span>)) <span class="comment">// 输出 md5 值，ddtk 为 bjtc</span></span><br><span class="line"><span class="number">2.</span> 传入 md5 值</span><br><span class="line">&lt;script disable-devtool-auto md5=<span class="string">&#x27;dcc810fc956cd1a87be202aa21bf3b5f&#x27;</span> src=<span class="string">&#x27;https://cdn.jsdelivr.net/npm/disable-devtool/disable-devtool.min.js&#x27;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="number">3.</span> url 中传入参数 ?ddtk=bjtc 访问即可绕过禁用</span><br></pre></td></tr></table></figure>
+
+<p>该库还有以下特性:</p>
+<ol>
+<li>支持可配置是否禁用右键菜单</li>
+<li>禁用 f12 和 ctrl+shift+i 快捷键</li>
+<li>支持识别从浏览器菜单栏打开开发者工具并关闭当前页面</li>
+<li>开发者可以绕过禁用 (url参数使用tk配合md5加密)</li>
+<li>支持几乎所有浏览器</li>
+<li>高度可配置</li>
+<li>使用极简、体积小巧 (仅6kb)</li>
+<li>支持npm引用和script标签引用(属性配置)</li>
+</ol>
+<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><h4 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h4><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b14bda812e91">万能的Android 连接打印机思路 - 简书 (jianshu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/heroxuetao/PrintUtils">GitHub - heroxuetao&#x2F;PrintUtils: Android蓝牙打印机，带你真正了解各种打印格式。</a></p>
+<h4 id="UI框架"><a href="#UI框架" class="headerlink" title="UI框架"></a>UI框架</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/xuexiangjys/XUI">XUI: 一个简洁而优雅的Android原生UI框架，解放你的双手！ (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://hndeveloper.github.io/2017/github-android-ui.html">GitHub上受欢迎的Android UI Library (hndeveloper.github.io)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/xuexiangjys/XPush">XPush: 一个轻量级、可插拔的Android消息推送框架。一键集成推送（极光推送、友盟推送、华为、小米推送等），提供有效的保活机制，支持推送的拓展，充分解耦推送和业务逻辑，解放你的双手！ (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/xuexiangjys/XUpdate">XUpdate: 一个轻量级、高可用性的Android版本更新框架 (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/li_yu_jiang/AndroidPicker">AndroidPicker: 安卓选择器类库，包括日期及时间选择器（可用于出生日期、营业时间等）、单项选择器（可用于性别、民族、职业、学历、星座等）、二三级联动选择器（可用于车牌号、基金定投日期等）、城市地址选择器（分省级、地市级及区县级）、数字选择器（可用于年龄、身高、体重、温度等）、日历选日期择器（可用于酒店及机票预定日期）、颜色选择器、文件及目录选择器、图片选择器等…… (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/hcg2011/banner/">banner: Android广告图片轮播控件，支持无限循环和多种主题，可以灵活设置轮播样式、动画、轮播和切换时间、位置、图片加载框架等！ (gitee.com)</a></p>
+<h4 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h4><p>文档查看：<a target="_blank" rel="noopener" href="https://github.com/hanlyjiang/AndroidDocumentViewer">GitHub - hanlyjiang&#x2F;AndroidDocumentViewer: Android 文档查看： word、excel、ppt、pdf，使用mupdf及tbs</a></p>
+<p>文件下载：<a target="_blank" rel="noopener" href="https://github.com/Justson/Downloader">GitHub - Justson&#x2F;Downloader: Powerful and flexible Android file downloader</a></p>
+<p>WebView: <a target="_blank" rel="noopener" href="https://gitee.com/blm1314/AgentWeb">AgentWeb: AgentWeb is a powerful library based on Android WebView. (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/Barryda/QtScrcpy">QtScrcpy: Android实时投屏软件，此应用程序提供USB(或通过TCP&#x2F;IP)连接的Android设备的显示和控制。它不需要任何root访问权限 (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/gyf-dev/Cactus">GitHub - gyf-dev&#x2F;Cactus: Android Keep Alive(安卓保活)，Cactus 集成双进程前台服务，JobScheduler，onePix(一像素)，WorkManager，无声音乐</a></p>
+<h2 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/shenzhanwang/RuoYi-activiti">RuoYi-activiti: 打造最好用的OA数字化解决方案，基于Activiti6.0，集流程设计、流程部署、流程执行、任务办理、流程监控于一体的开源工作流开发平台。 (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/smell2/ruoyi-vue-activiti">ruoyi-vue-activiti: 前端采用Vue、Element UI。 后端采用Spring Boot、Spring Security、activiti7、Redis &amp; Jwt。 前后端分离工作流脚手架。 (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/happy-panda/flowable/tree/master/jeecg-boot">jeecg-boot · happy-panda&#x2F;flowable工作流 - 码云 - 开源中国 (gitee.com)</a></p>
+<h2 id="后端开发"><a href="#后端开发" class="headerlink" title="后端开发"></a>后端开发</h2><h3 id="API接口服务"><a href="#API接口服务" class="headerlink" title="API接口服务"></a>API接口服务</h3><h4 id="APIJSON"><a href="#APIJSON" class="headerlink" title="APIJSON"></a>APIJSON</h4><p><a target="_blank" rel="noopener" href="http://apijson.cn/">腾讯APIJSON官方网站</a></p>
+<h4 id="DBApi"><a href="#DBApi" class="headerlink" title="DBApi"></a>DBApi</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/freakchicken/db-api">DBApi: 🔥🔥🔥零代码开发api服务，只需编写sql，就可以生成http api服务。支持api动态创建，兼容多种数据库。 适用于BI报表、数据可视化大屏的后端接口快速开发。 旨在为企业数据服务的发布提供完整解决方案 (gitee.com)</a></p>
+<h4 id="magic-api"><a href="#magic-api" class="headerlink" title="magic-api"></a>magic-api</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/ssssssss-team/magic-api">magic-api: magic-api 是一个基于Java的接口快速开发框架，通过magic-api提供的UI界面完成编写接口，无需定义Controller、Service、Dao、Mapper、XML、VO等Java对象即可完成常见的HTTP API接口开发 (gitee.com)</a></p>
+<h4 id="ApiBoot"><a href="#ApiBoot" class="headerlink" title="ApiBoot"></a>ApiBoot</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/minbox-projects/api-boot">api-boot: ApiBoot为接口服务而生，基于SpringBoot完成扩展、自动化配置，通过封装一系列Starter来让调用者快速集成组件，降低学习、使用门槛，提高开发效率，点击右上角Star关注项目更新。 (gitee.com)</a></p>
+<p>使用文档：<a target="_blank" rel="noopener" href="https://apiboot.minbox.org/docs/out-box/first-apiboot-application">第一个ApiBoot应用程序 | ApiBoot (minbox.org)</a></p>
+<h3 id="规则引擎"><a href="#规则引擎" class="headerlink" title="规则引擎"></a>规则引擎</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/dromara/liteFlow">liteFlow: 轻量，快速，稳定，可编排的组件式规则引擎&#x2F;流程引擎。 拥有全新设计的DSL规则表达式。 组件复用，同步&#x2F;异步编排，动态编排，支持超多语言脚本，复杂嵌套规则，热部署，平滑刷新规则等等功能，让你加快开发效率！ (gitee.com)</a></p>
+<h3 id="网络开发"><a href="#网络开发" class="headerlink" title="网络开发"></a>网络开发</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/yezhihao/jt808-server">jt808协议网关: JT808、808协议解析；支持TCP、UDP，动态兼容2011、2013、2019版本协议，支持分包。支持JT&#x2F;T1078音视频协议，T&#x2F;JSATL12苏标主动安全协议，T&#x2F;GDRTA002粤标主动安全协议，支持Android客户端编解码。 (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/smartboot/smart-socket">smart-socket: 极简、易用、高性能的AIO通信框架，人人都能轻松应对百万级长连接场景。5G时代的通信微内核，适用于IM、RPC、IoT等诸多领域 (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/dromara/sms4j">SMS4J: 让简单的事情回归简单的本质。 SMS4J为短信聚合框架，帮您轻松集成多家短信服务，解决接入多个短信SDK的繁琐流程。 目前已接入数家常见的短信服务商，后续将会继续集成。后续的版本中我们还将推出更多的相关功能 你的 ⭐️ ⭐️⭐️Star⭐️⭐️ ⭐️，是我的动力！如果你觉得还不错，请点上一颗小星星 (gitee.com)</a></p>
+<h3 id="流媒体"><a href="#流媒体" class="headerlink" title="流媒体"></a>流媒体</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/52jian/EasyMedia?_from=gitee_search">EasyMedia: SpringBoot、netty实现的http-flv、websocket-flv直播点播，支持rtsp、h264、h265、rtmp等多种源，h5纯js播放（不依赖flash），不需要nginx等第三方拉流服务 (gitee.com)</a></p>
+<h3 id="工具包"><a href="#工具包" class="headerlink" title="工具包"></a>工具包</h3><h4 id="Http请求工具"><a href="#Http请求工具" class="headerlink" title="Http请求工具"></a>Http请求工具</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/dromara/forest">forest: 声明式HTTP客户端API框架，让Java发送HTTP&#x2F;HTTPS请求不再难。它比OkHttp和HttpClient更高层，是封装调用第三方restful api client接口的好帮手，是retrofit和feign之外另一个选择。通过在接口上声明注解的方式配置HTTP请求接口 (gitee.com)</a></p>
+<h4 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/baomidou/lock4j">lock4j: 基于Spring AOP 的声明式和编程式分布式锁，支持RedisTemplate、Redisson、Zookeeper (gitee.com)</a></p>
+<h4 id="多线程编排-asyncTool"><a href="#多线程编排-asyncTool" class="headerlink" title="多线程编排 asyncTool"></a>多线程编排 asyncTool</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/jd-platform-opensource/asyncTool">asyncTool: 解决任意的多线程并行、串行、阻塞、依赖、回调的并行框架，可以任意组合各线程的执行顺序，带全链路执行结果回调。多线程编排一站式解决方案。来自于京东主App后台。 (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/jd-platform-opensource/asyncTool/blob/master/QuickStart.md">QuickStart.md · 京东零售&#x2F;asyncTool - Gitee.com</a></p>
+<h4 id="模拟数据-java-faker"><a href="#模拟数据-java-faker" class="headerlink" title="模拟数据 java-faker"></a>模拟数据 java-faker</h4><p><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/DiUS/java-faker">https://github.com/DiUS/java-faker</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--模拟数据--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.javafaker<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javafaker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.yaml<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>snakeyaml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="ORM-高级查询-bean-searcher"><a href="#ORM-高级查询-bean-searcher" class="headerlink" title="ORM-高级查询-bean-searcher"></a>ORM-高级查询-bean-searcher</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/troyzhxu/bean-searcher">bean-searcher: 🔥🔥🔥 专注高级查询的只读 ORM，天生支持联表，免 DTO&#x2F;VO 转换，使一行代码实现复杂列表检索成为可能！ (gitee.com)</a></p>
+<h4 id="分布式数据库中间件"><a href="#分布式数据库中间件" class="headerlink" title="分布式数据库中间件"></a>分布式数据库中间件</h4><p><a target="_blank" rel="noopener" href="https://shardingsphere.apache.org/document/legacy/4.x/document/cn/overview/">概览 :: ShardingSphere (apache.org)</a></p>
+<h4 id="ElasticSearch-ORM框架"><a href="#ElasticSearch-ORM框架" class="headerlink" title="ElasticSearch ORM框架"></a>ElasticSearch ORM框架</h4><p><a target="_blank" rel="noopener" href="https://www.easy-es.cn/">Easy-Es</a></p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h3><h4 id="Sharding-JDBC"><a href="#Sharding-JDBC" class="headerlink" title="Sharding-JDBC"></a>Sharding-JDBC</h4><p><a target="_blank" rel="noopener" href="https://shardingsphere.apache.org/document/legacy/4.x/document/cn/quick-start/sharding-jdbc-quick-start/">Sharding-JDBC :: ShardingSphere (apache.org)</a></p>
+<h2 id="低代码开发"><a href="#低代码开发" class="headerlink" title="低代码开发"></a>低代码开发</h2><p><a target="_blank" rel="noopener" href="https://www.vform666.com/">Variant Form低代码可视化表单 | Variant Form低代码可视化表单 (vform666.com)</a></p>
+<h2 id="微信开发"><a href="#微信开发" class="headerlink" title="微信开发"></a>微信开发</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/binary/weixin-java-tools">WxJava: WxJava - 微信开发 Java SDK，支持微信支付、开放平台、公众号、企业号&#x2F;企业微信、小程序等的后端开发，记得关注公众号及时接受版本更新信息，以及加入微信群进行深入讨论 (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/niefy/wx-client">GitHub - niefy&#x2F;wx-client: 微信公众号接口wx-api前端示例项目，包含微信登录、微信分享、CMS文章示例功能</a></p>
+<h2 id="表单问卷系统"><a href="#表单问卷系统" class="headerlink" title="表单问卷系统"></a>表单问卷系统</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/TDuckApp">TDUCK: 一款开源免费的表单问卷系统；可快速创建问卷或业务表单，采用无代码理念支持开发自定义组件。采用SpringBoot+Vue+ElementUI技术栈，功能强大界面清新，支持一键部署🔥🔥🔥🔥🔥 (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wkeyuan/dwsurvey-vue">DWSurvey-Vue: DWSurvey问卷表单系统基于Vue实现的前端代码仓库，即将发布全新版本，敬请期待！！！ (gitee.com)</a></p>
+<h2 id="IM-即时通讯"><a href="#IM-即时通讯" class="headerlink" title="IM-即时通讯"></a>IM-即时通讯</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/qiqiim/qiqiim-server">qiqiim-server: QIQIIM 提供简单快捷的IM方案，快速打造在线IM方案，可用于公司内网、外网通讯，客服系统等，已用netty4实现了socket,websocket,现已结合了layim,可用于任何商业、个人作品中 (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/xchao/j-im">J-IM: J-IM 是用JAVA语言开发的轻量、高性能、单机支持几十万至百万在线用户IM，主要目标降低即时通讯门槛，快速打造低成本接入在线IM系统，通过极简洁的消息格式就可以实现多端不同协议间的消息发送如内置(Http、Websocket、Tcp自定义IM协议)等，并提供通过http协议的api接口进行消息发送无需关心接收端属于什么协议，一个消息格式搞定一切！ (gitee.com)</a></p>
+<h2 id="运维监控"><a href="#运维监控" class="headerlink" title="运维监控"></a>运维监控</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/dromara/Jpom">Jpom: 简而轻的低侵入式在线构建、自动部署、日常运维、项目运维监控软件 (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/dromara/hertzbeat">hertzbeat: 🔥 一个拥有强大自定义监控能力，无需Agent的实时监控告警工具。我们致力于监控一切！ 网站，数据库，操作系统，中间件，云原生，网络。阈值告警通知(邮件微信钉钉飞书短信 Discord Telegarm Slack Webhook) (gitee.com)</a></p>
+<h2 id="软件安全"><a href="#软件安全" class="headerlink" title="软件安全"></a>软件安全</h2><p>软件加密：<a target="_blank" rel="noopener" href="https://github.com/core-lib/xjar">core-lib&#x2F;xjar: Spring Boot JAR 安全加密运行工具，支持的原生JAR。 (github.com)</a></p>
+<p>数字证书：<a target="_blank" rel="noopener" href="https://github.com/kobeyk/license">kobeyk&#x2F;license: 软件许可证书生成+验证 (github.com)</a></p>
+<h2 id="AI-OCR"><a href="#AI-OCR" class="headerlink" title="AI&amp;OCR"></a>AI&amp;OCR</h2><p><del><a target="_blank" rel="noopener" href="https://gitee.com/ldp_dpsmax/easyAi">easyAi: java傻瓜ai框架，无需任何算法知识，通过简单的api调用就可以实现 常用的图像内物体的识别，定位等图像ai服务，及自然语言分类处理服务。面向java开发程序员，不依赖任何第三方库，第三方接口，独立包。视频教程地址如下 (gitee.com)</a></del></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/alisen39/TrWebOCR">alisen39&#x2F;TrWebOCR: 开源易用的中文离线OCR，识别率媲美大厂，并且提供了易用的web页面及web的接口，方便人类日常工作使用或者其他程序来调用~ (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/paddlepaddle/PaddleOCR">PaddleOCR: 基于飞桨的OCR工具库，包含总模型仅8.6M的超轻量级中文OCR，单模型支持中英文数字组合识别、竖排文本识别、长文本识别。同时支持多种文本检测、文本识别的训练算法。 (gitee.com)</a></p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h3 id="内网映射"><a href="#内网映射" class="headerlink" title="内网映射"></a>内网映射</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/guangleihe/proxyer">proxyer: the proxyer china’s office repo (gitee.com)</a></p>
+<h3 id="数据库建模"><a href="#数据库建模" class="headerlink" title="数据库建模"></a>数据库建模</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/robergroup/pdman">pdman: PDMan是一款开源免费的数据库模型建模工具，支持Windows,Mac,Linux等操作系统，PDManer-v4已完全承接PDManer所有功能，并增加更多更多实用功能 (gitee.com)</a></p>
+<h3 id="数据同步"><a href="#数据同步" class="headerlink" title="数据同步"></a>数据同步</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/ghi/dbsyncer">DBSyncer: DBSyncer（简称dbs）是一款开源的数据同步中间件，提供MySQL、Oracle、SqlServer、PostgreSQL、Elasticsearch(ES)、Kafka、File、SQL等同步场景。支持上传插件自定义同步转换业务，提供监控全量和增量数据统计图、应用性能预警等。 (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/inrgihc/dbswitch">dbswitch: 异构数据库迁移同步(搬家)工具 (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/sxfad/porter">porter: Porter是一款数据同步中间件，主要用于解决同构&#x2F;异构数据库之间的表级别数据同步问题. (gitee.com)</a></p>
+<h3 id="数据库文档生成工具"><a href="#数据库文档生成工具" class="headerlink" title="数据库文档生成工具"></a>数据库文档生成工具</h3><h4 id="DBCHM"><a href="#DBCHM" class="headerlink" title="DBCHM"></a>DBCHM</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/dotnetchina/DBCHM">DBCHM: 最简单，最实用的数据库文档生成工具，支持SqlServer&#x2F;MySQL&#x2F;Oracle&#x2F;PostgreSQL&#x2F;DB2&#x2F;SQLite数据库。 (gitee.com)</a></p>
+<p>使用：安装、打开软件，连接数据库，导出文档</p>
+<h4 id="screw"><a href="#screw" class="headerlink" title="screw"></a>screw</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/leshalv/screw">screw: 简洁好用的数据库表结构文档工具，支持MySQL&#x2F;MariaDB&#x2F;SqlServer&#x2F;Oracle&#x2F;PostgreSQL&#x2F;TIDB&#x2F;CacheDB 数据库。 (gitee.com)</a></p>
+<p>使用：项目引入依赖，编码配置，执行，生成文档</p>
+<h2 id="云盘系统"><a href="#云盘系统" class="headerlink" title="云盘系统"></a>云盘系统</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/kohgylw/kiftd">kiftd-网盘_云盘系统: kiftd是一款便捷、开源、功能完善的 JAVA 网盘 &#x2F; 云盘 系统。专门面向个人、团队或小型组织来搭建属于自己的网盘。它不仅仅是替代U盘的不二之选，还是一款具备在线视频播放、文档在线预览、音乐播放、图片查看等高级功能的文件云存储平台。仅需3分钟，您就能在任意平台上轻松安装然后开始使用它！欢迎访问官方主页来快速了解它： (gitee.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/cloudreve/Cloudreve">GitHub - cloudreve&#x2F;Cloudreve: 🌩支持多家云存储的云盘系统 (Self-hosted file management and sharing system, supports multiple storage providers)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/kalcaddle/KODExplorer">KODExplorer: KodExplorer是一款快捷高效的私有云和在线文档管理系统，为个人网站、企业私有云部署、网络存储、在线文档管理、在线办公等提供安全可控，简便易用、可高度定制的私有云产品。采用windows风格界面、操作习惯，无需适应即可快速上手，支持几百种常用文件格式的在线预览，可扩展易定制。GPL v3开源协议. (gitee.com)</a></p>
+<h2 id="接口开放平台"><a href="#接口开放平台" class="headerlink" title="接口开放平台"></a>接口开放平台</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/durcframework/SOP">SOP: 一个开放平台解决方案项目，基于Spring Cloud实现 (gitee.com)</a></p>
+<h2 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h2><h3 id="个人博客系统"><a href="#个人博客系统" class="headerlink" title="个人博客系统"></a>个人博客系统</h3><p><a target="_blank" rel="noopener" href="https://vuepress.vuejs.org/zh/">VuePress (vuejs.org)</a></p>
+<blockquote>
+<p>Vue 驱动的静态网站生成器</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://vanblog.mereith.com/">VanBlog (mereith.com)</a></p>
+<blockquote>
+<p>VanBlog 是一款简洁实用优雅的高性能个人博客系统。支持 HTTPS 证书全自动按需申请、黑暗模式、支持移动端自适应和评论，内置流量统计与图床，内嵌评论系统，配有完备的、支持黑暗模式、支持移动端、支持一键上传剪切板图片到图床、带有强大的编辑器的后台管理面板</p>
+</blockquote>
+<h3 id="网站导航"><a href="#网站导航" class="headerlink" title="网站导航"></a>网站导航</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/shenweiyan/WebStack-Hugo">WebStack-Hugo: WebStack 网址导航 Hugo 主题，无需服务器，支持导航一键配置的纯静态网址导航网站。 (gitee.com)</a></p>
+<h3 id="BBS"><a href="#BBS" class="headerlink" title="BBS"></a>BBS</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/veal98/Echo">Echo: 🦄 开源社区系统：基于 SpringBoot + MyBatis + MySQL + Redis + Kafka + Elasticsearch + Spring Security + … 并提供详细的开发文档和配套教程。包含帖子、评论、私信、系统通知、点赞、关注、搜索、用户设置、数据统计等模块。 (gitee.com)</a></p>
+<h2 id="电商"><a href="#电商" class="headerlink" title="电商"></a>电商</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/likeadmin/likeadmin_java">likeadmin（Java版）- MIT协议-免费任意商用 - 管理后台_小程序_手机H5_PC端_uni-app: 🚀🚀🚀li‌keadmin这套框架专为快速开发业务项目而生，含管理后台、微信小程序、手机 H5、PC 端等，集成常见业务场景，助你高效打造项目产品。JDK8、Springboot2.5、TypeScript、Vue3、vite2、Element Plus1.2（ElementUI）。 Springboot管理后台、前后端分离管理后台、Vue.js管理后台、Element UI管理后台。 (gitee.com)</a></p>
+<h2 id="杂项-1"><a href="#杂项-1" class="headerlink" title="杂项"></a>杂项</h2><h3 id="IDEA插件"><a href="#IDEA插件" class="headerlink" title="IDEA插件"></a>IDEA插件</h3><h4 id="MyBatis-Log-EasyPlus"><a href="#MyBatis-Log-EasyPlus" class="headerlink" title="MyBatis Log EasyPlus"></a>MyBatis Log EasyPlus</h4><p><a target="_blank" rel="noopener" href="https://github.com/Link-Kou/intellij-mybaitslog">https://github.com/Link-Kou/intellij-mybaitslog</a></p>
+<h3 id="免费在线API"><a href="#免费在线API" class="headerlink" title="免费在线API"></a>免费在线API</h3><p><a target="_blank" rel="noopener" href="http://timor.tech/api/holiday/">免费节假日 API - 提莫的神秘小站 (timor.tech)</a></p>
+<h3 id="Html-转-PDF-服务-doctron"><a href="#Html-转-PDF-服务-doctron" class="headerlink" title="Html 转 PDF 服务 doctron"></a>Html 转 PDF 服务 doctron</h3><p><a target="_blank" rel="noopener" href="https://github.com/lampnick/doctron/tree/master">lampnick&#x2F;doctron： html转pdf ， html转图片 ， Docker-powered html 转换为 pdf（html2pdf）， html 转换为图像（html2image like jpeg，png），其中使用 chrome（golang） 内核。 (github.com)</a></p>
+<ul>
+<li>使用chrome内核将HTML转换为 pdf 或图片，以确保您所看到的就是您所得到的</li>
+<li>易于部署。使用 docker，kubernetes</li>
+<li>丰富的转换参数</li>
+<li>自定义页面大小从html转换为pdf或图像</li>
+</ul>
+<h3 id="中国行政区划数据"><a href="#中国行政区划数据" class="headerlink" title="中国行政区划数据"></a>中国行政区划数据</h3><p><a target="_blank" rel="noopener" href="https://github.com/kakuilan/china_area_mysql">kakuilan&#x2F;china_area_mysql: 中国5级行政区域mysql库 (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/wqbyc/area_code">wqbyc&#x2F;area_code: 2020年中国全国5级行政区划（省、市、县、镇、村）及车牌号-地区关系表 (github.com)</a></p>
+<h3 id="Word模板引擎-poi-tl"><a href="#Word模板引擎-poi-tl" class="headerlink" title="Word模板引擎 poi-tl"></a>Word模板引擎 poi-tl</h3><p><a target="_blank" rel="noopener" href="https://deepoove.com/poi-tl/">Poi-tl Documentation (deepoove.com)</a></p>
+<blockquote>
+<p>使用Word模板和数据<strong>创建很棒的Word文档</strong></p>
+<p><strong>poi-tl</strong>是一个基于Apache POI的Word模板引擎，也是一个免费开源的Java类库</p>
+</blockquote>
+<h3 id="坐标区域编辑"><a href="#坐标区域编辑" class="headerlink" title="坐标区域编辑"></a>坐标区域编辑</h3><ul>
+<li>导入 geojson 文件</li>
+<li>编辑区域</li>
+<li>导出 geojson 文件</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://mapshaper.org/">黄兴镇会展中心 (mapshaper.org)</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/939dce93.html">https://wangwenzhe.github.io/posts/939dce93.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BC%80%E6%BA%90%E7%B2%BE%E9%80%89-md/">开源精选.md</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/3ec8e5bb.html" title="MySQL-中文转拼音"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MySQL-中文转拼音</div></div></a></div><div class="next-post pull-right"><a href="/posts/49e7bdd2.html" title="Java-单元测试-ContiPerf"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java-单元测试-ContiPerf</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF"><span class="toc-number">1.</span> <span class="toc-text">前端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">学习教程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">Web示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Uniapp"><span class="toc-number">1.3.</span> <span class="toc-text">Uniapp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vant"><span class="toc-number">1.4.</span> <span class="toc-text">Vant</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">1.5.</span> <span class="toc-text">大数据可视化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E5%B1%8F%E6%8A%A5%E8%A1%A8"><span class="toc-number">1.6.</span> <span class="toc-text">大屏报表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7"><span class="toc-number">1.7.</span> <span class="toc-text">前端工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%BC%95%E5%AF%BC"><span class="toc-number">1.7.1.</span> <span class="toc-text">用户引导</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A9%E6%B0%94%E6%8F%92%E4%BB%B6"><span class="toc-number">1.7.2.</span> <span class="toc-text">天气插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#H5-%E6%89%8B%E5%86%99%E7%AD%BE%E5%90%8D"><span class="toc-number">1.7.3.</span> <span class="toc-text">H5 手写签名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF-Excel"><span class="toc-number">1.7.4.</span> <span class="toc-text">在线 Excel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E5%9C%A8%E7%BA%BF%E9%A2%84%E8%A7%88"><span class="toc-number">1.7.5.</span> <span class="toc-text">文档在线预览</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#H5-%E8%BD%AC-PDF"><span class="toc-number">1.7.6.</span> <span class="toc-text">H5 转 PDF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#html2canvas"><span class="toc-number">1.7.7.</span> <span class="toc-text">html2canvas</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jsPDF"><span class="toc-number">1.7.8.</span> <span class="toc-text">jsPDF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#H5-Table-%E8%BD%AC-PDF"><span class="toc-number">1.7.9.</span> <span class="toc-text">H5 Table 转 PDF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#H5-%E5%AE%9E%E7%8E%B0-PDF%E9%A3%8E%E6%A0%BC%E9%A1%B5%E9%9D%A2"><span class="toc-number">1.7.10.</span> <span class="toc-text">H5 实现 PDF风格页面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Html-Css%E5%AE%9E%E7%8E%B0Word%E9%A3%8E%E6%A0%BC%E9%A1%B5%E9%9D%A2"><span class="toc-number">1.7.11.</span> <span class="toc-text">Html+Css实现Word风格页面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E7%94%A8Web%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7"><span class="toc-number">1.7.12.</span> <span class="toc-text">禁用Web开发者工具</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android"><span class="toc-number">1.8.</span> <span class="toc-text">Android</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%93%E5%8D%B0"><span class="toc-number">1.8.1.</span> <span class="toc-text">打印</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UI%E6%A1%86%E6%9E%B6"><span class="toc-number">1.8.2.</span> <span class="toc-text">UI框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%82%E9%A1%B9"><span class="toc-number">1.8.3.</span> <span class="toc-text">杂项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-number">2.</span> <span class="toc-text">工作流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91"><span class="toc-number">3.</span> <span class="toc-text">后端开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1"><span class="toc-number">3.1.</span> <span class="toc-text">API接口服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#APIJSON"><span class="toc-number">3.1.1.</span> <span class="toc-text">APIJSON</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DBApi"><span class="toc-number">3.1.2.</span> <span class="toc-text">DBApi</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#magic-api"><span class="toc-number">3.1.3.</span> <span class="toc-text">magic-api</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ApiBoot"><span class="toc-number">3.1.4.</span> <span class="toc-text">ApiBoot</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E5%88%99%E5%BC%95%E6%93%8E"><span class="toc-number">3.2.</span> <span class="toc-text">规则引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%BC%80%E5%8F%91"><span class="toc-number">3.3.</span> <span class="toc-text">网络开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E5%AA%92%E4%BD%93"><span class="toc-number">3.4.</span> <span class="toc-text">流媒体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E5%8C%85"><span class="toc-number">3.5.</span> <span class="toc-text">工具包</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Http%E8%AF%B7%E6%B1%82%E5%B7%A5%E5%85%B7"><span class="toc-number">3.5.1.</span> <span class="toc-text">Http请求工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81"><span class="toc-number">3.5.2.</span> <span class="toc-text">分布式锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E6%8E%92-asyncTool"><span class="toc-number">3.5.3.</span> <span class="toc-text">多线程编排 asyncTool</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE-java-faker"><span class="toc-number">3.5.4.</span> <span class="toc-text">模拟数据 java-faker</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ORM-%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2-bean-searcher"><span class="toc-number">3.5.5.</span> <span class="toc-text">ORM-高级查询-bean-searcher</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">3.5.6.</span> <span class="toc-text">分布式数据库中间件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ElasticSearch-ORM%E6%A1%86%E6%9E%B6"><span class="toc-number">3.5.7.</span> <span class="toc-text">ElasticSearch ORM框架</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.</span> <span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8"><span class="toc-number">4.1.</span> <span class="toc-text">分库分表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Sharding-JDBC"><span class="toc-number">4.1.1.</span> <span class="toc-text">Sharding-JDBC</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91"><span class="toc-number">5.</span> <span class="toc-text">低代码开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91"><span class="toc-number">6.</span> <span class="toc-text">微信开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E5%8D%95%E9%97%AE%E5%8D%B7%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.</span> <span class="toc-text">表单问卷系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IM-%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF"><span class="toc-number">8.</span> <span class="toc-text">IM-即时通讯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%BB%B4%E7%9B%91%E6%8E%A7"><span class="toc-number">9.</span> <span class="toc-text">运维监控</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8"><span class="toc-number">10.</span> <span class="toc-text">软件安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AI-OCR"><span class="toc-number">11.</span> <span class="toc-text">AI&amp;OCR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">12.</span> <span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84"><span class="toc-number">12.1.</span> <span class="toc-text">内网映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BB%BA%E6%A8%A1"><span class="toc-number">12.2.</span> <span class="toc-text">数据库建模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5"><span class="toc-number">12.3.</span> <span class="toc-text">数据同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E6%A1%A3%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7"><span class="toc-number">12.4.</span> <span class="toc-text">数据库文档生成工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DBCHM"><span class="toc-number">12.4.1.</span> <span class="toc-text">DBCHM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#screw"><span class="toc-number">12.4.2.</span> <span class="toc-text">screw</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%91%E7%9B%98%E7%B3%BB%E7%BB%9F"><span class="toc-number">13.</span> <span class="toc-text">云盘系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0"><span class="toc-number">14.</span> <span class="toc-text">接口开放平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%AB%99"><span class="toc-number">15.</span> <span class="toc-text">网站</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F"><span class="toc-number">15.1.</span> <span class="toc-text">个人博客系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E5%AF%BC%E8%88%AA"><span class="toc-number">15.2.</span> <span class="toc-text">网站导航</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BBS"><span class="toc-number">15.3.</span> <span class="toc-text">BBS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E5%95%86"><span class="toc-number">16.</span> <span class="toc-text">电商</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%82%E9%A1%B9-1"><span class="toc-number">17.</span> <span class="toc-text">杂项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IDEA%E6%8F%92%E4%BB%B6"><span class="toc-number">17.1.</span> <span class="toc-text">IDEA插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MyBatis-Log-EasyPlus"><span class="toc-number">17.1.1.</span> <span class="toc-text">MyBatis Log EasyPlus</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%8D%E8%B4%B9%E5%9C%A8%E7%BA%BFAPI"><span class="toc-number">17.2.</span> <span class="toc-text">免费在线API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Html-%E8%BD%AC-PDF-%E6%9C%8D%E5%8A%A1-doctron"><span class="toc-number">17.3.</span> <span class="toc-text">Html 转 PDF 服务 doctron</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E5%9B%BD%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92%E6%95%B0%E6%8D%AE"><span class="toc-number">17.4.</span> <span class="toc-text">中国行政区划数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Word%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E-poi-tl"><span class="toc-number">17.5.</span> <span class="toc-text">Word模板引擎 poi-tl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%90%E6%A0%87%E5%8C%BA%E5%9F%9F%E7%BC%96%E8%BE%91"><span class="toc-number">17.6.</span> <span class="toc-text">坐标区域编辑</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

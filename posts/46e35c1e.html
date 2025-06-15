@@ -1,0 +1,541 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>JMeter | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="学习视频JMeter 从入门到精通 (包含作业 &#x2F; 练习 &#x2F; 总结 &#x2F; 回顾) JMeter 必知必会系列  教程易百教程：https:&#x2F;&#x2F;www.yiibai.com&#x2F;jmeter 下载https:&#x2F;&#x2F;jmeter.apache.org&#x2F;download_jmeter.cgi   Mac上下载、安装1234567891011# 安装 brew ，非必需&#x2F;bin&#x2F;zs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JMeter">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/46e35c1e.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="学习视频JMeter 从入门到精通 (包含作业 &#x2F; 练习 &#x2F; 总结 &#x2F; 回顾) JMeter 必知必会系列  教程易百教程：https:&#x2F;&#x2F;www.yiibai.com&#x2F;jmeter 下载https:&#x2F;&#x2F;jmeter.apache.org&#x2F;download_jmeter.cgi   Mac上下载、安装1234567891011# 安装 brew ，非必需&#x2F;bin&#x2F;zs">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2020-07-22T00:01:23.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.714Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="JMeter">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/46e35c1e.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JMeter',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JMeter</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-07-22T00:01:23.000Z" title="发表于 2020-07-22 08:01:23">2020-07-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.714Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/">性能测试</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JMeter"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="学习视频"><a href="#学习视频" class="headerlink" title="学习视频"></a>学习视频</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1SQ4y1M7s1?p=5">JMeter 从入门到精通 (包含作业 &#x2F; 练习 &#x2F; 总结 &#x2F; 回顾)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/72905562">JMeter 必知必会系列 </a></p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>易百教程：<a target="_blank" rel="noopener" href="https://www.yiibai.com/jmeter">https://www.yiibai.com/jmeter</a></p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a target="_blank" rel="noopener" href="https://jmeter.apache.org/download_jmeter.cgi">https://jmeter.apache.org/download_jmeter.cgi</a></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/image-20200722080233776.png" alt="image-20200722080233776" style="zoom:50%;" />
+
+<h3 id="Mac上下载、安装"><a href="#Mac上下载、安装" class="headerlink" title="Mac上下载、安装"></a>Mac上下载、安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装 brew ，非必需</span></span><br><span class="line">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看是否安装</span></span><br><span class="line">brew info jmeter</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装</span></span><br><span class="line">brew install jmeter</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动</span></span><br><span class="line">jmeter</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">默认英文的，如果想转换为中文: 可选择Options-&gt;Choose Language-&gt;Chiness(Simplified)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>需要安装 JDK 环境「JMeter 由 Java 语言实现」</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>解压到没有中文路径的目录中</p>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><ul>
+<li><p>Windows</p>
+<p><code>bin/jmeter.bat</code></p>
+</li>
+<li><p>Linux</p>
+<p><code>bin/jmeter.sh</code></p>
+</li>
+</ul>
+<h2 id="切换语言"><a href="#切换语言" class="headerlink" title="切换语言"></a>切换语言</h2><p><code>Options-Choose Language</code></p>
+<h2 id="内存配置"><a href="#内存配置" class="headerlink" title="内存配置"></a>内存配置</h2><p><strong>找到jmeter.bat文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> HEAP=-Xms4g -Xmx8g -XX:MaxMetaspaceSize=256m</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p><code>jmeter.properties</code>，修改后需要重启</p>
+<ul>
+<li><p>修改语言</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">language=zh_CN</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改编码「sampleresult」</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sampleresult.default.encoding=utf-8</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="日志文件"><a href="#日志文件" class="headerlink" title="日志文件"></a>日志文件</h3><p><code>jmeter.log</code></p>
+<h3 id="分布式服务配置"><a href="#分布式服务配置" class="headerlink" title="分布式服务配置"></a>分布式服务配置</h3><p><code>jmeter-server.bat</code>或<code>jmeter-server.sh</code></p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="docs"><a href="#docs" class="headerlink" title="docs"></a>docs</h3><p>接口文档目录</p>
+<h3 id="extras"><a href="#extras" class="headerlink" title="extras"></a>extras</h3><p>扩展插件目录</p>
+<h3 id="lib"><a href="#lib" class="headerlink" title="lib"></a>lib</h3><p>依赖资源包</p>
+<h3 id="printable-docs"><a href="#printable-docs" class="headerlink" title="printable_docs"></a>printable_docs</h3><p>帮助文档：用户手册等</p>
+<h3 id="licence"><a href="#licence" class="headerlink" title="licence"></a>licence</h3><p>许可证</p>
+<h2 id="入门脚本"><a href="#入门脚本" class="headerlink" title="入门脚本"></a>入门脚本</h2><ol>
+<li><p>添加<code>测试计划</code>-默认</p>
+</li>
+<li><p>添加<code>线程组</code></p>
+<p>测试计划，鼠标右键，添加-线程「用户」-线程组</p>
+</li>
+<li><p>添加 <code>Http请求</code></p>
+<p>线程组，鼠标右键，添加-取样器-Http 请求</p>
+</li>
+<li><p>添加<code>结果树</code></p>
+<p>线程组，鼠标右键，添加-监听器-察看结果树</p>
+<p>结果树中可以切换数据显示格式：Text、XML、JSON、HTML等</p>
+</li>
+</ol>
+<h2 id="线程用户"><a href="#线程用户" class="headerlink" title="线程用户"></a>线程用户</h2><ol>
+<li>线程数：模拟的并发用户数</li>
+<li>Ramp-Up时间(秒)：启动所有线程需要的时间</li>
+<li>循环次数：线程数循环</li>
+</ol>
+<h2 id="运行原理"><a href="#运行原理" class="headerlink" title="运行原理"></a>运行原理</h2><ol>
+<li>按照线程方式运行</li>
+<li>GUI 模式用来创建测试脚本和调试</li>
+<li>命令行模式实现高并发和压力测试</li>
+</ol>
+<h2 id="测试计划要素"><a href="#测试计划要素" class="headerlink" title="测试计划要素"></a>测试计划要素</h2><ol>
+<li>测试计划</li>
+<li>测试计划中至少有一个线程组</li>
+<li>线程组中至少有一个取样器</li>
+<li>测试计划必须有监听器</li>
+<li>保存测试计划</li>
+</ol>
+<p>注意：</p>
+<ol>
+<li>测试计划中「独立运行每个线程组」，默认未勾选，多个线程组并行执行。勾选，一个线程组执行完后才执行下一个线程组，按添加顺序执行</li>
+</ol>
+<h2 id="监听器「常用」"><a href="#监听器「常用」" class="headerlink" title="监听器「常用」"></a>监听器「常用」</h2><ul>
+<li>察看结果树</li>
+<li>用表格察看结果</li>
+<li>聚合报告</li>
+<li>响应时间图</li>
+</ul>
+<h2 id="录制脚本"><a href="#录制脚本" class="headerlink" title="录制脚本"></a>录制脚本</h2><ul>
+<li><p>使用 badboy录制</p>
+<p>适用于 Web 端</p>
+<ol>
+<li>安装</li>
+<li>打开「默认开始录制」，在地址栏输入测试网址，操作即可</li>
+<li>操作完成，点击停止录制</li>
+<li>导出脚本<ol>
+<li>File-Export  to Jmeter 保存</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>在 Jmeter 中导入脚本</p>
+<ul>
+<li>打开-选择脚本文件</li>
+<li>添加监听器</li>
+</ul>
+</li>
+</ul>
+<h2 id="Jmeter-自身代理录制移动端"><a href="#Jmeter-自身代理录制移动端" class="headerlink" title="Jmeter 自身代理录制移动端"></a>Jmeter 自身代理录制移动端</h2><h3 id="配置-Jmeter"><a href="#配置-Jmeter" class="headerlink" title="配置 Jmeter"></a>配置 Jmeter</h3><ol>
+<li>创建测试计划</li>
+<li>添加线程组</li>
+<li>添加 Http 代理服务器<ol>
+<li>测试计划-右键-非测试元件-Http 代理服务</li>
+<li>Http 代理服务器<ul>
+<li>端口号默认</li>
+<li>Https domains 填写本地 ip</li>
+<li>Test Plan Creation-目标控制器，选择测试计划-线程组</li>
+</ul>
+</li>
+<li>点击启动-ok「<strong>开始录制</strong>」</li>
+</ol>
+</li>
+<li>添加监听器</li>
+</ol>
+<h3 id="配置手机"><a href="#配置手机" class="headerlink" title="配置手机"></a>配置手机</h3><p>和 fidder 配置相同</p>
+<p>设置-WLAN-wifi 长按-高级-手动代理</p>
+<ul>
+<li>代理服务器主机名为上述 <code>Https domains ip</code></li>
+<li>代理服务器端口为上述 <code>8888</code></li>
+</ul>
+<h3 id="录制"><a href="#录制" class="headerlink" title="录制"></a>录制</h3><p>操作手机， 请求会被Jmeter 会自动记录到线程组</p>
+<h2 id="接口测试"><a href="#接口测试" class="headerlink" title="接口测试"></a>接口测试</h2><h3 id="接口三要素"><a href="#接口三要素" class="headerlink" title="接口三要素"></a>接口三要素</h3><ul>
+<li>请求地址&#x2F;方式</li>
+<li>请求参数</li>
+<li>返回值</li>
+</ul>
+<h3 id="Http-协议"><a href="#Http-协议" class="headerlink" title="Http 协议"></a>Http 协议</h3><h4 id="Get、Delete"><a href="#Get、Delete" class="headerlink" title="Get、Delete"></a>Get、Delete</h4><ul>
+<li>带参数 params</li>
+<li>不带参数</li>
+</ul>
+<h4 id="Post、Put"><a href="#Post、Put" class="headerlink" title="Post、Put"></a>Post、Put</h4><ul>
+<li><p>x-www-form-urlencoded 键值对：a&#x3D;1&amp;b&#x3D;2&amp;c&#x3D;3</p>
+<p>Content-Type: application&#x2F;x-www-form-urlencoded</p>
+</li>
+<li><p>json</p>
+<p>Content-Type: application&#x2F;json</p>
+</li>
+</ul>
+<h2 id="JMeter-取样器-http-请求"><a href="#JMeter-取样器-http-请求" class="headerlink" title="JMeter 取样器 - http 请求"></a>JMeter 取样器 - http 请求</h2><h3 id="Http-请求配置"><a href="#Http-请求配置" class="headerlink" title="Http 请求配置"></a>Http 请求配置</h3><ul>
+<li><p>协议 http&#x2F;https</p>
+</li>
+<li><p>服务器名称或 ip</p>
+</li>
+<li><p>端口号</p>
+</li>
+<li><p>方法：请求方式 <code>get post put delete</code> 等</p>
+</li>
+<li><p>路径：接口地址</p>
+</li>
+<li><p>内容编码——<code>utf-8</code>,中文乱码时指定内容编码即可</p>
+</li>
+<li><p>参数：post 请求是<code>application/x-www-form-urlencoded</code>和 <code>form-data</code> 格式</p>
+<p>从剪切板添加：<strong>每行以回车符分隔</strong>，<strong>列以等号 &#x3D; 分隔</strong></p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username=admin</span><br><span class="line">password=123456</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>消息体数据：post 请求中 <code>json/xml</code> 格式请求数据，相当于 postman raw</p>
+</li>
+<li><p>文件上传：上传文件接口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">文件路径   参数名称  MIME 类型</span><br><span class="line">/Users/mac126/Pictures/图片/2019-11-15-3.jpg fieldname  image/jpeg</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Http-信息头管理器【必需】"><a href="#Http-信息头管理器【必需】" class="headerlink" title="Http 信息头管理器【必需】"></a>Http 信息头管理器【必需】</h3><p>线程组-添加-配置元件-Http 信息头管理器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Type=application/json</span><br></pre></td></tr></table></figure>
+
+<h2 id="参数化"><a href="#参数化" class="headerlink" title="参数化"></a>参数化</h2><h3 id="CSV-数据控件实现参数化"><a href="#CSV-数据控件实现参数化" class="headerlink" title="CSV 数据控件实现参数化"></a>CSV 数据控件实现参数化</h3><ul>
+<li><p>适用范围：大量测试数据</p>
+</li>
+<li><p>创建一个 csv 格式文件</p>
+<p>Excel 创建文件，另存为 CSV 格式，使用 notepad++ 转码</p>
+</li>
+<li><p>位置：添加线程组-添加-配置元件-CSV Data Set Config</p>
+</li>
+<li><p>配置<code>CSV Data Set Config</code></p>
+<ul>
+<li>文件名：选择 CSV 数据文件</li>
+<li>文件编码：UTF-8</li>
+<li>变量名称：多个使用英文逗号隔开</li>
+<li>忽略首行：如果首行是变量名，选择忽略首行 true</li>
+<li>分隔符：如果 CSV 文件使用逗号隔开，就默认</li>
+<li>其它项默认配置</li>
+</ul>
+</li>
+<li><p>修改线程组配置：线程数或循环数改为数据量</p>
+</li>
+<li><p>修改请求参数为变量引用：参数引用 <code>&quot;$&#123;变量名&#125;&quot;</code></p>
+</li>
+</ul>
+<h3 id="用户参数"><a href="#用户参数" class="headerlink" title="用户参数"></a>用户参数</h3><ul>
+<li><p>适用范围：小数据量测试数据设置</p>
+</li>
+<li><p>使用方式：针对 Http 请求添加其用户参数</p>
+</li>
+<li><p>位置：Http 请求-添加-前置处理器-用户参数</p>
+</li>
+<li><p>配置用户参数</p>
+<p>参数：</p>
+<ul>
+<li>名称：变量名称</li>
+<li>用户——一个用户就是一组测试数据</li>
+</ul>
+</li>
+<li><p>修改线程组配置：线程数改为用户参数数据量</p>
+</li>
+<li><p>修改 Http 请求中引用变量</p>
+</li>
+</ul>
+<h3 id="用户定义变量「全局定义、引用」"><a href="#用户定义变量「全局定义、引用」" class="headerlink" title="用户定义变量「全局定义、引用」"></a>用户定义变量「全局定义、引用」</h3><ul>
+<li><p>适用：常量配置：数据库地址、测试环境地址、登录数据等</p>
+</li>
+<li><p>位置</p>
+<ul>
+<li>测试计划</li>
+<li>配置元件</li>
+</ul>
+</li>
+<li><p>使用定义的变量替换Http请问对应参数值，变量使用格式为：<code>$&#123;变量名&#125;</code></p>
+</li>
+</ul>
+<h2 id="JMeter-连接数据库"><a href="#JMeter-连接数据库" class="headerlink" title="JMeter 连接数据库"></a>JMeter 连接数据库</h2><h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><ol>
+<li><p>在测试计划中导入数据库驱动 jar 包</p>
+</li>
+<li><p>添加线程组</p>
+</li>
+<li><p>在线程组添加-配置元件- JDBC Connection Configuration </p>
+</li>
+<li><p>配置JDBC Connection Configuration</p>
+<ol>
+<li>Variable Name for created pool：连接配置名称</li>
+<li>Database URL：jdbc:mysql:&#x2F;&#x2F; ip:3306&#x2F;dbname</li>
+<li>JDBC Driver class：com.mysql.jdbc.Driver</li>
+<li>Username：用户</li>
+<li>Password：密码</li>
+</ol>
+</li>
+<li><p>在线程组添加-取样器-JDBC Request</p>
+<ol>
+<li>名称：连接名称</li>
+<li>Variable Name of Pool declared in JDBC Connection Configuration：连接配置名称</li>
+<li>SQL Query<ol>
+<li>Query Type</li>
+<li>SQL 语句</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>线程组-添加-监听器-察看结果树</p>
+</li>
+<li><p>获取数据查询结果</p>
+<ul>
+<li><p>debug sample 显示脚本中所有变量结果</p>
+</li>
+<li><p>variable names</p>
+<p>用逗号分隔的变量名列表，用于保存Select语句、prepared Select语句或CallableStatement返回的值。注意，当与CallableStatement一起使用时，变量列表必须与调用返回的OUT参数序列相同。如果变量名少于输出参数，那么在线程上下文变量中存储的结果应该与提供的变量名一样多。如果存在的变量名多于OUT参数，则将忽略其他变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">name_#=4</span><br><span class="line">name_1=777777</span><br><span class="line">name_2=zhang daihao</span><br><span class="line">name_3=小白兔</span><br><span class="line">name_4=Sandy</span><br><span class="line"></span><br><span class="line">updatetime_#=4</span><br><span class="line">updatetime_1=2019-02-21 18:26:04.0</span><br><span class="line">updatetime_2=null</span><br><span class="line">updatetime_3=2019-01-19 13:13:12.0</span><br><span class="line">updatetime_4=2019-02-25 16:29:27.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Result variable name 填写变量名，保存查询结果集</p>
+<p>将创建一个包含行映射列表的对象变量。每个映射都包含列名作为键，列数据作为值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all=[&#123;name=小白兔, update_time=2019-01-19 13:13:12.0&#125;]</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h2 id="上传文件表单"><a href="#上传文件表单" class="headerlink" title="上传文件表单"></a>上传文件表单</h2><h3 id="Http-请求"><a href="#Http-请求" class="headerlink" title="Http 请求"></a>Http 请求</h3><ol>
+<li><p>基本配置</p>
+<ul>
+<li><p>参数</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/image-20200803191643660.png" alt="image-20200803191643660" style="zoom:50%;" />
+</li>
+<li><p>文件上传</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/image-20200803201551146.png" alt="image-20200803201551146" style="zoom:50%;" /></li>
+</ul>
+</li>
+<li><p>高级</p>
+<p>客户端实现，选择 Java</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/image-20200803201821609.png" alt="image-20200803201821609" style="zoom:50%;" /></li>
+</ol>
+<h3 id="Http-信息头管理器"><a href="#Http-信息头管理器" class="headerlink" title="Http 信息头管理器"></a>Http 信息头管理器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Type    multipart/form-data  //等价于 基本配置中 对POST使用 multipart/form-data</span><br></pre></td></tr></table></figure>
+
+<h2 id="命令行运行-jmx-脚本"><a href="#命令行运行-jmx-脚本" class="headerlink" title="命令行运行 jmx 脚本"></a>命令行运行 jmx 脚本</h2><p>使用非 GUI 模式，即命令行模式运行 JMeter 测试脚本能够大大缩减所需要的系统资源</p>
+<h3 id="命令介绍"><a href="#命令介绍" class="headerlink" title="命令介绍"></a>命令介绍</h3><p>jmeter -n -t <testplan filename> -l <listener filename></p>
+<p>示例： <code>jmeter -n -t testplan.jmx -l test.jtl</code><br>含义：表示以命令行模式运行 testplan.jmx 文件，输出的日志文件为 test.jtl</p>
+<h3 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h3><ul>
+<li><p>-h 帮助</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -h</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在非 GUI 模式下运行 JMeter</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -n </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指定要运行的 JMeter 测试脚本文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -t test.jmx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>记录结果的日志文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -l output.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>远程执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jmeter -r</span><br><span class="line">#在 Jmter.properties 文件中指定的所有远程服务器</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置 JMeter 使用的代理主机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -H 代理主机ip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置 JMeter 使用的代理主机的端口号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jmeter -P 代理端口</span><br><span class="line"></span><br><span class="line">示例：jmeter -n -t test.jmx -l output.log -H 192.168.1.1 -P 8080</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="后置处理器"><a href="#后置处理器" class="headerlink" title="后置处理器"></a>后置处理器</h2><h3 id="结果状态处理器"><a href="#结果状态处理器" class="headerlink" title="结果状态处理器"></a>结果状态处理器</h3><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/image-20200829145231425.png" alt="image-20200829145231425" style="zoom:50%;" />
+
+<p>将上一个接口的返回值作为下一个接口的参数</p>
+<h3 id="正则表达式提取器"><a href="#正则表达式提取器" class="headerlink" title="正则表达式提取器"></a>正则表达式提取器</h3><p><a target="_blank" rel="noopener" href="https://my.oschina.net/u/4258221/blog/3381668">https://my.oschina.net/u/4258221/blog/3381668</a></p>
+<ol>
+<li><p>第一个接口中添加正则表达式提取器</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/image-20200807204922261.png" alt="image-20200807204922261" style="zoom:50%;" />
+</li>
+<li><p>正则表达式提取器内容</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/image-20200807204951132.png" alt="image-20200807204951132" style="zoom:50%;" />
+
+<ul>
+<li><p>引用名称：verifycode 后面验证码校验接口要用到的变量名称 </p>
+</li>
+<li><p>正则表达式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.*&#123;&quot;code&quot;:&quot;(.+?)&quot;&#125;.*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>即为读取 code 返回值内容，生成验证码接口返回的报文格式为 {“data”:{“code”:”4690”},”code”:”1”,”message”:”成功”,”success”:true}</p>
+</li>
+<li><p>模版 : 模板是使用正则表达式提取到的第几个值。因为可能有多个值匹配，所以要使用模板。从 1 开始匹配，依次类推。这里只有一个，所以填写 $1$ 即可</p>
+</li>
+<li><p>匹配数字：0 代表随机取值，1 代表全部取值。默认 1</p>
+</li>
+<li><p>缺省值表示参数没有取到值的话，默认给它的值。一般不填</p>
+</li>
+</ul>
+</li>
+<li><p>第二个接口中填写参数变量</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/image-20200807205028189.png" alt="image-20200807205028189" style="zoom:50%;" /></li>
+</ol>
+<h3 id="JSON-Extractor"><a href="#JSON-Extractor" class="headerlink" title="JSON Extractor"></a>JSON Extractor</h3><p><a target="_blank" rel="noopener" href="https://www.bbsmax.com/A/n2d9vnjozD/">https://www.bbsmax.com/A/n2d9vnjozD/</a></p>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>　json extractor 后置处理器用在返回格式为 json 的 HTTP 请求中，用来获取返回的 json 中的某个值。并保存成变量供后面的请求进行调用或断言等</p>
+<h4 id="取多个变量值"><a href="#取多个变量值" class="headerlink" title="取多个变量值"></a>取多个变量值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Variable names 设置为 id1;id2</span><br><span class="line"></span><br><span class="line">JSON Path expressions 定义为 $.data.aList [0].id;$.data.aList [1].id</span><br><span class="line"></span><br><span class="line">Default Values：1;1</span><br></pre></td></tr></table></figure>
+
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p><a target="_blank" rel="noopener" href="https://www.shangyexinzhi.com/article/253706.html">https://www.shangyexinzhi.com/article/253706.html</a></p>
+<h3 id="响应断言"><a href="#响应断言" class="headerlink" title="响应断言"></a>响应断言</h3><h3 id="JSON-断言"><a href="#JSON-断言" class="headerlink" title="JSON 断言"></a>JSON 断言</h3><p>只能针对响应结果是 applicaton&#x2F;json 格式的请求进行断言，一般是断言某个字段值是否返回的是我们需要的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.success true</span><br></pre></td></tr></table></figure>
+
+<h3 id="BeanShell-断言"><a href="#BeanShell-断言" class="headerlink" title="BeanShell 断言"></a>BeanShell 断言</h3><p>使用 BeanShell 断言的好处是可以自由发挥，比如当断言失败，提示预期结果、实际结果，或者失败时把结果输出到日志</p>
+<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/46e35c1e.html">https://wangwenzhe.github.io/posts/46e35c1e.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JMeter/">JMeter</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/63b10314.html" title="Log4j"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Log4j</div></div></a></div><div class="next-post pull-right"><a href="/posts/84b72414.html" title="Docker-可视化工具"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Docker-可视化工具</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E8%A7%86%E9%A2%91"><span class="toc-number">1.</span> <span class="toc-text">学习视频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%99%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">3.</span> <span class="toc-text">下载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac%E4%B8%8A%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85"><span class="toc-number">3.1.</span> <span class="toc-text">Mac上下载、安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">4.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">5.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-number">6.</span> <span class="toc-text">启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E8%AF%AD%E8%A8%80"><span class="toc-number">7.</span> <span class="toc-text">切换语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E9%85%8D%E7%BD%AE"><span class="toc-number">8.</span> <span class="toc-text">内存配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-number">9.</span> <span class="toc-text">文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">9.1.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-number">9.2.</span> <span class="toc-text">日志文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE"><span class="toc-number">9.3.</span> <span class="toc-text">分布式服务配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">10.</span> <span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docs"><span class="toc-number">10.1.</span> <span class="toc-text">docs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#extras"><span class="toc-number">10.2.</span> <span class="toc-text">extras</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lib"><span class="toc-number">10.3.</span> <span class="toc-text">lib</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#printable-docs"><span class="toc-number">10.4.</span> <span class="toc-text">printable_docs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#licence"><span class="toc-number">10.5.</span> <span class="toc-text">licence</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8%E8%84%9A%E6%9C%AC"><span class="toc-number">11.</span> <span class="toc-text">入门脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%94%A8%E6%88%B7"><span class="toc-number">12.</span> <span class="toc-text">线程用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="toc-number">13.</span> <span class="toc-text">运行原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92%E8%A6%81%E7%B4%A0"><span class="toc-number">14.</span> <span class="toc-text">测试计划要素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%91%E5%90%AC%E5%99%A8%E3%80%8C%E5%B8%B8%E7%94%A8%E3%80%8D"><span class="toc-number">15.</span> <span class="toc-text">监听器「常用」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%95%E5%88%B6%E8%84%9A%E6%9C%AC"><span class="toc-number">16.</span> <span class="toc-text">录制脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jmeter-%E8%87%AA%E8%BA%AB%E4%BB%A3%E7%90%86%E5%BD%95%E5%88%B6%E7%A7%BB%E5%8A%A8%E7%AB%AF"><span class="toc-number">17.</span> <span class="toc-text">Jmeter 自身代理录制移动端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-Jmeter"><span class="toc-number">17.1.</span> <span class="toc-text">配置 Jmeter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%89%8B%E6%9C%BA"><span class="toc-number">17.2.</span> <span class="toc-text">配置手机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%95%E5%88%B6"><span class="toc-number">17.3.</span> <span class="toc-text">录制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95"><span class="toc-number">18.</span> <span class="toc-text">接口测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="toc-number">18.1.</span> <span class="toc-text">接口三要素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Http-%E5%8D%8F%E8%AE%AE"><span class="toc-number">18.2.</span> <span class="toc-text">Http 协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Get%E3%80%81Delete"><span class="toc-number">18.2.1.</span> <span class="toc-text">Get、Delete</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Post%E3%80%81Put"><span class="toc-number">18.2.2.</span> <span class="toc-text">Post、Put</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMeter-%E5%8F%96%E6%A0%B7%E5%99%A8-http-%E8%AF%B7%E6%B1%82"><span class="toc-number">19.</span> <span class="toc-text">JMeter 取样器 - http 请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Http-%E8%AF%B7%E6%B1%82%E9%85%8D%E7%BD%AE"><span class="toc-number">19.1.</span> <span class="toc-text">Http 请求配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Http-%E4%BF%A1%E6%81%AF%E5%A4%B4%E7%AE%A1%E7%90%86%E5%99%A8%E3%80%90%E5%BF%85%E9%9C%80%E3%80%91"><span class="toc-number">19.2.</span> <span class="toc-text">Http 信息头管理器【必需】</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E5%8C%96"><span class="toc-number">20.</span> <span class="toc-text">参数化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSV-%E6%95%B0%E6%8D%AE%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%E5%8F%82%E6%95%B0%E5%8C%96"><span class="toc-number">20.1.</span> <span class="toc-text">CSV 数据控件实现参数化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%8F%82%E6%95%B0"><span class="toc-number">20.2.</span> <span class="toc-text">用户参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F%E3%80%8C%E5%85%A8%E5%B1%80%E5%AE%9A%E4%B9%89%E3%80%81%E5%BC%95%E7%94%A8%E3%80%8D"><span class="toc-number">20.3.</span> <span class="toc-text">用户定义变量「全局定义、引用」</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMeter-%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">21.</span> <span class="toc-text">JMeter 连接数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL"><span class="toc-number">21.1.</span> <span class="toc-text">MySQL</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E8%A1%A8%E5%8D%95"><span class="toc-number">22.</span> <span class="toc-text">上传文件表单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Http-%E8%AF%B7%E6%B1%82"><span class="toc-number">22.1.</span> <span class="toc-text">Http 请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Http-%E4%BF%A1%E6%81%AF%E5%A4%B4%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">22.2.</span> <span class="toc-text">Http 信息头管理器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8C-jmx-%E8%84%9A%E6%9C%AC"><span class="toc-number">23.</span> <span class="toc-text">命令行运行 jmx 脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D"><span class="toc-number">23.1.</span> <span class="toc-text">命令介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D"><span class="toc-number">23.2.</span> <span class="toc-text">参数介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-number">24.</span> <span class="toc-text">后置处理器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C%E7%8A%B6%E6%80%81%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-number">24.1.</span> <span class="toc-text">结果状态处理器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%8F%90%E5%8F%96%E5%99%A8"><span class="toc-number">24.2.</span> <span class="toc-text">正则表达式提取器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON-Extractor"><span class="toc-number">24.3.</span> <span class="toc-text">JSON Extractor</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">24.3.1.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%96%E5%A4%9A%E4%B8%AA%E5%8F%98%E9%87%8F%E5%80%BC"><span class="toc-number">24.3.2.</span> <span class="toc-text">取多个变量值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%AD%E8%A8%80"><span class="toc-number">25.</span> <span class="toc-text">断言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%96%AD%E8%A8%80"><span class="toc-number">25.1.</span> <span class="toc-text">响应断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON-%E6%96%AD%E8%A8%80"><span class="toc-number">25.2.</span> <span class="toc-text">JSON 断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BeanShell-%E6%96%AD%E8%A8%80"><span class="toc-number">25.3.</span> <span class="toc-text">BeanShell 断言</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="toc-number">26.</span> <span class="toc-text">小技巧</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

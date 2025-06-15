@@ -1,0 +1,444 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>100道Java 经典面试题 | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="JDK、JRE和JVM分别是什么？ 答案：JDK（Java Development Kit）是Java开发工具包，提供了Java的开发环境和运行环境。JRE（Java Runtime Environment）是Java运行环境，为Java程序的运行提供必要的库和类。JVM（Java Virtual Machine）是Java虚拟机，是一个允许Java程序在任何支持该虚拟机的平台上运行的解释器。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="100道Java 经典面试题">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/bb766e59.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="JDK、JRE和JVM分别是什么？ 答案：JDK（Java Development Kit）是Java开发工具包，提供了Java的开发环境和运行环境。JRE（Java Runtime Environment）是Java运行环境，为Java程序的运行提供必要的库和类。JVM（Java Virtual Machine）是Java虚拟机，是一个允许Java程序在任何支持该虚拟机的平台上运行的解释器。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2024-06-06T14:06:09.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.682Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="Java面试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/bb766e59.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '100道Java 经典面试题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">100道Java 经典面试题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-06T14:06:09.000Z" title="发表于 2024-06-06 22:06:09">2024-06-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.682Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="100道Java 经典面试题"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ol>
+<li><strong>JDK、JRE和JVM分别是什么？</strong><ul>
+<li><strong>答案</strong>：JDK（Java Development Kit）是Java开发工具包，提供了Java的开发环境和运行环境。JRE（Java Runtime Environment）是Java运行环境，为Java程序的运行提供必要的库和类。JVM（Java Virtual Machine）是Java虚拟机，是一个允许Java程序在任何支持该虚拟机的平台上运行的解释器。</li>
+</ul>
+</li>
+<li><strong>为什么Java被称作是“平台无关的编程语言”？</strong><ul>
+<li><strong>答案</strong>：Java通过虚拟机实现了跨平台性，即同一份Java代码可以在不同的操作系统上运行，只需将其编译成相应平台的字节码即可。</li>
+</ul>
+</li>
+<li><strong>Java支持哪些数据类型？</strong><ul>
+<li><strong>答案</strong>：Java支持八种基本数据类型：byte, short, int, long, float, double, boolean，以及八种引用类型：Byte, Short, Integer, Long, Float, Double, Boolean。</li>
+</ul>
+</li>
+<li><strong>什么是自动拆装箱？</strong><ul>
+<li><strong>答案</strong>：自动拆装箱是Java 5引入的一个特性，它允许使用装箱类（如Integer、Double等）和包装类（如Integer类中的value属性）之间进行转换，无需显式地创建临时对象。</li>
+</ul>
+</li>
+<li><strong>Java中，什么是构造方法？</strong><ul>
+<li><strong>答案</strong>：构造方法是类中的一个特殊方法，用于初始化对象实例。当创建对象时，会自动调用该方法来初始化对象的状态。</li>
+</ul>
+</li>
+<li><strong>Java支持多继承吗？</strong><ul>
+<li><strong>答案</strong>：Java不支持多继承，但可以通过接口来模拟多继承的效果。一个类可以实现多个接口，但只能继承一个类。</li>
+</ul>
+</li>
+<li><strong>接口和抽象类有哪些区别？</strong><ul>
+<li><strong>答案</strong>：接口不能包含任何方法定义，而抽象类可以包含抽象方法。接口默认为public，而抽象类的抽象方法默认为protected。一个类可以实现多个接口，但只能继承一个抽象类。</li>
+</ul>
+</li>
+<li><strong>面向对象编程有哪些特征？</strong><ul>
+<li><strong>答案</strong>：面向对象编程的特征包括封装、继承和多态。封装隐藏了对象的内部细节；继承允许新创建的类继承现有类的属性和方法；多态允许子类重写父类的方法。</li>
+</ul>
+</li>
+<li><strong>++i与i++的区别是什么？</strong><ul>
+<li><strong>答案</strong>：++i和i++都表示对变量i的自增操作，但它们的执行顺序不同。++i先将i的值增加1，然后返回新的值；而i++先返回i的当前值，然后将i的值增加1。</li>
+</ul>
+</li>
+<li><strong>类中的main方法可以声明为private吗？</strong><ul>
+<li><strong>答案</strong>：Java中main方法必须是public，如果是private，那么它虽然在编译时不会出错，但是在运行时会出错，因为main方法是程序的入口点，必须是public。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li><p><strong>“&#x3D;&#x3D;”和equals方法究竟有什么区别？</strong></p>
+<ul>
+<li>答案：<code>==</code>用于比较两个对象的内存地址，而<code>equals()</code>方法用于比较两个对象的内容是否相同。即使两个对象的内容相同，如果它们的内存地址不同，使用<code>==</code>会返回<code>false</code>，而使用<code>equals()</code>会返回<code>true</code>。</li>
+</ul>
+</li>
+<li><p><strong>静态变量和实例变量的区别？</strong></p>
+<ul>
+<li>答案：静态变量属于类本身，所有实例共享；实例变量属于类的实例，每个实例有自己的副本。静态变量在类加载时就已经存在，而实例变量则随着对象的创建而存在。</li>
+</ul>
+</li>
+<li><p><strong>是否可以从一个static方法内部发出对非static方法的调用？</strong></p>
+<ul>
+<li>答案：可以。虽然static方法不能直接访问非static成员，但可以通过实例来间接调用非static方法。</li>
+</ul>
+</li>
+<li><p><strong>思考Tomcat 类加载器为什么要违背双亲委派模型？</strong></p>
+<ul>
+<li>答案：Tomcat类加载器需要加载多个Web应用，这些应用可能依赖于不同版本的库。如果严格遵循双亲委派模型，新加载的类将无法替换旧加载的类，从而导致运行时错误。因此，Tomcat类加载器采用了破坏性破坏（破坏双亲委派模型）策略，以确保正确的类替换。</li>
+</ul>
+</li>
+<li><p><strong>Java8 lambda 表达式forEach 如何提前终止？</strong></p>
+<ul>
+<li>答案：在使用lambda表达式的<code>forEach</code>方法时，可以通过抛出异常并捕获这个异常来实现提前终止。例如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = Arrays.asList (<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>);</span><br><span class="line">list.forEach (e -&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (条件) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 其他逻辑</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+这样，当满足某个条件时，就会抛出异常，从而提前终止循环。</li>
+</ul>
+</li>
+<li><p><strong>线程安全的set有哪些？</strong></p>
+<ul>
+<li>答案：Java中没有内置的线程安全集合，但可以使用<code>CopyOnWriteArrayList</code>或使用synchronized关键字来实现线程安全的集合操作。</li>
+</ul>
+</li>
+<li><p><strong>HashMap1.7与1.8底层如何实现？</strong></p>
+<ul>
+<li>答案：在Java 1.8中，HashMap采用了红黑树来优化大量元素存储的情况。红黑树是一种自平衡的二叉查找树，它可以保证最坏情况下的时间复杂度为O(log n)，从而提高了性能。</li>
+</ul>
+</li>
+<li><p><strong>什么是并发与并行？</strong></p>
+<ul>
+<li>答案：并发是指多个任务在同一时间段内执行，但不一定在同一时刻执行；并行是指多个任务同时在不同的处理器上执行。并发关注的是任务的执行顺序，而并行关注的是任务的执行位置。</li>
+</ul>
+</li>
+<li><p><strong>线程和进程的区别？</strong></p>
+<ul>
+<li>答案：线程是进程的一部分，是轻量级的用户线程；进程是操作系统调度和分配资源的基本单位。线程共享父进程的地址空间，而进程则拥有独立的地址空间。线程比进程更节省系统资源。</li>
+</ul>
+</li>
+<li><p><strong>守护线程是什么？</strong></p>
+<ul>
+<li>答案：守护线程（Daemon Thread）是一种特殊类型的线程，当Java虚拟机（JVM）启动后，守护线程会在JVM关闭之前一直运行。守护线程通常用于执行后台任务，如清理缓存、日志记录等。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li><p><strong>JVM内存模型是什么？</strong></p>
+<ul>
+<li>JVM内存模型包括堆(Heap)、栈(Stack)、方法区.Method Area、程序计数器.Program Counter。堆用于存储对象实例，栈用于存储局部变量和操作码，方法区用于存储已被虚拟机加载的类信息、常量、静态变量等数据，以及即时编译器编译后的代码缓存等信息。</li>
+</ul>
+</li>
+<li><p><strong>解释一下垃圾回收（GC）的工作原理。</strong></p>
+<ul>
+<li>垃圾回收是通过标记-清除算法来实现的。首先，GC会遍历堆中的对象，将所有可达对象标记为“活着”。然后，将未被任何引用指向的对象标记为“不可达”。最后，清除所有不可达的对象，并将其内存空间重新分配给其他对象使用。</li>
+</ul>
+</li>
+<li><p><strong>什么是单例模式？请给出实现代码示例。</strong></p>
+<ul>
+<li>单例模式是一种确保一个类只有一个实例，并提供一个全局访问点的设计模式。实现代码如下：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>解释一下Synchronized关键字的工作原理。</strong></p>
+<ul>
+<li><code>synchronized</code>关键字可以修饰方法或代码块。当一个线程访问某个对象的<code>synchronized</code>方法时，它会自动获取该对象的监视器。如果另一个线程尝试访问同一对象的<code>synchronized</code>方法，它将被阻塞，直到前一个线程释放监视器。</li>
+</ul>
+</li>
+<li><p><strong>什么是多态？请给出一个例子。</strong></p>
+<ul>
+<li>多态是面向对象编程中的一个核心概念，指的是不同类的对象对同一消息做出响应，但具体行为取决于它们的实际类型。例如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">speak</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">implements</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">speak</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println (<span class="string">&quot;Bark!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> <span class="keyword">implements</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">speak</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println (<span class="string">&quot;Meow!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Animal</span> <span class="variable">myDog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br><span class="line">        <span class="type">Animal</span> <span class="variable">myCat</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br><span class="line"></span><br><span class="line">        myDog.speak (); <span class="comment">// 输出: Bark!</span></span><br><span class="line">        myCat.speak (); <span class="comment">// 输出: Meow!</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>解释一下接口和抽象类的区别。</strong></p>
+<ul>
+<li>接口是一种引用类型，可以包含方法声明，但不包含方法实现。抽象类可以包含抽象方法（没有实现的方法）和具体方法（有实现的方法）。接口不能包含状态信息，而抽象类可以包含状态信息。</li>
+</ul>
+</li>
+<li><p><strong>什么是反射？请给出一个使用反射的例子。</strong></p>
+<ul>
+<li>反射是Java的一个高级特性，允许程序在运行时查询、访问和修改其自身属性和方法。例如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.Method ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ReflectTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        Class&lt;?&gt; cl = Class.forName (<span class="string">&quot;java.lang.String &quot;</span>);</span><br><span class="line">        <span class="type">Method</span> <span class="variable">method</span> <span class="operator">=</span> cl.getMethod (<span class="string">&quot;length&quot;</span>, <span class="keyword">new</span> <span class="title class_">Class</span>&lt;?&gt;[<span class="number">0</span>]);</span><br><span class="line">        <span class="type">Object</span> <span class="variable">result</span> <span class="operator">=</span> method.invoke (<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">        System.out.println (<span class="string">&quot;Length: &quot;</span> + result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>解释一下异常处理机制。</strong></p>
+<ul>
+<li>异常处理机制包括捕获异常、声明异常、抛出异常和自定义异常。异常处理通常通过<code>try-catch-finally</code>语句来实现，其中<code>try</code>块中可能发生异常，<code>catch</code>块用于捕获异常，<code>finally</code>块无论是否发生异常都会执行。</li>
+</ul>
+</li>
+<li><p><strong>什么是序列化？请给出一个序列化和反序列化的例子。</strong></p>
+<ul>
+<li>序列化是将对象的状态转换为一种形式的流，以便可以在网络上传输或持久化存储。反序列化则是将这种流转换回原始对象的状态。例如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.Serializable ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Person</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li><p><strong>日期和时间：</strong></p>
+<ul>
+<li>打印昨天的当前时刻。</li>
+</ul>
+</li>
+<li><p><strong>比较一下Java 和JavaScript：</strong></p>
+<ul>
+<li>Java是一种静态类型的、面向对象的编程语言，用于开发大型应用程序。它在运行时需要一个JVM（Java虚拟机）环境。而JavaScript是一种动态类型的、基于事件驱动的脚本语言，通常用于客户端脚本和服务器端脚本。</li>
+</ul>
+</li>
+<li><p><strong>什么时候用断言（assert）？</strong></p>
+<ul>
+<li>断言用于验证程序中的某些条件是否满足。在开发阶段，断言可以帮助检测错误；在生产环境中，断言可以帮助确认程序的状态。</li>
+</ul>
+</li>
+<li><p><strong>Error 和Exception 有什么区别？</strong></p>
+<ul>
+<li>Error是指程序执行过程中出现的问题，但这些问题不会被捕获。Exception是指程序执行过程中出现的可预见的问题，可以通过try-catch块捕获。</li>
+</ul>
+</li>
+<li><p><strong>notify()和notifyAll()有什么区别？</strong></p>
+<ul>
+<li>notify()方法仅唤醒一个等待在此对象监视器上的单个线程。如果有多个线程等待，则只有一个会被唤醒。notifyAll()方法则唤醒所有等待在此对象监视器上的线程。</li>
+</ul>
+</li>
+<li><p><strong>线程的run()和start()有什么区别？</strong></p>
+<ul>
+<li>run()方法是直接调用线程的run方法，而start()方法是启动一个新的线程，并调用该线程的run方法。使用start()方法可以避免线程间的竞争。</li>
+</ul>
+</li>
+<li><p><strong>创建线程池有哪几种方式？</strong></p>
+<ul>
+<li>可以通过实现ExecutorService接口来创建线程池，也可以使用java.util.concurrent.ThreadPoolExecutor 类来创建线程池。</li>
+</ul>
+</li>
+<li><p><strong>Array可以包含基本类型和对象类型，ArrayList只能包含对象类型。</strong></p>
+<ul>
+<li>Array可以包含基本类型和对象类型，因为Array的元素类型是泛型。而ArrayList只能包含对象类型，因为ArrayList的元素类型也是泛型。</li>
+</ul>
+</li>
+<li><p><strong>Array大小是固定的，ArrayList的大小是动态变化的。</strong></p>
+<ul>
+<li>Array的大小在初始化时就确定下来，是固定的。而ArrayList的大小是动态变化的，可以根据需要进行扩容或缩容。</li>
+</ul>
+</li>
+<li><p><strong>ArrayList提供了哪些方法？</strong></p>
+<ul>
+<li>ArrayList提供了add()、remove()、get()、set()、clear()等方法。其中add()方法用于添加元素，remove()方法用于删除元素，get()方法用于获取元素，set()方法用于设置元素，clear()方法用于清空列表。</li>
+</ul>
+</li>
+<li><p><strong>CyclicBarrier 和 CountDownLatch 的区别？</strong></p>
+<ul>
+<li>CyclicBarrier用于等待所有的线程都达到某个同步点，然后继续执行。CountDownLatch用于等待一组操作完成后再继续执行。</li>
+</ul>
+</li>
+<li><p><strong>CAS 的问题：</strong></p>
+<ul>
+<li>CAS容易造成ABA问题，不能保证代码块的原子性，且可能导致CPU利用率增加。</li>
+</ul>
+</li>
+<li><p><strong>ReadWriteLock 是什么？</strong></p>
+<ul>
+<li>ReadWriteLock是一种读写锁，它允许多个读操作同时进行，但写操作必须排队等待读操作完成后才能进行。</li>
+</ul>
+</li>
+<li><p><strong>类成员函数的重载、覆盖和隐藏区别？</strong></p>
+<ul>
+<li>重载是指在同一个类中，具有相同名称但参数列表不同的方法。覆盖是指子类继承自父类的方法。隐藏是指子类中的方法与父类中的同名方法签名相同，但返回类型不同。</li>
+</ul>
+</li>
+<li><p><strong>接口中所有的方法隐含的都是抽象的。</strong></p>
+<ul>
+<li>是的，Java中的接口默认所有方法都是抽象的，除非显式地声明为具体实现。</li>
+</ul>
+</li>
+<li><p><strong>类可以实现很多个接口，但是只能继承一个抽象类。</strong></p>
+<ul>
+<li>是的，一个类可以实现多个接口，但只能继承一个抽象类。</li>
+</ul>
+</li>
+<li><p><strong>类如果要实现一个接口，它必须要实现接口声明的所有方法。</strong></p>
+<ul>
+<li>是的，一个类如果要实现一个接口，就必须实现接口中声明的所有方法。</li>
+</ul>
+</li>
+<li><p><strong>在Java中导入包时，其子包不会被导入，如果有需要，开发者必须单独导入。</strong></p>
+<ul>
+<li>是的，当你导入一个包时，只有该包中的类会被导入，子包中的类需要单独导入。</li>
+</ul>
+</li>
+<li><p><strong>类中的main方法可以声明为private？</strong></p>
+<ul>
+<li>不可以</li>
+</ul>
+<hr>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/bb766e59.html">https://wangwenzhe.github.io/posts/bb766e59.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java%E9%9D%A2%E8%AF%95/">Java面试</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/56e94e1f.html" title="面试题-网络协议"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">面试题-网络协议</div></div></a></div><div class="next-post pull-right"><a href="/posts/de86ab45.html" title="Taiyi-区块链系统"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Taiyi-区块链系统</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

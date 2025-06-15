@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DRBD + keepalived实现文件实时同步和双机热备 | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="DRBD + keepalived实现文件实时同步和双机热备DRBD（分布式复制块设备）可以简单理解为一种数据备份和同步的技术，主要用于提高数据的可用性和安全性。以下是 DRBD 的一些关键点 什么是 DRBD？ 数据镜像：DRBD 能够在两台服务器之间实时复制数据，就像在两个地方同时写同样的东西一样。这样，如果一台服务器发生故障，另一台服务器上的数据依然是最新的，可以继续使用。 块设备：DRBD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DRBD + keepalived实现文件实时同步和双机热备">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/c3d47e69.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="DRBD + keepalived实现文件实时同步和双机热备DRBD（分布式复制块设备）可以简单理解为一种数据备份和同步的技术，主要用于提高数据的可用性和安全性。以下是 DRBD 的一些关键点 什么是 DRBD？ 数据镜像：DRBD 能够在两台服务器之间实时复制数据，就像在两个地方同时写同样的东西一样。这样，如果一台服务器发生故障，另一台服务器上的数据依然是最新的，可以继续使用。 块设备：DRBD">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2024-12-23T12:38:23.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.697Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="DRBD">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/c3d47e69.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'DRBD + keepalived实现文件实时同步和双机热备',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">DRBD + keepalived实现文件实时同步和双机热备</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-23T12:38:23.000Z" title="发表于 2024-12-23 20:38:23">2024-12-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.697Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/DRBD/">DRBD</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/DRBD/keepalived/">keepalived</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="DRBD + keepalived实现文件实时同步和双机热备"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h4 id="DRBD-keepalived实现文件实时同步和双机热备"><a href="#DRBD-keepalived实现文件实时同步和双机热备" class="headerlink" title="DRBD + keepalived实现文件实时同步和双机热备"></a>DRBD + keepalived实现文件实时同步和双机热备</h4><p><strong>DRBD</strong>（分布式复制块设备）可以简单理解为一种数据备份和同步的技术，主要用于提高数据的可用性和安全性。以下是 DRBD 的一些关键点</p>
+<h3 id="什么是-DRBD？"><a href="#什么是-DRBD？" class="headerlink" title="什么是 DRBD？"></a>什么是 DRBD？</h3><ul>
+<li><strong>数据镜像</strong>：DRBD 能够在两台服务器之间实时复制数据，就像在两个地方同时写同样的东西一样。这样，如果一台服务器发生故障，另一台服务器上的数据依然是最新的，可以继续使用。</li>
+<li><strong>块设备</strong>：DRBD 把数据处理成块（block）的形式，这样就可以像使用普通磁盘一样来访问和管理这些数据。</li>
+</ul>
+<h3 id="如何工作？"><a href="#如何工作？" class="headerlink" title="如何工作？"></a>如何工作？</h3><ol>
+<li><strong>主从模式</strong>：通常配置为一台服务器为“主节点”，另一台为“从节点”。主节点处理所有的读写请求，而从节点则实时接收主节点的数据更新。</li>
+<li><strong>网络同步</strong>：两台服务器通过网络连接，DRBD 会把主节点的数据变化实时同步到从节点，这样无论是文件、数据库还是其他数据类型，都是一致的。</li>
+<li><strong>故障转移</strong>：如果主节点出现问题，系统可以自动或手动把从节点提升为新的主节点，确保服务的连续性。</li>
+</ol>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li><strong>高可用性</strong>：在需要确保数据始终可用的场合，比如金融、医疗等行业，DRBD 是一个不错的选择。</li>
+<li><strong>灾难恢复</strong>：一旦发生数据丢失或服务器故障，DRBD 可以迅速切换到备用节点，减少停机时间。</li>
+</ul>
+<p><strong>Keepalived</strong> 是一种用于提供高可用性和负载均衡的工具，主要用于保证服务的持续运行。以下是 Keepalived 的一些关键点</p>
+<h3 id="什么是-Keepalived？"><a href="#什么是-Keepalived？" class="headerlink" title="什么是 Keepalived？"></a>什么是 Keepalived？</h3><ul>
+<li><strong>高可用性管理</strong>：Keepalived 能够监控服务器的健康状态。如果一台服务器出现故障，它可以自动将流量切换到另一台正常工作的服务器，确保服务不会中断。</li>
+<li><strong>虚拟IP管理</strong>：Keepalived 可以创建一个虚拟 IP 地址（VIP），让用户通过这个 IP 访问服务。即使后端的实际服务器发生变化，用户依然可以通过同一个虚拟 IP 访问服务。</li>
+</ul>
+<h3 id="如何工作？-1"><a href="#如何工作？-1" class="headerlink" title="如何工作？"></a>如何工作？</h3><ol>
+<li><strong>节点监控</strong>：Keepalived 会定期检查每个节点（服务器）的状态，确保它们正常运行。如果发现某个节点不响应，它会标记该节点为“故障”。</li>
+<li><strong>故障转移</strong>：一旦某个节点出现故障，Keepalived 会自动将虚拟 IP 切换到另一台健康的服务器上，用户可以继续访问服务，而不需要知道后端发生了什么变化。</li>
+<li><strong>优先级设置</strong>：在多台服务器中，Keepalived 允许你设置优先级，确保某些服务器在正常情况下优先处理流量。</li>
+</ol>
+<h3 id="使用场景-1"><a href="#使用场景-1" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li><strong>网站和应用</strong>：在需要确保网站或应用始终可用的场景，比如电商、社交媒体等，Keepalived 是一个理想的解决方案。</li>
+<li><strong>负载均衡</strong>：它可以帮助分配请求到多台服务器，提高系统的处理能力和响应速度。</li>
+</ul>
+<h4 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h4><h5 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h5><ol>
+<li><p>两台 Ubuntu 22.04.4 服务器，192.168.5.210 和 192.168.5.147分别命名为 bowei01和 bowei02</p>
+</li>
+<li><p>两台服务器分别修改host文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">root@bowei01:/etc# vim /etc/hosts</span><br><span class="line">1、两台服务器 </span><br><span class="line">192.168.5.147 bowei02</span><br><span class="line">192.168.5.210  bowei01</span><br><span class="line"></span><br><span class="line">127.0.0.1 localhost</span><br><span class="line">127.0.1.1 bowei01</span><br><span class="line">192.168.5.147 bowei02</span><br><span class="line"># The following lines are desirable for IPv6 capable hosts</span><br><span class="line">::1     ip6-localhost ip6-loopback</span><br><span class="line">fe00::0 ip6-localnet</span><br><span class="line">ff00::0 ip6-mcastprefix</span><br><span class="line">ff02::1 ip6-allnodes</span><br><span class="line">ff02::2 ip6-allrouters</span><br><span class="line">--------------------------------------------------------------------------------------</span><br><span class="line">root@bowei02:~# vim /etc/hosts</span><br><span class="line">127.0.0.1 localhost</span><br><span class="line">127.0.1.1 bowei02</span><br><span class="line">192.168.5.21 bowei01</span><br><span class="line"># The following lines are desirable for IPv6 capable hosts</span><br><span class="line">::1     ip6-localhost ip6-loopback</span><br><span class="line">fe00::0 ip6-localnet</span><br><span class="line">ff00::0 ip6-mcastprefix</span><br><span class="line">ff02::1 ip6-allnodes</span><br><span class="line">ff02::2 ip6-allrouters</span><br></pre></td></tr></table></figure>
+
+<p>3.确保两台服务器之间的网络平常</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@bowei02:~# ping bowei01</span><br><span class="line">PING bowei01 (192.168.5.21) 56(84) bytes of data.</span><br><span class="line">From bowei02 (192.168.5.147) icmp_seq=1 Destination Host Unreachable</span><br><span class="line">From bowei02 (192.168.5.147) icmp_seq=2 Destination Host Unreachable</span><br><span class="line">From bowei02 (192.168.5.147) icmp_seq=3 Destination Host Unreachable</span><br></pre></td></tr></table></figure>
+
+<p>4.安装drbd所需要的，因为DRBD编译在内核里的，所以也要安装linux-headers</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#uname -r 看下内核版本</span><br><span class="line">5.15.0-94-generic  我的内核版本</span><br><span class="line">#apt-get install  flex  linux-headers-5.15.0-94-generic </span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="下载源码编译安装"><a href="#下载源码编译安装" class="headerlink" title="下载源码编译安装"></a>下载源码编译安装</h2><p>drbd需要两个安装报：drbd drbd-utils   安装包路径：&#x2F;usr&#x2F;local&#x2F;src</p>
+<p>drbd 安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://pkg.linbit.com//downloads/drbd/9/drbd-9.2.8.tar.gz</span><br><span class="line">tar -zxvf drbd-9.2.8.tar.gz</span><br><span class="line"><span class="built_in">cd</span> drbd-9.2.8</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>drbd-utils 安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://pkg.linbit.com//downloads/drbd/utils/drbd-utils-9.27.0.tar.gz</span><br><span class="line">tar -zxvf drbd-utils-9.27.0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> drbd-utils-9.27.0</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>安装配置路径：&#x2F;usr&#x2F;local&#x2F;drbd&#x2F;etc&#x2F;drbd.d</p>
+<p>如果在安装 DRBD 或其依赖时遇到 <code>configure: error: Need keyutils ubuntu</code> 错误，这通常意味着缺少 <code>keyutils</code> 库。你可以通过以下步骤来解决此问题：</p>
+<p>安装 <code>keyutils</code> 库</p>
+<p>在 Ubuntu 上，你可以通过以下命令安装 <code>keyutils</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install keyutils</span><br></pre></td></tr></table></figure>
+
+<p>确保开发包已安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install libkeyutils-dev</span><br></pre></td></tr></table></figure>
+
+<p>备份配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/local/drbd/etc/drbd.d/global_common.conf&#123;,.bak&#125; </span><br></pre></td></tr></table></figure>
+
+<p>查看磁盘分区：sudo fdisk -l</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Disk /dev/sda: 20 GiB, 21474836480 bytes, 41943040 sectors</span><br><span class="line">Disk model: VMware Virtual S</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disklabel type: gpt</span><br><span class="line">Disk identifier: 8D36168C-3E55-4138-BCF9-588DB7E5EDB2</span><br><span class="line"></span><br><span class="line">Device       Start      End  Sectors  Size Type</span><br><span class="line">/dev/sda1     2048     4095     2048    1M BIOS boot</span><br><span class="line">/dev/sda2     4096  3719167  3715072  1.8G Linux filesystem</span><br><span class="line">/dev/sda3  3719168 41940991 38221824 18.2G Linux filesystem</span><br><span class="line"></span><br><span class="line">Disk /dev/mapper/ubuntu--vg-ubuntu--lv: 10 GiB, 10737418240 bytes, 20971520 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br></pre></td></tr></table></figure>
+
+<p>如果没有逻辑卷可以考虑新增逻辑卷：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 将新加的磁盘分区</span><br><span class="line">fdisk /dev/sdb </span><br><span class="line"></span><br><span class="line"># 按照提示创建一个 Linux LVM 类型的分区</span><br><span class="line">&quot;n&quot; --&gt; &quot;p&quot; --&gt; &quot;1&quot; --&gt; &quot;回车&quot; --&gt; &quot;回车&quot; --&gt; &quot;t&quot; --&gt; &quot;8e&quot; --&gt; &quot;w&quot;</span><br><span class="line"></span><br><span class="line"># 刷新磁盘信息</span><br><span class="line">partprobe </span><br><span class="line"></span><br><span class="line"># 创建 pv</span><br><span class="line">pvcreate /dev/sdb1 </span><br><span class="line"></span><br><span class="line"># 扩容 vg</span><br><span class="line">vgextend ubuntu-vg /dev/sdb1 </span><br><span class="line"></span><br><span class="line"># 创建 lv</span><br><span class="line">lvcreate -l 100%Free -n data ubuntu-vg </span><br></pre></td></tr></table></figure>
+
+<p>创建资源文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># vim /usr/local/drbd/etc/drbd.d/r1.res    #编辑资源配置文件</span><br><span class="line"></span><br><span class="line">resource r1 &#123;</span><br><span class="line">    on bowei01 &#123;</span><br><span class="line">        device    /dev/drbd1;    # device 指定的參数最后必须有一个数字，用于 global 的 minor-count，否则会报错。device指定drbd应用层设备。</span><br><span class="line">        disk      /dev/mapper/ubuntu--vg-data;    # 新建的 LV 分区磁盘</span><br><span class="line">        address   192.168.5.210:7789;    # DRBD 监听的地址和端口，端口可以自定义。</span><br><span class="line">        meta-disk internal;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    on bowei02 &#123;</span><br><span class="line">        device    /dev/drbd1;</span><br><span class="line">        disk      /dev/mapper/ubuntu--vg-data;    # 新建的 LV 分区磁盘</span><br><span class="line">        address   192.168.5.147:7789; </span><br><span class="line">        meta-disk internal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在bowei01、bowei02上初始化资源、启动drbd：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drbdadm create-md r1</span><br></pre></td></tr></table></figure>
+
+<p>创建服务文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/systemd/system/drbd.service</span><br></pre></td></tr></table></figure>
+
+<p>添加以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=DRBD Distributed Replicated Block Device</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=oneshot</span><br><span class="line">ExecStart=/usr/local/drbd/sbin/drbdadm up all</span><br><span class="line">ExecStop=/usr/local/drbd/sbin/drbdadm down all</span><br><span class="line">RemainAfterExit=yes</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>重新加载 systemd 配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>启动 DRBD 服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable drbd #开机启动</span><br><span class="line">systemctl start drbd #手动启动</span><br><span class="line">systemctl status drbd #状态查看</span><br></pre></td></tr></table></figure>
+
+<p>查看状态 systemctl status drbd</p>
+<p>查看组状态   cat &#x2F;proc&#x2F;drbd </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 查看 DRBD 状态</span><br><span class="line">systemctl status drbd</span><br><span class="line"></span><br><span class="line"># 查看 资源组 cat /proc/drbd </span><br><span class="line">root@bowei01:~# cat /proc/drbd </span><br><span class="line">version: 8.4.11 (api:1/proto:86-101)</span><br><span class="line">srcversion: 211FB288A383ED945B83420 </span><br><span class="line"></span><br><span class="line">1: cs:Connected ro:Secondary/Secondary ds:Inconsistent/Inconsistent C r-----</span><br><span class="line">    ns:0 nr:0 dw:0 dr:0 al:8 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:41937628</span><br><span class="line"></span><br><span class="line">root@bowei02:~# cat /proc/drbd </span><br><span class="line">version: 8.4.11 (api:1/proto:86-101)</span><br><span class="line">srcversion: 211FB288A383ED945B83420 </span><br><span class="line"></span><br><span class="line">1: cs:Connected ro:Secondary/Secondary ds:Inconsistent/Inconsistent C r-----</span><br><span class="line">    ns:0 nr:0 dw:0 dr:0 al:8 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:41937628</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>由上面两台主机的DRBD状态查看结果里的ro:Secondary&#x2F;Secondary表示两台主机的状态都是备机状态，ds是磁盘状态</p>
+<p>将 bowei01 服务器配置为 DRBD 的主节点，进行初始化设备同步</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># drbdsetup /dev/drbd1 primary --force 设置直节点</span><br><span class="line">root@bowei01:# drbdsetup /dev/drbd1 primary --force</span><br><span class="line">root@bowei01:# cat /proc/drbd</span><br><span class="line">version: 8.4.11 (api:1/proto:86-101)</span><br><span class="line">srcversion: C7B8F7076B8D6DB066D84D9</span><br><span class="line"></span><br><span class="line"> 1: cs:SyncSource ro:Primary/Secondary ds:UpToDate/Inconsistent C r-----</span><br><span class="line">    ns:39144 nr:0 dw:0 dr:41264 al:0 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:29549420</span><br><span class="line">        [&gt;....................] sync&#x27;ed:  0.2% (28856/28892)M</span><br><span class="line">        finish: 2:05:38 speed: 3,912 (3,912) K/sec</span><br><span class="line">root@bowei01:/usr/local/drbd/etc/drbd.d#</span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line">ro 在主从服务器上分别显示 Primary/Secondary 和 Secondary/Primary</span><br><span class="line">ds显示 UpToDate/UpToDate 表示主从配置成功</span><br></pre></td></tr></table></figure>
+
+<p>查看系统资源：drbdadm status</p>
+<h5 id="验证DRBD主备"><a href="#验证DRBD主备" class="headerlink" title="验证DRBD主备"></a>验证DRBD主备</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">bowei01 主节点挂载 drbd1，创建测试数据</span><br><span class="line"># 格式化 drbd1</span><br><span class="line">mkfs.ext4 /dev/drbd1</span><br><span class="line"></span><br><span class="line"># 创建挂载目录</span><br><span class="line">mkdir /data</span><br><span class="line"></span><br><span class="line"># 挂载设备 drbd1</span><br><span class="line">mount /dev/drbd1 /data</span><br><span class="line"></span><br><span class="line"># 查看挂载信息</span><br><span class="line">root@bowei01:/usr/local/drbd/etc/drbd.d# df -h</span><br><span class="line">Filesystem                         Size  Used Avail Use% Mounted on</span><br><span class="line">tmpfs                              388M  1.6M  387M   1% /run</span><br><span class="line">/dev/mapper/ubuntu--vg-ubuntu--lv  9.8G  4.3G  5.0G  47% /</span><br><span class="line">tmpfs                              1.9G     0  1.9G   0% /dev/shm</span><br><span class="line">tmpfs                              5.0M     0  5.0M   0% /run/lock</span><br><span class="line">/dev/sda2                          1.8G  258M  1.4G  16% /boot</span><br><span class="line">tmpfs                              388M  4.0K  388M   1% /run/user/0</span><br><span class="line">/dev/drbd1                          28G   24K   27G   1% /data</span><br><span class="line"></span><br><span class="line"># 创建测试文件</span><br><span class="line">touch /data/&#123;test1,test2,test3&#125;</span><br><span class="line">echo &quot;test&quot; &gt; /data/test.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="特别注意："><a href="#特别注意：" class="headerlink" title="特别注意："></a>特别注意：</h3><p>从节点(Secondary)上不允许对 DRBD 设备进行任何操作，包括只读，所有的读写操作只能在主节点(Primary)上进行。<br>只有当主节点(Primary)挂掉时，从节点(Secondary)才能提升为主节点(Primary)。</p>
+<p>主节点切换，将 bowei01 节点关机，然后将bowei02节点设置为主节点 主节点关机或下载会主动取消挂在</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">root@bowei02:/usr/local/drbd/etc/drbd.d# drbdadm primary r1</span><br><span class="line"> --==  Thank you for participating in the global usage survey  ==--</span><br><span class="line">The server&#x27;s response is:</span><br><span class="line"></span><br><span class="line">you are the 230th user to install this version</span><br><span class="line">root@bowei02:/usr/local/drbd/etc/drbd.d# mkdir /data</span><br><span class="line">root@bowei02:/usr/local/drbd/etc/drbd.d# mount /dev/drbd1 /data/</span><br><span class="line">root@bowei02:/usr/local/drbd/etc/drbd.d# cat /data/</span><br><span class="line">cat: /data/: Is a directory</span><br><span class="line">root@bowei02:/usr/local/drbd/etc/drbd.d# cd /data/</span><br><span class="line">root@bowei02:/data# ll</span><br><span class="line">total 28</span><br><span class="line">drwxr-xr-x  3 root root  4096 Sep 27 09:40 ./</span><br><span class="line">drwxr-xr-x 21 root root  4096 Sep 27 09:49 ../</span><br><span class="line">drwx------  2 root root 16384 Sep 27 09:38 lost+found/</span><br><span class="line">-rw-r--r--  1 root root     0 Sep 27 09:40 test1</span><br><span class="line">-rw-r--r--  1 root root     0 Sep 27 09:40 test2</span><br><span class="line">-rw-r--r--  1 root root     0 Sep 27 09:40 test3</span><br><span class="line">-rw-r--r--  1 root root     5 Sep 27 09:40 test.txt</span><br><span class="line"></span><br><span class="line"># 在 bowei02 节点创建测试数据</span><br><span class="line">echo &#x27;bowei02&#x27; &gt; /data/test2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">drbdsetup /dev/drbd1 primary --force 和 drbdadm primary r1 这两个命令都涉及到将 DRBD 资源设置为 primary 状态，但它们之间存在一些关键的区别，主要体现在使用的工具、操作对象以及上下文环境上。</span><br><span class="line"></span><br><span class="line">drbdsetup vs drbdadm</span><br><span class="line">工具不同：</span><br><span class="line">drbdsetup：这是一个底层的 DRBD 配置工具，允许用户直接配置已经加载到正在运行的内核的 DRBD 模块。它通常用于更直接、更底层的配置和管理任务。</span><br><span class="line">drbdadm：这是 DRBD 程序套件的高层次管理工具，它从配置文件（如 /etc/drbd.conf）中读取配置参数，并据此执行更高级别的管理操作。它提供了更易于使用、更人性化的接口来管理 DRBD 资源。</span><br><span class="line">操作对象不同：</span><br><span class="line">drbdsetup /dev/drbd1 primary --force：这个命令直接针对 /dev/drbd1 这个特定的 DRBD 设备进行操作，将其强制设置为 primary 状态。这里的操作是直接的，不依赖于配置文件中的资源名称。</span><br><span class="line">drbdadm primary gitlab：这个命令通过资源名称（在这个例子中是 r1）来操作 DRBD 资源。它首先查找配置文件中的 r1 资源定义，然后根据该定义来执行相应的操作。这意味着你需要在配置文件中有一个名为 r1 的资源，并且该资源应该与 /dev/drbd1 或其他某个 DRBD 设备相关联。</span><br><span class="line">上下文环境：</span><br><span class="line">使用 drbdsetup 时，你可能需要更直接地控制 DRBD 的行为，尤其是在进行故障排除或需要绕过某些配置限制时。然而，这也增加了出错的风险，因为直接操作可能会忽略配置文件中的某些重要设置。</span><br><span class="line">使用 drbdadm 时，你更依赖于配置文件的正确性。如果配置文件中的资源定义有误或缺失，那么 drbdadm 命令可能会失败。但是，这也使得管理变得更加一致和可预测，因为所有的操作都基于相同的配置文件。</span><br><span class="line">结论</span><br><span class="line">如果你需要直接、快速地操作 DRBD 设备，并且了解可能的后果和限制，那么可以使用 drbdsetup。</span><br><span class="line">如果你希望通过更高级别、更易于管理的接口来操作 DRBD 资源，并且希望所有操作都基于一致的配置文件，那么应该使用 drbdadm</span><br></pre></td></tr></table></figure>
+
+<p>启动bowei01 服务器，然后再切换 bowei01 为主节点，bowei02 为备节点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># bowei02 取消挂载 drbd1 设备</span><br><span class="line">root@bowei02:~# umount /data </span><br><span class="line"></span><br><span class="line"># 将 bowei02 角色配置为 从</span><br><span class="line">root@bowei02:~# drbdadm secondary gitlab </span><br><span class="line"></span><br><span class="line"># 将 bowei01 角色设置为主</span><br><span class="line">root@bowei01:~# drbdadm primary gitlab </span><br><span class="line"></span><br><span class="line"># bowei01 挂载 drbd 设备</span><br><span class="line">root@bowei01:~# mount /dev/drbd1 /data/</span><br><span class="line"></span><br><span class="line"># bowei01 服务器查看刚才在 bowei02 上修改文件是否正常</span><br><span class="line">root@bowei01:~# cat /data/test2 </span><br><span class="line">bowei02</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">查看磁盘分区：sudo fdisk -l</span><br><span class="line">systemctl enable drbd #开机启动</span><br><span class="line">systemctl start drbd #手动启动</span><br><span class="line">systemctl status drbd #状态查看</span><br><span class="line">systemctl stop drbd #手动停止</span><br><span class="line">查看组状态   cat /proc/drbd </span><br><span class="line">drbdsetup /dev/drbd1 primary --force 设置直节点</span><br><span class="line">umount /data #取消挂在</span><br><span class="line">drbdadm secondary r1 #设置从资源</span><br><span class="line">drbdadm primary  r1  #设置主资源</span><br><span class="line">mount /dev/drbd1 /data/  #挂在设备</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/c3d47e69.html">https://wangwenzhe.github.io/posts/c3d47e69.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/DRBD/">DRBD</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/1c595890.html" title="DM-Linux环境下安装与卸载"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">DM-Linux环境下安装与卸载</div></div></a></div><div class="next-post pull-right"><a href="/posts/7240017.html" title="GitLab上传文件大小限制"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">GitLab上传文件大小限制</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#DRBD-keepalived%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E5%92%8C%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">DRBD + keepalived实现文件实时同步和双机热备</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-DRBD%EF%BC%9F"><span class="toc-number"></span> <span class="toc-text">什么是 DRBD？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%EF%BC%9F"><span class="toc-number"></span> <span class="toc-text">如何工作？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number"></span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Keepalived%EF%BC%9F"><span class="toc-number"></span> <span class="toc-text">什么是 Keepalived？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%EF%BC%9F-1"><span class="toc-number"></span> <span class="toc-text">如何工作？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="toc-number"></span> <span class="toc-text">使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">安装过程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">前提条件</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">下载源码编译安装</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81DRBD%E4%B8%BB%E5%A4%87"><span class="toc-number">0.1.</span> <span class="toc-text">验证DRBD主备</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%88%AB%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">特别注意：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">注意：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">常用命令：</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

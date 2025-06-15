@@ -1,0 +1,312 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Nexus-Linux安装部署完整教程 | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux 下 Nexus 安装部署完整教程 兄弟们，今儿咱来盘一盘在 Linux 系统上咋安装部署 Nexus。Nexus 这玩意儿可是个超实用的开源仓库管理工具，在开发中管理 Maven、npm、Docker 镜像等各种组件都得靠它。不管你是搭建私有仓库，还是想优化项目的依赖管理，学会安装部署 Nexus 都是必备技能。话不多说，开整！ 一、安装前的准备工作（一）环境要求&#xA; 操作系统：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nexus-Linux安装部署完整教程">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/514f2706.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="Linux 下 Nexus 安装部署完整教程 兄弟们，今儿咱来盘一盘在 Linux 系统上咋安装部署 Nexus。Nexus 这玩意儿可是个超实用的开源仓库管理工具，在开发中管理 Maven、npm、Docker 镜像等各种组件都得靠它。不管你是搭建私有仓库，还是想优化项目的依赖管理，学会安装部署 Nexus 都是必备技能。话不多说，开整！ 一、安装前的准备工作（一）环境要求&#xA; 操作系统：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2025-06-15T14:05:07.000Z">
+<meta property="article:modified_time" content="2025-06-15T14:09:45.011Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="Nexus">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/514f2706.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Nexus-Linux安装部署完整教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 22:09:45'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Nexus-Linux安装部署完整教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-15T14:05:07.000Z" title="发表于 2025-06-15 22:05:07">2025-06-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T14:09:45.011Z" title="更新于 2025-06-15 22:09:45">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Nexus/">Nexus</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Nexus-Linux安装部署完整教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>Linux 下 Nexus 安装部署完整教程</p>
+<p>兄弟们，今儿咱来盘一盘在 Linux 系统上咋安装部署 Nexus。Nexus 这玩意儿可是个超实用的开源仓库管理工具，在开发中管理 Maven、npm、Docker 镜像等各种组件都得靠它。不管你是搭建私有仓库，还是想优化项目的依赖管理，学会安装部署 Nexus 都是必备技能。话不多说，开整！</p>
+<h2 id="一、安装前的准备工作"><a href="#一、安装前的准备工作" class="headerlink" title="一、安装前的准备工作"></a>一、安装前的准备工作</h2><h3 id="（一）环境要求-xA"><a href="#（一）环境要求-xA" class="headerlink" title="（一）环境要求&#xA;"></a>（一）环境要求&#xA;</h3><ol>
+<li><p><strong>操作系统</strong>：咱得用 Linux 系统，像 CentOS 7 + 或者 Ubuntu 18 + 都成。这俩系统在服务器领域用得贼多，稳定性和兼容性都不错，很适合跑 Nexus。</p>
+</li>
+<li><p><strong>Java 环境</strong>：Nexus 是基于 Java 开发的，所以得先装 Java 环境。注意，Nexus 2 版本用 JDK 7 就行，要是咱用 Nexus 3，那就得安排 JDK 8 及以上版本了。不清楚咋装 JDK 的兄弟，网上教程一搜一大把，跟着操作就行。</p>
+</li>
+<li><p><strong>内存和 CPU</strong>：Nexus 运行起来还是挺耗资源的，官方建议服务器至少得有 4 个 CPU 核心，内存最好 8GB 起步。要是资源不够，Nexus 跑起来可能就不太顺畅，甚至可能报错。咱可以用<code>cat /proc/cpuinfo</code>命令瞅瞅 CPU 核心数，用<code>free -h</code>命令看看内存情况。</p>
+</li>
+<li><p><strong>网络</strong>：确保服务器的防火墙开放了 Nexus 要用的端口，默认是 8081 端口。要是端口被防火墙拦住了，咱在浏览器里就访问不了 Nexus 的 Web 界面。</p>
+</li>
+</ol>
+<h3 id="（二）下载-Nexus-安装包-xA"><a href="#（二）下载-Nexus-安装包-xA" class="headerlink" title="（二）下载 Nexus 安装包&#xA;"></a>（二）下载 Nexus 安装包&#xA;</h3><ol>
+<li><p><strong>官网下载</strong>：最正规的下载方式肯定是去 Nexus 官网啦，地址是<a target="_blank" rel="noopener" href="https://help.sonatype.com/repomanager3/download">Dow</a><a target="_blank" rel="noopener" href="https://help.sonatype.com/repomanager3/download">nl</a><a target="_blank" rel="noopener" href="https://help.sonatype.com/repomanager3/download">oad</a><a target="_blank" rel="noopener" href="https://help.sonatype.com/repomanager3/download"> Ar</a><a target="_blank" rel="noopener" href="https://help.sonatype.com/repomanager3/download">chi</a><a target="_blank" rel="noopener" href="https://help.sonatype.com/repomanager3/download">ves</a><a target="_blank" rel="noopener" href="https://help.sonatype.com/repomanager3/download"> -</a><a target="_blank" rel="noopener" href="https://help.sonatype.com/repomanager3/download"> Rep</a><a target="_blank" rel="noopener" href="https://help.sonatype.com/repomanager3/download">osi</a><a target="_blank" rel="noopener" href="https://help.sonatype.com/repomanager3/download">tor</a><a target="_blank" rel="noopener" href="https://help.sonatype.com/repomanager3/download">y M</a><a target="_blank" rel="noopener" href="https://help.sonatype.com/repomanager3/download">ana</a><a target="_blank" rel="noopener" href="https://help.sonatype.com/repomanager3/download">ger</a><a target="_blank" rel="noopener" href="https://help.sonatype.com/repomanager3/download"> 3</a> 。在这儿能找到各个版本的资源，要注意的是，官网是外网，有时候不翻墙可能下载不了，这就有点尴尬了。</p>
+</li>
+<li><p><strong>网盘下载</strong>：要是官网下不了，咱还有亲民的办法，就是去网盘找大佬分享的资源。比如百度云盘，就有人分享了 Nexus 的安装包，像文件名<code>nexus - 3.25.1 - 04 - unix.tar.gz</code>，文件大小 156M 左右，链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">ht</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">tps</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">:&#x2F;&#x2F;</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">pan</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">.ba</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">idu</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">.c</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">om</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">&#x2F;s&#x2F;</a>1K<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">zzp</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">fA6</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">7En</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">_n</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">b59</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">KQ7</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">efE</a><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1KzzpfA67En_nb59KQ7efEw">w</a>，提取码：0000 。不过这种方式资源有限，可能选不了自己想要的版本。在 CSDN 上也有不少大佬上传了相关资源，有积分的兄弟也可以去那儿下载。</p>
+</li>
+</ol>
+<h2 id="二、安装-Nexus"><a href="#二、安装-Nexus" class="headerlink" title="二、安装 Nexus"></a>二、安装 Nexus</h2><h3 id="（一）上传安装包到服务器-xA"><a href="#（一）上传安装包到服务器-xA" class="headerlink" title="（一）上传安装包到服务器&#xA;"></a>（一）上传安装包到服务器&#xA;</h3><p>咱把下载好的 Nexus 压缩包通过<code>rz</code>命令或者其他文件传输工具，上传到 Linux 服务器上。比如，咱可以先在服务器上创建个<code>/home/soft/nexus</code>目录，专门用来放 Nexus 相关文件，然后把压缩包传进去。</p>
+<h3 id="（二）解压安装包-xA"><a href="#（二）解压安装包-xA" class="headerlink" title="（二）解压安装包&#xA;"></a>（二）解压安装包&#xA;</h3><p>上传完就该解压了，进入压缩包所在目录，执行解压命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf nexus - 3.25.1 - 04 - unix.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>解压完会得到两个文件夹：<code>nexus - 3.25.1 - 04</code>和<code>sonatype - work</code> 。<code>nexus - 3.25.1 - 04</code>这个文件夹是用来实现 Nexus 功能的，里面有各种执行文件和配置文件；<code>sonatype - work</code>文件夹则是用来存储数据的，像仓库里存的各种组件、配置信息啥的都在这儿。</p>
+<h3 id="（三）启动-Nexus-xA"><a href="#（三）启动-Nexus-xA" class="headerlink" title="（三）启动 Nexus&#xA;"></a>（三）启动 Nexus&#xA;</h3><ol>
+<li><strong>start 命令启动（后台进程形式）</strong>：进入<code>/home/soft/nexus/nexus-3.25.1-04/bin</code>目录，能看到<code>nexus</code>文件，这就是 Nexus 服务的脚本文件。咱用<code>start</code>命令以后台进程形式启动 Nexus，不占用当前命令终端窗口，命令如下：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./nexus start</span><br></pre></td></tr></table></figure>
+
+<p>启动可能得等一会儿，咱可以用浏览器访问<code>linux服务器ip:8081</code>来验证服务启动没。要是启动成功，就能看到 Nexus 的登录页面了。</p>
+<ol start="2">
+<li><strong>run 命令启动（当前进程形式）</strong>：还是在<code>/home/soft/nexus/nexus-3.25.1-04/bin</code>目录下，用<code>run</code>命令以当前进程形式启动 Nexus，命令如下：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./nexus run</span><br></pre></td></tr></table></figure>
+
+<p>这种方式启动后，日志会直接打印在控制台，等看到类似<code>Started Sonatype Nexus</code>的信息，就说明启动成功了。不过这种方式会占用当前命令终端窗口，不太方便，所以推荐用<code>start</code>命令启动。</p>
+<h3 id="（四）开放端口-xA"><a href="#（四）开放端口-xA" class="headerlink" title="（四）开放端口&#xA;"></a>（四）开放端口&#xA;</h3><p>Nexus 默认用 8081 端口，咱得把这个端口在服务器的防火墙里开放了，不然外部访问不了。以 CentOS 系统为例，操作如下：</p>
+<ol>
+<li>先查看所有开放的端口号，首次执行这操作得输入当前用户密码：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall - cmd -- zone = public -- list - ports</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>开放 8081 端口：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall - cmd -- zone = public -- add - port = 8081/tcp -- permanent</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>重启防火墙服务，让配置生效：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall - cmd -- reload</span><br></pre></td></tr></table></figure>
+
+<p>再查看开放端口号，能看到 8081 端口已经在列表里了，这就说明开放成功。</p>
+<h2 id="三、登录并初始化-Nexus"><a href="#三、登录并初始化-Nexus" class="headerlink" title="三、登录并初始化 Nexus"></a>三、登录并初始化 Nexus</h2><h3 id="（一）登录"><a href="#（一）登录" class="headerlink" title="（一）登录"></a>（一）登录</h3><p>在浏览器地址栏输入<code>http://linux服务器ip:8081</code>，就能打开 Nexus 的 Web 端首页。有些 Nexus 版本有默认账号<code>admin</code>和密码<code>admin123</code>，要是登录失败，咱就得去<code>sonatype - work/nexus3</code>目录下的<code>admin.password</code>文件里查看初始化密码。在 Linux 命令终端执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 进入admin.password文件所在目录</span><br><span class="line">cd /home/soft/nexus/sonatype - work/nexus3</span><br><span class="line"></span><br><span class="line"># 查看admin.password文件文本内容</span><br><span class="line">cat admin.password</span><br></pre></td></tr></table></figure>
+
+<p>文件第一行显示的就是密码，用这个密码登录就行。</p>
+<h3 id="（二）重置密码"><a href="#（二）重置密码" class="headerlink" title="（二）重置密码"></a>（二）重置密码</h3><p>登录成功后，会提示咱重置密码，按要求设置个新密码，得记好，以后登录就用新密码了。</p>
+<h3 id="（三）配置匿名访问（可选）"><a href="#（三）配置匿名访问（可选）" class="headerlink" title="（三）配置匿名访问（可选）"></a>（三）配置匿名访问（可选）</h3><p>要是想让没登录的用户也能访问 Nexus 仓库里的一些公开资源，可以配置匿名访问。在 Nexus 的 Web 界面里，找到相关配置项，一般在<code>Security</code> -&gt; <code>Anonymous</code>里，把<code>Enable Anonymous Access</code>勾选上就行。不过这操作得谨慎，要是仓库里有敏感数据，可别开匿名访问，不然数据就泄露了。</p>
+<h2 id="四、Nexus-常见配置与使用"><a href="#四、Nexus-常见配置与使用" class="headerlink" title="四、Nexus 常见配置与使用"></a>四、Nexus 常见配置与使用</h2><h3 id="（一）修改-Nexus-端口"><a href="#（一）修改-Nexus-端口" class="headerlink" title="（一）修改 Nexus 端口"></a>（一）修改 Nexus 端口</h3><p>要是 8081 端口被占用，咱可以改 Nexus 的端口。在<code>sonatype - work/nexus3/etc</code>目录下找到<code>nexus.properties</code>配置文件，把<code>application - port</code>配置项改成咱想要的端口号，比如<code>application - port = 8082</code> ，保存文件，然后重启 Nexus 服务，新端口就生效了。</p>
+<h3 id="（二）创建仓库"><a href="#（二）创建仓库" class="headerlink" title="（二）创建仓库"></a>（二）创建仓库</h3><p>Nexus 里仓库类型挺多，像代理仓库（proxy）、宿主仓库（hosted）、仓库组（group）啥的。咱一般开发常用的是 Maven 仓库，创建步骤如下：</p>
+<ol>
+<li><p>在 Nexus 的 Web 界面里，点击主页上面的小螺丝图标，然后选择<code>Repositories</code>进入仓库管理列表。</p>
+</li>
+<li><p>点击<code>Create repository</code>按钮创建仓库，选择仓库类型的时候选<code>maven2</code> 。</p>
+</li>
+<li><p><strong>创建代理仓库（proxy）</strong>：比如咱想用阿里的中央仓库做代理，在配置页面的<code>Remote Storage Location</code>属性里填<code>https://maven.aliyun.com/repository/central</code> ，其他配置项按默认就行，填好后点击<code>Create</code>按钮创建。</p>
+</li>
+<li><p><strong>创建宿主仓库（hosted）</strong>：可以创建<code>releases</code>和<code>snapshot</code>类型的仓库。在配置页面，<code>Repository Policy</code>属性选<code>Release</code>或者<code>Snapshot</code> ，<code>Allow redeploy</code>属性一般默认勾选，然后点击<code>Create</code>按钮创建。</p>
+</li>
+<li><p><strong>创建仓库组（group）</strong>：仓库组就是把多个仓库组合在一起对外提供服务。在配置页面，把之前创建的代理仓库和宿主仓库添加到<code>Members</code>列表里，然后点击<code>Create</code>按钮创建。</p>
+</li>
+</ol>
+<h3 id="（三）配置-Maven-使用-Nexus-仓库"><a href="#（三）配置-Maven-使用-Nexus-仓库" class="headerlink" title="（三）配置 Maven 使用 Nexus 仓库"></a>（三）配置 Maven 使用 Nexus 仓库</h3><ol>
+<li><p>找到 Maven 的<code>settings.xml</code>文件，一般在<code>~/.m2/</code>目录下。要是没有这个文件，自己创建一个。</p>
+</li>
+<li><p>编辑<code>settings.xml</code>文件，添加如下配置：</p>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">id</span>&gt;</span>central<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://linux服务器ip:8081/repository/maven - public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">releases</span>&gt;</span><span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span><span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span><span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span><span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pluginRepositories</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pluginRepository</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">id</span>&gt;</span>central<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://linux服务器ip:8081/repository/maven - public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">releases</span>&gt;</span><span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span><span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span><span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span><span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">pluginRepository</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">pluginRepositories</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的<code>http://linux服务器ip:8081/repository/maven - public/</code>得改成你自己 Nexus 服务器的地址和仓库组路径。改好保存后，Maven 就会从你配置的 Nexus 仓库里下载依赖了。</p>
+<h2 id="五、常见问题及解决办法"><a href="#五、常见问题及解决办法" class="headerlink" title="五、常见问题及解决办法"></a>五、常见问题及解决办法</h2><h3 id="（一）启动报错-xA"><a href="#（一）启动报错-xA" class="headerlink" title="（一）启动报错&#xA;"></a>（一）启动报错&#xA;</h3><ol>
+<li><p><strong>Java 环境问题</strong>：要是启动 Nexus 报错说找不到 Java 环境，或者提示 Java 版本不兼容，那肯定得检查下 Java 环境配置对不对。看看<code>JAVA_HOME</code>环境变量设置了没，值是不是指向正确的 JDK 安装目录。</p>
+</li>
+<li><p><strong>权限问题</strong>：用<code>root</code>用户启动 Nexus 有时候会报错，提示<code>Detected execution as “root” user. This is NOT recommended!</code> 。解决办法是找到<code>bin</code>目录下的<code>nexus</code>文件，用<code>vi</code>编辑，把<code>run_as_root = true</code>改成<code>run_as_root = false</code> ，然后再启动就行。</p>
+</li>
+</ol>
+<h3 id="（二）无法访问-Web-界面"><a href="#（二）无法访问-Web-界面" class="headerlink" title="（二）无法访问 Web 界面"></a>（二）无法访问 Web 界面</h3><ol>
+<li><p><strong>端口问题</strong>：要是在浏览器里访问<code>http://linux服务器ip:8081</code>打不开页面，先检查下服务器防火墙是不是开放了 8081 端口，用<code>telnet linux服务器ip 8081</code>命令测试下端口通不通。要是端口被占用，就得改 Nexus 的端口或者把占用端口的进程干掉。</p>
+</li>
+<li><p><strong>网络问题</strong>：检查下服务器网络是不是正常，能不能 ping 通外网。要是网络有问题，Nexus 可能没法从远程仓库拉取数据，也会影响 Web 界面访问。</p>
+</li>
+</ol>
+<h3 id="（三）依赖下载失败"><a href="#（三）依赖下载失败" class="headerlink" title="（三）依赖下载失败"></a>（三）依赖下载失败</h3><ol>
+<li><p><strong>仓库配置问题</strong>：要是 Maven 从 Nexus 仓库下载依赖失败，先检查下<code>settings.xml</code>文件里 Nexus 仓库的配置对不对，地址、端口啥的有没有写错。再看看 Nexus 里对应的仓库是不是正常，有没有配置好远程仓库地址。</p>
+</li>
+<li><p><strong>网络问题</strong>：和上面一样，网络不稳定或者被限制，Nexus 就没法从远程仓库拉取依赖，自然下载就失败了。这种情况就得排查网络问题，或者联系网络管理员解决。</p>
+</li>
+</ol>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>兄弟们，到这儿咱就把 Linux 下 Nexus 的安装部署、常见配置和使用，以及常见问题解决办法都唠完了。</p>
+<p>Nexus 这工具在项目开发里用处可大了，能帮咱高效管理依赖，提升开发效率。</p>
+<p>学会了安装部署，后续还得琢磨咋优化仓库配置、提升性能啥的，这都是进阶操作了。</p>
+<p>要是在安装部署过程中遇到啥问题，别慌，按照教程一步步排查，或者在评论区留言，咱一起琢磨琢磨。</p>
+<p>祝大家都能顺顺利利把 Nexus 跑起来！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/514f2706.html">https://wangwenzhe.github.io/posts/514f2706.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Nexus/">Nexus</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/b2e22825.html" title="NLP"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">NLP</div></div></a></div><div class="next-post pull-right"><a href="/posts/8590e4ee.html" title="Maven文搞懂仓库配置优先级"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Maven文搞懂仓库配置优先级</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/468e72f0.html" title="Maven-Linux搭建Nexus私服仓库"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-04</div><div class="title">Maven-Linux搭建Nexus私服仓库</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">一、安装前的准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B1%82-xA"><span class="toc-number">1.1.</span> <span class="toc-text">（一）环境要求
+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B8%8B%E8%BD%BD-Nexus-%E5%AE%89%E8%A3%85%E5%8C%85-xA"><span class="toc-number">1.2.</span> <span class="toc-text">（二）下载 Nexus 安装包
+</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85-Nexus"><span class="toc-number">2.</span> <span class="toc-text">二、安装 Nexus</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E4%B8%8A%E4%BC%A0%E5%AE%89%E8%A3%85%E5%8C%85%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8-xA"><span class="toc-number">2.1.</span> <span class="toc-text">（一）上传安装包到服务器
+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E8%A7%A3%E5%8E%8B%E5%AE%89%E8%A3%85%E5%8C%85-xA"><span class="toc-number">2.2.</span> <span class="toc-text">（二）解压安装包
+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E5%90%AF%E5%8A%A8-Nexus-xA"><span class="toc-number">2.3.</span> <span class="toc-text">（三）启动 Nexus
+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3-xA"><span class="toc-number">2.4.</span> <span class="toc-text">（四）开放端口
+</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%99%BB%E5%BD%95%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96-Nexus"><span class="toc-number">3.</span> <span class="toc-text">三、登录并初始化 Nexus</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E7%99%BB%E5%BD%95"><span class="toc-number">3.1.</span> <span class="toc-text">（一）登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81"><span class="toc-number">3.2.</span> <span class="toc-text">（二）重置密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E9%85%8D%E7%BD%AE%E5%8C%BF%E5%90%8D%E8%AE%BF%E9%97%AE%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">（三）配置匿名访问（可选）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Nexus-%E5%B8%B8%E8%A7%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">四、Nexus 常见配置与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E4%BF%AE%E6%94%B9-Nexus-%E7%AB%AF%E5%8F%A3"><span class="toc-number">4.1.</span> <span class="toc-text">（一）修改 Nexus 端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="toc-number">4.2.</span> <span class="toc-text">（二）创建仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E9%85%8D%E7%BD%AE-Maven-%E4%BD%BF%E7%94%A8-Nexus-%E4%BB%93%E5%BA%93"><span class="toc-number">4.3.</span> <span class="toc-text">（三）配置 Maven 使用 Nexus 仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">五、常见问题及解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99-xA"><span class="toc-number">5.1.</span> <span class="toc-text">（一）启动报错
+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE-Web-%E7%95%8C%E9%9D%A2"><span class="toc-number">5.2.</span> <span class="toc-text">（二）无法访问 Web 界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5"><span class="toc-number">5.3.</span> <span class="toc-text">（三）依赖下载失败</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">六、总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

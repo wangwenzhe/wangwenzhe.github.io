@@ -1,0 +1,584 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Uniapp-页面间数据通讯 | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="参考https:&#x2F;&#x2F;uniapp.dcloud.io&#x2F;api&#x2F;window&#x2F;communication 页面通讯uni.$emit(eventName,OBJECT)触发全局的自定义事件，附加参数都会传给监听器回调函数。    属性 类型 描述    eventName String 事件名   OBJECT Object 触发事件携带的附加参数   代码示例 1uni.$emit(&#x27;u">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Uniapp-页面间数据通讯">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/b8e78874.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="参考https:&#x2F;&#x2F;uniapp.dcloud.io&#x2F;api&#x2F;window&#x2F;communication 页面通讯uni.$emit(eventName,OBJECT)触发全局的自定义事件，附加参数都会传给监听器回调函数。    属性 类型 描述    eventName String 事件名   OBJECT Object 触发事件携带的附加参数   代码示例 1uni.$emit(&#x27;u">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2021-06-11T09:12:39.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.786Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="Uniapp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/b8e78874.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Uniapp-页面间数据通讯',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Uniapp-页面间数据通讯</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-06-11T09:12:39.000Z" title="发表于 2021-06-11 17:12:39">2021-06-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.786Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/uniapp/">uniapp</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/uniapp/%E9%A1%B5%E9%9D%A2%E9%97%B4%E6%95%B0%E6%8D%AE%E9%80%9A%E8%AE%AF/">页面间数据通讯</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Uniapp-页面间数据通讯"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/communication">https://uniapp.dcloud.io/api/window/communication</a></p>
+<h2 id="页面通讯"><a href="#页面通讯" class="headerlink" title="页面通讯"></a>页面通讯</h2><h3 id="uni-emit-eventName-OBJECT"><a href="#uni-emit-eventName-OBJECT" class="headerlink" title="uni.$emit(eventName,OBJECT)"></a><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/communication?id=emit">uni.$emit(eventName,OBJECT)</a></h3><p>触发全局的自定义事件，附加参数都会传给监听器回调函数。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eventName</td>
+<td>String</td>
+<td>事件名</td>
+</tr>
+<tr>
+<td>OBJECT</td>
+<td>Object</td>
+<td>触发事件携带的附加参数</td>
+</tr>
+</tbody></table>
+<p><strong>代码示例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uni.$emit(<span class="string">&#x27;update&#x27;</span>,&#123;<span class="attr">msg</span>:<span class="string">&#x27;页面更新&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="uni-on-eventName-callback"><a href="#uni-on-eventName-callback" class="headerlink" title="uni.$on(eventName,callback)"></a><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/communication?id=on">uni.$on(eventName,callback)</a></h3><p>监听全局的自定义事件，事件由 <code>uni.$emit</code> 触发，回调函数会接收事件触发函数的传入参数。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eventName</td>
+<td>String</td>
+<td>事件名</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>事件的回调函数</td>
+</tr>
+</tbody></table>
+<p><strong>代码示例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uni.$on(<span class="string">&#x27;update&#x27;</span>,<span class="keyword">function</span>(<span class="params">data</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;监听到事件来自 update ，携带参数 msg 为：&#x27;</span> + data.<span class="property">msg</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="uni-once-eventName-callback"><a href="#uni-once-eventName-callback" class="headerlink" title="uni.$once(eventName,callback)"></a><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/communication?id=once">uni.$once(eventName,callback)</a></h3><p>监听全局的自定义事件，事件由 <code>uni.$emit</code> 触发，但仅触发一次，在第一次触发之后移除该监听器。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eventName</td>
+<td>String</td>
+<td>事件名</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>事件的回调函数</td>
+</tr>
+</tbody></table>
+<p><strong>代码示例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uni.$once(<span class="string">&#x27;update&#x27;</span>,<span class="keyword">function</span>(<span class="params">data</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;监听到事件来自 update ，携带参数 msg 为：&#x27;</span> + data.<span class="property">msg</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="uni-off-eventName-callback"><a href="#uni-off-eventName-callback" class="headerlink" title="[uni.$off(eventName, callback])"></a>[uni.$off(<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/communication?id=off">eventName, callback])</a></h3><p>移除全局自定义事件监听器。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eventName</td>
+<td>Array＜String＞</td>
+<td>事件名</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>事件的回调函数</td>
+</tr>
+</tbody></table>
+<p><strong>Tips</strong></p>
+<ul>
+<li>如果 uni.$off 没有传入参数，则移除 App 级别的所有事件监听器；</li>
+<li>如果只提供了事件名（eventName），则移除该事件名对应的所有监听器；</li>
+<li>如果同时提供了事件与回调，则只移除这个事件回调的监听器；</li>
+<li>提供的回调必须跟 $on 的回调为同一个才能移除这个回调的监听器；</li>
+</ul>
+<p><strong>代码示例</strong></p>
+<p><code>$emit</code>、<code>$on</code>、<code>$off</code> 常用于跨页面、跨组件通讯，这里为了方便演示放在同一个页面</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;data&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">text</span>&gt;</span>&#123;&#123;val&#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;comunicationOff&quot;</span>&gt;</span>结束监听<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">val</span>: <span class="number">0</span></span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">onLoad</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="built_in">setInterval</span>(<span class="function">()=&gt;</span>&#123;</span></span><br><span class="line"><span class="language-javascript">                uni.$emit(<span class="string">&#x27;add&#x27;</span>, &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">data</span>: <span class="number">2</span></span></span><br><span class="line"><span class="language-javascript">                &#125;)</span></span><br><span class="line"><span class="language-javascript">            &#125;,<span class="number">1000</span>)</span></span><br><span class="line"><span class="language-javascript">            uni.$on(<span class="string">&#x27;add&#x27;</span>, <span class="variable language_">this</span>.<span class="property">add</span>)</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">comunicationOff</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                uni.$off(<span class="string">&#x27;add&#x27;</span>, <span class="variable language_">this</span>.<span class="property">add</span>)</span></span><br><span class="line"><span class="language-javascript">            &#125;,</span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">add</span>(<span class="params">e</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="variable language_">this</span>.<span class="property">val</span> += e.<span class="property">data</span></span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.content</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">flex-direction</span>: column;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">align-items</span>: center;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">justify-content</span>: center;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.data</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">text-align</span>: center;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">line-height</span>: <span class="number">40px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">margin-top</span>: <span class="number">40px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">button</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">margin</span>: <span class="number">20px</span> <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项</strong></p>
+<ul>
+<li>uni.$emit、 uni.$on 、 uni.$once 、uni.$off 触发的事件都是 App 全局级别的，跨任意组件，页面，nvue，vue 等</li>
+<li>使用时，注意及时销毁事件监听，比如，页面 onLoad 里边 uni.$on 注册监听，onUnload 里边 uni.$off 移除，或者一次性的事件，直接使用 uni.$once 监听</li>
+</ul>
+<h2 id="subNvue-页面的原生子窗体"><a href="#subNvue-页面的原生子窗体" class="headerlink" title="subNvue 页面的原生子窗体"></a>subNvue 页面的原生子窗体</h2><p>subNvue，是 vue 页面的原生子窗体，把 weex 渲染的原生界面当做 vue 页面的子窗体覆盖在页面上。它不是全屏页面，它给 App 平台 vue 页面中的层级覆盖和原生界面自定义提供了更强大和灵活的解决方案。它也不是组件，就是一个原生子窗体。</p>
+<p>它的设计背景和用途详见：<a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/article/35948">subNVue 原生子窗体开发指南</a></p>
+<blockquote>
+<p>subNvue 自 1.9.10 起支持 ，仅支持 app 平台</p>
+</blockquote>
+<h3 id="uni-getSubNVueById-subNvueId"><a href="#uni-getSubNVueById-subNvueId" class="headerlink" title="uni.getSubNVueById(subNvueId)"></a><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=app-getsubnvuebyid">uni.getSubNVueById(subNvueId)</a></h3><p>通过 <code>ID</code> 获取 <code>subNVues</code> 原生子窗体的实例。 <a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/collocation/pages?id=app-subnvues">subNVues 配置</a></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>subNvueId</td>
+<td>String</td>
+<td>原生子窗体的 ID</td>
+</tr>
+</tbody></table>
+<p><strong>代码示例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> subNVue = uni.<span class="title function_">getSubNVueById</span>(<span class="string">&#x27;popup&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=%E8%BF%94%E5%9B%9E%E5%80%BC">返回值</a></h4><p>返回一个 <a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=subnvue">subNVue</a> 对象</p>
+<h3 id="uni-getCurrentSubNVue"><a href="#uni-getCurrentSubNVue" class="headerlink" title="uni.getCurrentSubNVue()"></a><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=app-getcurrentsubnvue">uni.getCurrentSubNVue()</a></h3><p>在一个 subnvue 窗体的 nvue 页面代码中，获取当前 <code>subNVues</code> 原生子窗体的实例。</p>
+<p><strong>代码示例（注意执行在 nvue 页面中）</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> subNVue = uni.<span class="title function_">getCurrentSubNVue</span>();</span><br></pre></td></tr></table></figure>
+
+<h4 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=%E8%BF%94%E5%9B%9E%E5%80%BC-1">返回值</a></h4><p>返回一个 <a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=subnvue">subNVue</a> 对象</p>
+<h4 id="subNVue-对象的方法列表"><a href="#subNVue-对象的方法列表" class="headerlink" title="subNVue 对象的方法列表"></a><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=subnvue">subNVue 对象的方法列表</a></h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>show</td>
+<td>显示原生子窗体</td>
+</tr>
+<tr>
+<td>hide</td>
+<td>隐藏原生子窗体</td>
+</tr>
+<tr>
+<td>setStyle</td>
+<td>设置原生子窗体的样式</td>
+</tr>
+</tbody></table>
+<h3 id="subNVue-show-aniShow-duration-showedCB"><a href="#subNVue-show-aniShow-duration-showedCB" class="headerlink" title="subNVue.show (aniShow,duration,showedCB)"></a><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=subnvueshow">subNVue.show (aniShow,duration,showedCB)</a></h3><p>显示原生子窗体</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>aniShow</td>
+<td>String</td>
+<td>auto</td>
+<td>显示原生子窗体的动画效果 ，如果没有指定窗口动画类型，则使用默认值 “auto”，即自动选择上一次显示窗口的动画效果，如果之前没有显示过，则使用 “none” 动画效果。<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=%E5%8A%A8%E7%94%BB%E7%B1%BB%E5%9E%8B">详见动画类型</a></td>
+</tr>
+<tr>
+<td>duration</td>
+<td>Number</td>
+<td>600</td>
+<td>显示原生子窗体的动画持续时间，单位为 ms，如果没有设置则使用默认窗口动画时间 600ms。</td>
+</tr>
+<tr>
+<td>showedCB</td>
+<td>Function</td>
+<td></td>
+<td>显示完成的回调函数，当指定原生子窗体显示动画执行完毕时触发回调函数，窗口无动画效果（如 “none” 动画效果）时也会触发此回调。</td>
+</tr>
+</tbody></table>
+<p><strong>代码示例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">subNVue.<span class="title function_">show</span>(<span class="string">&#x27;slide-in-left&#x27;</span>,<span class="number">200</span>,<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;subNVue 原生子窗体显示成功&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="subNVue-hide-aniShow-duration"><a href="#subNVue-hide-aniShow-duration" class="headerlink" title="subNVue.hide (aniShow,duration)"></a><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=subnvuehide">subNVue.hide (aniShow,duration)</a></h3><p>隐藏原生子窗体</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>aniShow</td>
+<td>String</td>
+<td>auto</td>
+<td>隐藏原生子窗体的动画效果 ，如果没有指定窗口动画类型，则使用默认值 “auto”，即自动选择上一次显示窗口的动画效果，如果之前没有显示过，则使用 “none” 动画效果。<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=%E5%8A%A8%E7%94%BB%E7%B1%BB%E5%9E%8B">详见动画类型</a></td>
+</tr>
+<tr>
+<td>duration</td>
+<td>Number</td>
+<td>600</td>
+<td>隐藏原生子窗体的动画持续时间，单位为 ms，如果没有设置则使用默认窗口动画时间 600ms。</td>
+</tr>
+</tbody></table>
+<p><strong>代码示例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subNVue.<span class="title function_">hide</span>(<span class="string">&#x27;slide-out-left&#x27;</span>,<span class="number">200</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="subNVue-setStyle-style"><a href="#subNVue-setStyle-style" class="headerlink" title="subNVue.setStyle (style)"></a><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=subnvuesetstyle">subNVue.setStyle (style)</a></h3><p>设置原生子窗体的样式</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>style</td>
+<td>Object</td>
+<td>原生子窗体的样式</td>
+</tr>
+</tbody></table>
+<p><strong>原生子窗体的样式</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">position</td>
+<td align="left">String</td>
+<td align="left">absolute</td>
+<td align="left">原生子窗体的排版位置，排版位置决定原生子窗体在父窗口中的定位方式。 可取值：”static”，原生子窗体在页面中正常定位，如果页面存在滚动条则随窗口内容滚动；”absolute”，原生子窗体在页面中绝对定位，如果页面存在滚动条不随窗口内容滚动；”dock”，原生子窗体在页面中停靠，停靠的位置由 dock 属性值决定。 默认值为 “absolute”。</td>
+</tr>
+<tr>
+<td align="left">dock</td>
+<td align="left">String</td>
+<td align="left">bottom</td>
+<td align="left">原生子窗体的停靠方式，仅当原生子窗体 “position” 属性值设置为 “dock” 时才生效，可取值：”top”，原生子窗体停靠则页面顶部；”bottom”，原生子窗体停靠在页面底部；”right”，原生子窗体停靠在页面右侧；”left”，原生子窗体停靠在页面左侧。 默认值为 “bottom”。</td>
+</tr>
+<tr>
+<td align="left">mask</td>
+<td align="left">HexColor</td>
+<td align="left">rgba(0,0,0,0.5)</td>
+<td align="left">原生子窗体的遮罩层，仅当原生子窗体 “type” 属性值设置为 “popup” 时才生效，可取值： rgba 格式字符串，定义纯色遮罩层样式，如 “rgba (0,0,0,0.5)”，表示黑色半透明；</td>
+</tr>
+<tr>
+<td align="left">width</td>
+<td align="left">String</td>
+<td align="left">100%</td>
+<td align="left">原生子窗体的宽度，支持百分比、像素值，默认为 100%。未设置 width 属性值时，可同时设置 left 和 right 属性值改变窗口的默认宽度。</td>
+</tr>
+<tr>
+<td align="left">height</td>
+<td align="left">String</td>
+<td align="left">100%</td>
+<td align="left">原生子窗体的高度，支持百分比、像素值，默认为 100%。 当未设置 height 属性值时，优先通过 top 和 bottom 属性值来计算原生子窗体的高度。</td>
+</tr>
+<tr>
+<td align="left">top</td>
+<td align="left">String</td>
+<td align="left">0px</td>
+<td align="left">原生子窗体垂直向下的偏移量，支持百分比、像素值，默认值为 0px。 未设置 top 属性值时，优先通过 bottom 和 height 属性值来计算原生子窗体的 top 位置。</td>
+</tr>
+<tr>
+<td align="left">bottom</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">原生子窗体垂直向上偏移量，支持百分比、像素值，默认值无值（根据 top 和 height 属性值来自动计算）。 当同时设置了 top 和 height 值时，忽略此属性值； 当未设置 height 值时，可通过 top 和 bottom 属性值来确定原生子窗体的高度。</td>
+</tr>
+<tr>
+<td align="left">left</td>
+<td align="left">String</td>
+<td align="left">0px</td>
+<td align="left">原生子窗体水平向左的偏移量，支持百分比、像素值，默认值为 0px。 未设置 left 属性值时，优先通过 right 和 width 属性值来计算原生子窗体的 left 位置。</td>
+</tr>
+<tr>
+<td align="left">right</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">原生子窗体水平向右的偏移量，支持百分比、像素值，默认无值（根据 left 和 width 属性值来自动计算）。 当设置了 left 和 width 值时，忽略此属性值； 当未设置 width 值时，可通过 left 和 bottom 属性值来确定原生子窗体的宽度。</td>
+</tr>
+<tr>
+<td align="left">margin</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">原生子窗体的边距，用于定位原生子窗体的位置，支持 auto，auto 表示居中。若设置了 left、right、top、bottom 则对应的边距值失效。</td>
+</tr>
+<tr>
+<td align="left">zindex</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">原生子窗体的窗口的堆叠顺序值，拥有更高堆叠顺序的窗口总是会处于堆叠顺序较低的窗口的前面，拥有相同堆叠顺序的窗口后调用 show 方法则在前面。</td>
+</tr>
+</tbody></table>
+<p><strong>代码示例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">subNVue.<span class="title function_">setStyle</span>(&#123;</span><br><span class="line">    <span class="string">&quot;position&quot;</span>: <span class="string">&quot;absolute&quot;</span>, <span class="comment">//除 popup 外，其他值域参考 5+ webview position 文档</span></span><br><span class="line">    <span class="string">&quot;width&quot;</span>: <span class="string">&quot;50%&quot;</span>,</span><br><span class="line">    <span class="string">&quot;height&quot;</span>: <span class="string">&quot;50%&quot;</span>,</span><br><span class="line">    <span class="string">&quot;left&quot;</span>:<span class="string">&quot;20px&quot;</span>,</span><br><span class="line">    <span class="string">&quot;top&quot;</span>:<span class="string">&quot;100px&quot;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="subNVue-postMessage-OBJECT"><a href="#subNVue-postMessage-OBJECT" class="headerlink" title="subNVue.postMessage(OBJECT)"></a><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=subnvuepostmessage">subNVue.postMessage(OBJECT)</a></h3><p>发送消息，此通讯方式已过时，请使用 <code>uni.$emit</code> 进行通讯，<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/collocation/frame/communication?id=emit">参考</a></p>
+<p><strong>代码示例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> subNVue = uni.<span class="title function_">getSubNVueById</span>(<span class="string">&#x27;subNvue&#x27;</span>);</span><br><span class="line">subNvue.<span class="title function_">postMessage</span>(&#123;</span><br><span class="line">    <span class="attr">id</span>:<span class="string">&#x27;1&#x27;</span></span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;subNvues&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="subNVue-onMessage-CallBack"><a href="#subNVue-onMessage-CallBack" class="headerlink" title="subNVue.onMessage(CallBack)"></a><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=subnvueonmessage">subNVue.onMessage(CallBack)</a></h3><p>监听消息，此通讯方式已过时，请使用 <code>uni.$on</code> 进行通讯，<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/collocation/frame/communication?id=on">参考</a></p>
+<p><strong>代码示例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> subNVue = uni.<span class="title function_">getSubNVueById</span>(<span class="string">&#x27;subNvue&#x27;</span>);</span><br><span class="line">subNvue.<span class="title function_">onMessage</span>(<span class="keyword">function</span>(<span class="params">data</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;监听来自所属页面的 message&#x27;</span> + <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data));</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="动画类型"><a href="#动画类型" class="headerlink" title="动画类型"></a><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/window/subNVues?id=%E5%8A%A8%E7%94%BB%E7%B1%BB%E5%9E%8B">动画类型</a></h3><p>显示动画与关闭动画，会有默认的对应规则。但是如果通过 API 原生子窗体的关闭动画类型，则不会使用默认的类型。</p>
+<table>
+<thead>
+<tr>
+<th align="left">显示动画</th>
+<th align="left">关闭动画</th>
+<th align="left">显示动画描述（关闭动画与之相反）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">slide-in-right</td>
+<td align="left">slide-out-right</td>
+<td align="left">新窗体从右侧进入</td>
+</tr>
+<tr>
+<td align="left">slide-in-left</td>
+<td align="left">slide-out-left</td>
+<td align="left">新窗体从左侧进入</td>
+</tr>
+<tr>
+<td align="left">slide-in-top</td>
+<td align="left">slide-out-top</td>
+<td align="left">新窗体从顶部进入</td>
+</tr>
+<tr>
+<td align="left">slide-in-bottom</td>
+<td align="left">slide-out-bottom</td>
+<td align="left">新窗体从底部进入</td>
+</tr>
+<tr>
+<td align="left">fade-in</td>
+<td align="left">fade-out</td>
+<td align="left">新窗体从透明到不透明逐渐显示</td>
+</tr>
+<tr>
+<td align="left">zoom-out</td>
+<td align="left">zoom-in</td>
+<td align="left">新窗体从小到大缩放显示</td>
+</tr>
+<tr>
+<td align="left">zoom-fade-out</td>
+<td align="left">zoom-fade-in</td>
+<td align="left">新窗体从小到大逐渐放大并且从透明到不透明逐渐显示</td>
+</tr>
+<tr>
+<td align="left">pop-in</td>
+<td align="left">pop-out</td>
+<td align="left">新窗体从左侧进入，且老窗体被挤压而出</td>
+</tr>
+<tr>
+<td align="left">none</td>
+<td align="left">none</td>
+<td align="left">无动画</td>
+</tr>
+</tbody></table>
+<p>详细的窗口动画说明，请参考：</p>
+<ul>
+<li>窗口显示的动画：<a target="_blank" rel="noopener" href="https://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.AnimationTypeShow">AnimationTypeShow</a></li>
+<li>窗口关闭的动画：<a target="_blank" rel="noopener" href="https://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.AnimationTypeClose">AnimationTypeClose</a></li>
+</ul>
+<p><strong>注意事项</strong></p>
+<ul>
+<li>了解更多 <code>subNVue</code> 原生子窗体的用途，请详读 <a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/article/35948">subNVues 原生子窗体开发指南</a></li>
+<li>在 hello uni-app 的接口 - 界面 - 原生子窗体中，有完整的 subNVue 示例，包括带渐变色的原生导航栏、可遮盖地图的侧滑菜单、可从顶部弹出的 popup、可在视频上滚动的消息列表</li>
+<li>每个 <code>subNVue</code> 页面都要在 pages.json 中注册。如果需要全局弹窗，也可以直接弹出 nvue 页面，参考这个<a target="_blank" rel="noopener" href="https://ext.dcloud.net.cn/plugin?id=953">插件</a></li>
+<li><code>subNVue</code> 比 cover-view 和 plus.nativeObj.view 更强大，也占用更多内存，为了保证更好的性能体验，一个 vue 页面不要加载太多 <code>subNVue</code> 子窗体，建议控制在三个以内</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/b8e78874.html">https://wangwenzhe.github.io/posts/b8e78874.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Uniapp/">Uniapp</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/ae385af7.html" title="Uniapp-API"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Uniapp-API</div></div></a></div><div class="next-post pull-right"><a href="/posts/27eea0e0.html" title="Javascript-日期时间"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Javascript-日期时间</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/8bee0151.html" title="Uniapp-接入企业微信客服"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-08-05</div><div class="title">Uniapp-接入企业微信客服</div></div></a></div><div><a href="/posts/e127557f.html" title="Uniapp-UrlSchemes调用协议"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-22</div><div class="title">Uniapp-UrlSchemes调用协议</div></div></a></div><div><a href="/posts/5c64735d.html" title="Uniapp-生命周期"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-22</div><div class="title">Uniapp-生命周期</div></div></a></div><div><a href="/posts/8ba4f02c.html" title="Uniapp-uniui"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-02</div><div class="title">Uniapp-uniui</div></div></a></div><div><a href="/posts/a40e319.html" title="Uniapp-H5"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-24</div><div class="title">Uniapp-H5</div></div></a></div><div><a href="/posts/3369e1ba.html" title="Uniapp-离线打包"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-06</div><div class="title">Uniapp-离线打包</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E9%80%9A%E8%AE%AF"><span class="toc-number">2.</span> <span class="toc-text">页面通讯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#uni-emit-eventName-OBJECT"><span class="toc-number">2.1.</span> <span class="toc-text">uni.$emit(eventName,OBJECT)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uni-on-eventName-callback"><span class="toc-number">2.2.</span> <span class="toc-text">uni.$on(eventName,callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uni-once-eventName-callback"><span class="toc-number">2.3.</span> <span class="toc-text">uni.$once(eventName,callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uni-off-eventName-callback"><span class="toc-number">2.4.</span> <span class="toc-text">[uni.$off(eventName, callback])</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#subNvue-%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%8E%9F%E7%94%9F%E5%AD%90%E7%AA%97%E4%BD%93"><span class="toc-number">3.</span> <span class="toc-text">subNvue 页面的原生子窗体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#uni-getSubNVueById-subNvueId"><span class="toc-number">3.1.</span> <span class="toc-text">uni.getSubNVueById(subNvueId)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">3.1.1.</span> <span class="toc-text">返回值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uni-getCurrentSubNVue"><span class="toc-number">3.2.</span> <span class="toc-text">uni.getCurrentSubNVue()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">返回值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#subNVue-%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95%E5%88%97%E8%A1%A8"><span class="toc-number">3.2.2.</span> <span class="toc-text">subNVue 对象的方法列表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subNVue-show-aniShow-duration-showedCB"><span class="toc-number">3.3.</span> <span class="toc-text">subNVue.show (aniShow,duration,showedCB)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subNVue-hide-aniShow-duration"><span class="toc-number">3.4.</span> <span class="toc-text">subNVue.hide (aniShow,duration)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subNVue-setStyle-style"><span class="toc-number">3.5.</span> <span class="toc-text">subNVue.setStyle (style)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subNVue-postMessage-OBJECT"><span class="toc-number">3.6.</span> <span class="toc-text">subNVue.postMessage(OBJECT)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subNVue-onMessage-CallBack"><span class="toc-number">3.7.</span> <span class="toc-text">subNVue.onMessage(CallBack)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.8.</span> <span class="toc-text">动画类型</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

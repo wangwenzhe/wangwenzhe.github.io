@@ -1,0 +1,305 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Oracle-项目实践 | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="123456title: Oracle-项目实践tags: Oracle-项目实践date: 2021-08-19 15:57:10categories:   - 数据库  - Oracle  集合操作（交集、并集、差集）&amp; 子查询之单行子查询https:&#x2F;&#x2F;blog.csdn.net&#x2F;wy_0928&#x2F;article&#x2F;details&#x2F;51158553 根据字符将字段拆分123select">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle-项目实践">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/d7fe28b2.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="123456title: Oracle-项目实践tags: Oracle-项目实践date: 2021-08-19 15:57:10categories:   - 数据库  - Oracle  集合操作（交集、并集、差集）&amp; 子查询之单行子查询https:&#x2F;&#x2F;blog.csdn.net&#x2F;wy_0928&#x2F;article&#x2F;details&#x2F;51158553 根据字符将字段拆分123select">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2021-08-19T07:57:10.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.753Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="Oracle">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/d7fe28b2.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Oracle-项目实践',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Oracle-项目实践</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-08-19T07:57:10.000Z" title="发表于 2021-08-19 15:57:10">2021-08-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.753Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Oracle/">Oracle</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Oracle-项目实践"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">title: Oracle-项目实践</span><br><span class="line">tags: Oracle-项目实践</span><br><span class="line">date: 2021-08-19 15:57:10</span><br><span class="line">categories: </span><br><span class="line">  - 数据库</span><br><span class="line">  - Oracle</span><br></pre></td></tr></table></figure>
+
+<h2 id="集合操作（交集、并集、差集）-子查询之单行子查询"><a href="#集合操作（交集、并集、差集）-子查询之单行子查询" class="headerlink" title="集合操作（交集、并集、差集）&amp; 子查询之单行子查询"></a>集合操作（交集、并集、差集）&amp; 子查询之单行子查询</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wy_0928/article/details/51158553">https://blog.csdn.net/wy_0928/article/details/51158553</a></p>
+<h2 id="根据字符将字段拆分"><a href="#根据字符将字段拆分" class="headerlink" title="根据字符将字段拆分"></a>根据字符将字段拆分</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> GEOCOORDINATES,</span><br><span class="line">REGEXP_SUBSTR(GEOCOORDINATES, <span class="string">&#x27;[^,]+&#x27;</span>, <span class="number">1</span>, <span class="number">1</span>) lng,</span><br><span class="line">REGEXP_SUBSTR(GEOCOORDINATES, <span class="string">&#x27;[^,]+&#x27;</span>, <span class="number">1</span>, <span class="number">2</span>) lat <span class="keyword">from</span> SCM_CITYCOMPONENT;</span><br></pre></td></tr></table></figure>
+
+<h2 id="rownum"><a href="#rownum" class="headerlink" title="rownum"></a>rownum</h2><h3 id="前N条数据"><a href="#前N条数据" class="headerlink" title="前N条数据"></a>前N条数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where rownum &lt;= N;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第N条数据"><a href="#第N条数据" class="headerlink" title="第N条数据"></a>第N条数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where rownum = N;</span><br></pre></td></tr></table></figure>
+
+<h2 id="union-与-union-all"><a href="#union-与-union-all" class="headerlink" title="union 与 union all"></a>union 与 union all</h2><ol>
+<li><strong>union all 仅仅是简单的合并查询结果, 并不会做去重操作, 也不会排序,</strong> 所以 union all 效率要比 union 高，在确定没有重复记录的情况下, <strong>尽量使用union all</strong></li>
+<li>根据索引查询时，union 比 or 效率更高。or 不会使用索引</li>
+</ol>
+<h2 id="union-或者-union-all-与-order-by-的联合使用"><a href="#union-或者-union-all-与-order-by-的联合使用" class="headerlink" title="union 或者 union all 与 order by 的联合使用"></a>union 或者 union all 与 order by 的联合使用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select * from(select  *  from table order by a)</span><br><span class="line">union</span><br><span class="line">select * from (select * from table1 order by b)</span><br><span class="line">union</span><br><span class="line">select * from (select * from table2 order by c);</span><br></pre></td></tr></table></figure>
+
+<h2 id="NUMBER-（-precision，-scale）"><a href="#NUMBER-（-precision，-scale）" class="headerlink" title="NUMBER （ precision， scale）"></a><strong>NUMBER</strong> <strong>（ precision， scale）</strong></h2><blockquote>
+<p>参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/oumyye/p/4448656.html">https://www.cnblogs.com/oumyye/p/4448656.html</a></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. precision 有效位数，包括整数位+小数位</span><br><span class="line">2. scale 小数点后精确位数</span><br><span class="line">3. precision-scale 整数部分最大位数</span><br><span class="line">4. precision 与 scale 相等，则表示整数部分为0</span><br></pre></td></tr></table></figure>
+
+<h2 id="按照某字段排序，为null则放到开始或最后"><a href="#按照某字段排序，为null则放到开始或最后" class="headerlink" title="按照某字段排序，为null则放到开始或最后"></a>按照某字段排序，为null则放到开始或最后</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">order by g.tracktime desc nulls first</span><br><span class="line"></span><br><span class="line">order by g.tracktime desc nulls last</span><br></pre></td></tr></table></figure>
+
+<h2 id="分组后返回非分组字段组合"><a href="#分组后返回非分组字段组合" class="headerlink" title="分组后返回非分组字段组合"></a>分组后返回非分组字段组合</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT class_id, wm_concat(name), COUNT(*) num FROM students GROUP BY class_id;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串分隔成多列"><a href="#字符串分隔成多列" class="headerlink" title="字符串分隔成多列"></a>字符串分隔成多列</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select </span><br><span class="line">REGEXP_SUBSTR(&#x27;123,456,789&#x27;, &#x27;[^,]+&#x27;, 1, 1) d1,</span><br><span class="line">REGEXP_SUBSTR(&#x27;123,456,789&#x27;, &#x27;[^,]+&#x27;, 1, 2) d2,</span><br><span class="line">REGEXP_SUBSTR(&#x27;123,456,789&#x27;, &#x27;[^,]+&#x27;, 1, 3) d3 from dual;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">D1</th>
+<th align="center">D2</th>
+<th align="center">D3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">123</td>
+<td align="center">456</td>
+<td align="center">789</td>
+</tr>
+</tbody></table>
+<h2 id="oracle-分组后取每组第一条数据"><a href="#oracle-分组后取每组第一条数据" class="headerlink" title="oracle 分组后取每组第一条数据"></a>oracle 分组后取每组第一条数据</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//根据 x 列分组，y 列倒序，取每组第一条</span><br><span class="line">SELECT * FROM (SELECT ROW_NUMBER() OVER(PARTITION BY t.x ORDER BY t.y DESC) rn, t.* FROM test t) WHERE rn = 1; </span><br></pre></td></tr></table></figure>
+
+<h2 id="根据分隔字符将单字段拆分成多行"><a href="#根据分隔字符将单字段拆分成多行" class="headerlink" title="根据分隔字符将单字段拆分成多行"></a>根据分隔字符将单字段拆分成多行</h2><p>参考：<a target="_blank" rel="noopener" href="https://www.geek-share.com/detail/2791571608.html">https://www.geek-share.com/detail/2791571608.html</a></p>
+<p>问题：附件表 <code>AFFIXURL</code> 字段缺少分隔符|，导致产生错误数据</p>
+<p>解决：根据 <code>/scm</code> 分隔，将单字段拆分成多行，主键加上 <code>rownum</code> 做为新主键值来去重</p>
+<p>注意：SQL 中 <code>M</code>为分隔符长度，<code>N = M-1</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> AFFIXID<span class="operator">+</span>ROWNUM <span class="keyword">as</span> AFFIXID,PROCID, EVENTCODE, FILETYPE, AFFIXTYPE, <span class="string">&#x27;/scm&#x27;</span><span class="operator">||</span>AFFIXURL AFFIXURL <span class="keyword">from</span> (<span class="keyword">SELECT</span> AFFIXID,PROCID, EVENTCODE, FILETYPE, AFFIXTYPE,</span><br><span class="line">       substr(a.AFFIXURL, instr(a.AFFIXURL, <span class="string">&#x27;/scm&#x27;</span>, <span class="number">1</span>, levels.lvl) <span class="operator">+</span> M,</span><br><span class="line">              instr(a.AFFIXURL, <span class="string">&#x27;/scm&#x27;</span>, <span class="number">1</span>, levels.lvl <span class="operator">+</span> <span class="number">1</span>) <span class="operator">-</span> (instr(a.AFFIXURL, <span class="string">&#x27;/scm&#x27;</span>, <span class="number">1</span>, levels.lvl) <span class="operator">+</span> <span class="number">1</span>) <span class="operator">-</span></span><br><span class="line">              N) <span class="keyword">as</span> AFFIXURL</span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">SELECT</span> AFFIXID,PROCID, EVENTCODE, FILETYPE, AFFIXTYPE,</span><br><span class="line">             <span class="string">&#x27;/scm&#x27;</span> <span class="operator">||</span> AFFIXURL <span class="operator">||</span> <span class="string">&#x27;/scm&#x27;</span> <span class="keyword">AS</span> AFFIXURL,</span><br><span class="line">             (length(AFFIXURL <span class="operator">||</span> <span class="string">&#x27;/scm&#x27;</span>) <span class="operator">-</span> nvl(length(REPLACE(AFFIXURL, <span class="string">&#x27;/scm&#x27;</span>)), <span class="number">0</span>)) <span class="operator">/</span> M <span class="keyword">AS</span> cnt</span><br><span class="line">      <span class="keyword">FROM</span> SCM_AFFIX</span><br><span class="line">      <span class="keyword">where</span> EVENTCODE <span class="keyword">like</span> <span class="string">&#x27;C20200710%&#x27;</span> <span class="keyword">and</span> length(AFFIXURL) <span class="operator">&gt;</span> <span class="number">55</span>) a,</span><br><span class="line">     (<span class="keyword">SELECT</span> rownum <span class="keyword">AS</span> lvl</span><br><span class="line">      <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> (<span class="built_in">MAX</span>(length(AFFIXURL <span class="operator">||</span> <span class="string">&#x27;/scm&#x27;</span>) <span class="operator">-</span> nvl(length(REPLACE(AFFIXURL, <span class="string">&#x27;/scm&#x27;</span>)), <span class="number">0</span>))) <span class="operator">/</span> M max_len</span><br><span class="line">            <span class="keyword">FROM</span> SCM_AFFIX</span><br><span class="line">            <span class="keyword">where</span> EVENTCODE <span class="keyword">like</span> <span class="string">&#x27;C20200710%&#x27;</span><span class="keyword">and</span> length(AFFIXURL) <span class="operator">&gt;</span> <span class="number">55</span>)</span><br><span class="line">      <span class="keyword">CONNECT</span> <span class="keyword">BY</span> LEVEL <span class="operator">&lt;=</span> max_len) levels</span><br><span class="line"><span class="keyword">WHERE</span> levels.lvl <span class="operator">&lt;=</span> a.cnt</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> AFFIXID, levels.lvl) a <span class="keyword">where</span> a.AFFIXURL <span class="keyword">is</span> <span class="keyword">not null</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查看表中多余的重复记录，重复记录是根据单个字段（pid）来判断"><a href="#查看表中多余的重复记录，重复记录是根据单个字段（pid）来判断" class="headerlink" title="查看表中多余的重复记录，重复记录是根据单个字段（pid）来判断"></a>查看表中多余的重复记录，重复记录是根据单个字段（pid）来判断</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from SGP_PREGNANCY where pid in (select pid from SGP_PREGNANCY group by pid having count(pid) &gt; 1)</span><br></pre></td></tr></table></figure>
+
+<h2 id="清除查询缓存"><a href="#清除查询缓存" class="headerlink" title="清除查询缓存"></a>清除查询缓存</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SYSTEM</span> FLUSH SHARED_POOL</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SYSTEM</span> FLUSH BUFFER_CACHE</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SYSTEM</span> FLUSH <span class="keyword">GLOBAL</span> CONTEXT</span><br></pre></td></tr></table></figure>
+
+<h2 id="分页优化"><a href="#分页优化" class="headerlink" title="分页优化"></a>分页优化</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span> 普通分页</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> (<span class="keyword">select</span> rownum rn, p.<span class="operator">*</span> <span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">select</span> g.<span class="operator">*</span> <span class="keyword">from</span> SGP_PERSON g <span class="keyword">WHERE</span> <span class="number">1</span> <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">) p</span><br><span class="line"><span class="keyword">where</span> rownum<span class="operator">&lt;=</span><span class="number">239178</span>) <span class="keyword">where</span> rn <span class="operator">&gt;</span><span class="number">239168</span></span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 优化后分页</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> SGP_PERSON <span class="keyword">where</span> rowid <span class="keyword">in</span> ( <span class="keyword">select</span> rid <span class="keyword">from</span> (<span class="keyword">select</span> rownum rn, rid <span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">SELECT</span> rowid rid, g.<span class="operator">*</span> <span class="keyword">from</span> SGP_PERSON g <span class="keyword">WHERE</span> <span class="number">1</span> <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">where</span> rownum<span class="operator">&lt;=</span><span class="number">239178</span>) <span class="keyword">where</span> rn <span class="operator">&gt;</span><span class="number">239168</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h3><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//name 字段值中逗号替换为空</span><br><span class="line">replace(name, &#x27;,&#x27;)</span><br><span class="line"></span><br><span class="line">//name 字段值中逗号替换为#</span><br><span class="line">replace(name, &#x27;,&#x27;, &#x27;#&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="dbms-random-value"><a href="#dbms-random-value" class="headerlink" title="dbms_random.value"></a>dbms_random.value</h3><blockquote>
+<p>获取 0-1 之间随机值</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 获取 80 到 100之间随机小数,小数点后保留两位</span><br><span class="line">SELECT TRUNC(80+20*dbms_random.value, 2) FROM dual</span><br></pre></td></tr></table></figure>
+
+<h3 id="trunc"><a href="#trunc" class="headerlink" title="trunc"></a>trunc</h3><h4 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select trunc (sysdate) from dual --2013-01-06 今天的日期为 2013-01-06</span><br><span class="line">select trunc (sysdate, &#x27;mm&#x27;) from dual --2013-01-01 返回当月第一天.</span><br><span class="line">select trunc (sysdate,&#x27;yy&#x27;) from dual --2013-01-01 返回当年第一天</span><br><span class="line">select trunc (sysdate,&#x27;dd&#x27;) from dual --2013-01-06 返回当前年月日</span><br><span class="line">select trunc (sysdate,&#x27;yyyy&#x27;) from dual --2013-01-01 返回当年第一天</span><br><span class="line">select trunc (sysdate,&#x27;d&#x27;) from dual --2013-01-06 (星期天) 返回当前星期的第一天</span><br><span class="line">select trunc (sysdate, &#x27;hh&#x27;) from dual --2013-01-06 17:00:00 当前时间为 17:35</span><br><span class="line">select trunc (sysdate, &#x27;mi&#x27;) from dual --2013-01-06 17:35:00 TRUNC () 函数没有秒的精确</span><br></pre></td></tr></table></figure>
+
+<h4 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h4><blockquote>
+<p>TRUNC（number,num_digits）<br>Number 需要截尾取整的数字。<br>Num_digits 用于指定取整精度的数字。Num_digits 的默认值为 0。<br>TRUNC () 函数截取时不进行四舍五入</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">select trunc(123.458) from dual --123</span><br><span class="line">select trunc(123.458,0) from dual --123</span><br><span class="line">select trunc(123.458,1) from dual --123.4</span><br><span class="line">select trunc(123.458,-1) from dual --120</span><br><span class="line">select trunc(123.458,-4) from dual --0</span><br><span class="line">select trunc(123.458,4) from dual --123.458</span><br><span class="line">select trunc(123) from dual --123</span><br><span class="line">select trunc(123,1) from dual --123</span><br><span class="line">select trunc(123,-1) from dual --120</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="substr"><a href="#substr" class="headerlink" title="substr"></a>substr</h3><blockquote>
+<p>substr(字符串，截取开始位置，截取长度) &#x2F;&#x2F; 返回截取的字</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">substr (&#x27;Hello World&#x27;,0,1) // 返回结果为 &#x27;H&#x27;  * 从字符串第一个字符开始截取长度为 1 的字符串</span><br><span class="line"></span><br><span class="line">substr (&#x27;Hello World&#x27;,1,1) // 返回结果为 &#x27;H&#x27;  *0 和 1 都是表示截取的开始位置为第一个字符</span><br><span class="line"></span><br><span class="line">substr (&#x27;Hello World&#x27;,2,4) // 返回结果为 &#x27;ello&#x27;</span><br><span class="line"></span><br><span class="line">substr (&#x27;Hello World&#x27;,-3,3)// 返回结果为 &#x27;rld&#x27; * 负数 (-i) 表示截取的开始位置为字符串右端向左数第 i 个字符</span><br><span class="line"></span><br><span class="line">测试：</span><br><span class="line"></span><br><span class="line">select substr(&#x27;Hello World&#x27;,-3,3) value from dual;</span><br></pre></td></tr></table></figure>
+
+<h3 id="instr"><a href="#instr" class="headerlink" title="instr"></a>instr</h3><blockquote>
+<p>类似 indexof</p>
+</blockquote>
+<ul>
+<li>UTF8 编码</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select instr(&#x27;保定市南市区&#x27;,&#x27;市&#x27;,1,1)-1 from dual;</span><br><span class="line">解释：1. &#x27;保定市南市区&#x27; =&gt;可以是表达式，也可以是具体数据</span><br><span class="line">     2. &#x27;市&#x27;=&gt;为分离的标志，这里为两组数据中的“市”这个字</span><br><span class="line">     3. 第一个1为从左边开始，如果为-1，则从右边开始。</span><br><span class="line">     4. 第二个1为“市”出现的第几次。</span><br></pre></td></tr></table></figure>
+
+<h3 id="nvl-p1-p2"><a href="#nvl-p1-p2" class="headerlink" title="nvl(p1, p2)"></a>nvl(p1, p2)</h3><blockquote>
+<p>p1 为空，则返回 p2，不为空，则返回p1</p>
+</blockquote>
+<h3 id="nvl2-expre1-expre2-expre3"><a href="#nvl2-expre1-expre2-expre3" class="headerlink" title="nvl2(expre1,expre2,expre3)"></a>nvl2(expre1,expre2,expre3)</h3><blockquote>
+<p>如果 expre1 不为空，则返回 expre2，如果为空，返回expre3</p>
+</blockquote>
+<h3 id="nullif-expre1-expre2"><a href="#nullif-expre1-expre2" class="headerlink" title="nullif (expre1,expre2)"></a>nullif (expre1,expre2)</h3><blockquote>
+<p>比较两个参数，如果参数 1 和参数 2 相等，返回 null<br>如果不相等，返回第一个参数</p>
+</blockquote>
+<h3 id="coalesce-expre1-expre2-expre3"><a href="#coalesce-expre1-expre2-expre3" class="headerlink" title="coalesce(expre1,expre2,expre3)"></a>coalesce(expre1,expre2,expre3)</h3><blockquote>
+<p>参数 1：如果第一参数不为空，返回第一个参数。<br>参数 2：如果参数 1 为空，则返回第二个参数。<br>参数 3：如果参数 1 和参赛 2 都为空，返回第三个参数。</p>
+</blockquote>
+<h3 id="case-when-then"><a href="#case-when-then" class="headerlink" title="case when then"></a>case when then</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT ENAME,SAL,JOB, </span><br><span class="line">CASE JOB </span><br><span class="line">  WHEN &#x27;MANAGER&#x27; THEN SAL+100</span><br><span class="line">  WHEN &#x27;ANALYSIS&#x27; THEN SAL+200</span><br><span class="line">  WHEN &#x27;SALESMAN&#x27; THEN SAL+300</span><br><span class="line">  ELSE SAL+400</span><br><span class="line">  END &quot;RESULTS&quot;</span><br><span class="line">  FROM EMP;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DECODE"><a href="#DECODE" class="headerlink" title="DECODE"></a>DECODE</h3><blockquote>
+<p>DECODE(col|expression ,search1,result1<br>[,search2,result2]<br>[,default])<br>如果 default 值被省略了，那么当 search 值没有与任何的 math 值匹配，将返回 null 值。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT ENAME,JOB,SAL,</span><br><span class="line">  DECODE(JOB, &#x27;MANAGER&#x27;, SAL+100, &#x27;SALESMAN&#x27;,SAL+200, SAL) REVISED_SAL</span><br><span class="line">  FROM EMP;</span><br></pre></td></tr></table></figure>
+
+<h3 id="行转列-pivot-、列转行-unpivot"><a href="#行转列-pivot-、列转行-unpivot" class="headerlink" title="行转列 pivot 、列转行 unpivot"></a>行转列 pivot 、列转行 unpivot</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaokui_wingfly/article/details/42419207">https://blog.csdn.net/xiaokui_wingfly/article/details/42419207</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/d7fe28b2.html">https://wangwenzhe.github.io/posts/d7fe28b2.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Oracle/">Oracle</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/d7fe28b2.html" title="Oracle-创建只读账号"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Oracle-创建只读账号</div></div></a></div><div class="next-post pull-right"><a href="/posts/f4fa752.html" title="SpringBoot-多数据源-mybatisplus"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">SpringBoot-多数据源-mybatisplus</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/9b4ddc5c.html" title="Oracle-Linux下安装"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-03</div><div class="title">Oracle-Linux下安装</div></div></a></div><div><a href="/posts/3e7f34f7.html" title="Oracle-Docker"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-06</div><div class="title">Oracle-Docker</div></div></a></div><div><a href="/posts/4c357b9d.html" title="Oracle-19C"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-28</div><div class="title">Oracle-19C</div></div></a></div><div><a href="/posts/2527e768.html" title="Oracle-修改端口"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-08</div><div class="title">Oracle-修改端口</div></div></a></div><div><a href="/posts/bda9d1fe.html" title="Oracle-Windows本机数据定时备份"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-11</div><div class="title">Oracle-Windows本机数据定时备份</div></div></a></div><div><a href="/posts/a6fbeda5.html" title="Oracle-SQL优化"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-28</div><div class="title">Oracle-SQL优化</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%A4%E9%9B%86%E3%80%81%E5%B9%B6%E9%9B%86%E3%80%81%E5%B7%AE%E9%9B%86%EF%BC%89-%E5%AD%90%E6%9F%A5%E8%AF%A2%E4%B9%8B%E5%8D%95%E8%A1%8C%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.</span> <span class="toc-text">集合操作（交集、并集、差集）&amp; 子查询之单行子查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E5%B0%86%E5%AD%97%E6%AE%B5%E6%8B%86%E5%88%86"><span class="toc-number">2.</span> <span class="toc-text">根据字符将字段拆分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rownum"><span class="toc-number">3.</span> <span class="toc-text">rownum</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8DN%E6%9D%A1%E6%95%B0%E6%8D%AE"><span class="toc-number">3.1.</span> <span class="toc-text">前N条数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%ACN%E6%9D%A1%E6%95%B0%E6%8D%AE"><span class="toc-number">3.2.</span> <span class="toc-text">第N条数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#union-%E4%B8%8E-union-all"><span class="toc-number">4.</span> <span class="toc-text">union 与 union all</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#union-%E6%88%96%E8%80%85-union-all-%E4%B8%8E-order-by-%E7%9A%84%E8%81%94%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text">union 或者 union all 与 order by 的联合使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NUMBER-%EF%BC%88-precision%EF%BC%8C-scale%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">NUMBER （ precision， scale）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E6%9F%90%E5%AD%97%E6%AE%B5%E6%8E%92%E5%BA%8F%EF%BC%8C%E4%B8%BAnull%E5%88%99%E6%94%BE%E5%88%B0%E5%BC%80%E5%A7%8B%E6%88%96%E6%9C%80%E5%90%8E"><span class="toc-number">7.</span> <span class="toc-text">按照某字段排序，为null则放到开始或最后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E5%90%8E%E8%BF%94%E5%9B%9E%E9%9D%9E%E5%88%86%E7%BB%84%E5%AD%97%E6%AE%B5%E7%BB%84%E5%90%88"><span class="toc-number">8.</span> <span class="toc-text">分组后返回非分组字段组合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%86%E9%9A%94%E6%88%90%E5%A4%9A%E5%88%97"><span class="toc-number">9.</span> <span class="toc-text">字符串分隔成多列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle-%E5%88%86%E7%BB%84%E5%90%8E%E5%8F%96%E6%AF%8F%E7%BB%84%E7%AC%AC%E4%B8%80%E6%9D%A1%E6%95%B0%E6%8D%AE"><span class="toc-number">10.</span> <span class="toc-text">oracle 分组后取每组第一条数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%88%86%E9%9A%94%E5%AD%97%E7%AC%A6%E5%B0%86%E5%8D%95%E5%AD%97%E6%AE%B5%E6%8B%86%E5%88%86%E6%88%90%E5%A4%9A%E8%A1%8C"><span class="toc-number">11.</span> <span class="toc-text">根据分隔字符将单字段拆分成多行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%A1%A8%E4%B8%AD%E5%A4%9A%E4%BD%99%E7%9A%84%E9%87%8D%E5%A4%8D%E8%AE%B0%E5%BD%95%EF%BC%8C%E9%87%8D%E5%A4%8D%E8%AE%B0%E5%BD%95%E6%98%AF%E6%A0%B9%E6%8D%AE%E5%8D%95%E4%B8%AA%E5%AD%97%E6%AE%B5%EF%BC%88pid%EF%BC%89%E6%9D%A5%E5%88%A4%E6%96%AD"><span class="toc-number">12.</span> <span class="toc-text">查看表中多余的重复记录，重复记录是根据单个字段（pid）来判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E6%9F%A5%E8%AF%A2%E7%BC%93%E5%AD%98"><span class="toc-number">13.</span> <span class="toc-text">清除查询缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E4%BC%98%E5%8C%96"><span class="toc-number">14.</span> <span class="toc-text">分页优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">15.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#replace"><span class="toc-number">15.1.</span> <span class="toc-text">replace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dbms-random-value"><span class="toc-number">15.2.</span> <span class="toc-text">dbms_random.value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trunc"><span class="toc-number">15.3.</span> <span class="toc-text">trunc</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F"><span class="toc-number">15.3.1.</span> <span class="toc-text">日期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97"><span class="toc-number">15.3.2.</span> <span class="toc-text">数字</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#substr"><span class="toc-number">15.4.</span> <span class="toc-text">substr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#instr"><span class="toc-number">15.5.</span> <span class="toc-text">instr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nvl-p1-p2"><span class="toc-number">15.6.</span> <span class="toc-text">nvl(p1, p2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nvl2-expre1-expre2-expre3"><span class="toc-number">15.7.</span> <span class="toc-text">nvl2(expre1,expre2,expre3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nullif-expre1-expre2"><span class="toc-number">15.8.</span> <span class="toc-text">nullif (expre1,expre2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#coalesce-expre1-expre2-expre3"><span class="toc-number">15.9.</span> <span class="toc-text">coalesce(expre1,expre2,expre3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#case-when-then"><span class="toc-number">15.10.</span> <span class="toc-text">case when then</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DECODE"><span class="toc-number">15.11.</span> <span class="toc-text">DECODE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E8%BD%AC%E5%88%97-pivot-%E3%80%81%E5%88%97%E8%BD%AC%E8%A1%8C-unpivot"><span class="toc-number">15.12.</span> <span class="toc-text">行转列 pivot 、列转行 unpivot</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

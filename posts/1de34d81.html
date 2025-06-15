@@ -1,0 +1,1401 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Java全栈-下 | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="开发基础常用类库基础 Hutool：国产后起之秀，Hutool是一个小而全的Java工具类库，通过静态方法封装，降低相关API的学习成本，提高工作效率 Google Guava：Guava工程包含了若干被Google的 Java项目广泛依赖 的核心库，例如：集合 [collections] 、缓存 [caching] 、原生类型支持 [primitives support] 、并发库 [concu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java全栈-下">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/1de34d81.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="开发基础常用类库基础 Hutool：国产后起之秀，Hutool是一个小而全的Java工具类库，通过静态方法封装，降低相关API的学习成本，提高工作效率 Google Guava：Guava工程包含了若干被Google的 Java项目广泛依赖 的核心库，例如：集合 [collections] 、缓存 [caching] 、原生类型支持 [primitives support] 、并发库 [concu">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2024-07-01T22:36:31.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.734Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="Java全栈">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/1de34d81.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java全栈-下',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java全栈-下</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-01T22:36:31.000Z" title="发表于 2024-07-02 06:36:31">2024-07-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.734Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E5%85%A8%E6%A0%88/">Java全栈</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">26.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>82分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java全栈-下"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="开发基础"><a href="#开发基础" class="headerlink" title="开发基础"></a>开发基础</h2><h3 id="常用类库"><a href="#常用类库" class="headerlink" title="常用类库"></a>常用类库</h3><h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><ul>
+<li>Hutool：国产后起之秀，Hutool是一个小而全的Java工具类库，通过静态方法封装，降低相关API的学习成本，提高工作效率</li>
+<li>Google Guava：Guava工程包含了若干被Google的 Java项目广泛依赖 的核心库，例如：集合 [collections] 、缓存 [caching] 、原生类型支持 [primitives support] 、并发库 [concurrency libraries] 、通用注解 [common annotations] 、字符串处理 [string processing] 、I&#x2F;O 等等</li>
+</ul>
+<ul>
+<li>Apache Commons：Apache Commons是对JDK的拓展，包含了很多开源的工具，用于解决平时编程经常会遇到的问题，减少重复劳动</li>
+<li>Spring常用工具类：Spring作为常用的开发框架，在Spring框架应用中，排在ApacheCommon，Guava, Huool等通用库后，第二优先级可以考虑使用Spring-core-xxx.jar中的util包</li>
+</ul>
+<h4 id="JSON库"><a href="#JSON库" class="headerlink" title="JSON库"></a>JSON库</h4><h5 id="org-json"><a href="#org-json" class="headerlink" title="org.json"></a>org.json</h5><ul>
+<li>这是一个非常基础且轻量级的库，包含了一些基本的类来创建、解析和转换JSON数据。尽管功能相比Jackson和Gson较为有限，但对于简单的应用场景而言，它已经足够使用。</li>
+<li>特点：轻量、无需依赖额外库、适用于基本需求。</li>
+</ul>
+<h5 id="Jackson"><a href="#Jackson" class="headerlink" title="Jackson"></a>Jackson</h5><ul>
+<li>Jackson是最流行且性能优异的Java JSON库之一。它提供了完整的数据绑定功能，可以将Java对象转换为JSON字符串，反之亦然。Jackson包括几个模块，如<code>jackson-databind</code>, <code>jackson-core</code>, 和<code>jackson-annotations</code>，支持流式API和树模型等多种解析方式。</li>
+<li>特点：高性能、全面的功能集、社区活跃。</li>
+</ul>
+<h5 id="Gson"><a href="#Gson" class="headerlink" title="Gson"></a>Gson</h5><ul>
+<li>由Google开发，Gson提供了简单易用的API来进行JSON与Java对象之间的序列化和反序列化。它的设计目标是尽可能地无痛使用，同时也支持一些高级特性和泛型。</li>
+<li>特点：使用简单、代码清晰、支持复杂类型的转换</li>
+</ul>
+<h5 id="Fastjson"><a href="#Fastjson" class="headerlink" title="Fastjson"></a>Fastjson</h5><ul>
+<li>阿里巴巴开源的高性能JSON处理器，以其快速的解析速度和小巧的体积受到很多开发者的喜爱。Fastjson支持JSON与Java对象的相互转换，同时也提供了丰富的API来处理JSON数据。</li>
+<li>特点：快速、轻量、功能丰富，特别适合中国国情，支持一些特定的日期格式处理</li>
+<li>有漏洞，谨慎使用</li>
+</ul>
+<h4 id="Lombok工具库用来解决什么问题"><a href="#Lombok工具库用来解决什么问题" class="headerlink" title="Lombok工具库用来解决什么问题"></a>Lombok工具库用来解决什么问题</h4><p>Lombok 是一个工具，包括 <strong>Java 库和开发工具的插件</strong>，它提供注解的方式，在编译时自动<strong>为Java类生成构造器、getter&#x2F;setter、equals、hashCode和toString</strong>等常用方法，从而极大地减少了编写这些模板代码的工作量</p>
+<h4 id="Lombok基本使用"><a href="#Lombok基本使用" class="headerlink" title="Lombok基本使用"></a>Lombok基本使用</h4><h5 id="Data"><a href="#Data" class="headerlink" title="@Data"></a>@Data</h5><p>@Data 最常用的注解之一。注解在类上，提供该类所有属性的 getter&#x2F;setter 方法，还提供了 equals、canEqual、hashCode、toString 方法</p>
+<h5 id="EqualsAndHashCode"><a href="#EqualsAndHashCode" class="headerlink" title="@EqualsAndHashCode"></a>@EqualsAndHashCode</h5><p>重写 equals、hashCode 方法</p>
+<h5 id="Slf4j"><a href="#Slf4j" class="headerlink" title="@Slf4j"></a>@Slf4j</h5><p>作用于类上，为该类提供一个属性名为 log 的 log4j 日志对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log.debug(<span class="string">&quot;&#123;&#125;-&#123;&#125;,修改之后的注解值：&#123;&#125;&quot;</span>, className.getName(), fieldName, tableField.exist());</span><br></pre></td></tr></table></figure>
+
+<h5 id="Accessors-chain-true"><a href="#Accessors-chain-true" class="headerlink" title="@Accessors(chain &#x3D; true)"></a>@Accessors(chain &#x3D; true)</h5><p>提供链式写法，<code>set</code> 操作的返回值就是对象本身</p>
+<h5 id="Builder"><a href="#Builder" class="headerlink" title="@Builder"></a>@Builder</h5><ol>
+<li>Entity 上加上 @Builder 时，会默认为类加上<code>全参构造函数</code>，且提供以建造器模式构造对象的方法</li>
+<li>但因为显示声明了全参构造器，默认的无参构造器就失效了，就不能通过 new Obj () 的方式创建对象</li>
+<li>但是如果显式声明了 @NoArgsConstructor，lombok 就不会生成全参构造函数，而 @Builder 中会用到全参构造函数，所以冲突</li>
+</ol>
+<p>解决：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="为什么很多公司禁止使用lombok？"><a href="#为什么很多公司禁止使用lombok？" class="headerlink" title="为什么很多公司禁止使用lombok？"></a>为什么很多公司禁止使用lombok？</h4><ol>
+<li><strong>代码可读性与可维护性</strong>：Lombok通过注解自动生成代码，这意味着实际执行的代码并不直接展示在源文件中。这降低了未安装Lombok插件的开发者阅读和理解代码的便利性，同时也可能使得代码审查和维护变得更加困难。</li>
+<li><strong>编译依赖与工具兼容性</strong>：Lombok作为一个编译时插件，需要特定的IDE配置和支持。新加入的团队成员或使用不同开发环境的开发者可能需要额外配置，有时还会遇到与构建工具、持续集成&#x2F;持续部署(CI&#x2F;CD)管道或特定IDE版本的兼容性问题。</li>
+<li><strong>学习曲线与团队一致性</strong>：对于不熟悉Lombok的开发者来说，需要时间去学习其注解的用法及其背后的工作原理。团队内部若不是所有人都熟悉或同意使用Lombok，可能会导致代码风格不一致，影响团队协作。</li>
+<li><strong>潜在的bug与问题</strong>：虽然Lombok简化了代码，但其自动生成的代码可能在特定场景下不符合预期，例如不恰当使用@Data注解可能导致性能问题或不正确的equals&#x2F;hashCode实现。此外，过度依赖Lombok可能导致开发者忽视了Java基础，如理解equals和hashCode方法的正确实现。</li>
+<li><strong>JDK版本与长期支持</strong>：虽然Lombok努力保持与最新Java版本的兼容性，但一些公司可能担心未来Java版本更新带来的不确定性，以及Lombok的长期维护和支持问题。</li>
+<li><strong>审计与合规性</strong>：对于金融、医疗等行业，代码的可审计性至关重要。自动生成的代码可能难以满足严格的审计要求，特别是当涉及到数据处理和安全规范时。</li>
+</ol>
+<h4 id="MapStruct工具库用来解决什么问题"><a href="#MapStruct工具库用来解决什么问题" class="headerlink" title="MapStruct工具库用来解决什么问题"></a>MapStruct工具库用来解决什么问题</h4><p>主要用于解决<strong>对象之间的拷贝问题</strong>，比如PO&#x2F;DTO&#x2F;VO&#x2F;QueryParam之间的转换问题。区别于BeanUtils这种通过反射，它通过<strong>编译器编译生成常规方法</strong>，将可以很大程度上提升效率</p>
+<h4 id="Lombok和MapStruct工具库的原理？"><a href="#Lombok和MapStruct工具库的原理？" class="headerlink" title="Lombok和MapStruct工具库的原理？"></a>Lombok和MapStruct工具库的原理？</h4><ul>
+<li>核心之处就是<strong>对于注解的解析上</strong></li>
+<li>JDK5引入了注解的同时，也提供了两种对注解的解析方式。<strong>编译时解析</strong>和 <strong>运行时解析</strong></li>
+</ul>
+<h3 id="网络协议和工具"><a href="#网络协议和工具" class="headerlink" title="网络协议和工具"></a>网络协议和工具</h3><h4 id="什么是754层网络模型？"><a href="#什么是754层网络模型？" class="headerlink" title="什么是754层网络模型？"></a>什么是754层网络模型？</h4><p>全局上理解 <code>7层协议，4层，5层</code>的对应关系</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="assets/dev-network-protocol-1.png" alt="img" style="zoom:50%;" />
+
+<h4 id="DNS-解析流程"><a href="#DNS-解析流程" class="headerlink" title="DNS 解析流程"></a>DNS 解析流程</h4><p>DNS（Domain Name System，域名系统）解析流程是一个将人类可读的域名转换为计算机可识别的IP地址的过程，这一过程涉及多个步骤，通常遵循以下序列：</p>
+<ol>
+<li><p><strong>查询浏览器缓存</strong>：<br>当用户尝试访问一个网站时，浏览器首先检查其自身的DNS缓存中是否有该域名对应的IP地址。如果存在且未过期，则直接使用该IP地址。</p>
+</li>
+<li><p><strong>查询操作系统缓存</strong>：<br>如果浏览器缓存中没有找到相应的记录，操作系统（如Windows、macOS或Linux）会检查其自身的DNS缓存。</p>
+</li>
+<li><p><strong>检查本地HOSTS文件</strong>：<br>接下来，操作系统会查看本地HOSTS文件，这是一个允许手动定义域名到IP地址映射的文件。如果域名在HOSTS文件中有定义，系统将使用这个映射关系。</p>
+</li>
+<li><p><strong>查询本地DNS服务器</strong>：<br>如果上述所有缓存中都没有找到所需记录，请求会被转发到用户的本地DNS服务器，这通常是由ISP（互联网服务提供商）提供的，或者是在网络配置中手动设定的。</p>
+</li>
+<li><p><strong>递归查询外部 DNS服务器</strong>：<br>本地DNS服务器开始进行递归查询，首先它会向根域名服务器发送请求。根域名服务器不会直接提供目标域名的IP地址，而是告诉本地DNS服务器下一步应该查询哪个顶级域名服务器（如.com、.net、.org等）。</p>
+</li>
+<li><p><strong>查询顶级域名服务器</strong>：<br>本地DNS服务器根据根域名服务器的指引，向相应的顶级域名服务器查询。顶级域名服务器再进一步指引到负责该域名的具体权威域名服务器。</p>
+</li>
+<li><p><strong>查询权威域名服务器</strong>：<br>最终，权威域名服务器会提供该域名对应的IP地址给本地DNS服务器。这个过程中可能涉及多级子域名的查询，直至找到最终的权威记录。</p>
+</li>
+<li><p><strong>返回结果并缓存</strong>：<br>一旦本地DNS服务器获得了IP地址，它会将这个结果返回给用户的设备，并且通常会把这个映射关系在其自身缓存中保存一段时间，以便后续相同请求能更快响应。同时，用户的设备和操作系统也可能缓存这个结果，减少未来的查询时间。</p>
+</li>
+<li><p><strong>客户端收到IP并建立连接</strong>：<br>用户的设备接收到IP地址后，就可以用这个IP地址与远程服务器建立网络连接，从而加载网页内容或其他服务。</p>
+</li>
+</ol>
+<p>整个DNS解析流程设计了多级缓存机制，旨在提高效率，减少因DNS查询造成的延迟。</p>
+<h4 id="什么是DNS劫持？"><a href="#什么是DNS劫持？" class="headerlink" title="什么是DNS劫持？"></a>什么是DNS劫持？</h4><p>DNS劫持是一种网络安全攻击手段，攻击者通过非法手段取得了对DNS（域名系统）服务器的控制权，或者在用户的设备上修改了DNS设置，进而操控域名解析的过程。正常情况下，当你在浏览器输入一个网站域名时，DNS服务器会将这个域名转换成对应的IP地址，让你的设备能够访问正确的网络资源。但在DNS劫持发生时，攻击者会恶意篡改DNS记录，使你的请求被重定向到一个由攻击者控制的错误IP地址上。</p>
+<p>具体来说，DNS劫持可以有以下几种形式：</p>
+<ol>
+<li><strong>本地DNS缓存污染</strong>：在用户的电脑上植入恶意软件，修改本地DNS缓存</li>
+<li><strong>路由器DNS劫持</strong>：某些ISP（互联网服务提供商）或路由器固件中的默认设置可能会实施合法的DNS重定向，用于广告或者其他目的，但这同样可被恶意利用进行非法劫持</li>
+<li><strong>篡改DNS服务器记录</strong>：攻击者通过漏洞利用、弱口令或其他安全漏洞，直接修改DNS服务器上的域名解析记录，使其指向恶意服务器的IP地址</li>
+<li><strong>BGP（边界网关协议）劫持</strong>：这是一种更高级的攻击，攻击者通过篡改<strong>互联网路由表</strong>，使全球范围内的流量被重定向到恶意服务器，影响范围更广</li>
+</ol>
+<p>DNS劫持的后果可能包括：用户被引导至假冒网站，导致个人信息被盗；网站流量被劫持，用于广告收益；或者分布式拒绝服务（DDoS）攻击的放大等。为了防范DNS劫持，用户和组织应采取加强密码安全、使用HTTPS、定期检查DNS设置、使用DNSSEC（域名系统安全扩展）等安全措施。</p>
+<h4 id="什么是DNS污染？"><a href="#什么是DNS污染？" class="headerlink" title="什么是DNS污染？"></a>什么是DNS污染？</h4><blockquote>
+<p>伪造错误 DNS 记录</p>
+</blockquote>
+<p>DNS污染，也称为DNS缓存投毒（DNS cache poisoning），是一种网络攻击手段，它通过<strong>向DNS解析过程中插入虚假的DNS记录</strong>，导致用户在尝试访问特定网站时被重定向到错误的IP地址，从而无法访问正确的网络服务或被引导至恶意网站。DNS污染主要利用了DNS协议的一些特性：</p>
+<ol>
+<li><p><strong>无连接、无认证的UDP查询</strong>：DNS查询默认使用UDP协议，它是无连接的，这意味着查询和响应之间没有固定的会话关联，且缺乏内置的安全验证机制。攻击者可以利用这一点，向用户的DNS查询路径中的任一环节发送虚假的DNS响应，这些响应如果比正确的响应更快到达用户，就可能被误认为是合法的。</p>
+</li>
+<li><p><strong>缓存机制</strong>：DNS系统广泛使用缓存来加速查询过程，一旦一个DNS服务器接收到一个域名到IP地址的映射，它可能会缓存这个映射一段时间。DNS污染就是通过向DNS服务器的缓存中插入错误的映射记录来实现的。</p>
+</li>
+<li><p><strong>攻击实施</strong>：攻击者通过监控网络中的DNS查询请求，一旦发现与目标域名相关的查询，便迅速向查询发起方发送一个伪造的DNS响应，这个响应包含了攻击者控制的IP地址而非真实的域名解析结果。由于DNS查询的无连接特性，加上伪造响应的快速发送，使得伪造的响应有机会在真实的响应到达之前被接受，从而“污染”了DNS缓存或误导了直接查询的用户。</p>
+</li>
+</ol>
+<p>DNS污染的影响包括阻止用户访问特定网站、重定向流量至恶意站点以窃取信息或进行欺诈，以及干扰网络服务的正常运行。解决DNS污染的方法通常包括使用安全的DNS解析服务（如通过HTTPS的DNS-over-HTTPS, DoH，或TLS加密的DNS-over-TLS, DoT）、使用信誉良好的公共DNS服务器、或者在客户端层面使用VPNs来绕过本地的DNS解析限制。</p>
+<h4 id="输入URL-到页面加载过程？"><a href="#输入URL-到页面加载过程？" class="headerlink" title="输入URL 到页面加载过程？"></a>输入URL 到页面加载过程？</h4><p>从在浏览器地址栏输入URL到页面加载完成，整个过程大致可以分为以下几个步骤：</p>
+<ol>
+<li><strong>输入URL</strong>：用户在浏览器的地址栏输入URL并按下回车键</li>
+<li><strong>URL解析与检查缓存</strong>：<ul>
+<li>浏览器首先解析URL，提取出协议、域名、路径等信息。</li>
+<li>检查浏览器缓存、操作系统缓存、路由器缓存以及ISP的DNS缓存中是否已有该域名的IP地址记录。如果有且未过期，则直接使用缓存的IP地址</li>
+</ul>
+</li>
+<li><strong>DNS解析</strong>：<ul>
+<li>如果缓存中没有找到IP地址，浏览器会向本地DNS解析器发起DNS请求</li>
+<li>本地DNS解析器向上查询，依次经过本地缓存、路由器、ISP的DNS服务器，直到根域名服务器，逐步缩小查询范围，最终找到负责该域名的权威DNS服务器</li>
+<li>权威DNS服务器返回该域名对应的IP地址</li>
+</ul>
+</li>
+<li><strong>TCP连接建立</strong>（针对HTTP协议）：<ul>
+<li>浏览器使用获取到的IP地址+URL 中的端口与服务器建立TCP连接，这通常涉及到TCP的三次握手过程，确保数据传输的可靠性</li>
+</ul>
+</li>
+<li><strong>发送HTTP请求</strong>：<ul>
+<li>连接建立后，浏览器向服务器发送HTTP请求，请求中包含URL、浏览器信息、接受的内容类型等</li>
+</ul>
+</li>
+<li><strong>服务器处理请求</strong>：<ul>
+<li>服务器接收到请求后，进行处理，可能包括数据库查询、服务器端脚本执行等</li>
+</ul>
+</li>
+<li><strong>服务器响应</strong>：<ul>
+<li>服务器将处理结果封装成HTTP响应，包括状态码、响应头和响应体（即网页内容）</li>
+</ul>
+</li>
+<li><strong>浏览器接收响应</strong>：<ul>
+<li>浏览器接收到响应后，开始解析HTML文档，构建DOM树</li>
+</ul>
+</li>
+<li><strong>加载资源</strong>：<ul>
+<li>在解析HTML过程中，浏览器遇到CSS、JavaScript、图片等外部资源的引用时，会发起额外的HTTP请求来下载这些资源</li>
+<li><strong>这些请求同样会经历DNS解析、TCP连接建立等步骤</strong></li>
+</ul>
+</li>
+<li><strong>渲染页面</strong>：<ul>
+<li>浏览器根据CSS构建渲染树，并计算布局，然后将渲染树的各个节点绘制到屏幕上</li>
+<li>JavaScript执行，可能会影响DOM结构、CSS样式以及执行异步操作，如AJAX请求</li>
+</ul>
+</li>
+<li><strong>页面加载完成</strong>：<ul>
+<li>当初始HTML文档及其引用的所有资源加载完毕，且所有脚本执行完成（如果有的话），浏览器标记页面为“加载完成”</li>
+</ul>
+</li>
+<li><strong>TCP连接断开</strong>（针对HTTP协议）：<ul>
+<li>页面加载完成后，TCP连接通常会通过四次挥手的过程被关闭，尽管对于HTTP&#x2F;2和HTTP&#x2F;3，连接可能保持开启以供后续请求复用</li>
+</ul>
+</li>
+</ol>
+<p>这个过程涉及到多个技术层次的交互，包括网络协议、浏览器行为、服务器处理以及页面渲染技术等</p>
+<h3 id="开发安全"><a href="#开发安全" class="headerlink" title="开发安全"></a>开发安全</h3><h4 id="开发中有哪些常见的Web安全漏洞？"><a href="#开发中有哪些常见的Web安全漏洞？" class="headerlink" title="开发中有哪些常见的Web安全漏洞？"></a>开发中有哪些常见的Web安全漏洞？</h4><p>在Web开发中，常见的安全漏洞主要包括但不限于以下几种：</p>
+<ol>
+<li><strong>SQL注入</strong>：攻击者通过在输入字段中插入恶意SQL代码，以此来操纵数据库查询，获取、修改或删除敏感数据。<ul>
+<li><strong>输入验证</strong>：检查用户输入的合法性，以确保输入的内容为正常的数据。数据检查应当在客户端和服务器端都加上</li>
+<li>Druid 数据库连接池提供了一个内置的 SQL 防注入模块，名为 <code>WallFilter</code>，用于检测和阻止潜在的 SQL 注入攻击</li>
+</ul>
+</li>
+<li>**跨站脚本攻击(XSS)**：攻击者通过在网页中注入恶意脚本，当其他用户浏览该页面时，脚本被执行，可能窃取用户信息、进行钓鱼攻击等。</li>
+<li>**跨站请求伪造(CSRF)**：攻击者利用用户已经登录的身份，在用户不知情的情况下执行操作，如转账、修改密码等。</li>
+<li><strong>不安全的对象直接引用</strong>：当应用直接暴露了内部对象如文件、数据库记录的标识符，攻击者可能通过修改这些标识符来访问未授权的数据。</li>
+<li><strong>认证与会话管理缺陷</strong>：包括弱口令、会话标识未加密传输、会话固定攻击等，这些都可能导致攻击者冒充合法用户。</li>
+<li><strong>敏感数据泄露</strong>：缺乏加密或不当存储敏感信息，如密码、信用卡号等，容易被截取和利用。</li>
+<li><strong>功能级访问控制缺失</strong>：未对用户权限进行适当限制，允许低权限用户访问或操作高权限功能。</li>
+<li><strong>安全配置错误</strong>：应用或服务器的默认设置未被正确调整，留下易被利用的安全漏洞。</li>
+<li><strong>使用含有已知漏洞的组件</strong>：使用未经更新的库、框架或服务，这些可能包含已知的安全漏洞。</li>
+<li><strong>不安全的反序列化</strong>：反序列化过程中的漏洞可能被利用来执行任意代码或造成其他安全问题。</li>
+<li><strong>不安全的加密存储</strong>：使用弱加密算法或不当的密钥管理，导致数据容易被破解。</li>
+<li>**服务器端请求伪造(SSRF)**：攻击者利用应用程序发送的请求来访问内部系统或执行未授权操作。</li>
+</ol>
+<p>防范这些漏洞通常需要综合运用多种策略，包括但不限于输入验证、输出编码、使用参数化查询、实施严格的访问控制策略、加密敏感数据、及时更新依赖库、安全配置服务器和应用程序、实施安全编码规范等。同时，定期进行安全审计和渗透测试也是确保Web应用安全的重要手段。</p>
+<h4 id="什么是-XSS"><a href="#什么是-XSS" class="headerlink" title="什么是 XSS"></a>什么是 XSS</h4><p>XSS，全称为<strong>跨站脚本攻击</strong>（Cross-Site Scripting），是一种常见的网络安全漏洞，允许攻击者在其他用户的浏览器中注入并执行恶意脚本代码。这种攻击方式利用的是Web应用程序对用户提供的数据处理不当，没有充分验证或过滤，导致恶意脚本能够嵌入到动态网页的内容中。</p>
+<p>XSS攻击可以分为三大类：</p>
+<ol>
+<li><p><strong>存储型XSS（Persistent XSS）</strong>：攻击者将恶意脚本注入到Web服务器上存储的数据中，如论坛帖子、评论或用户个人资料中。当其他用户访问含有恶意脚本的页面时，脚本将在他们的浏览器中执行。</p>
+</li>
+<li><p><strong>反射型XSS（Non-Persistent or Reflected XSS）</strong>：这种类型的XSS通过带有恶意脚本的URL传播，用户点击特制的链接后，恶意脚本作为请求的一部分发送给服务器，服务器未经恰当处理就将脚本内容“反射”回用户的浏览器执行。</p>
+</li>
+<li><p><strong>DOM-based XSS</strong>：这种XSS发生在浏览器的Document Object Model（DOM）层面，而不是服务器响应。攻击者通过修改网页的DOM结构来插入恶意脚本，当浏览器解析修改后的DOM时，脚本激活。</p>
+</li>
+</ol>
+<p>XSS攻击的目的多样，包括但不限于窃取用户会话信息（如Cookies）、进行身份冒充、传播恶意软件、操纵网页内容或进行钓鱼攻击等。防御XSS攻击的关键在于<strong>对用户输入进行严格的验证</strong>、<strong>编码和过滤</strong>，以及实施内容安全策略（CSP）等安全措施。</p>
+<h4 id="什么是CSRF"><a href="#什么是CSRF" class="headerlink" title="什么是CSRF"></a>什么是CSRF</h4><p>CSRF（Cross-Site Request Forgery，跨站请求伪造）是一种网络攻击方式，它利用用户在已登录网站的合法身份，诱使用户在不知情的情况下执行攻击者希望他们执行的操作。这种攻击形式利用了Web浏览器<strong>cookie</strong>的自动发送机制，即使在不同的域名之间，只要它们属于同一个站点，浏览器也会自动附带该站点的cookie。</p>
+<p>具体来说，当用户已经登录了一个信任的网站A，并且在这个网站上有活跃的会话，攻击者就可以在另一个不受信任的网站B上构造一个请求，这个请求是针对网站A的。如果用户此时访问了网站B并触发了这个恶意请求（可能是点击链接、提交表单或者是通过JavaScript自动发送的请求），浏览器会自动带上登录网站A的cookie，使得这个请求看似是从用户自己发起的合法请求，从而绕过了网站A的身份验证机制。</p>
+<p>CSRF攻击的目标通常是执行一些敏感操作，如转账、修改密码、添加管理员账号等。由于这些操作是在用户已经认证的上下文中发生的，网站可能不会再次要求用户进行身份验证，从而使得攻击成功。</p>
+<p>防止CSRF的方法包括但不限于：</p>
+<ul>
+<li>验证HTTP Referer头部，确保请求来源于预期的站点</li>
+<li>使用CSRF令牌（token），在每个需要防护的表单中隐藏一个随机生成的token，并在服务器端验证这个token的有效性</li>
+<li>在HTTP头中使用SameSite属性限制cookie的发送范围</li>
+<li>对于敏感操作实施二次验证，如短信验证码或身份确认对话框</li>
+</ul>
+<p>通过这些防护措施，可以大幅度降低CSRF攻击成功的可能性</p>
+<h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><h4 id="谈谈你对单元测试的理解？"><a href="#谈谈你对单元测试的理解？" class="headerlink" title="谈谈你对单元测试的理解？"></a>谈谈你对单元测试的理解？</h4><ul>
+<li><strong>什么是单元测试</strong>？</li>
+</ul>
+<p>单元测试（unit testing），是指对软件中的最小可测试单元进行检查和验证</p>
+<ul>
+<li><strong>为什么要写单元测试</strong>？</li>
+</ul>
+<p>使用单元测试可以有效地降低程序出错的机率，提供准确的文档，并帮助我们改进设计方案等等</p>
+<ul>
+<li><strong>什么时候写单元测试</strong>？</li>
+</ul>
+<p>比较推荐单元测试与具体实现代码同步进行这个方案的。只有对需求有一定的理解后才能知道什么是代码的正确性，才能写出有效的单元测试来验证正确性，而能写出一些功能代码则说明对需求有一定理解了</p>
+<h4 id="单元测试要写多细？"><a href="#单元测试要写多细？" class="headerlink" title="单元测试要写多细？"></a>单元测试要写多细？</h4><ol>
+<li><strong>复杂的</strong>：<strong>逻辑复杂，容易出错，考虑可能不全面</strong></li>
+<li><strong>影响比较大的</strong><ol>
+<li><strong>公共代码。比如自定义的所有http请求都会经过的拦截器；工具类等</strong></li>
+<li><strong>核心业务代码。一个产品里最核心最有业务价值的代码应该要有较高的单元测试覆盖率</strong></li>
+</ol>
+</li>
+</ol>
+<h4 id="你在开发中使用什么框架来做单元测试"><a href="#你在开发中使用什么框架来做单元测试" class="headerlink" title="你在开发中使用什么框架来做单元测试"></a>你在开发中使用什么框架来做单元测试</h4><ul>
+<li>JUnit4&#x2F;5</li>
+<li>Mockito, mock测试</li>
+<li>Powermock, 静态util的测试</li>
+</ul>
+<h3 id="代码质量"><a href="#代码质量" class="headerlink" title="代码质量"></a>代码质量</h3><ul>
+<li><p><strong>代码规范和检查工具</strong>：阿里巴巴的 Java 开发手册、Vue官方规范、Airbnb js、借鉴大厂规范「腾讯、京东」。配合开发工具中插件，checkStyle、<strong>p3c</strong>、ESLint、Prettier ESLint、Vue</p>
+</li>
+<li><p><strong>代码审查（Code Reviews）</strong>：实施代码审查流程，每位开发者提交的代码需经过至少一位同事「组长或同事」的审查。这不仅可以发现并修正错误，还能促进知识分享，提升团队整体水平</p>
+</li>
+<li><p><strong>单元测试与集成测试</strong>：编写单元测试以验证代码模块的每个部分按预期工作，同时执行集成测试以确保各模块间协同无误。自动化测试是提高测试效率和覆盖率的重要手段</p>
+</li>
+<li><p><strong>持续集成&#x2F;持续部署（CI&#x2F;CD）</strong>：设置自动化构建和测试流程，每次代码提交后自动运行，及时反馈问题，确保代码质量。这通常包括代码质量检查、单元测试、集成测试等步骤</p>
+</li>
+<li><p><strong>使用版本控制系统</strong>：通过Git、SVN等版本控制系统管理代码，合理使用分支策略，确保代码历史清晰，便于回溯和协同工作</p>
+</li>
+<li><p><strong>日志管理和错误监控</strong>：实施有效的错误监控和日志记录策略，帮助快速定位并解决问题，同时也是评估代码质量的一个重要途径</p>
+</li>
+<li><p><strong>合理的架构设计</strong>：采用成熟、合理的架构设计</p>
+</li>
+<li><p><strong>模块化设计</strong>：采用模块化设计提高代码结构的清晰度和可维护性</p>
+</li>
+<li><p><strong>设计模式</strong>：选择合适的设计模式</p>
+</li>
+<li><p><strong>重构</strong>：定期进行代码重构，去除冗余代码，代码复用，优化复杂逻辑，提高代码的可读性和可维护性</p>
+</li>
+<li><p><strong>性能和安全性考量</strong>：在开发过程中考虑代码的性能和安全性，遵循安全编码原则，进行性能基准测试和安全审计</p>
+</li>
+<li><p><strong>文档</strong>：保持文档更新，确保其他开发者能快速理解代码的功能和工作原理。【开发文档、使用文档】</p>
+</li>
+<li><p><strong>培训</strong>：定期组织技术培训和分享会议，提高团队成员的技术水平和对新工具、新技术的掌握能力</p>
+</li>
+</ul>
+<h2 id="开发框架和中间件"><a href="#开发框架和中间件" class="headerlink" title="开发框架和中间件"></a>开发框架和中间件</h2><h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><h4 id="什么是Spring框架"><a href="#什么是Spring框架" class="headerlink" title="什么是Spring框架"></a>什么是Spring框架</h4><p>Spring框架是一个流行的、开源的Java平台，它提供了一个全面的基础设施来支持企业级应用程序的开发。Spring的核心特性旨在简化Java开发，特别是针对企业级应用，通过提供分层架构，实现了组件之间的松耦合。以下是Spring框架的一些关键特点和组成部分：</p>
+<ol>
+<li><p><strong>控制反转（Inversion of Control, IoC）</strong>：Spring通过IoC容器管理对象的生命周期和依赖关系，从而减少了代码间的耦合。开发者无需直接控制对象的创建和装配，而是通过配置让容器来完成。</p>
+</li>
+<li><p><strong>面向切面编程（Aspect-Oriented Programming, AOP）</strong>：Spring支持AOP，允许将横切关注点（如日志记录、事务管理）从业务逻辑中分离出来，实现代码的模块化和重用。</p>
+</li>
+<li><p><strong>数据访问&#x2F;集成</strong>：Spring提供了对JDBC、Hibernate、JPA等持久层框架的集成支持，简化了数据访问层的开发。</p>
+</li>
+<li><p><strong>模型-视图-控制器（Model-View-Controller, MVC）</strong>：Spring MVC是Spring的一个模块，提供了一个分离关注点的、灵活的Web应用程序开发框架。</p>
+</li>
+<li><p><strong>事务管理</strong>：Spring提供了声明式事务管理，使得事务处理代码与业务逻辑分离，易于维护和测试。</p>
+</li>
+<li><p><strong>安全性</strong>：Spring Security框架提供了全面的安全服务，包括认证、授权、保护Web应用程序不受常见攻击等。</p>
+</li>
+<li><p><strong>测试支持</strong>：Spring框架设计时考虑到了测试的便利性，提供了对JUnit等测试框架的集成，便于编写单元测试和集成测试。</p>
+</li>
+</ol>
+<p>Spring框架自2003年由Rod Johnson提出以来，已经成为Java EE和Java SE开发中不可或缺的一部分，它通过其模块化设计，让开发者能够根据项目需求选择合适的组件，从而提高开发效率、增强应用程序的可测试性和灵活性。</p>
+<h4 id="列举一些重要的Spring模块"><a href="#列举一些重要的Spring模块" class="headerlink" title="列举一些重要的Spring模块"></a>列举一些重要的Spring模块</h4><ul>
+<li><strong>Spring Core</strong>：提供了框架的基础部分，包括IoC（Inverse of Control）容器和DI（Dependency Injection）功能，管理Bean的生命周期和依赖关系。</li>
+<li><strong>Spring Beans</strong>：定义了Spring中的Bean如何被创建、配置和管理。</li>
+<li><strong>Spring Context</strong>：构建于Core之上，提供了框架式的Bean访问方式，以及企业级功能如邮件发送、国际化支持、事件传递等。</li>
+<li>**Spring Expression Language (SpEL)**：强大的表达式语言，用于在运行时查询和操作对象图。</li>
+<li><strong>Spring JDBC</strong>：简化了使用JDBC进行数据库操作的过程，提供异常层次结构和数据源支持。</li>
+<li><strong>Spring ORM</strong>：对流行的对象关系映射API（如JPA, Hibernate, MyBatis）提供集成层。</li>
+<li><strong>Spring Transactions</strong>：为编程和声明式事务管理提供了一致的抽象。</li>
+<li><strong>Spring Web</strong>：提供了基本的Web集成特性，包括对多部分文件上传、Web应用上下文等的支持。</li>
+<li><strong>Spring Web MVC</strong>：基于Servlet API的全面的MVC实现，用于构建Web应用。</li>
+<li><strong>Spring AOP</strong>：实现了面向切面编程，允许定义方法拦截器和切点来横切关注点（如日志记录和事务管理）。</li>
+<li><strong>Spring Test</strong>：提供了对JUnit和TestNG的集成支持，简化了编写集成测试的过程。</li>
+<li><strong>Spring Security</strong>：提供了一套全面的安全服务，包括认证、授权、安全上下文等。</li>
+</ul>
+<h4 id="什么是IOC-如何实现的？"><a href="#什么是IOC-如何实现的？" class="headerlink" title="什么是IOC? 如何实现的？"></a>什么是IOC? 如何实现的？</h4><p>IOC，即Inversion of Control（控制反转），是一种设计思想，它提倡将原本由应用程序代码负责的对象创建和依赖关系的管理工作交由外部容器来完成。这样一来，对象的创建不再由调用者直接控制，而是由外部容器控制，从而实现了控制权的反转。这种方式降低了组件之间的耦合度，提高了系统的灵活性和可维护性。</p>
+<h5 id="如何实现IOC"><a href="#如何实现IOC" class="headerlink" title="如何实现IOC"></a>如何实现IOC</h5><p>IOC的实现主要依赖于一个核心容器，这个容器负责管理对象的生命周期和依赖关系。在Spring框架中，这个容器是通过以下步骤实现IOC的：</p>
+<ol>
+<li><p><strong>资源读取</strong>：容器首先读取配置元数据，这个配置可以是XML文件、注解或者Java配置类。配置中定义了Bean（即组件）的定义，包括Bean的类名、属性、依赖关系等。</p>
+</li>
+<li><p><strong>Bean定义解析</strong>：容器解析这些配置元数据，将其转换成内部的数据结构（BeanDefinition），这个过程可能包含XML解析、注解扫描等操作。BeanDefinition包含了创建Bean所需的所有信息。</p>
+</li>
+<li><p><strong>Bean实例化和装配</strong>：当应用程序请求一个Bean时，容器根据BeanDefinition创建Bean实例，并通过反射或构造器注入等方式来设置Bean的属性和依赖。这意味着容器负责创建Bean实例，并处理它们之间的依赖关系，如自动装配（autowiring）。</p>
+</li>
+<li><p><strong>依赖注入（DI）</strong>：这是实现IOC的一种具体方式，容器通过查找并注入依赖项来满足Bean的依赖需求。这可以通过setter方法注入、构造器注入等方式完成。</p>
+</li>
+<li><p><strong>Bean缓存和管理</strong>：容器会缓存已经创建的Bean实例，对于Singleton作用域的Bean，容器只创建一次并重复使用。对于Prototype作用域的Bean，则每次请求都创建新的实例。</p>
+</li>
+</ol>
+<h5 id="实现原理简述"><a href="#实现原理简述" class="headerlink" title="实现原理简述"></a>实现原理简述</h5><ul>
+<li><p><strong>XML解析</strong>：如果使用XML配置，容器会读取XML文件，解析其中的<code>&lt;bean&gt;</code>标签，生成BeanDefinition。</p>
+</li>
+<li><p><strong>反射</strong>：容器利用Java反射API根据BeanDefinition中的类信息实例化Bean，并通过反射调用方法来注入依赖。</p>
+</li>
+<li><p><strong>工厂模式</strong>：Spring也可以使用工厂模式来创建Bean，容器通过调用用户自定义的工厂方法来获取Bean实例。</p>
+</li>
+<li><p><strong>注解处理</strong>：如使用@Component、@Autowired等注解时，Spring通过扫描特定的包路径，识别出带有这些注解的类和方法，并自动将它们注册为Bean或进行依赖注入。</p>
+</li>
+</ul>
+<p>通过这些机制，Spring框架实现了控制反转，使得开发者可以更加专注于业务逻辑的实现，而非组件的创建和管理。</p>
+<h4 id="什么是AOP-有哪些AOP的概念？"><a href="#什么是AOP-有哪些AOP的概念？" class="headerlink" title="什么是AOP? 有哪些AOP的概念？"></a>什么是AOP? 有哪些AOP的概念？</h4><p>AOP，即Aspect-Oriented Programming（面向切面编程），是一种编程范式，用于解决软件开发中的横切关注点（Cross-cutting Concerns）问题。横切关注点是指那些遍布于整个应用的多个模块中的功能，例如日志记录、事务管理、安全性验证等，这些功能往往与核心业务逻辑交织在一起，增加了代码的复杂性和耦合度。</p>
+<p>AOP的核心概念包括：</p>
+<ol>
+<li><p><strong>切面（Aspect）</strong>：切面是关注点的模块化，比如日志记录、事务管理就是一个切面。它封装了横切关注点的实现，可以被定义为独立的类或组件。</p>
+</li>
+<li><p><strong>连接点（Joinpoint）</strong>：在程序执行过程中某个特定的点，比如方法的调用或异常的抛出，这些点可以被AOP拦截并加以处理。</p>
+</li>
+<li><p><strong>切入点（Pointcut）</strong>：定义了切面应该在哪些连接点上执行的规则。通常通过表达式来匹配特定的方法或类，以便确定切面应该在哪些连接点应用。</p>
+</li>
+<li><p><strong>通知（Advice）</strong>：在切面的某个特定连接点上执行的动作。通知有多种类型，如前置通知（Before）、后置通知（After）、环绕通知（Around）等，分别对应在连接点之前、之后或前后执行的代码逻辑。</p>
+</li>
+<li><p><strong>目标对象（Target Object）</strong>：被一个或多个切面所通知的对象。它通常是业务逻辑对象，不负责横切关注点的实现。</p>
+</li>
+<li><p><strong>代理（Proxy）</strong>：AOP框架创建的对象，用来实现切面功能。代理对象在目标对象的基础上增加额外的功能，如拦截方法调用，插入切面逻辑等。代理可以是静态的（编译时生成）或动态的（运行时生成）。</p>
+</li>
+<li><p><strong>织入（Weaving）</strong>：将切面代码插入到目标对象中的过程。这个过程可以在编译时、类加载时或运行时进行。</p>
+</li>
+</ol>
+<p>通过AOP，开发者可以将这些横切关注点从核心业务逻辑中分离出来，使得业务逻辑代码更加清晰，易于维护，同时也提高了代码的可重用性。AOP广泛应用于各种框架中，最著名的例子是在Spring框架中对AOP的支持。</p>
+<h4 id="AOP-有哪些应用场景？"><a href="#AOP-有哪些应用场景？" class="headerlink" title="AOP 有哪些应用场景？"></a>AOP 有哪些应用场景？</h4><ul>
+<li><strong>记录日志</strong>(调用方法后记录日志)</li>
+<li><strong>监控性能</strong>(统计方法运行时间)</li>
+<li><strong>权限控制</strong>(调用方法前校验是否有权限)</li>
+<li><strong>事务管理</strong>(调用方法前开启事务，调用方法后提交关闭事务 )</li>
+<li><strong>缓存</strong>(第一次调用查询数据库，将查询结果放入内存对象， 第二次调用，直接从内存对象返回，不需要查询数据库 )</li>
+</ul>
+<h4 id="有哪些AOP-Advice通知的类型？"><a href="#有哪些AOP-Advice通知的类型？" class="headerlink" title="有哪些AOP Advice通知的类型？"></a>有哪些AOP Advice通知的类型？</h4><p>特定 JoinPoint 处的 Aspect 所采取的动作称为 Advice。Spring AOP 使用一个 Advice 作为拦截器，在 JoinPoint “周围”维护一系列的拦截器。</p>
+<ul>
+<li><strong>前置通知</strong>（Before advice） ： 这些类型的 Advice 在 joinpoint 方法之前执行，并使用 @Before 注解标记进行配置。</li>
+<li><strong>后置通知</strong>（After advice） ：这些类型的 Advice 在连接点方法之后执行，无论方法退出是正常还是异常返回，并使用 @After 注解标记进行配置。</li>
+<li><strong>返回后通知</strong>（After return advice） ：这些类型的 Advice 在连接点方法正常执行后执行，并使用@AfterReturning 注解标记进行配置。</li>
+<li><strong>环绕通知</strong>（Around advice） ：这些类型的 Advice 在连接点之前和之后执行，并使用 @Around 注解标记进行配置。</li>
+<li><strong>抛出异常后通知</strong>（After throwing advice） ：仅在 joinpoint 方法通过抛出异常退出并使用 @AfterThrowing 注解标记配置时执行。</li>
+</ul>
+<h4 id="AOP-有哪些实现方式？"><a href="#AOP-有哪些实现方式？" class="headerlink" title="AOP 有哪些实现方式？"></a>AOP 有哪些实现方式？</h4><p>实现 AOP 的技术，主要分为两大类：</p>
+<ul>
+<li><p><strong>静态代理</strong></p>
+<p> - 指使用 AOP 框架提供的命令进行编译，从而<strong>在编译阶段就可生成 AOP 代理类</strong>，因此也称为<strong>编译时增强</strong>； </p>
+<ul>
+<li>编译时编织（特殊编译器实现）</li>
+<li>类加载时编织（特殊的类加载器实现）</li>
+</ul>
+</li>
+<li><p><strong>动态代理</strong></p>
+<p> - <strong>在运行时在内存中“临时”生成 AOP 动态代理类</strong>，因此也被称为<strong>运行时增强</strong>。 </p>
+<ul>
+<li>JDK 动态代理 <ul>
+<li><strong>JDK Proxy</strong> 是 <strong>Java 语言自带的功能</strong>，无需通过加载第三方类实现；</li>
+<li>Java 对 JDK Proxy 提供了稳定的支持，并且会持续的升级和更新，Java 8 版本中的 JDK Proxy 性能相比于之前版本提升了很多；</li>
+<li>JDK Proxy 是通过<strong>拦截器加反射</strong>的方式实现的；</li>
+<li><strong>JDK Proxy 只能代理实现接口的类</strong>；</li>
+<li>JDK Proxy 实现和调用起来比较简单；</li>
+</ul>
+</li>
+<li><strong>CGLIB</strong> <ul>
+<li><strong>CGLib 是第三方提供的工具</strong>，<strong>基于 ASM 实现的，性能比较高</strong>；</li>
+<li>CGLib 无需通过接口来实现，它是针对类实现代理，主要是对指定的类<strong>生成一个子类</strong>，它是通过实现子类的方式来完成调用的「重写方法」</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="谈谈你对CGLib的理解？"><a href="#谈谈你对CGLib的理解？" class="headerlink" title="谈谈你对CGLib的理解？"></a>谈谈你对CGLib的理解？</h4><p>JDK 动态代理机制只能代理实现接口的类，一般没有实现接口的类不能进行代理。使用 CGLib 实现动态代理，完全不受代理类必须实现接口的限制。</p>
+<p>CGLib 的原理是对指定目标类生成一个子类，并覆盖其中方法实现增强，但因为采用的是继承，所以不能对 final 修饰的类进行代理。</p>
+<h4 id="Spring-AOP和AspectJ-AOP有什么区别？"><a href="#Spring-AOP和AspectJ-AOP有什么区别？" class="headerlink" title="Spring AOP和AspectJ AOP有什么区别？"></a>Spring AOP和AspectJ AOP有什么区别？</h4><ul>
+<li><p>Spring AOP是属于运行时增强，而AspectJ是编译时增强。Spring AOP基于代理（Proxying），而AspectJ基于字节码操作（Bytecode Manipulation）。</p>
+</li>
+<li><p>Spring AOP已经集成了AspectJ，AspectJ应该算得上是Java生态系统中最完整的AOP框架了。AspectJ相比于Spring AOP功能更加强大，但是Spring AOP相对来说更简单。</p>
+</li>
+<li><p>如果我们的切面比较少，那么两者性能差异不大。但是，当切面太多的话，最好选择AspectJ，它比SpringAOP快很多。</p>
+</li>
+</ul>
+<h4 id="Spring中的bean的作用域有哪些？"><a href="#Spring中的bean的作用域有哪些？" class="headerlink" title="Spring中的bean的作用域有哪些？"></a>Spring中的bean的作用域有哪些？</h4><ol>
+<li><strong>Singleton（单例）</strong>：<ul>
+<li>这是<strong>Spring默认的作用域</strong>。当一个bean定义为singleton时，Spring IoC容器中只会存在一个该bean的实例，每次请求该bean都将返回相同的实例。</li>
+<li>单例bean在容器启动时或者第一次被请求时初始化。</li>
+<li>适用于无状态的服务，如数据访问对象(DAOs)、业务服务等。</li>
+</ul>
+</li>
+<li><strong>Prototype（原型）</strong>：<ul>
+<li>每次从容器中请求prototype作用域的bean时，Spring都会创建一个新的bean实例。</li>
+<li>这意味着每次注入或通过<code>ApplicationContext</code>获取该bean时，都会获得一个新的实例。</li>
+<li>适合有状态的bean，比如某些控制器、视图对象等。</li>
+</ul>
+</li>
+<li><strong>Request（请求）</strong>：<ul>
+<li>只在Web环境中有效，每次HTTP请求都会创建一个新的bean实例，该实例仅在当前请求的上下文中有效。</li>
+<li>请求结束时，bean会被销毁。</li>
+</ul>
+</li>
+<li><strong>Session（会话）</strong>：<ul>
+<li>同样是Web环境中使用，为每个HTTP会话创建一个bean实例，该实例在会话期间内有效。</li>
+<li>当HTTP会话结束时，bean随之销毁。</li>
+<li>适用于存储用户会话信息的bean。</li>
+</ul>
+</li>
+<li><strong>GlobalSession（全局会话）</strong>：<ul>
+<li>主要用于Portlet环境中，为所有参与会话的portlet共享一个bean实例。</li>
+<li>类似于session作用域，但作用范围更广，跨多个portlet应用。</li>
+</ul>
+</li>
+<li><strong>Application&#x2F;Global（全局作用域）</strong>：<ul>
+<li>这个作用域在不同的来源中有不同的名称（如application或globalSession），但基本含义相似。</li>
+<li>在一个Web应用的ServletContext生命周期内，该bean只初始化一次，并且所有请求和会话共享同一实例。</li>
+<li>适用于需要在Web应用范围内保持唯一且持久状态的bean。</li>
+</ul>
+</li>
+<li><strong>WebSocket（WebSocket作用域）</strong>：<ul>
+<li>针对WebSocket应用，为每个WebSocket连接创建一个bean实例。</li>
+<li>该bean的生命周期与对应的WebSocket会话相同。</li>
+</ul>
+</li>
+</ol>
+<h4 id="Spring中的单例bean的线程安全问题"><a href="#Spring中的单例bean的线程安全问题" class="headerlink" title="Spring中的单例bean的线程安全问题"></a>Spring中的单例bean的线程安全问题</h4><p>Spring中的单例bean线程安全问题是一个重要考量点，特别是在多线程环境下。以下是对这一问题的详细理解：</p>
+<ol>
+<li><p><strong>默认单例行为</strong>：Spring框架默认配置下，大多数bean是以单例（Singleton）模式创建的，意味着在整个应用上下文中，对于给定的bean定义，Spring只会实例化一个该bean的实例，并且这个实例会被所有请求和服务共享。</p>
+</li>
+<li><p><strong>线程安全取决于使用方式</strong>：单例bean是否线程安全，从根本上讲，取决于该bean的实现细节和使用场景。</p>
+<ul>
+<li><strong>无状态Bean</strong>：如果一个单例bean是无状态的，即它的操作不依赖于实例变量的状态，或者它不修改任何实例变量，那么这个bean通常是线程安全的。服务类（Service）和数据访问对象（DAO）往往设计为无状态，因此在很多情况下是线程安全的。</li>
+<li><strong>有状态Bean</strong>：如果单例bean内部维护了可变状态（即有状态Bean），并且这些状态在多个线程间共享并被修改，那么就存在线程安全问题。在这种情况下，如果没有适当的并发控制措施，可能会导致数据不一致或其他并发问题。</li>
+</ul>
+</li>
+<li><p><strong>解决线程安全问题的方法</strong>：</p>
+<ul>
+<li><strong>避免共享可变状态</strong>：最简单的做法是避免在单例bean中使用可变状态。如果必须使用，可以考虑将其设计为不可变对象或者使用不可变的数据结构。</li>
+<li><strong>ThreadLocal</strong>：使用ThreadLocal可以为每个线程提供一个单独的实例副本，从而避免了线程间的共享冲突。</li>
+<li><strong>同步机制</strong>：对于需要修改共享状态的情况，可以使用synchronized关键字、Lock接口或者java.util.concurrent包下的原子类（如AtomicInteger）等机制来确保线程安全。</li>
+<li><strong>设计模式</strong>：在某些情况下，可以采用设计模式如享元模式（Flyweight Pattern）来减少对象创建，同时确保线程安全。</li>
+</ul>
+</li>
+</ol>
+<p>综上所述，虽然Spring框架本身并不直接处理单例bean的线程安全问题，但作为开发者，应该根据bean的具体用途和内部实现来判断并采取相应的措施来保证线程安全。在设计和实现bean时，考虑其生命周期和并发访问模式是非常关键的。</p>
+<h4 id="Spring中的bean生命周期？"><a href="#Spring中的bean生命周期？" class="headerlink" title="Spring中的bean生命周期？"></a>Spring中的bean生命周期？</h4><p>Spring中的bean生命周期指的是从bean被创建到最终被销毁的整个过程。这个过程可以分为几个主要阶段，对于 singleton作用域的bean尤其明显，因为这些bean由Spring容器管理其完整的生命周期。以下是典型的bean生命周期阶段：</p>
+<ol>
+<li><p><strong>实例化</strong>：</p>
+<ul>
+<li>Spring容器通过反射调用bean类的构造函数来实例化bean。</li>
+</ul>
+</li>
+<li><p><strong>属性注入</strong>：</p>
+<ul>
+<li>容器使用依赖注入（DI）来填充bean定义中声明的属性。这包括设置bean引用和其他配置值。</li>
+</ul>
+</li>
+<li><p><strong>Aware接口回调</strong>：</p>
+<ul>
+<li>如果bean实现了Spring的任何Aware接口（如BeanNameAware、ApplicationContextAware等），Spring容器会调用这些接口的方法，让bean能够知道它所在的环境信息。</li>
+</ul>
+</li>
+<li><p><strong>初始化前处理</strong>：</p>
+<ul>
+<li>如果有BeanPostProcessor的后置处理器实现了<code>postProcessBeforeInitialization</code>方法，Spring会在bean初始化方法调用之前执行这些方法，允许对bean进行自定义处理。</li>
+</ul>
+</li>
+<li><p><strong>初始化</strong>：</p>
+<ul>
+<li>调用bean定义中指定的初始化方法，这可能是通过<code>@PostConstruct</code>注解标记的方法，或者是通过<code>init-method</code>属性指定的方法。</li>
+</ul>
+</li>
+<li><p><strong>初始化后处理</strong>：</p>
+<ul>
+<li>BeanPostProcessor的<code>postProcessAfterInitialization</code>方法在此阶段执行，允许进一步自定义bean实例。</li>
+</ul>
+</li>
+<li><p><strong>使用阶段</strong>：</p>
+<ul>
+<li>Bean已准备好使用，可以响应客户端请求或被其他bean使用。</li>
+</ul>
+</li>
+<li><p><strong>销毁前处理</strong>：</p>
+<ul>
+<li>当容器关闭时，如果有BeanPostProcessor实现了销毁前的处理逻辑，将会被调用。</li>
+</ul>
+</li>
+<li><p><strong>销毁</strong>：</p>
+<ul>
+<li>如果bean实现了DisposableBean接口或使用了<code>@PreDestroy</code>注解标记的方法，Spring会在bean销毁之前调用这些方法，执行清理工作。</li>
+<li>对于singleton作用域的bean，这通常发生在容器关闭时。非singleton作用域的bean（如prototype）通常不由Spring容器管理其销毁过程。</li>
+</ul>
+</li>
+<li><p><strong>垃圾回收</strong>：</p>
+<ul>
+<li>最终，bean实例失去所有引用后，将由Java垃圾收集器回收。</li>
+</ul>
+</li>
+</ol>
+<p>注意，不是所有的bean都会经历上述所有阶段，特别是那些非singleton作用域的bean，它们的生命周期可能不会包括由Spring管理的销毁阶段。</p>
+<h4 id="说说自己对于Spring-MVC的了解"><a href="#说说自己对于Spring-MVC的了解" class="headerlink" title="说说自己对于Spring MVC的了解"></a>说说自己对于Spring MVC的了解</h4><ul>
+<li><p>Spring MVC是Spring框架的一个模块，它提供了一个基于Java的、高度可配置的、面向MVC（Model-View-Controller）设计模式的Web应用程序框架。</p>
+</li>
+<li><p>Spring MVC下我们一般把后端项目分为Service层（处理业务）、Dao层（数据库操作）、Entity层（实体类）、Controller层（控制层，返回数据给前台页面）</p>
+</li>
+</ul>
+<ol>
+<li><p><strong>MVC架构</strong>：Spring MVC遵循经典的MVC设计模式，将应用程序划分为三个主要部分：</p>
+<ul>
+<li><strong>Model</strong>（模型）：代表业务数据和逻辑。</li>
+<li><strong>View</strong>（视图）：负责展示数据给用户。</li>
+<li><strong>Controller</strong>（控制器）：接收用户的请求，处理业务逻辑，并选择合适的视图返回给用户。</li>
+</ul>
+</li>
+<li><p><strong>核心组件</strong>：Spring MVC的核心组件包括DispatcherServlet（前端控制器）、HandlerMapping（处理器映射器）、HandlerAdapter（处理器适配器）、ViewResolver（视图解析器）等，它们共同协作处理HTTP请求并返回响应。</p>
+</li>
+<li><p><strong>DispatcherServlet</strong>：作为中央调度器，接收所有HTTP请求，并分发给合适的控制器处理。它是整个流程的入口点。</p>
+</li>
+<li><p><strong>HandlerMapping</strong>：负责将接收到的请求映射到具体的控制器和处理器方法上。</p>
+</li>
+<li><p><strong>HandlerAdapter</strong>：将请求传递给控制器，并将控制器的返回值转换为视图或模型。</p>
+</li>
+<li><p><strong>ViewResolver</strong>：根据控制器返回的逻辑视图名找到实际的视图实现，并渲染视图。</p>
+</li>
+<li><p><strong>灵活的配置</strong>：Spring MVC支持XML配置、Java配置和基于注解的配置，提供了高度的灵活性和可定制性。</p>
+</li>
+<li><p><strong>支持RESTful风格</strong>：Spring MVC很好地支持了REST风格的URL和HTTP方法，便于构建RESTful API。</p>
+</li>
+<li><p><strong>数据绑定与验证</strong>：自动将请求参数绑定到方法参数上，支持数据验证，并能处理验证错误。</p>
+</li>
+<li><p><strong>国际化和本地化</strong>：提供了简单的方式来实现Web应用的国际化，支持多种语言和区域设置。</p>
+</li>
+<li><p><strong>拦截器</strong>：Spring MVC允许定义拦截器，可以在请求处理前后执行额外的逻辑，如权限检查、日志记录等。</p>
+</li>
+<li><p><strong>与其他Spring组件集成</strong>：Spring MVC与Spring框架的其他部分（如数据访问、安全、事务管理）紧密集成，提供了统一的编程模型。</p>
+</li>
+</ol>
+<p>总之，Spring MVC以其强大的灵活性、可扩展性和与Spring生态系统的良好集成，成为构建现代企业级Web应用的首选框架之一。</p>
+<h4 id="Spring-MVC的工作原理"><a href="#Spring-MVC的工作原理" class="headerlink" title="Spring MVC的工作原理"></a>Spring MVC的工作原理</h4><p>Spring MVC的工作原理可以概括为以下几个步骤，这些步骤详细描述了从用户发起请求到响应返回的整个处理流程：</p>
+<ol>
+<li><p><strong>请求到达DispatcherServlet</strong>：<br>用户通过浏览器发送HTTP请求到服务器，请求首先被Spring MVC的前端控制器<code>DispatcherServlet</code>捕获。DispatcherServlet是处理所有请求的中央入口点。</p>
+</li>
+<li><p><strong>查找HandlerMapping</strong>：<br>DispatcherServlet查询一个或多个<code>HandlerMapping</code>来确定哪个控制器（Controller）应该处理这个请求。HandlerMapping根据请求的URL、HTTP方法等信息，找到与之匹配的处理器（Handler）。</p>
+</li>
+<li><p><strong>执行Controller</strong>：<br>找到合适的Controller后，DispatcherServlet将请求传递给对应的Controller方法（也称为处理器方法或HandlerMethod）。这个方法通常会执行业务逻辑，处理请求数据，并可能准备模型数据（Model）。</p>
+</li>
+<li><p><strong>准备ModelAndView</strong>：<br>处理器方法完成后，通常会返回一个<code>ModelAndView</code>对象给DispatcherServlet。ModelAndView对象包含了视图的逻辑名称以及要展示给用户的数据模型。</p>
+</li>
+<li><p><strong>视图解析</strong>：<br>DispatcherServlet接下来将ModelAndView对象传递给<code>ViewResolver</code>，ViewResolver根据逻辑视图名找到实际的视图实现（如JSP页面、Thymeleaf模板等）。</p>
+</li>
+<li><p><strong>渲染视图</strong>：<br>视图（如 JSP）负责呈现数据给用户。在这个阶段，视图会从Model中获取数据，并生成HTML、JSON或其他格式的响应内容。</p>
+</li>
+<li><p><strong>响应给客户端</strong>：<br>最后，DispatcherServlet将视图渲染后的响应内容通过HTTP响应发送回客户端浏览器，完成整个请求响应过程。</p>
+</li>
+</ol>
+<p>除此之外，Spring MVC还支持诸如数据验证、类型转换、拦截器（Interceptor）等高级功能，这些功能可以在请求处理的不同阶段插入自定义的行为，例如在进入Controller之前进行安全检查，或在返回视图之前记录日志等。整个过程高度可配置和灵活，以适应不同应用的需求。</p>
+<h4 id="Spring框架中用到了哪些设计模式"><a href="#Spring框架中用到了哪些设计模式" class="headerlink" title="Spring框架中用到了哪些设计模式"></a>Spring框架中用到了哪些设计模式</h4><p>Spring框架广泛运用了多种设计模式，以下是它所使用的一些核心设计模式：</p>
+<ol>
+<li><p><strong>工厂模式（Factory Pattern）</strong>:</p>
+<ul>
+<li><code>BeanFactory</code> 是工厂模式的一个实现，它负责管理和创建bean对象，根据传入的bean标识来实例化、配置和管理bean。</li>
+</ul>
+</li>
+<li><p><strong>单例模式（Singleton Pattern）</strong>:</p>
+<ul>
+<li>Spring默认使用单例模式管理bean，确保每个bean定义在每个Spring IoC容器中只有一个实例。</li>
+</ul>
+</li>
+<li><p><strong>代理模式（Proxy Pattern）</strong>:</p>
+<ul>
+<li>Spring AOP（面向切面编程）功能基于JDK动态代理或CGLIB代理实现，用来在不修改原有业务逻辑的情况下，增加横切关注点，如日志记录、事务管理等。</li>
+</ul>
+</li>
+<li><p><strong>模板方法模式（Template Method Pattern）</strong>:</p>
+<ul>
+<li>类似 <code>JdbcTemplate</code>、<code>HibernateTemplate</code> 等，这些类提供了重复性代码的骨架，并定义了执行数据库操作的步骤，子类可以覆盖某些步骤来改变其行为。</li>
+</ul>
+</li>
+<li><p><strong>观察者模式（Observer Pattern）</strong>:</p>
+<ul>
+<li>Spring事件驱动模型中使用了观察者模式，允许应用中的各个组件对特定事件感兴趣并注册监听器。</li>
+</ul>
+</li>
+<li><p><strong>适配器模式（Adapter Pattern）</strong>:</p>
+<ul>
+<li>用于将一个接口转换成客户希望的另一个接口，使得原本由于接口不兼容而不能一起工作的类可以一起工作。Spring的AOP代理也使用适配器模式来支持不同类型的Advice（通知）。</li>
+</ul>
+</li>
+<li><p><strong>装饰器模式（Decorator Pattern）</strong>:</p>
+<ul>
+<li>Spring的<code>HandlerInterceptor</code>（处理器拦截器）和<code>WebRequestInterceptor</code>（WebRequest拦截器）可以看作装饰器模式的应用，它们可以在请求处理前后添加额外的功能。</li>
+</ul>
+</li>
+<li><p><strong>策略模式（Strategy Pattern）</strong>:</p>
+<ul>
+<li>Spring利用策略模式来支持可插拔的事务管理策略，例如通过<code>PlatformTransactionManager</code>接口的不同实现来选择不同的事务管理策略。</li>
+</ul>
+</li>
+<li><p><strong>简单工厂模式（Simple Factory Pattern）</strong>:</p>
+<ul>
+<li>虽然简单工厂模式并非GoF设计模式之一，但Spring的<code>BeanFactory</code>有时被描述为简单工厂模式的实现，因为它根据提供的bean名称创建和返回bean实例。</li>
+</ul>
+</li>
+</ol>
+<h4 id="BeanFactory和-FactoryBean-区别"><a href="#BeanFactory和-FactoryBean-区别" class="headerlink" title="BeanFactory和 FactoryBean 区别"></a>BeanFactory和 FactoryBean 区别</h4><p>BeanFactory和FactoryBean是Spring框架中的两个不同概念的接口，它们的主要区别如下：</p>
+<ol>
+<li><p><strong>BeanFactory</strong>:</p>
+<ul>
+<li><strong>BeanFactory是Spring用来管理Bean的容器</strong>，它是IoC（Inverse of Control，控制反转）容器的核心接口。</li>
+<li>它负责管理和实例化应用中的Bean，包括Bean的创建、配置、装配以及管理Bean之间的依赖关系。</li>
+<li>BeanFactory提供了一系列的方法用于获取Bean实例（如<code>getBean()</code>）、查询容器中是否包含某个Bean（如<code>containsBean()</code>）、判断Bean的作用域（如<code>isSingleton()</code>、<code>isPrototype()</code>）等。</li>
+<li>BeanFactory作为一个容器，是Spring如何管理Bean的抽象表示，它是访问和管理Bean的入口点。</li>
+</ul>
+</li>
+<li><p><strong>FactoryBean</strong>:</p>
+<ul>
+<li>FactoryBean是一个特殊类型的Spring Bean，它不仅仅是一个普通的Java对象，而是一个能够创建其他Bean实例的工厂Bean</li>
+<li>实现了<code>FactoryBean</code>接口的类可以控制Bean实例化的过程，允许开发者自定义实例化逻辑、初始化以及配置Bean。</li>
+<li>当你从BeanFactory中通过ID获取一个Bean，如果这个Bean是FactoryBean的实例，那么默认情况下，Spring会返回FactoryBean.getObject()方法产生的对象，而不是FactoryBean本身。</li>
+<li>FactoryBean常用于复杂对象的创建，如代理对象的创建、配置文件的解析等，提供了更多的灵活性和扩展性。</li>
+<li><strong>当你需要自定义Bean的创建逻辑，可以考虑实现FactoryBean接口</strong></li>
+</ul>
+</li>
+</ol>
+<h4 id="Component和-Bean的区别是什么"><a href="#Component和-Bean的区别是什么" class="headerlink" title="@Component和@Bean的区别是什么"></a>@Component和@Bean的区别是什么</h4><p><code>@Component</code>和<code>@Bean</code>都是Spring框架中用于定义和管理Bean的注解，但它们在使用场景、目的和方式上有明显的区别：</p>
+<ol>
+<li><p><strong>作用目标不同</strong>：</p>
+<ul>
+<li><p><code>@Component</code>注解主要用于类，是Spring组件扫描机制的一部分。当Spring启动并扫描到带有此注解的类时，会自动将这些类作为Bean纳入Spring容器进行管理。它适用于自定义组件，如服务类、数据访问对象等，并且通常与<code>@Autowired</code>注解配合使用，以实现依赖注入。</p>
+</li>
+<li><p><code>@Bean</code>注解则应用于方法上，它用来显式地指示一个方法的返回值应该作为Bean注册到Spring容器中。这允许开发者通过Java配置类来手动定义和配置Bean，而不是依赖于类路径扫描。<code>@Bean</code>方法通常包含创建Bean实例的实际逻辑，例如初始化参数或执行其他配置设置。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>用途不同</strong>：</p>
+<ul>
+<li><p><code>@Component</code>注解促进了自动化的Bean发现和配置，<strong>适用于应用内部的类</strong>，简化了配置，使得开发人员无需为每个类编写显式的Bean定义。</p>
+</li>
+<li><p><code>@Bean</code>注解提供了更多的灵活性和控制力，特别是对于那些无法标记为<code>@Component</code>的类，比如第三方库的类或需要特殊配置的Bean。它允许在配置类中通过代码来设定Bean的属性或其他配置细节。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>应用场景不同</strong>：</p>
+<ul>
+<li><p><code>@Component</code>更适合应用在项目的内部组件上，通过@ComponentScan注解来自动发现和装配这些组件，减少了XML配置或Java配置的负担。</p>
+</li>
+<li><p><code>@Bean</code>则常用于配置类中，当需要对Bean的创建过程进行精细控制，或者需要将非Spring管理的类（如第三方库的类）转化为Spring管理的Bean时，<code>@Bean</code>就显得尤为有用。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>综上所述，**<code>@Component</code>强调自动发现和装配，而<code>@Bean</code>则侧重于手动定义和配置Bean，两者共同丰富了Spring的依赖注入和配置机制。**</p>
+<h4 id="将一个类声明为Spring的bean的注解有哪些"><a href="#将一个类声明为Spring的bean的注解有哪些" class="headerlink" title="将一个类声明为Spring的bean的注解有哪些"></a>将一个类声明为Spring的bean的注解有哪些</h4><p>在Spring框架中，可以使用多种注解来声明一个类作为Spring管理的Bean。以下是一些常见的注解：</p>
+<ol>
+<li><p><strong>@Component</strong>：这是一个通用注解，可以用来声明任何类型的组件。Spring会自动检测带有此注解的类并将其注册为Bean。通常，此注解用于没有明确归入Service、Repository或Controller分类的类。</p>
+</li>
+<li><p><strong>@Service</strong>：用于标记业务层（Service层）的类，功能上等同于@Component，但语义上更明确，表明这是一个业务服务类。</p>
+</li>
+<li><p><strong>@Repository</strong>：用于数据访问层（DAO层），通常用于数据库操作相关的类。它也是@Component的一个特化，强调这个类是用于数据存取的。</p>
+</li>
+<li><p><strong>@Controller</strong>：用于Spring MVC的控制器类，处理HTTP请求并返回响应。在Spring Boot或更现代的Web开发中，可能会更多地使用@RestController，它结合了@Controller和@ResponseBody，直接返回JSON或XML等响应体内容。</p>
+</li>
+<li><p><strong>@Configuration</strong>：用于定义配置类，其中可以包含@Bean注解的方法来显式地定义Bean。这样的类通常包含应用的配置信息。</p>
+</li>
+<li><p><strong>@Bean</strong>：这个注解放在方法上，而不是类上，用来指示该方法的返回值应该被注册为一个Spring Bean。通常在@Configuration类中使用。</p>
+</li>
+<li><p><strong>@RestController</strong>：是@Controller和@ResponseBody的组合，用于创建RESTful Web服务的控制器，其中方法直接返回响应体内容，通常用于JSON或XML数据。</p>
+</li>
+</ol>
+<p>除了上述注解，还有一些其他的注解可能用于特定场景下的Bean声明，但上述六个是最为常见和基础的。此外，使用这些注解时，通常需要配合<code>@ComponentScan</code>注解来启用自动扫描，让Spring自动发现并注册这些Bean。在Spring Boot应用中，这些配置往往被自动配置，无需手动添加<code>@ComponentScan</code>。</p>
+<h4 id="Spring事务管理的方式有几种"><a href="#Spring事务管理的方式有几种" class="headerlink" title="Spring事务管理的方式有几种"></a>Spring事务管理的方式有几种</h4><h5 id="编程式事务管理"><a href="#编程式事务管理" class="headerlink" title="编程式事务管理"></a>编程式事务管理</h5><ul>
+<li>这种方式需要在代码中手动进行<strong>事务的开始、提交或回滚操作</strong>。Spring为此提供了<code>PlatformTransactionManager</code>接口以及<code>TransactionTemplate</code>和<code>TransactionCallback</code>等工具类来辅助完成事务的管理。虽然提供了细粒度的控制，但在实际开发中较少使用，因为它使得事务管理代码与业务逻辑代码耦合在一起，降低了代码的可读性和可维护性。</li>
+</ul>
+<h5 id="声明式事务管理"><a href="#声明式事务管理" class="headerlink" title="声明式事务管理"></a>声明式事务管理</h5><ul>
+<li>这是<strong>Spring推荐的事务管理方式</strong>，它通过配置的方式将事务管理与业务代码分离，使得事务管理变得更加透明。声明式事务管理又可以进一步分为两种形式：<ul>
+<li><strong>基于XML的配置</strong>：在Spring的配置文件中，通过<code>&lt;tx:advice&gt;</code>元素定义事务属性，并使用<code>&lt;aop:config&gt;</code>和<code>&lt;aop:advisor&gt;</code>元素来指定哪些方法或类需要进行事务管理。</li>
+<li><strong>基于注解的配置</strong>：在需要进行事务管理的方法或类上使用<code>@Transactional</code>注解，这是最简洁的方式。Spring会自动为标注了此注解的方法开启事务管理，开发者无需在代码中显式地管理事务的生命周期。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Spring事务中的隔离级别有哪几种"><a href="#Spring事务中的隔离级别有哪几种" class="headerlink" title="Spring事务中的隔离级别有哪几种"></a>Spring事务中的隔离级别有哪几种</h4><p>Spring事务支持以下五种隔离级别，这些隔离级别是基于SQL标准定义的，并且可以在Spring的事务配置中使用：</p>
+<ol>
+<li><p><strong>ISOLATION_DEFAULT</strong>：<br>这是Spring事务的默认设置，它实际上并没有定义具体的隔离级别，而是使用底层数据库的默认隔离级别。例如，MySQL的默认隔离级别是<code>REPEATABLE_READ</code>，而Oracle的默认隔离级别是<code>READ_COMMITTED</code>。</p>
+</li>
+<li><p><strong>ISOLATION_READ_UNCOMMITTED</strong>：<br>最低的隔离级别，允许读取未提交的数据变更，可能会导致脏读、不可重复读和幻读等问题。</p>
+</li>
+<li><p><strong>ISOLATION_READ_COMMITTED</strong>：<br>保证一个事务读取到的数据都是已经提交的，可以防止脏读，但不可重复读和幻读仍有可能发生。</p>
+</li>
+<li><p><strong>ISOLATION_REPEATABLE_READ</strong>：<br>防止脏读和不可重复读，确保同一事务中多次读取同一数据的结果是一致的，但幻读仍有可能发生。</p>
+</li>
+<li><p><strong>ISOLATION_SERIALIZABLE</strong>：<br>最高的隔离级别，通过强制事务串行执行，可以防止脏读、不可重复读和幻读。这是最安全但性能开销最大的隔离级别。</p>
+</li>
+</ol>
+<p>选择合适的隔离级别需要在数据一致性和系统性能之间做出权衡。通常，更高的隔离级别会带来更强的数据一致性保证，但同时可能增加锁的竞争，影响系统的并发性能。在具体应用中，应根据业务需求和数据库的具体情况来确定最合适的事务隔离级别。</p>
+<h4 id="Spring事务中有哪几种事务传播行为"><a href="#Spring事务中有哪几种事务传播行为" class="headerlink" title="Spring事务中有哪几种事务传播行为"></a>Spring事务中有哪几种事务传播行为</h4><p>Spring事务定义了七种事务传播行为，这些行为控制着当<strong>一个方法调用一个事务方法时，事务应该如何进行</strong>。以下是这七种事务传播行为：</p>
+<ol>
+<li><p><strong>PROPAGATION_REQUIRED</strong>（默认）：<br>如果当前没有事务，就新建一个事务；如果已经存在一个事务中，加入到这个事务中。这是最常用的选项。</p>
+</li>
+<li><p><strong>PROPAGATION_SUPPORTS</strong>：<br>如果当前存在事务，就加入到这个事务中；如果不存在事务，则以非事务的方式执行。</p>
+</li>
+<li><p><strong>PROPAGATION_MANDATORY</strong>：<br>必须在一个已存在的事务中运行，否则抛出异常。</p>
+</li>
+<li><p><strong>PROPAGATION_REQUIRES_NEW</strong>：<br>总是新建一个事务，如果当前存在事务，则将当前事务挂起。</p>
+</li>
+<li><p><strong>PROPAGATION_NOT_SUPPORTED</strong>：<br>总是以非事务方式执行，如果当前存在事务，则将当前事务挂起。</p>
+</li>
+<li><p><strong>PROPAGATION_NEVER</strong>：<br>不应该在一个事务中运行，如果当前存在事务，则抛出异常。</p>
+</li>
+<li><p><strong>PROPAGATION_NESTED</strong>：<br>如果当前存在事务，则在嵌套事务内执行。嵌套事务可以独立于当前事务进行回滚，而不会对外部事务产生影响。如果当前没有事务，则其行为类似于<code>PROPAGATION_REQUIRED</code>。</p>
+</li>
+</ol>
+<p>这些传播行为允许开发者精确控制事务应该如何在复杂的调用链中传播，以满足不同的业务需求和保持数据的一致性。</p>
+<h4 id="ApplicationContext-是什么"><a href="#ApplicationContext-是什么" class="headerlink" title="ApplicationContext 是什么"></a>ApplicationContext 是什么</h4><p><strong><code>ApplicationContext</code>是Spring框架中的一个核心接口，它是<code>BeanFactory</code>的子接口</strong>，提供了更加丰富的功能集，旨在支持实际的企业级应用开发。<code>ApplicationContext</code>不仅仅是简单地管理Bean的生命周期，还额外提供了以下关键特性：</p>
+<ol>
+<li><p><strong>国际化的支持</strong>：可以帮助应用程序提供多语言的用户界面，通过资源文件加载不同地区的语言信息。</p>
+</li>
+<li><p><strong>资源访问</strong>：简化了对各种外部资源（如文件、URL）的访问，提供了统一的资源访问接口。</p>
+</li>
+<li><p><strong>事件传递</strong>：允许在Bean之间传播事件，支持应用的松耦合设计，通过<code>ApplicationEvent</code>和<code>ApplicationListener</code>接口实现。</p>
+</li>
+<li><p><strong>载入多个配置文件</strong>：能够从多个配置源（如XML、注解或Java配置类）加载和合并Bean定义。</p>
+</li>
+<li><p><strong>自动装配Bean</strong>：基于注解（如<code>@Autowired</code>）或按名称自动装配Bean，减少显式配置。</p>
+</li>
+<li><p><strong>AOP支持</strong>：内建对面向切面编程的支持，可以方便地实现诸如日志记录、事务管理等横切关注点。</p>
+</li>
+<li><p><strong>消息资源处理</strong>：集成消息解析器，用于处理文本消息，支持国际化和本地化。</p>
+</li>
+<li><p><strong>环境抽象</strong>：通过<code>Environment</code>接口提供对操作系统环境变量和JVM系统属性的访问，支持配置的环境特定性。</p>
+</li>
+<li><p><strong>启动和关闭回调</strong>：允许Bean在容器启动和关闭时执行特定的操作。</p>
+</li>
+<li><p><strong>模板类</strong>：提供了如<code>JdbcTemplate</code>、<code>JmsTemplate</code>等，简化了对各种技术的访问。</p>
+</li>
+</ol>
+<p><code>ApplicationContext</code>的主要实现类包括<code>ClassPathXmlApplicationContext</code>、<code>FileSystemXmlApplicationContext</code>用于基于XML配置的上下文，以及<code>AnnotationConfigApplicationContext</code>用于基于Java配置的上下文。在Web环境中，<code>WebApplicationContext</code>是专门为Web应用设计的，继承自<code>ApplicationContext</code>，提供了与Web应用服务器集成的功能。</p>
+<p>总之，<code>ApplicationContext</code>是Spring应用的基础，它不仅仅是一个<strong>Bean容器</strong>，还是一个全面的解决方案，帮助开发者管理应用的配置和依赖，促进松耦合和模块化设计。</p>
+<h3 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h3><h4 id="什么是SpringBoot？"><a href="#什么是SpringBoot？" class="headerlink" title="什么是SpringBoot？"></a>什么是SpringBoot？</h4><p>SpringBoot是Spring框架家族中的一个成员，它是一种<strong>快速开发框架</strong>，旨在<strong>简化和加速Spring应用程序的开发</strong>、配置、部署和运行过程。SpringBoot遵循“<strong>约定优于配置</strong>”的原则，通过提供一系列的<strong>默认配置和约定</strong>，大幅度减少了传统Spring应用所需的XML配置，并简化了依赖管理，使开发者能够更加<strong>聚焦于业务逻辑的实现</strong>，而不是配置细节。</p>
+<p>SpringBoot的核心特点包括：</p>
+<ol>
+<li><p>**自动配置(Auto-Configuration)**：SpringBoot会根据项目中添加的依赖自动配置Spring框架的组件，比如数据源、Web服务器等，无需手动编写大量的配置代码。</p>
+</li>
+<li><p>**简化依赖(Starter Dependencies)**：SpringBoot通过起步依赖（starter POMs）来管理项目的依赖关系，一个起步依赖本质上是一个Maven或Gradle项目的依赖描述符，它包含了一组常用库的依赖集合，使得添加新的功能变得简单快捷。</p>
+</li>
+<li><p><strong>内嵌式服务器</strong>：SpringBoot应用可以内嵌如<strong>Tomcat</strong>、Jetty或<strong>Undertow</strong>这样的Web服务器，这意味着应用可以被打包成一个可执行的JAR文件并直接运行，无需部署到外部应用服务器上。</p>
+</li>
+<li><p><strong>Actuator</strong>：这是一个可选模块，提供了生产环境下对应用进行监控和管理的端点，如健康检查、度量信息、审计日志等。</p>
+</li>
+<li><p><strong>模板引擎和RESTful支持</strong>：对于Web应用，SpringBoot提供了对<strong>Thymeleaf</strong>、<strong>FreeMarker</strong>等模板引擎的集成，同时也简化了构建RESTful API的过程</p>
+</li>
+</ol>
+<p>通过上述特性，SpringBoot极大地提高了开发效率，降低了Spring应用的入门门槛，是现代微服务架构和云原生应用开发的优选框架之一。</p>
+<h4 id="为什么使用SpringBoot"><a href="#为什么使用SpringBoot" class="headerlink" title="为什么使用SpringBoot"></a>为什么使用SpringBoot</h4><p>使用SpringBoot的原因众多，它在现代软件开发中特别受欢迎，主要归因于以下几个关键优势：</p>
+<ol>
+<li><p><strong>快速启动与开发</strong>：SpringBoot通过其“约定优于配置”的原则，极大地减少了应用程序的初始设置和配置工作。开发者几乎可以“开箱即用”，快速启动项目并专注于编写业务逻辑，而不是配置各种XML文件或解决依赖问题。</p>
+</li>
+<li><p><strong>自动配置</strong>：SpringBoot自动配置了Spring框架及第三方库的大多数常见用例，这意味着开发者通常不需要手动配置Bean或担心如何装配组件。这大大简化了开发流程，并降低了出错的可能性。</p>
+</li>
+<li><p><strong>简化依赖</strong>：SpringBoot通过起步依赖（Starter Dependencies）简化了依赖管理。每个起步依赖都是针对特定功能（如Web开发、安全、数据访问等）的一组预定义依赖集合，开发者只需包含相应的起步依赖，即可获得所需的所有库和配置。</p>
+</li>
+<li><p><strong>内嵌式容器</strong>：SpringBoot应用可以内嵌Servlet容器（如Tomcat、Jetty等），这使得部署应用变得极为简单，不再需要外部部署服务器。直接通过命令行就可以运行应用，非常适合微服务架构。</p>
+</li>
+<li><p><strong>生产就绪特性</strong>：SpringBoot应用天然支持Actuator端点，这些端点提供了对应用进行监控、健康检查等功能，有助于在生产环境中更好地管理和维护应用。</p>
+</li>
+<li><p><strong>易于测试</strong>：SpringBoot应用支持Spring框架的测试特性，同时也鼓励采用最佳实践进行单元测试和集成测试，确保高质量的代码。</p>
+</li>
+<li><p><strong>与云原生友好</strong>：SpringBoot应用很容易与云平台集成，支持Docker容器化和Kubernetes编排，适配现代DevOps流程和持续交付实践。</p>
+</li>
+<li><p><strong>广泛生态支持</strong>：作为Spring框架的一部分，SpringBoot受益于庞大的Spring生态系统，可以轻松集成各种<strong>数据库</strong>、<strong>消息队列</strong>、<strong>安全框架</strong>等，满足不同应用场景的需求。</p>
+</li>
+</ol>
+<p>综上，SpringBoot以其简化复杂性、提高开发效率、强化生产环境准备度等特性，成为现代企业级应用开发的首选框架之一。</p>
+<h4 id="Spring、Spring-MVC和SpringBoot有什么区别？"><a href="#Spring、Spring-MVC和SpringBoot有什么区别？" class="headerlink" title="Spring、Spring MVC和SpringBoot有什么区别？"></a>Spring、Spring MVC和SpringBoot有什么区别？</h4><h5 id="Spring-1"><a href="#Spring-1" class="headerlink" title="Spring"></a>Spring</h5><ul>
+<li><strong>Spring是基础框架</strong></li>
+<li>提供了核心功能 IoC（控制反转）和AOP（面向切面编程）</li>
+</ul>
+<h5 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h5><ul>
+<li>是Spring框架中的一个模块，用于<strong>构建Web应用程序</strong></li>
+<li><strong>Spring MVC处理HTTP请求，将请求映射到控制器，执行业务逻辑后返回视图或数据给客户端</strong></li>
+<li>提供了一种分离式的方法来开发Web应用。通过运用像DispatcherServelet，ModelAndView 和 ViewResolver 等一些简单的概念，开发 Web 应用将会变的非常简单</li>
+</ul>
+<h5 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h5><ul>
+<li>Spring Boot 则是建立在Spring之上的一个快速开发框架，它旨在简化Spring应用的初始搭建以及开发过程</li>
+<li>Spring Boot通过提供<strong>默认配置</strong>、<strong>起步依赖</strong>和<strong>内嵌式服务器</strong>等特性，极大地减少了过去配置Spring应用所需的工作量</li>
+<li>它遵循“约定优于配置”的原则，使得开发者能够快速启动和运行一个完整的、生产级别的Spring应用，非常适合微服务架构</li>
+</ul>
+<h4 id="SpringBoot自动配置的原理"><a href="#SpringBoot自动配置的原理" class="headerlink" title="SpringBoot自动配置的原理"></a>SpringBoot自动配置的原理</h4><p>在 SpringBoot 启动类上注解**@SpringBootApplication** 中通过 <strong>@EnableAutoConfiguration</strong>开启自动配置，SpringBoot会自动读取每个starter中的<strong>spring.factories</strong>文件，该文件里配置了所有需要被创建的Spring容器中的bean</p>
+<h4 id="Spring-Boot的核心注解是哪些？"><a href="#Spring-Boot的核心注解是哪些？" class="headerlink" title="Spring Boot的核心注解是哪些？"></a>Spring Boot的核心注解是哪些？</h4><p>Spring Boot的核心注解是<code>@SpringBootApplication</code>，这个注解是启动Spring Boot应用的关键，它实际上是由三个主要的注解组成的：</p>
+<ol>
+<li><p><code>@SpringBootConfiguration</code>: 这个注解进一步扩展了<code>@Configuration</code>注解，表明该类提供了Spring应用程序上下文的配置。<code>@Configuration</code>注解的类会作为Spring IoC容器的配置类，里面可以包含@Bean注解的方法来定义Bean。</p>
+</li>
+<li><p><code>@EnableAutoConfiguration</code>: 此注解启动了Spring Boot的自动配置机制。它会根据你的类路径(classpath)上的jar依赖自动配置Spring应用，比如，如果你的项目依赖了Spring Data JPA和一个数据库驱动，那么Spring Boot就会自动配置JPA的数据源和事务管理，而无需你手动配置这些细节。</p>
+</li>
+<li><p><code>@ComponentScan</code>: 这个注解启用了Spring组件扫描功能，允许Spring自动发现应用中带有<code>@Component</code>、<code>@Service</code>、<code>@Repository</code>、<code>@Controller</code>等注解的类，并将它们注册为Spring容器中的Bean，从而实现依赖注入。</p>
+</li>
+</ol>
+<p>总结来说，<code>@SpringBootApplication</code>注解结合了配置、自动配置和组件扫描这三个核心功能，极大简化了Spring应用的初始搭建和开发过程，使得开发者能够快速启动和运行一个项目。</p>
+<h4 id="SpringBoot的核心配置文件有哪几个？他们的区别是什么？"><a href="#SpringBoot的核心配置文件有哪几个？他们的区别是什么？" class="headerlink" title="SpringBoot的核心配置文件有哪几个？他们的区别是什么？"></a>SpringBoot的核心配置文件有哪几个？他们的区别是什么？</h4><p>SpringBoot的核心配置文件主要有两个：<code>application.properties</code>和<code>application.yml</code>，以及在某些特定场景下会用到的<code>bootstrap.properties</code>或<code>bootstrap.yml</code>。这些配置文件主要用于设置应用程序的属性和环境。</p>
+<ol>
+<li><p><strong>application.properties&#x2F;application.yml</strong>:</p>
+<ul>
+<li><strong>用途</strong>: 这是Spring Boot应用的主要配置文件，用于存放大部分的应用配置，比如数据库连接信息、服务器端口、日志级别等。</li>
+<li><strong>格式</strong>: <code>application.properties</code>采用键值对的形式，而<code>application.yml</code>采用了YAML（YAML Ain’t Markup Language）格式，YAML是一种更为易读和简洁的数据序列化格式，支持层次结构，便于表达配置项之间的关系。</li>
+<li><strong>位置</strong>: 通常位于项目的<code>src/main/resources</code>目录下，也可以放在<code>src/main/resources/config</code>目录下以支持多环境配置。</li>
+<li><strong>加载时机</strong>: 在应用启动时，Spring Boot会自动加载这些配置文件，用于初始化和配置Bean。</li>
+</ul>
+</li>
+<li><p><strong>bootstrap.properties&#x2F;bootstrap.yml</strong>:</p>
+<ul>
+<li><strong>用途</strong>: 主要用于应用程序的引导阶段，特别是用于Spring Cloud Config Server的配置中心客户端时，用于加载外部配置中心的配置信息。它也会加载一些固定且不可被覆盖的属性，以及处理加密解密的场景。</li>
+<li><strong>格式</strong>: 同样支持<code>.properties</code>和<code>.yml</code>两种格式。</li>
+<li><strong>加载顺序和优先级</strong>: <code>bootstrap</code>配置文件会在<code>application</code>配置文件之前加载，且<code>bootstrap</code>中的属性不能被<code>application</code>中的同名属性覆盖。这意味着<code>bootstrap</code>中的配置被视为更底层的、更全局的配置。</li>
+</ul>
+</li>
+</ol>
+<p><strong>区别总结</strong>:</p>
+<ul>
+<li><strong>加载顺序</strong>: <code>bootstrap</code>先于<code>application</code>加载。</li>
+<li><strong>用途侧重</strong>: <code>bootstrap</code>更适合用于配置中心的配置加载和其他启动前就需要的配置，而<code>application</code>用于大部分常规应用配置。</li>
+<li><strong>覆盖规则</strong>: <code>bootstrap</code>中的配置项不能被<code>application</code>中的配置覆盖。</li>
+<li><strong>格式选择</strong>: <code>application.yml</code>相比<code>application.properties</code>提供了更好的可读性和结构化配置能力，但选择哪种格式主要取决于个人或团队偏好及具体需求。</li>
+</ul>
+<h4 id="什么是Spring-Boot-Starter？有哪些常用的？"><a href="#什么是Spring-Boot-Starter？有哪些常用的？" class="headerlink" title="什么是Spring Boot Starter？有哪些常用的？"></a>什么是Spring Boot Starter？有哪些常用的？</h4><p>Spring Boot Starter的目的也是<strong>简化配置</strong>，而Spring Boot Starter解决的是<strong>依赖管理配置复杂的问题</strong></p>
+<p>常用的Spring Boot Starters包括但不限于：</p>
+<ol>
+<li><strong>spring-boot-starter-web</strong>：为构建Web应用程序提供基础，包括Spring MVC和内嵌的Tomcat服务器。适用于开发RESTful API和传统的Web应用。</li>
+<li><strong>spring-boot-starter-data-jpa</strong>：简化了关系型数据库的访问，内置了Spring Data JPA和Hibernate，提供了ORM功能和数据库操作的CRUD模板。</li>
+<li><strong>spring-boot-starter-security</strong>：为应用添加安全功能，基于Spring Security框架，支持身份验证、授权和安全配置。</li>
+<li><strong>spring-boot-starter-test</strong>：包含单元测试和集成测试所需的依赖，如JUnit、Mockito和Spring Test等，方便进行测试驱动开发。</li>
+<li><strong>spring-boot-starter-thymeleaf</strong>：用于集成Thymeleaf模板引擎，支持HTML5，适用于现代Web应用的视图渲染。</li>
+<li><strong>spring-boot-starter-data-redis</strong>：集成Redis键值存储数据库，通过Spring Data Redis提供操作接口。</li>
+<li><strong>spring-boot-starter-logging</strong>：默认的日志配置，支持多种日志框架如Logback、Log4j2等。</li>
+<li><strong>spring-boot-starter-amqp</strong>：提供AMQP（Advanced Message Queuing Protocol）支持，通常与RabbitMQ一起使用，实现消息队列和异步通信。</li>
+<li><strong>spring-boot-starter-validation</strong>：包含Java Bean Validation API的支持，简化数据验证逻辑。</li>
+</ol>
+<p>这些Starter极大地简化了Spring应用的搭建过程，开发者只需要关注业务逻辑，而无需深入每个依赖的细节配置。Spring Boot社区还提供了许多其他的Starter，覆盖了从数据库访问到UI框架，从消息队列到安全认证的各个方面，几乎涵盖了开发Web应用所需的所有基础组件。</p>
+<h4 id="spring-boot-starter-parent有什么作用？"><a href="#spring-boot-starter-parent有什么作用？" class="headerlink" title="spring-boot-starter-parent有什么作用？"></a>spring-boot-starter-parent有什么作用？</h4><p><code>spring-boot-starter-parent</code>是Spring Boot项目中一个至关重要的Maven父项目（Parent POM），它在Spring Boot应用的开发中扮演着<strong>简化配置和标准化构建流程</strong>的角色。其主要作用包括但不限于：</p>
+<ul>
+<li>定义了Java编译版本，编码格式（UTF-8）</li>
+<li>继承自spring-boot-dependencies，这里面定义了依赖的版本，也正是因为继承了这个依赖，所以我们在写依赖时才不需要写版本号</li>
+<li>插件管理-pluginManagement，如用于打包可执行jar的<code>spring-boot-maven-plugin</code>，这使得Spring Boot应用可以直接通过<code>java -jar</code>命令运行</li>
+</ul>
+<p>综上所述，<code>spring-boot-starter-parent</code>通过提供一系列预设的构建和依赖管理配置，加速了Spring Boot应用的开发进程，减少了配置错误，提高了开发效率。</p>
+<h4 id="如何自定义Spring-Boot-Starter？"><a href="#如何自定义Spring-Boot-Starter？" class="headerlink" title="如何自定义Spring Boot Starter？"></a>如何自定义Spring Boot Starter？</h4><ul>
+<li>实现功能</li>
+<li>添加<strong>Properties</strong>类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(prefix = &quot;com.pdai&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DemoProperties</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String version;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>添加<strong>AutoConfiguration</strong>类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableConfigurationProperties(DemoProperties.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DemoAutoConfiguration</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> com.pdai.demo.<span class="keyword">module</span>.DemoModule <span class="title function_">demoModule</span><span class="params">(DemoProperties properties)</span>&#123;</span><br><span class="line">        com.pdai.demo.<span class="keyword">module</span>.<span class="type">DemoModule</span> <span class="variable">demoModule</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">com</span>.pdai.demo.<span class="keyword">module</span>.DemoModule();</span><br><span class="line">        demoModule.setName(properties.getName());</span><br><span class="line">        demoModule.setVersion(properties.getVersion());</span><br><span class="line">        <span class="keyword">return</span> demoModule;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>添加<strong>spring.factories</strong></li>
+</ul>
+<p>在META-INF下创建spring.factories文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration=\</span><br><span class="line">com.pdai.demospringbootstarter.DemoAutoConfiguration</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>install</li>
+</ul>
+<h4 id="为什么需要spring-boot-maven-plugin？"><a href="#为什么需要spring-boot-maven-plugin？" class="headerlink" title="为什么需要spring-boot-maven-plugin？"></a>为什么需要spring-boot-maven-plugin？</h4><p>spring-boot-maven-plugin提供了一些像jar一样打包或者运行应用程序的命令。</p>
+<ol>
+<li>spring-boot:run 运行SpringBoot应用程序；</li>
+<li>spring-boot:repackage 重新打包你的jar包或者是war包使其可执行</li>
+<li>spring-boot:start和spring-boot:stop管理Spring Boot应用程序的生命周期</li>
+<li>spring-boot:build-info生成执行器可以使用的构造信息</li>
+</ol>
+<h4 id="SpringBoot-打成jar和普通的jar有什么区别？"><a href="#SpringBoot-打成jar和普通的jar有什么区别？" class="headerlink" title="SpringBoot 打成jar和普通的jar有什么区别？"></a>SpringBoot 打成jar和普通的jar有什么区别？</h4><p>Spring Boot 打包成的 JAR 文件（通常称为可执行 JAR 或 fat JAR）与普通的 JAR 文件有以下几方面的区别：</p>
+<ol>
+<li><p><strong>可执行性</strong>：</p>
+<ul>
+<li><strong>Spring Boot JAR</strong>：可以直接通过 <code>java -jar your-app.jar</code> 命令执行，因为它包含了运行应用程序所需的所有依赖（包括类库、资源文件等）以及一个内置的启动器（Spring Boot Loader），使得应用成为一个独立的、无需外部配置即可运行的程序。</li>
+<li><strong>普通 JAR</strong>：通常只包含项目的编译后的类和资源文件，不包括依赖库，因此不能直接通过 <code>java -jar</code> 命令运行，需要配合 CLASSPATH 等配置或者构建工具才能运行。</li>
+</ul>
+</li>
+<li><p><strong>目录结构</strong>：</p>
+<ul>
+<li><strong>Spring Boot JAR</strong>：内部结构有所不同，解压后你会发现有一个 <code>\BOOT-INF\</code> 目录，其中 <code>\BOOT-INF\classes\</code> 存放你的应用程序代码和资源，<code>\BOOT-INF\lib\</code> 则存放所有依赖的 JAR 包。</li>
+<li><strong>普通 JAR</strong>：解压后直接就是包结构，没有额外的目录层次，包内就是编译后的类文件。</li>
+</ul>
+</li>
+<li><p><strong>依赖管理</strong>：</p>
+<ul>
+<li><strong>Spring Boot JAR</strong>：是自包含的，所有依赖都被打包进一个 JAR 中，使得分发和部署变得简单，但这也意味着它的体积通常比普通 JAR 大得多。</li>
+<li><strong>普通 JAR</strong>：不包含依赖，需要外部项目或构建工具（如 Maven 或 Gradle）管理依赖关系，部署时需确保所有依赖都已正确安装或包含在类路径中。</li>
+</ul>
+</li>
+<li><p><strong>依赖引用</strong>：</p>
+<ul>
+<li><strong>Spring Boot JAR</strong>：由于其特殊的结构，其他项目直接引用 Spring Boot 打包的 JAR 会有困难，因为类路径结构不符合常规预期。</li>
+<li><strong>普通 JAR</strong>：可以轻易地被其他项目作为依赖库引用和使用。</li>
+</ul>
+</li>
+<li><p><strong>用途</strong>：</p>
+<ul>
+<li><strong>Spring Boot JAR</strong>：设计用于快速部署和运行微服务或独立应用程序，强调快速启动和最少配置。</li>
+<li><strong>普通 JAR</strong>：通常用于库或模块化开发，需要与其他项目组件一起构建或作为项目的一部分进行编译。</li>
+</ul>
+</li>
+</ol>
+<p>综上所述，Spring Boot 打包的 JAR 主要是为了简化部署和运行过程，而普通 JAR 更多用于模块化开发和作为依赖使用。</p>
+<h4 id="如何使用Spring-Boot实现异常处理"><a href="#如何使用Spring-Boot实现异常处理" class="headerlink" title="如何使用Spring Boot实现异常处理"></a>如何使用Spring Boot实现异常处理</h4><p><strong>全局异常处理</strong>：你可以创建一个带有<code>@ControllerAdvice</code>或 <code>@RestControllerAdvice</code>注解的类，该类中的<code>@ExceptionHandler</code>方法可以捕获整个应用中控制器抛出的特定类型的异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestControllerAdvice</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JeecgBootExceptionHandler</span> &#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 处理自定义异常</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@ExceptionHandler(JeecgBootException.class)</span></span><br><span class="line">	<span class="keyword">public</span> Result&lt;?&gt; handleJeecgBootException(JeecgBootException e)&#123;</span><br><span class="line">		log.error(e.getMessage(), e);</span><br><span class="line">		DynamicDataSourceContextHolder.push(<span class="string">&quot;master&quot;</span>);</span><br><span class="line">		log.info(<span class="string">&quot;数据源切换回 master&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> Result.error(e.getMessage());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="SpringBoot-实现热部署有哪几种方式"><a href="#SpringBoot-实现热部署有哪几种方式" class="headerlink" title="SpringBoot 实现热部署有哪几种方式"></a>SpringBoot 实现热部署有哪几种方式</h4><h5 id="spring-boot-devtools"><a href="#spring-boot-devtools" class="headerlink" title="spring-boot-devtools"></a>spring-boot-devtools</h5><p> 这是最常用的热部署方式。在项目的<code>pom.xml</code>文件中添加<code>spring-boot-devtools</code>依赖，Spring Boot会自动处理资源和类文件的改变，实现近乎即时的重启。这种方式下，Spring Boot会监听类路径下的变化，一旦有变化就会触发重启。</p>
+<h5 id="使用IDEA等集成开发环境的设置"><a href="#使用IDEA等集成开发环境的设置" class="headerlink" title="使用IDEA等集成开发环境的设置"></a>使用IDEA等集成开发环境的设置</h5><ul>
+<li><strong>自动编译设置</strong>：确保IDE配置为自动编译项目，例如，在IntelliJ IDEA中，可以通过【Build, Execution, Deployment】→【Compiler】设置面板勾选【Build project automatically】。</li>
+<li><strong>运行时编译设置</strong>：在IDEA中，使用快捷键<code>Ctrl+Shift+Alt+/</code>（Windows&#x2F;Linux）或<code>Command+Shift+Option+/</code>（Mac）打开Maintenance对话框，进入Registry设置界面，找到并勾选<code>compiler.automake.allow.when.app.running</code>，允许应用运行时自动编译。</li>
+</ul>
+<h5 id="Spring-Loaded"><a href="#Spring-Loaded" class="headerlink" title="Spring Loaded"></a>Spring Loaded</h5><p>Spring Loaded是Spring官方提供的一个类加载器工具，可以在不重启整个应用的情况下，动态加载修改过的类。尽管Spring Loaded在<strong>过去曾是热部署的一种选择</strong>，但随着<code>spring-boot-devtools</code>的出现，它已不是首选方案</p>
+<h5 id="JRebel"><a href="#JRebel" class="headerlink" title="JRebel"></a>JRebel</h5><p> JRebel是一款商业的热部署工具，能够实现几乎即时的代码更改效果，支持广泛的框架和技术栈，包括但不限于Spring Boot。它通过替换类加载机制，允许在运行时修改任何类和资源，而不需要重启应用。JRebel是收费软件，但提供了免费试用期。</p>
+<h4 id="Spring-Boot中的监视器是什么？"><a href="#Spring-Boot中的监视器是什么？" class="headerlink" title="Spring Boot中的监视器是什么？"></a>Spring Boot中的监视器是什么？</h4><p>Spring Boot中的监视器主要是指<strong>Actuator</strong>模块，它是一组强大的工具和端点，用于<strong>监控和管理Spring Boot应用程序的运行时状态</strong>。Actuator提供了对应用内部多个方面的洞察，包括但不限于<strong>性能指标</strong>、运行状况检查、<strong>环境信息</strong>、<strong>配置详情</strong>、<strong>数据源状态</strong>、<strong>内存</strong>使用情况、<strong>线程</strong>信息、<strong>日志</strong>配置、<strong>垃圾回收</strong>信息等。</p>
+<p>以下是Actuator的一些核心特性：</p>
+<ol>
+<li><p><strong>端点（Endpoints）</strong>：Actuator暴露了一系列HTTP端点，每个端点都提供了一类特定的信息或操作。例如，<code>/health</code>端点用于检查应用的健康状况，<code>/info</code>用于展示应用的元数据信息，<code>/metrics</code>提供各种应用性能指标。</p>
+</li>
+<li><p><strong>自动配置</strong>：Actuator自动配置了许多默认的端点，但同时也允许用户自定义端点来满足特定监控需求。</p>
+</li>
+<li><p><strong>安全考虑</strong>：默认情况下，某些敏感端点（如关闭应用的端点）是禁用的，且所有端点都受到Spring Security的保护，确保只有授权用户可以访问。</p>
+</li>
+<li><p><strong>可定制性</strong>：开发人员可以选择开启或关闭特定的端点，也可以通过配置来改变端点的访问路径。</p>
+</li>
+<li><p><strong>与外部监控系统集成</strong>：Actuator可以轻松地与Prometheus、Grafana、Graphite等外部监控和可视化工具集成，使得监控数据的收集和分析更为便捷。</p>
+</li>
+<li><p><strong>审计、日志和跟踪</strong>：除了性能和健康检查外，Actuator还能提供<strong>审计事件</strong>、<strong>HTTP跟踪</strong>和详细的日志记录，有助于故障排查和审计合规性。</p>
+</li>
+</ol>
+<p>总之，Spring Boot的Actuator模块是提升应用可观测性和运维便利性的关键组件，它使得开发者和运维人员能更有效地监控和管理Spring Boot应用。</p>
+<h4 id="Spring-Boot-可以兼容老-Spring-项目吗？"><a href="#Spring-Boot-可以兼容老-Spring-项目吗？" class="headerlink" title="Spring Boot 可以兼容老 Spring 项目吗？"></a>Spring Boot 可以兼容老 Spring 项目吗？</h4><p>可以兼容，使用 @ImportResource 注解导入老 Spring 项目配置文件。</p>
+<h3 id="Spring-Security"><a href="#Spring-Security" class="headerlink" title="Spring Security"></a>Spring Security</h3><h4 id="什么是Spring-Security？核心功能"><a href="#什么是Spring-Security？核心功能" class="headerlink" title="什么是Spring Security？核心功能"></a>什么是Spring Security？核心功能</h4><p>Spring Security是一个功能强大且高度可定制的身份验证和访问控制框架，专为基于Spring的应用程序设计。它是保护Spring应用的实际标准，提供了一整套安全相关的解决方案，旨在简化企业级应用的安全管理，如认证（Authentication）和授权（Authorization）等核心功能。</p>
+<p><strong>核心功能包括：</strong></p>
+<ol>
+<li><p><strong>认证（Authentication）</strong>：这是确认用户身份的过程，即<strong>验证用户是谁</strong>。Spring Security支持多种认证机制，如基本的用户名&#x2F;密码验证、LDAP、JWT（JSON Web Tokens）、OAuth2等。它还可以集成数据库、外部认证服务或自定义认证逻辑。</p>
+</li>
+<li><p><strong>授权（Authorization）</strong>：在用户身份验证之后，<strong>确定用户是否有权限执行特定操作或访问特定资源</strong>。Spring Security支持基于角色的访问控制（Role-Based Access Control, RBAC）、访问决策管理以及更细粒度的访问控制列表（ACLs）。</p>
+</li>
+</ol>
+<p>除此之外，Spring Security还提供了许多其他安全相关的功能，包括但不限于：</p>
+<ul>
+<li><strong>安全上下文管理</strong>：维护用户的认证状态，提供安全相关的会话管理。</li>
+<li><strong>安全拦截器</strong>：通过过滤器链（Filter Chain）模型，可以在HTTP请求的不同阶段插入安全检查，如CSRF保护、XSS防御、安全头设置等。</li>
+<li><strong>密码编码与策略</strong>：提供密码编码服务和策略管理，支持强密码存储和过期策略。</li>
+<li><strong>会话管理</strong>：控制会话生命周期，防止会话固定攻击等安全漏洞。</li>
+<li><strong>Remember-Me 功能</strong>：允许用户在一段时间内免登录访问。</li>
+<li><strong>Spring框架集成</strong>：利用Spring IoC、DI（依赖注入）和AOP（面向切面编程）能力，无缝融入Spring生态系统，易于配置和扩展。</li>
+</ul>
+<p>通过Spring Security，开发者可以根据应用需求灵活地配置和定制安全策略，无需从零开始编写大量的安全代码，大大提高了开发效率和应用的安全性。</p>
+<h4 id="Spring-Security的原理"><a href="#Spring-Security的原理" class="headerlink" title="Spring Security的原理"></a>Spring Security的原理</h4><p>Spring Security是一个Java安全框架，专注于应用程序的认证和授权。它的工作原理基于以下核心点：</p>
+<ol>
+<li><strong>过滤器链</strong>：构建一系列过滤器自动处理HTTP请求的安全性，包括认证、授权等。</li>
+<li><strong>认证管理</strong>：验证用户身份（如用户名密码），创建表示用户身份的<code>Authentication</code>对象。</li>
+<li><strong>授权判断</strong>：决定已认证用户是否有权限访问特定资源。</li>
+<li><strong>灵活配置</strong>：支持多种认证方式（表单、OAuth2、JWT等）和自定义扩展，易于与Spring框架集成。</li>
+<li><strong>会话与上下文</strong>：管理用户会话状态，并通过<code>SecurityContext</code>存储当前线程的安全信息。</li>
+</ol>
+<p>简而言之，Spring Security通过<strong>一系列精心设计的过滤器</strong>，为应用提供了一套全面且可定制的安全解决方案，<strong>保障了应用的认证与授权过程</strong>，同时保持了与Spring生态的高度整合性</p>
+<h4 id="Spring-Security基于用户名和密码的认证模式流程"><a href="#Spring-Security基于用户名和密码的认证模式流程" class="headerlink" title="Spring Security基于用户名和密码的认证模式流程"></a>Spring Security基于用户名和密码的认证模式流程</h4><p>Spring Security基于用户名和密码的认证模式流程大致遵循以下步骤：</p>
+<ol>
+<li><p><strong>用户登录请求</strong>：用户通过前端界面（如登录表单）输入用户名和密码，然后前端将这些凭据发送到后端服务器。</p>
+</li>
+<li><p><strong>数据封装</strong>：Spring Security中的<code>UsernamePasswordAuthenticationFilter</code>过滤器截获此登录请求，从请求中提取用户名和密码，并将它们封装成一个<code>UsernamePasswordAuthenticationToken</code>对象。这个对象实现了<code>Authentication</code>接口，代表着用户的认证请求。</p>
+</li>
+<li><p><strong>认证处理</strong>：接下来，<code>AuthenticationManager</code>（认证管理器）接收到这个<code>AuthenticationToken</code>，它负责协调认证过程。<code>AuthenticationManager</code>内部可能使用多个认证提供者（如<code>DaoAuthenticationProvider</code>）尝试认证。</p>
+</li>
+<li><p><strong>凭证验证</strong>：认证提供者使用用户信息（如从数据库中查询）来验证提供的用户名和密码是否匹配。如果验证成功，它会填充<code>Authentication</code>对象，包含完整的用户权限信息等。</p>
+</li>
+<li><p><strong>认证成功处理</strong>：</p>
+<ul>
+<li>成功时，<code>AuthenticationManager</code>返回完全填充的<code>Authentication</code>对象，表示用户已成功认证。</li>
+<li>此时，系统可能会创建一个会话（如果使用session-based认证），或者生成一个JWT（如果采用无状态认证）。</li>
+<li>生成的JWT可以存储在Cookie或者直接在响应体中返回给客户端，用于后续请求的认证。</li>
+</ul>
+</li>
+<li><p><strong>安全上下文设置</strong>：认证成功后，<code>SecurityContextHolder</code>会被设置为当前线程的上下文，存储认证信息，以便于后续请求中快速识别用户身份。</p>
+</li>
+<li><p><strong>权限控制</strong>：对于后续的每个请求，Spring Security的<code>FilterSecurityInterceptor</code>会根据配置的访问规则检查用户是否有权限访问请求的资源。</p>
+</li>
+<li><p><strong>错误处理</strong>：如果认证失败，<code>AuthenticationEntryPoint</code>会被调用来处理异常情况，通常引导用户重新进行认证。</p>
+</li>
+</ol>
+<p>整个流程是高度可配置的，开发者可以根据具体需求调整认证数据源（如内存、数据库、LDAP等）、认证逻辑和错误处理策略。</p>
+<h3 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h3><h3 id="MyBatis-Plus"><a href="#MyBatis-Plus" class="headerlink" title="MyBatis-Plus"></a>MyBatis-Plus</h3><ul>
+<li><strong>无侵入</strong>：只做增强不做改变，引入它不会对现有工程产生影响，如丝般顺滑</li>
+<li><strong>损耗小</strong>：启动即会自动注入基本 CURD，性能基本无损耗，直接面向对象操作</li>
+<li><strong>强大的 CRUD 操作</strong>：内置通用 Mapper、通用 Service，仅仅通过少量配置即可实现单表大部分 CRUD 操作，更有强大的条件构造器，满足各类使用需求</li>
+<li><strong>支持 Lambda 形式调用</strong>：通过 Lambda 表达式，方便的编写各类查询条件，无需再担心字段写错</li>
+<li><strong>支持主键自动生成</strong>：支持多达 4 种主键策略（内含分布式唯一 ID 生成器 - Sequence），可自由配置，完美解决主键问题</li>
+<li><strong>支持 ActiveRecord 模式</strong>：支持 ActiveRecord 形式调用，实体类只需继承 Model 类即可进行强大的 CRUD 操作</li>
+<li><strong>支持自定义全局通用操作</strong>：支持全局通用方法注入（ Write once, use anywhere ）</li>
+<li><strong>内置代码生成器</strong>：采用代码或者 Maven 插件可快速生成 Mapper 、 Model 、 Service 、 Controller 层代码，支持模板引擎，更有超多自定义配置等您来使用</li>
+<li><strong>内置分页插件</strong>：基于 MyBatis 物理分页，开发者无需关心具体操作，配置好插件之后，写分页等同于普通 List 查询</li>
+<li><strong>分页插件支持多种数据库</strong>：支持 MySQL、MariaDB、Oracle、DB2、H2、HSQL、SQLite、Postgre、SQLServer 等多种数据库</li>
+<li><strong>内置性能分析插件</strong>：可输出 SQL 语句以及其执行时间，建议开发测试时启用该功能，能快速揪出慢查询</li>
+<li><strong>内置全局拦截插件</strong>：提供全表 delete 、 update 操作智能分析阻断，也可自定义拦截规则，预防误操作</li>
+</ul>
+<h3 id="日志框架"><a href="#日志框架" class="headerlink" title="日志框架"></a>日志框架</h3><h4 id="什么是日志系统和日志门面？分别有哪些框架？"><a href="#什么是日志系统和日志门面？分别有哪些框架？" class="headerlink" title="什么是日志系统和日志门面？分别有哪些框架？"></a>什么是日志系统和日志门面？分别有哪些框架？</h4><p>日志系统是具体的日志框架，日志门面是不提供日志的具体实现，而是在运行时动态的绑定日志实现组件来工作，是一种外观模式。</p>
+<ul>
+<li><strong>日志系统</strong><ul>
+<li>java.util.logging (<strong>JUL</strong>)，JDK1.4 开始，通过 java.util.logging 提供日志功能。虽然是官方自带的log lib，JUL的使用确不广泛。</li>
+<li><strong>Log4j</strong>，Log4j 是 apache 的一个开源项目，创始人 Ceki Gulcu。Log4j 应该说是 Java 领域资格最老，应用最广的日志工具。Log4j 是高度可配置的，并可通过在运行时的外部文件配置。它根据记录的优先级别，并提供机制，以指示记录信息到许多的目的地，诸如：数据库，文件，控制台，UNIX 系统日志等。Log4j 的短板在于性能，在Logback 和 Log4j2 出来之后，Log4j的使用也减少了。</li>
+<li><strong>Logback</strong>，Logback 是由 log4j 创始人 Ceki Gulcu 设计的又一个开源日志组件，是作为 Log4j 的继承者来开发的，提供了性能更好的实现，异步 logger，Filter等更多的特性。</li>
+<li><strong>Log4j2</strong>，维护 Log4j 的人为了性能又搞出了 Log4j2。Log4j2 和 Log4j1.x 并不兼容，设计上很大程度上模仿了 SLF4J&#x2F;Logback，性能上也获得了很大的提升。Log4j2 也做了 Facade&#x2F;Implementation 分离的设计，分成了 log4j-api 和 log4j-core。</li>
+</ul>
+</li>
+<li><strong>日志门面</strong><ul>
+<li><strong>common-logging</strong>，common-logging 是 apache 的一个开源项目。也称Jakarta Commons Logging，缩写 JCL。</li>
+<li><strong>slf4j</strong>, 全称为 Simple Logging Facade for Java，即 java 简单日志门面。作者又是 Ceki Gulcu！这位大神写了 Log4j、Logback 和 slf4j。类似于 Common-Logging，slf4j 是对不同日志框架提供的一个 API 封装，可以在部署的时候不修改任何配置即可接入一种日志实现方案。但是，slf4j 在编译时静态绑定真正的 Log 库。使用 SLF4J 时，如果你需要使用某一种日志实现，那么你必须选择正确的 SLF4J 的 jar 包的集合（各种桥接包）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="在日志配置时会考虑哪些点？"><a href="#在日志配置时会考虑哪些点？" class="headerlink" title="在日志配置时会考虑哪些点？"></a>在日志配置时会考虑哪些点？</h4><p>在进行日志配置时，需要综合考虑多个因素以确保日志的有效性、效率和安全性。以下是一些关键点：</p>
+<ol>
+<li><p><strong>日志级别设置</strong>：确定<strong>不同场景下应记录的日志级别</strong>，如DEBUG、INFO、WARN、ERROR、FATAL。合理的级别设置可以帮助区分日志的重要程度，便于问题定位和日常监控。</p>
+</li>
+<li><p><strong>日志格式定义</strong>：定义日志的<strong>输出格式</strong>，包括时间戳、日志级别、进程ID、线程名、类名、方法名、行号、请求信息（如HTTP请求中的URL、客户端IP、User-Agent等）及自定义信息。格式应便于阅读和分析。</p>
+</li>
+<li><p><strong>日志滚动策略</strong>：为了避免日志文件无限增长导致磁盘空间耗尽，需要设置<strong>日志滚动策略</strong>，比如按时间（每日、每周）、按大小（每达到一定MB）滚动，并且保留一定数量的旧日志文件。</p>
+</li>
+<li><p><strong>异步日志记录</strong>：考虑使用异步日志记录以减少日志输出对主程序性能的影响，尤其是在高并发场景下。</p>
+</li>
+<li><p><strong>日志分类与分离</strong>：将不同类型的日志（如访问日志、应用日志、审计日志）分别记录到不同的文件，便于管理和分析。</p>
+</li>
+<li><p><strong>日志加密与敏感信息处理</strong>：确保敏感信息（如密码、个人隐私数据）不在日志中明文记录，必要时对日志进行加密处理。</p>
+</li>
+<li><p><strong>日志存储位置与备份</strong>：确定日志文件的<strong>存储位置</strong>，确保有足够的磁盘空间。定期备份日志文件，以防数据丢失。</p>
+</li>
+<li><p><strong>日志收集与集中管理</strong>：在分布式系统中，考虑使用日志收集工具（如Logstash、Fluentd）将日志集中到日志服务器（如ELK Stack、Splunk）进行统一管理、分析和检索。</p>
+</li>
+<li><p><strong>日志监控与报警</strong>：配置日志监控系统，设定关键指标的阈值，一旦触发即自动发送报警通知，帮助及时发现并解决问题。</p>
+</li>
+<li><p><strong>日志配置的版本控制</strong>：将日志配置文件纳入版本控制系统，确保配置的变更可追溯。</p>
+</li>
+<li><p><strong>兼容性和标准化</strong>：确保所选日志框架与应用的技术栈兼容，并尽可能遵循行业标准或最佳实践，以便于维护和迁移。</p>
+</li>
+<li><p><strong>性能考量</strong>：优化日志输出的性能，避免因频繁的IO操作影响应用性能，特别是在生产环境中。</p>
+</li>
+</ol>
+<h4 id="对Java日志组件选型的建议"><a href="#对Java日志组件选型的建议" class="headerlink" title="对Java日志组件选型的建议"></a>对Java日志组件选型的建议</h4><p>推荐使用<strong>SLF4J</strong>作为日志门面，结合<strong>Logback</strong>或<strong>Log4j 2</strong>作为实现</p>
+<h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><h4 id="Tomcat-整体架构的设计？"><a href="#Tomcat-整体架构的设计？" class="headerlink" title="Tomcat 整体架构的设计？"></a>Tomcat 整体架构的设计？</h4><p>Apache Tomcat是一个开源的<strong>轻量级Web服务器和Servlet容器</strong>，主要为Java Web应用程序提供运行环境。Tomcat的整体架构设计围绕着Servlet规范展开，旨在提供高性能、稳定和可扩展的服务平台。以下是Tomcat架构的关键组成部分和设计原则：</p>
+<ol>
+<li><p><strong>多层架构</strong>:</p>
+<ul>
+<li><p><strong>连接器（Connectors）</strong>: 负责接收来自客户端的HTTP请求，并将响应返回给客户端。Tomcat支持多种连接器，如HTTP&#x2F;1.1的BIO（阻塞I&#x2F;O）、NIO（非阻塞I&#x2F;O）、APR（Apache Portable Runtime，使用本地库提高性能）和最新的AJP（Apache JServ Protocol，用于与其他Web服务器如Apache HTTP Server集成）。</p>
+</li>
+<li><p><strong>容器（Containers）</strong>: 负责管理Servlet的生命周期和处理请求。容器分为四层结构：</p>
+<ul>
+<li><strong>Host Container</strong>: 管理多个虚拟主机，每个虚拟主机可以有不同的web应用。</li>
+<li><strong>Context Container</strong>: 对应一个Web应用程序，管理该应用内的所有组件。</li>
+<li><strong>Servlet Container</strong>: 管理Servlet实例，负责Servlet的加载、初始化、服务请求和销毁。</li>
+<li><strong>Wrapper Container</strong>: 包装单个Servlet实例，处理特定Servlet的调用细节。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Servlet生命周期管理</strong>:<br>Tomcat根据Servlet规范管理Servlet的加载、初始化、服务请求和销毁过程，确保每个Servlet在正确的时间点执行相应的操作。</p>
+</li>
+<li><p><strong>配置与管理</strong>:</p>
+<ul>
+<li>使用<code>server.xml</code>、<code>web.xml</code>等配置文件进行初始化配置，允许管理员定义连接器、容器配置、虚拟主机、上下文路径等。</li>
+<li>提供<strong>管理界面</strong>（如Tomcat Manager和Host Manager Web应用）和命令行工具（如<code>catalina.sh</code>脚本）进行服务器管理和应用部署。</li>
+</ul>
+</li>
+<li><p><strong>类加载器体系</strong>:<br>Tomcat实现了自己的类加载器层次结构，包括Common ClassLoader、Catalina ClassLoader、Shared ClassLoader和Webapp ClassLoader，确保了不同Web应用之间的类隔离和共享库的管理。</p>
+</li>
+<li><p><strong>线程池管理</strong>:<br>Tomcat通过线程池来管理处理请求的线程，可以配置线程池的大小、超时等参数，以优化资源使用和提高响应速度。</p>
+</li>
+<li><p><strong>可扩展性和模块化</strong>:<br>Tomcat设计为高度模块化，核心服务（如Servlet容器、JSP引擎）和附加功能（如WebSocket、SSL支持）可以通过不同的模块加载，方便根据需要定制服务。</p>
+</li>
+<li><p><strong>安全特性</strong>:<br>支持SSL&#x2F;TLS加密通信，提供身份验证、授权机制，以及各种安全配置选项来保护Web应用和服务器。</p>
+</li>
+</ol>
+<p>整体来说，Tomcat的设计兼顾了灵活性、性能和易用性，适合作为Java Web应用的部署平台，特别是在中低负载到中等规模的应用场景中表现出色。</p>
+<h4 id="Tomcat-一个请求的处理流程？"><a href="#Tomcat-一个请求的处理流程？" class="headerlink" title="Tomcat 一个请求的处理流程？"></a>Tomcat 一个请求的处理流程？</h4><p>当一个HTTP请求到达Tomcat服务器时，它会经历一系列处理步骤，直至响应返回给客户端。下面是Tomcat处理一个请求的大致流程：</p>
+<ol>
+<li><p><strong>连接器（Connector）接收请求</strong>:</p>
+<ul>
+<li>客户端发起HTTP请求，连接到Tomcat的指定端口。</li>
+<li>相应的连接器（如BIO、NIO、APR）接收此请求，进行初步处理，如解码、解析请求头等。</li>
+</ul>
+</li>
+<li><p><strong>线程分配</strong>:</p>
+<ul>
+<li>连接器将请求交给线程池（Executor），从线程池中分配一个工作线程来处理该请求。线程池管理有助于控制并发和资源使用。</li>
+</ul>
+</li>
+<li><p><strong>请求映射</strong>:</p>
+<ul>
+<li>工作线程使用连接器和容器的信息来确定哪个Web应用应该处理这个请求。这涉及到解析域名、上下文路径等，以找到正确的虚拟主机和Web应用。</li>
+</ul>
+</li>
+<li><p><strong>请求转发至容器</strong>:</p>
+<ul>
+<li>请求被转发到相应的容器层级开始处理。首先到达Host Container，然后是Context Container，接着是Servlet Container。</li>
+</ul>
+</li>
+<li><p><strong>Servlet的调用</strong>:</p>
+<ul>
+<li>在Servlet Container中，根据URL映射找到对应的Servlet Wrapper，然后初始化或复用Servlet实例。</li>
+<li>Servlet实例的<code>service()</code>方法被调用，根据HTTP方法（GET、POST等）进一步分派到具体的doGet()、doPost()等方法。</li>
+</ul>
+</li>
+<li><p><strong>处理请求和生成响应</strong>:</p>
+<ul>
+<li>Servlet处理业务逻辑，可能涉及数据库操作、调用其他服务、处理请求参数等。</li>
+<li>处理完成后，Servlet构造响应对象（HttpServletResponse），包含状态码、响应头和响应体。</li>
+</ul>
+</li>
+<li><p><strong>过滤器链（Filter Chain）</strong>:</p>
+<ul>
+<li>在Servlet响应之前和之后，相关过滤器（如果有配置）按照配置顺序执行，可以对请求和响应进行预处理或后处理。</li>
+</ul>
+</li>
+<li><p><strong>响应返回</strong>:</p>
+<ul>
+<li>响应经由容器结构反向传递，最终回到连接器。</li>
+<li>连接器将响应序列化为HTTP响应报文，通过网络发送回客户端。</li>
+</ul>
+</li>
+<li><p><strong>资源清理和线程回收</strong>:</p>
+<ul>
+<li>工作线程完成任务后，释放资源，线程返回线程池等待新的任务。</li>
+</ul>
+</li>
+</ol>
+<p>这个流程体现了Tomcat处理请求的高效和模块化设计，确保了请求能够准确、安全地被处理，并且响应能够及时返回给客户端。</p>
+<h4 id="Tomcat-中Executor"><a href="#Tomcat-中Executor" class="headerlink" title="Tomcat 中Executor?"></a>Tomcat 中Executor?</h4><p>在Apache Tomcat服务器中，<code>Executor</code> 是一个关键组件，负责管理线程池，用于处理传入的客户端请求。它代表了一个可配置的线程池执行策略，允许更细粒度地控制Tomcat处理请求时所使用的线程资源。以下是关于Tomcat中<code>Executor</code>的一些核心概念和功能：</p>
+<ul>
+<li><strong>资源管理</strong>：通过重用线程减少创建和销毁线程的开销，提高了服务器的响应速度和整体性能。</li>
+<li><strong>并发控制</strong>：限制同时运行的线程数量，防止在高负载情况下由于过多线程导致的资源耗尽（如内存溢出）。</li>
+<li><strong>负载均衡</strong>：合理分配任务给线程，帮助平滑系统负载，特别是在面对突发流量时。</li>
+</ul>
+<p>Tomcat允许用户自定义Executor并在Connector中引用它，而不是使用每个Connector自己的默认线程池。这样可以实现多个Connector共享同一个线程池，提高资源利用率和管理效率。</p>
+<p>配置通常在<code>server.xml</code>文件中进行，示例如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Executor</span> <span class="attr">name</span>=<span class="string">&quot;tomcatThreadPool&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">namePrefix</span>=<span class="string">&quot;catalina-exec-&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">maxThreads</span>=<span class="string">&quot;500&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">minSpareThreads</span>=<span class="string">&quot;50&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">maxIdleTime</span>=<span class="string">&quot;60000&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">Connector</span> <span class="attr">executor</span>=<span class="string">&quot;tomcatThreadPool&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">port</span>=<span class="string">&quot;8080&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">protocol</span>=<span class="string">&quot;HTTP/1.1&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">connectionTimeout</span>=<span class="string">&quot;20000&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">redirectPort</span>=<span class="string">&quot;8443&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在这个例子中，<code>Executor</code>名为<code>tomcatThreadPool</code>，配置了最大线程数<code>maxThreads</code>为500，最小空闲线程数<code>minSpareThreads</code>为50，以及线程最大空闲时间<code>maxIdleTime</code>为60秒。</p>
+<ul>
+<li><code>name</code>: Executor的唯一标识。</li>
+<li><code>namePrefix</code>: 每个创建的线程名称前缀。</li>
+<li><code>maxThreads</code>: 线程池能创建的最大线程数。</li>
+<li><code>minSpareThreads</code>: 线程池维护的最小空闲线程数。</li>
+<li><code>maxIdleTime</code>: 空闲线程在终止前等待新任务的最长时间（毫秒）。</li>
+</ul>
+<p>通过使用<code>Executor</code>，Tomcat提供了高度灵活的线程管理机制，使得管理员可以根据应用的实际需求和服务器的硬件资源情况，优化配置以达到最佳性能和稳定性。正确配置Executor是提升Tomcat服务器处理能力的关键步骤之一。</p>
+<h4 id="Tomcat-中的设计模式"><a href="#Tomcat-中的设计模式" class="headerlink" title="Tomcat 中的设计模式"></a>Tomcat 中的设计模式</h4><ol>
+<li><p><strong>门面模式（Facade Pattern）</strong></p>
+<ul>
+<li><strong>应用</strong>：Tomcat使用门面模式对外提供简洁的API接口，隐藏了内部复杂性。例如，在<code>Request</code>和<code>Response</code>对象的封装、<code>Standard Wrapper</code>到<code>ServletConfig</code>的封装、<code>ApplicationContext</code>到<code>ServletContext</code>的封装中，都使用了门面模式来简化外部调用。</li>
+</ul>
+</li>
+<li><p><strong>责任链模式（Chain of Responsibility Pattern）</strong></p>
+<ul>
+<li><strong>应用</strong>：在容器间的调用中，Tomcat通过责任链模式处理请求。当请求进入Tomcat时，会依次经过Engine、Host、Context、Wrapper等容器，每个容器都可以有机会处理请求或者将其传递给链中的下一个容器，直到找到合适的Servlet来处理请求。此外，过滤器链（<code>FilterChain</code>）也是责任链模式的一个典型应用，它允许过滤器按序处理请求和响应。</li>
+</ul>
+</li>
+<li><p><strong>观察者模式（Observer Pattern）</strong></p>
+<ul>
+<li><strong>应用</strong>：用于事件监听和通知机制。例如，当ServletContext初始化或销毁时，会触发一系列监听器（<code>ServletContextListener</code>），这些监听器作为观察者被通知并执行相应的操作。</li>
+</ul>
+</li>
+<li><p><strong>策略模式（Strategy Pattern）</strong></p>
+<ul>
+<li><strong>应用</strong>：Tomcat中某些组件的行为可以通过策略模式动态改变。例如，不同的连接器（Connectors）和协议处理器（Protocol Handlers）可以视为不同的策略，根据配置选择合适的策略来处理网络通信。</li>
+</ul>
+</li>
+<li><p><strong>工厂模式（Factory Pattern）</strong></p>
+<ul>
+<li><strong>应用</strong>：在创建对象时使用，以提供统一的接口来创建不同类型的对象。Tomcat中的连接器、协议处理器等组件的创建就利用了工厂模式，以增加代码的灵活性和可维护性。</li>
+</ul>
+</li>
+<li><p><strong>单例模式（Singleton Pattern）</strong></p>
+<ul>
+<li><strong>应用</strong>：确保某些核心组件（如全局配置管理器）在整个应用中只存在一个实例，以减少资源消耗和状态同步问题。</li>
+</ul>
+</li>
+<li><p><strong>组合模式（Composite Pattern）</strong></p>
+<ul>
+<li><strong>应用</strong>：Tomcat中的容器模型（如Engine、Host、Context、Wrapper）形成了一个树状结构，符合组合模式，使得容器的管理和请求的路由变得简单且统一。</li>
+</ul>
+</li>
+</ol>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><h3 id="Spring-Cloud"><a href="#Spring-Cloud" class="headerlink" title="Spring Cloud"></a>Spring Cloud</h3><h4 id="什么是微服务？谈谈你对微服务的理解？"><a href="#什么是微服务？谈谈你对微服务的理解？" class="headerlink" title="什么是微服务？谈谈你对微服务的理解？"></a>什么是微服务？谈谈你对微服务的理解？</h4><p>微服务（Microservices）是一种<strong>软件架构风格</strong>，它将一个大型的应用程序拆分成一组小型、自治的服务。每个服务都围绕着特定的业务功能进行构建，能够<strong>独立部署、运行和扩展</strong>，且<strong>服务之间通过API</strong>（通常是RESTful API或gRPC）进行轻量级通信。微服务架构的核心理念在于<strong>“小”与“独”</strong>，强调服务的高内聚、低耦合，以实现敏捷开发、持续交付和轻松维护的目标。</p>
+<h4 id="什么是Spring-Cloud？"><a href="#什么是Spring-Cloud？" class="headerlink" title="什么是Spring Cloud？"></a>什么是Spring Cloud？</h4><p>Spring Cloud是一系列框架的有序集合。它利用Spring Boot的开发便利性巧妙地简化了分布式系统基础设施的开发，如<strong>服务发现注册</strong>、<strong>配置中心</strong>、<strong>智能路由</strong>、<strong>消息总线</strong>、<strong>负载均衡</strong>、断路器、数据监控等，都可以用Spring Boot的开发风格做到一键启动和部署。</p>
+<p>Spring Cloud并没有重复制造轮子，它只是将各家公司开发的比较成熟、经得起实际考验的服务框架组合起来，通过Spring Boot风格进行再封装屏蔽掉了复杂的配置和实现原理，最终给开发者留出了一套简单易懂、易部署和易维护的<strong>分布式系统开发工具包</strong>。</p>
+<ul>
+<li><strong>SpringCloud的优点</strong></li>
+</ul>
+<ol>
+<li>耦合度比较低。不会影响其他模块的开发。</li>
+<li>减轻团队的成本，可以并行开发，不用关注其他人怎么开发，先关注自己的开发。</li>
+<li>配置比较简单，基本用注解就能实现，不用使用过多的配置文件。</li>
+<li>微服务跨平台的，可以用任何一种语言开发。</li>
+<li>每个微服务可以有自己的独立的数据库也有用公共的数据库。</li>
+<li>直接写后端的代码，不用关注前端怎么开发，直接写自己的后端代码即可，然后暴露接口，通过组件进行服务通信。</li>
+</ol>
+<ul>
+<li><strong>SpringCloud的缺点</strong></li>
+</ul>
+<ol>
+<li>部署比较麻烦，给运维工程师带来一定的麻烦。</li>
+<li>针对数据的管理比麻烦，因为微服务可以每个微服务使用一个数据库。</li>
+<li>系统集成测试比较麻烦</li>
+<li>性能的监控比较麻烦。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/1de34d81.html">https://wangwenzhe.github.io/posts/1de34d81.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java%E5%85%A8%E6%A0%88/">Java全栈</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/6ae47d17.html" title="Java全栈-上"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java全栈-上</div></div></a></div><div class="next-post pull-right"><a href="/posts/4642b068.html" title="我对ai的几点认识"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">我对ai的几点认识</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/6ae47d17.html" title="Java全栈-上"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-02</div><div class="title">Java全栈-上</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">开发基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%BA%93"><span class="toc-number">1.1.</span> <span class="toc-text">常用类库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JSON%E5%BA%93"><span class="toc-number">1.1.2.</span> <span class="toc-text">JSON库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#org-json"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">org.json</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Jackson"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">Jackson</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Gson"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">Gson</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Fastjson"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">Fastjson</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lombok%E5%B7%A5%E5%85%B7%E5%BA%93%E7%94%A8%E6%9D%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.3.</span> <span class="toc-text">Lombok工具库用来解决什么问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lombok%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.4.</span> <span class="toc-text">Lombok基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Data"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">@Data</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#EqualsAndHashCode"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">@EqualsAndHashCode</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Slf4j"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">@Slf4j</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Accessors-chain-true"><span class="toc-number">1.1.4.4.</span> <span class="toc-text">@Accessors(chain &#x3D; true)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Builder"><span class="toc-number">1.1.4.5.</span> <span class="toc-text">@Builder</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%88%E5%A4%9A%E5%85%AC%E5%8F%B8%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8lombok%EF%BC%9F"><span class="toc-number">1.1.5.</span> <span class="toc-text">为什么很多公司禁止使用lombok？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MapStruct%E5%B7%A5%E5%85%B7%E5%BA%93%E7%94%A8%E6%9D%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.6.</span> <span class="toc-text">MapStruct工具库用来解决什么问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lombok%E5%92%8CMapStruct%E5%B7%A5%E5%85%B7%E5%BA%93%E7%9A%84%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="toc-number">1.1.7.</span> <span class="toc-text">Lombok和MapStruct工具库的原理？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E5%92%8C%E5%B7%A5%E5%85%B7"><span class="toc-number">1.2.</span> <span class="toc-text">网络协议和工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF754%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%EF%BC%9F"><span class="toc-number">1.2.1.</span> <span class="toc-text">什么是754层网络模型？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DNS-%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">DNS 解析流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFDNS%E5%8A%AB%E6%8C%81%EF%BC%9F"><span class="toc-number">1.2.3.</span> <span class="toc-text">什么是DNS劫持？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFDNS%E6%B1%A1%E6%9F%93%EF%BC%9F"><span class="toc-number">1.2.4.</span> <span class="toc-text">什么是DNS污染？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5URL-%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="toc-number">1.2.5.</span> <span class="toc-text">输入URL 到页面加载过程？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8"><span class="toc-number">1.3.</span> <span class="toc-text">开发安全</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E4%B8%AD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84Web%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E%EF%BC%9F"><span class="toc-number">1.3.1.</span> <span class="toc-text">开发中有哪些常见的Web安全漏洞？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-XSS"><span class="toc-number">1.3.2.</span> <span class="toc-text">什么是 XSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFCSRF"><span class="toc-number">1.3.3.</span> <span class="toc-text">什么是CSRF</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-number">1.4.</span> <span class="toc-text">单元测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E4%BD%A0%E5%AF%B9%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="toc-number">1.4.1.</span> <span class="toc-text">谈谈你对单元测试的理解？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E8%A6%81%E5%86%99%E5%A4%9A%E7%BB%86%EF%BC%9F"><span class="toc-number">1.4.2.</span> <span class="toc-text">单元测试要写多细？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%A0%E5%9C%A8%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%BB%80%E4%B9%88%E6%A1%86%E6%9E%B6%E6%9D%A5%E5%81%9A%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-number">1.4.3.</span> <span class="toc-text">你在开发中使用什么框架来做单元测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F"><span class="toc-number">1.5.</span> <span class="toc-text">代码质量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">开发框架和中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring"><span class="toc-number">2.1.</span> <span class="toc-text">Spring</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSpring%E6%A1%86%E6%9E%B6"><span class="toc-number">2.1.1.</span> <span class="toc-text">什么是Spring框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%97%E4%B8%BE%E4%B8%80%E4%BA%9B%E9%87%8D%E8%A6%81%E7%9A%84Spring%E6%A8%A1%E5%9D%97"><span class="toc-number">2.1.2.</span> <span class="toc-text">列举一些重要的Spring模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFIOC-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="toc-number">2.1.3.</span> <span class="toc-text">什么是IOC? 如何实现的？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0IOC"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">如何实现IOC</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E7%AE%80%E8%BF%B0"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">实现原理简述</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFAOP-%E6%9C%89%E5%93%AA%E4%BA%9BAOP%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%9F"><span class="toc-number">2.1.4.</span> <span class="toc-text">什么是AOP? 有哪些AOP的概念？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AOP-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="toc-number">2.1.5.</span> <span class="toc-text">AOP 有哪些应用场景？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9BAOP-Advice%E9%80%9A%E7%9F%A5%E7%9A%84%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="toc-number">2.1.6.</span> <span class="toc-text">有哪些AOP Advice通知的类型？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AOP-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-number">2.1.7.</span> <span class="toc-text">AOP 有哪些实现方式？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E4%BD%A0%E5%AF%B9CGLib%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="toc-number">2.1.8.</span> <span class="toc-text">谈谈你对CGLib的理解？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-AOP%E5%92%8CAspectJ-AOP%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">2.1.9.</span> <span class="toc-text">Spring AOP和AspectJ AOP有什么区别？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E4%B8%AD%E7%9A%84bean%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">2.1.10.</span> <span class="toc-text">Spring中的bean的作用域有哪些？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E4%B8%AD%E7%9A%84%E5%8D%95%E4%BE%8Bbean%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.11.</span> <span class="toc-text">Spring中的单例bean的线程安全问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E4%B8%AD%E7%9A%84bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%9F"><span class="toc-number">2.1.12.</span> <span class="toc-text">Spring中的bean生命周期？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E8%87%AA%E5%B7%B1%E5%AF%B9%E4%BA%8ESpring-MVC%E7%9A%84%E4%BA%86%E8%A7%A3"><span class="toc-number">2.1.13.</span> <span class="toc-text">说说自己对于Spring MVC的了解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-MVC%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.14.</span> <span class="toc-text">Spring MVC的工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E6%A1%86%E6%9E%B6%E4%B8%AD%E7%94%A8%E5%88%B0%E4%BA%86%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.1.15.</span> <span class="toc-text">Spring框架中用到了哪些设计模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BeanFactory%E5%92%8C-FactoryBean-%E5%8C%BA%E5%88%AB"><span class="toc-number">2.1.16.</span> <span class="toc-text">BeanFactory和 FactoryBean 区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Component%E5%92%8C-Bean%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.1.17.</span> <span class="toc-text">@Component和@Bean的区别是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%86%E4%B8%80%E4%B8%AA%E7%B1%BB%E5%A3%B0%E6%98%8E%E4%B8%BASpring%E7%9A%84bean%E7%9A%84%E6%B3%A8%E8%A7%A3%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-number">2.1.18.</span> <span class="toc-text">将一个类声明为Spring的bean的注解有哪些</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%87%A0%E7%A7%8D"><span class="toc-number">2.1.19.</span> <span class="toc-text">Spring事务管理的方式有几种</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86"><span class="toc-number">2.1.19.1.</span> <span class="toc-text">编程式事务管理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86"><span class="toc-number">2.1.19.2.</span> <span class="toc-text">声明式事务管理</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E4%BA%8B%E5%8A%A1%E4%B8%AD%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D"><span class="toc-number">2.1.20.</span> <span class="toc-text">Spring事务中的隔离级别有哪几种</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E4%BA%8B%E5%8A%A1%E4%B8%AD%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E8%A1%8C%E4%B8%BA"><span class="toc-number">2.1.21.</span> <span class="toc-text">Spring事务中有哪几种事务传播行为</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ApplicationContext-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.1.22.</span> <span class="toc-text">ApplicationContext 是什么</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Boot"><span class="toc-number">2.2.</span> <span class="toc-text">Spring Boot</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSpringBoot%EF%BC%9F"><span class="toc-number">2.2.1.</span> <span class="toc-text">什么是SpringBoot？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8SpringBoot"><span class="toc-number">2.2.2.</span> <span class="toc-text">为什么使用SpringBoot</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring%E3%80%81Spring-MVC%E5%92%8CSpringBoot%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">2.2.3.</span> <span class="toc-text">Spring、Spring MVC和SpringBoot有什么区别？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Spring-1"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">Spring</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Spring-MVC"><span class="toc-number">2.2.3.2.</span> <span class="toc-text">Spring MVC</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SpringBoot"><span class="toc-number">2.2.3.3.</span> <span class="toc-text">SpringBoot</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringBoot%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">2.2.4.</span> <span class="toc-text">SpringBoot自动配置的原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Boot%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3%E6%98%AF%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">2.2.5.</span> <span class="toc-text">Spring Boot的核心注解是哪些？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringBoot%E7%9A%84%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%9C%89%E5%93%AA%E5%87%A0%E4%B8%AA%EF%BC%9F%E4%BB%96%E4%BB%AC%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.2.6.</span> <span class="toc-text">SpringBoot的核心配置文件有哪几个？他们的区别是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSpring-Boot-Starter%EF%BC%9F%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%9A%84%EF%BC%9F"><span class="toc-number">2.2.7.</span> <span class="toc-text">什么是Spring Boot Starter？有哪些常用的？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-starter-parent%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-number">2.2.8.</span> <span class="toc-text">spring-boot-starter-parent有什么作用？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89Spring-Boot-Starter%EF%BC%9F"><span class="toc-number">2.2.9.</span> <span class="toc-text">如何自定义Spring Boot Starter？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81spring-boot-maven-plugin%EF%BC%9F"><span class="toc-number">2.2.10.</span> <span class="toc-text">为什么需要spring-boot-maven-plugin？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringBoot-%E6%89%93%E6%88%90jar%E5%92%8C%E6%99%AE%E9%80%9A%E7%9A%84jar%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">2.2.11.</span> <span class="toc-text">SpringBoot 打成jar和普通的jar有什么区别？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Spring-Boot%E5%AE%9E%E7%8E%B0%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-number">2.2.12.</span> <span class="toc-text">如何使用Spring Boot实现异常处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringBoot-%E5%AE%9E%E7%8E%B0%E7%83%AD%E9%83%A8%E7%BD%B2%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.13.</span> <span class="toc-text">SpringBoot 实现热部署有哪几种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#spring-boot-devtools"><span class="toc-number">2.2.13.1.</span> <span class="toc-text">spring-boot-devtools</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8IDEA%E7%AD%89%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.2.13.2.</span> <span class="toc-text">使用IDEA等集成开发环境的设置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Spring-Loaded"><span class="toc-number">2.2.13.3.</span> <span class="toc-text">Spring Loaded</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JRebel"><span class="toc-number">2.2.13.4.</span> <span class="toc-text">JRebel</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Boot%E4%B8%AD%E7%9A%84%E7%9B%91%E8%A7%86%E5%99%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.2.14.</span> <span class="toc-text">Spring Boot中的监视器是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Boot-%E5%8F%AF%E4%BB%A5%E5%85%BC%E5%AE%B9%E8%80%81-Spring-%E9%A1%B9%E7%9B%AE%E5%90%97%EF%BC%9F"><span class="toc-number">2.2.15.</span> <span class="toc-text">Spring Boot 可以兼容老 Spring 项目吗？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Security"><span class="toc-number">2.3.</span> <span class="toc-text">Spring Security</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSpring-Security%EF%BC%9F%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"><span class="toc-number">2.3.1.</span> <span class="toc-text">什么是Spring Security？核心功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Security%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">2.3.2.</span> <span class="toc-text">Spring Security的原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Security%E5%9F%BA%E4%BA%8E%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81%E7%9A%84%E8%AE%A4%E8%AF%81%E6%A8%A1%E5%BC%8F%E6%B5%81%E7%A8%8B"><span class="toc-number">2.3.3.</span> <span class="toc-text">Spring Security基于用户名和密码的认证模式流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis"><span class="toc-number">2.4.</span> <span class="toc-text">MyBatis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis-Plus"><span class="toc-number">2.5.</span> <span class="toc-text">MyBatis-Plus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6"><span class="toc-number">2.6.</span> <span class="toc-text">日志框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E5%92%8C%E6%97%A5%E5%BF%97%E9%97%A8%E9%9D%A2%EF%BC%9F%E5%88%86%E5%88%AB%E6%9C%89%E5%93%AA%E4%BA%9B%E6%A1%86%E6%9E%B6%EF%BC%9F"><span class="toc-number">2.6.1.</span> <span class="toc-text">什么是日志系统和日志门面？分别有哪些框架？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AE%E6%97%B6%E4%BC%9A%E8%80%83%E8%99%91%E5%93%AA%E4%BA%9B%E7%82%B9%EF%BC%9F"><span class="toc-number">2.6.2.</span> <span class="toc-text">在日志配置时会考虑哪些点？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9Java%E6%97%A5%E5%BF%97%E7%BB%84%E4%BB%B6%E9%80%89%E5%9E%8B%E7%9A%84%E5%BB%BA%E8%AE%AE"><span class="toc-number">2.6.3.</span> <span class="toc-text">对Java日志组件选型的建议</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tomcat"><span class="toc-number">2.7.</span> <span class="toc-text">Tomcat</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Tomcat-%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E7%9A%84%E8%AE%BE%E8%AE%A1%EF%BC%9F"><span class="toc-number">2.7.1.</span> <span class="toc-text">Tomcat 整体架构的设计？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tomcat-%E4%B8%80%E4%B8%AA%E8%AF%B7%E6%B1%82%E7%9A%84%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B%EF%BC%9F"><span class="toc-number">2.7.2.</span> <span class="toc-text">Tomcat 一个请求的处理流程？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tomcat-%E4%B8%ADExecutor"><span class="toc-number">2.7.3.</span> <span class="toc-text">Tomcat 中Executor?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tomcat-%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.7.4.</span> <span class="toc-text">Tomcat 中的设计模式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">开发工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Git"><span class="toc-number">3.1.</span> <span class="toc-text">Git</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="toc-number">4.</span> <span class="toc-text">微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Cloud"><span class="toc-number">4.1.</span> <span class="toc-text">Spring Cloud</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AE%E6%9C%8D%E5%8A%A1%EF%BC%9F%E8%B0%88%E8%B0%88%E4%BD%A0%E5%AF%B9%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="toc-number">4.1.1.</span> <span class="toc-text">什么是微服务？谈谈你对微服务的理解？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSpring-Cloud%EF%BC%9F"><span class="toc-number">4.1.2.</span> <span class="toc-text">什么是Spring Cloud？</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

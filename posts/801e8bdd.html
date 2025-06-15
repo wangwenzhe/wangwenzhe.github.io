@@ -1,0 +1,329 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Windows-cmd | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="参考https:&#x2F;&#x2F;sites.google.com&#x2F;site&#x2F;yao27bat&#x2F;home&#x2F;basic&#x2F;bat1 命令帮助通用方式xxx &#x2F;? 注意执行命令中路径包含空格，应该加上双引号”” 执行指定脚本1start xxx.bat  注意：脚本文件编码应该使用 utf-8 指定窗口名称-常用！！！1start cmd &#x2F;c &quot;title 名字XXX &amp;&amp; java -j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows-cmd">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/801e8bdd.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="参考https:&#x2F;&#x2F;sites.google.com&#x2F;site&#x2F;yao27bat&#x2F;home&#x2F;basic&#x2F;bat1 命令帮助通用方式xxx &#x2F;? 注意执行命令中路径包含空格，应该加上双引号”” 执行指定脚本1start xxx.bat  注意：脚本文件编码应该使用 utf-8 指定窗口名称-常用！！！1start cmd &#x2F;c &quot;title 名字XXX &amp;&amp; java -j">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2020-05-20T10:45:21.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.795Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="Windows">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/801e8bdd.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Windows-cmd',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Windows-cmd</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-05-20T10:45:21.000Z" title="发表于 2020-05-20 18:45:21">2020-05-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.795Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Windows/">Windows</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Windows/cmd/">cmd</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Windows-cmd"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://sites.google.com/site/yao27bat/home/basic/bat1">https://sites.google.com/site/yao27bat/home/basic/bat1</a></p>
+<h2 id="命令帮助"><a href="#命令帮助" class="headerlink" title="命令帮助"></a>命令帮助</h2><p>通用方式<code>xxx /?</code></p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>执行命令中路径包含空格，应该加上双引号””</p>
+<h2 id="执行指定脚本"><a href="#执行指定脚本" class="headerlink" title="执行指定脚本"></a>执行指定脚本</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start xxx.bat</span><br></pre></td></tr></table></figure>
+
+<p><code>注意：脚本文件编码应该使用 utf-8</code></p>
+<h2 id="指定窗口名称-常用！！！"><a href="#指定窗口名称-常用！！！" class="headerlink" title="指定窗口名称-常用！！！"></a>指定窗口名称-常用！！！</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start cmd /c &quot;title 名字XXX &amp;&amp; java -jar -Dfile.encoding=utf-8 C:\tongchuan\svn\emergency\jeecg-module-emergency-start\target\jeecg-module-emergency-start.jar&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><h3 id="当前目录内查找指定文件"><a href="#当前目录内查找指定文件" class="headerlink" title="当前目录内查找指定文件"></a>当前目录内查找指定文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; dir|findstr nginx</span><br><span class="line">------        2020/7/21     10:17           2966 nginx.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="拷贝文件到指定目录-批量查找拷贝"><a href="#拷贝文件到指定目录-批量查找拷贝" class="headerlink" title="拷贝文件到指定目录-批量查找拷贝"></a>拷贝文件到指定目录-批量查找拷贝</h3><blockquote>
+<p>从指定目录批量拷贝文件到指定目录</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">copy 1652057527584_1652057527585.pdf  D:\bak\1652057527584_1652057527585.pdf</span><br><span class="line">copy 1652057599024_1652057599024.pdf  D:\bak\1652057599024_1652057599024.pdf</span><br><span class="line">copy 1651917975647_1651917975647.pdf  D:\bak\1651917975647_1651917975647.pdf</span><br><span class="line">copy 1652057674546_1652057674546.pdf  D:\bak\1652057674546_1652057674546.pdf</span><br><span class="line">copy 1652057741740_1652057741741.pdf  D:\bak\1652057741740_1652057741741.pdf</span><br><span class="line">copy 1652057802243_1652057802243.pdf  D:\bak\1652057802243_1652057802243.pdf</span><br><span class="line">copy 1652057850762_1652057850762.pdf  D:\bak\1652057850762_1652057850762.pdf</span><br><span class="line">copy 1652057902542_1652057902542.pdf  D:\bak\1652057902542_1652057902542.pdf</span><br><span class="line">copy 1652061047669_1652061047669.pdf  D:\bak\1652061047669_1652061047669.pdf</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除指定目录"><a href="#删除指定目录" class="headerlink" title="删除指定目录"></a>删除指定目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 删除一个空目录</span><br><span class="line">rmdir download</span><br><span class="line"></span><br><span class="line">// /s 删除一个非空目录，/q 不需要确认</span><br><span class="line">rmdir /s/q temps</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除指定目录下模糊匹配的文件"><a href="#删除指定目录下模糊匹配的文件" class="headerlink" title="删除指定目录下模糊匹配的文件"></a>删除指定目录下模糊匹配的文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del /F/S/Q &quot;C:\Users\Administrator\AppData\Roaming\Scooter Software\Beyond Compare 4\BCState.*&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除指定路径下-N-天前文件"><a href="#删除指定路径下-N-天前文件" class="headerlink" title="删除指定路径下 N 天前文件"></a>删除指定路径下 N 天前文件</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hzfw2008/article/details/77744304s">https://blog.csdn.net/hzfw2008/article/details/77744304s</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m516387177/article/details/83025123?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-2">https://blog.csdn.net/m516387177/article/details/83025123?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-2</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rem 90 天以前文件删除</span><br><span class="line">set DaysAgo=90</span><br><span class="line"></span><br><span class="line">rem 设置删除文件所在路径</span><br><span class="line">set LogPath=C:\test\</span><br><span class="line"></span><br><span class="line">rem /p指定搜索文件的路径  /s 在子目录中搜索  /m 指定格式，默认为*.*   /d  选择日期（+大于 - 小于）   /c 指定执行的命令   rem del /f 强制删除  /q 不询问是否删除   /a 按指定属性删除</span><br><span class="line"></span><br><span class="line">forfiles /p %LogPath% /m *.dmp /d -%DaysAgo% /c &quot;cmd /c del /q @FILE &amp;&amp; echo @FILE &amp;&amp; echo %date:~0,4%%date:~5,2%%date:~8,2%%time:~0,2%%time:~3,2%%time:~6,2%&quot; &gt;&gt; delete_old_backup.log</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建文件夹「如果不存在」"><a href="#创建文件夹「如果不存在」" class="headerlink" title="创建文件夹「如果不存在」"></a>创建文件夹「如果不存在」</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if not exist foldername (mkdir foldername)</span><br></pre></td></tr></table></figure>
+
+<h3 id="拷贝文件夹「包含子文件夹」"><a href="#拷贝文件夹「包含子文件夹」" class="headerlink" title="拷贝文件夹「包含子文件夹」"></a>拷贝文件夹「包含子文件夹」</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set sourcefolder=C:\Tomcat8.0.53\webapps\xxx</span><br><span class="line">set bakfolder=C:\Tomcat8.0.53\bak\%date:~0,4%%date:~5,2%%date:~8,2%\xxx</span><br><span class="line">if not exist %bakfolder% (mkdir %bakfolder%)</span><br><span class="line">xcopy %sourcefolder% %bakfolder% /e</span><br></pre></td></tr></table></figure>
+
+<h2 id="关机"><a href="#关机" class="headerlink" title="关机"></a>关机</h2><ul>
+<li><p>关机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -f -s </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shutdown -f -r</span><br><span class="line"></span><br><span class="line">// 推荐。其中，-r 表示重启，-f 表示强制关闭正在运行的程序，-t 0 表示立即重启</span><br><span class="line">shutdown.exe -r -f -t 0</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="进程「查看、杀死」"><a href="#进程「查看、杀死」" class="headerlink" title="进程「查看、杀死」"></a>进程「查看、杀死」</h2><ul>
+<li><p>查看所有进程</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据名称查看进程</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist | findstr java</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据端口号查看进程</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano  | findstr 8080</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据进程PID，杀死该进程</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">强制（/F参数）杀死 pid 为 9088 的所有进程包括子进程（/T参数）：</span></span><br><span class="line">taskkill /T /F /PID 9088 </span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>根据指定端口号，杀死进程</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//根据端口，关闭进程</span><br><span class="line">@echo off</span><br><span class="line">set port=8080</span><br><span class="line">for /f &quot;tokens=1-5&quot; %%i in (&#x27;netstat -ano^|findstr &quot;:%port%&quot;&#x27;) do (</span><br><span class="line">    echo kill the process %%m who use the port %port%</span><br><span class="line">    taskkill /pid %%m</span><br><span class="line">)</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>脚本「输入端口号，杀死指定 PID 进程」</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>   /p  port=<span class="string">&quot;please input port:&quot;</span> </span><br><span class="line">netstat -ano|findstr %port%</span><br><span class="line"><span class="built_in">set</span>   /p  pid=<span class="string">&quot;please input pid:&quot;</span> </span><br><span class="line">taskkill /PID %pid% /F</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>   /p  port=<span class="string">&quot;please input port:&quot;</span> </span><br><span class="line">netstat -ano|findstr %port%</span><br><span class="line"><span class="built_in">set</span>   /p  pid=<span class="string">&quot;please input pid:&quot;</span> </span><br><span class="line">taskkill /PID %pid% /F</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="根据端口杀死进程-批量脚本"><a href="#根据端口杀死进程-批量脚本" class="headerlink" title="根据端口杀死进程-批量脚本"></a>根据端口杀死进程-批量脚本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off &amp; setlocal EnableDelayedExpansion</span><br><span class="line"></span><br><span class="line">title 杀死端口</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> %%a <span class="keyword">in</span> (6340,6330,1010,6301,6001) <span class="keyword">do</span> (</span><br><span class="line">    <span class="built_in">set</span> pid=0</span><br><span class="line">    <span class="keyword">for</span> /f <span class="string">&quot;tokens=2,5&quot;</span> %%b <span class="keyword">in</span> (<span class="string">&#x27;netstat -ano ^| findstr &quot;:%%a&quot;&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">        <span class="built_in">set</span> temp=%%b</span><br><span class="line">        <span class="keyword">for</span> /f <span class="string">&quot;usebackq delims=: tokens=1,2&quot;</span> %%i <span class="keyword">in</span> (`<span class="built_in">set</span> temp`) <span class="keyword">do</span> (</span><br><span class="line">            <span class="keyword">if</span> %%j==%%a (</span><br><span class="line">                taskkill /f /pid %%c</span><br><span class="line">                <span class="built_in">set</span> pid=%%c</span><br><span class="line">                <span class="built_in">echo</span> 端口号【%%a】相关进程以杀死</span><br><span class="line">            ) <span class="keyword">else</span> (</span><br><span class="line">                <span class="built_in">echo</span> 不是本机占用端口【%%a】</span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">if</span> !pid!==0 (</span><br><span class="line">       <span class="built_in">echo</span> 端口号【%%a】没有占用</span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> 操作完成</span><br><span class="line"></span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<h3 id="windows-中批量杀死-Nginx-进程"><a href="#windows-中批量杀死-Nginx-进程" class="headerlink" title="windows 中批量杀死 Nginx 进程"></a>windows 中批量杀死 Nginx 进程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill /fi &quot;imagename eq nginx.exe&quot; /f</span><br></pre></td></tr></table></figure>
+
+<h2 id="任务计划"><a href="#任务计划" class="headerlink" title="任务计划"></a>任务计划</h2><p><a target="_blank" rel="noopener" href="https://sites.google.com/site/yao27bat/home/basic/win7_schtasks">https://sites.google.com/site/yao27bat/home/basic/win7_schtasks</a></p>
+<p><code>schtasks /?</code></p>
+<h3 id="创建任务"><a href="#创建任务" class="headerlink" title="创建任务"></a>创建任务</h3><p>执行程序必须为绝对路径，示例<code>c:\apps\myapp.bat</code></p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create </span><br><span class="line">/tn TaskName ：任务的名称</span><br><span class="line"></span><br><span class="line">/tr TaskRun ：任务运行的程序或命令，正确的路径和文件名</span><br><span class="line"></span><br><span class="line">/sc schedule ：有效值为 MINUTE、HOURLY、DAILY、WEEKLY、MONTHLY、ONCE、ONSTART、ONLOGON、ONIDLE</span><br><span class="line"></span><br><span class="line">[/mo modifier] ：运行频率。这个参数对于 MONTHLY 计划是必需的。对于 MINUTE、HOURLY、DAILY 或 WEEKLY 计划，这个参数有效，但也可选。默认值为 1</span><br><span class="line"></span><br><span class="line">[/d day] ：指定周或月的一天。只与 WEEKLY 或 MONTHLY 计划共同使用时有效</span><br><span class="line"></span><br><span class="line">[/m month[,month...] ：指定一年中的一个月。有效值是 JAN ～ DEC 和 * （每个月）。/m 参数只对于 MONTHLY 计划有效。在使用 LASTDAY 修饰符时，这个参数是必需的。否则，它是可选的，默认值是 * （每个月）</span><br><span class="line"></span><br><span class="line">[/i IdleTime] ：指定任务启动之前计算机空闲多少分钟。键入一个 1 ～ 999 之间的整数。这个参数只对于 ONIDLE 计划有效，而且是必需的</span><br><span class="line"></span><br><span class="line">[/st StartTime] ：以 HH:MM:SS 24 小时格式指定时间。默认值是命令完成时的当前本地时间。/st 参数只对于 MINUTE、HOURLY、DAILY、WEEKLY、MONTHLY 和 ONCE 计划有效。它只对于 ONCE 计划是必需的</span><br><span class="line"></span><br><span class="line">[/sd StartDate] ：以 MM/DD/YYYY 格式指定任务启动的日期。默认值是当前日期。/sd 参数对于所有的计划有效，但只对于 ONCE 计划是必需的</span><br><span class="line"></span><br><span class="line">[/ed EndDate] ：指定任务计划运行的最后日期。此参数是可选的。它对于 ONCE、ONSTART、ONLOGON 或 ONIDLE 计划无效。默认情况下，计划没有结束日期</span><br><span class="line"></span><br><span class="line">[/s computer [/u [domain\]user/p password]] ：</span><br><span class="line">指定远程计算机的名称或 IP 地址（带有或者没有反斜杠）。默认值是本地计算机</span><br><span class="line">使用特定用户帐户的权限运行命令。默认情况下，使用已登录到运行 SchTasks 的计算机上的用户的权限运行命令</span><br><span class="line">指定在 /u 参数中指定的用户帐户的密码。如果使用 /u 参数，则需要该参数</span><br><span class="line"></span><br><span class="line">[/ru &#123;[Domain\]User | &quot;System&quot;&#125; </span><br><span class="line">使用指定用户帐户的权限运行任务。默认情况下，使用用户登录到运行 SchTasks 的计算机上的权限运行任务</span><br><span class="line"></span><br><span class="line">[/rp Password]] /?</span><br><span class="line">指定用户帐户的密码，该用户帐户在 /u 参数中指定。如果在指定用户帐户的时候忽略了这个参数，SchTasks.exe 会提示您输入密码而且不显示键入的文本。使用 NT Authority\System 帐户权限运行的任务不需要密码，SchTasks.exe 也不会提示索要密码。</span><br></pre></td></tr></table></figure>
+
+<h4 id="范例"><a href="#范例" class="headerlink" title="范例"></a>范例</h4><ol>
+<li><p><strong>计划任务每 20 分钟运行一次</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /sc minute /mo 20 /tn &quot;Security Script&quot; /tr \\central\data\scripts\sec.vbs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>计划任务每天运行一次</strong>，在每天的 8:00 A.M. 运行一次，直到 2001 年 12 月 31 日结束</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc daily /st 08:00:00 /ed 12/31/2001</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>计划任务每隔一天运行一次</strong>，从 2001 年 12 月 31 日起每隔一天在 1:00 P.M. (13:00) 运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc daily /mo 2 /st 13:00:00 /sd 12/31/2001</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>计划任务每六周运行一次</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc weekly /mo 6 /s Server16 /ru Admin01</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>计划任务在每月的第一天运行</strong>，每月的第一天运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc monthly</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>计划任务在每月的最后一天运行</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc monthly /mo lastday /m *</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>计划任务在每次系统启动的时候运行</strong>，每次系统启动的时候运行，起始日期是 2001 年 3 月 15 日</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc onstart /sd 03/15/2001</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>每天每隔 5 分钟执行一次</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/image-20200822081722064.png" alt="image-20200822081722064" style="zoom:50%;" />
+
+<h3 id="查看任务"><a href="#查看任务" class="headerlink" title="查看任务"></a>查看任务</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /Query|findstr taskname</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除任务"><a href="#删除任务" class="headerlink" title="删除任务"></a>删除任务</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /Delete /TN taskname</span><br></pre></td></tr></table></figure>
+
+<h3 id="执行时如何隐藏-cmd-窗口"><a href="#执行时如何隐藏-cmd-窗口" class="headerlink" title="执行时如何隐藏 cmd 窗口"></a>执行时如何隐藏 cmd 窗口</h3><ul>
+<li><p>最小化</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">/min 最小化</span></span><br><span class="line">start /min D:\xxx\start.bat</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="窗口控制"><a href="#窗口控制" class="headerlink" title="窗口控制"></a>窗口控制</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cmd /c dir 是执行完dir命令后关闭命令窗口.</span><br><span class="line">cmd /k dir 是执行完dir命令后不关闭命令窗口.</span><br><span class="line">cmd /c start dir 会打开一个新窗口后执行dir指令, 原窗口会关闭.</span><br><span class="line">cmd /k start dir 会打开一个新窗口后执行dir指令, 原窗口不会关闭.</span><br></pre></td></tr></table></figure>
+
+<h2 id="应用程序"><a href="#应用程序" class="headerlink" title="应用程序"></a>应用程序</h2><p>一个应用可能存在多个进程</p>
+<h3 id="查看正在运行的程序"><a href="#查看正在运行的程序" class="headerlink" title="查看正在运行的程序"></a>查看正在运行的程序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist|findstr chrome</span><br></pre></td></tr></table></figure>
+
+<h3 id="杀死指定程序"><a href="#杀死指定程序" class="headerlink" title="杀死指定程序"></a>杀死指定程序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill /f /im chrome.exe</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>根据 pid 杀死进程，有时候一个应用有多个 pid 进程，则需要执行多次</p>
+</blockquote>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><ol>
+<li><p>查看所有环境变量</p>
+<p><strong>set 命令使用简介</strong><a target="_blank" rel="noopener" href="https://blog.csdn.net/livelylittlefish/article/details/6093836">https://blog.csdn.net/livelylittlefish/article/details/6093836</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看指定环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set 变量名</span><br><span class="line"></span><br><span class="line">示例</span><br><span class="line">C:\Users\Administrator&gt;set JAVA_HOME</span><br><span class="line">JAVA_HOME=D:\Program Files\Java\jdk1.8.0_191</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set 变量名=变量值</span><br><span class="line"></span><br><span class="line">示例</span><br><span class="line">set oracle_sid=orcl</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h2><h3 id="获取本机全部用户"><a href="#获取本机全部用户" class="headerlink" title="获取本机全部用户"></a>获取本机全部用户</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">echo 本机上拥有以下用户：</span><br><span class="line">echo.</span><br><span class="line">for /f &quot;skip=4 tokens=1-3&quot; %%i in (&#x27;net user&#x27;) do (</span><br><span class="line">    if not &quot;%%i&quot;==&quot;命令成功完成。&quot; echo %%i</span><br><span class="line">    if not &quot;%%j&quot;==&quot;&quot; echo %%j</span><br><span class="line">    if not &quot;%%k&quot;==&quot;&quot; echo %%k</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="当前用户"><a href="#当前用户" class="headerlink" title="当前用户"></a>当前用户</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 当前登录本机的账户是：%username%</span><br></pre></td></tr></table></figure>
+
+<h2 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h2><h3 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo %date%</span><br><span class="line"></span><br><span class="line">2020/05/20 周三</span><br></pre></td></tr></table></figure>
+
+<h3 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo %time%</span><br><span class="line"></span><br><span class="line">19:27:29.36</span><br></pre></td></tr></table></figure>
+
+<h3 id="日期-时间"><a href="#日期-时间" class="headerlink" title="日期+时间"></a>日期+时间</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo %date%%time%</span><br><span class="line">2020/05/20 周三19:25:57.93</span><br></pre></td></tr></table></figure>
+
+<h3 id="日期-时间「yyyymmddhhmmss」"><a href="#日期-时间「yyyymmddhhmmss」" class="headerlink" title="日期+时间「yyyymmddhhmmss」"></a>日期+时间「yyyymmddhhmmss」</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo %date:~0,4%%date:~5,2%%date:~8,2%%time:~0,2%%time:~3,2%%time:~6,2%</span><br><span class="line"></span><br><span class="line">20200520192815</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/801e8bdd.html">https://wangwenzhe.github.io/posts/801e8bdd.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Windows/">Windows</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/a773e05e.html" title="HBuilderX"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">HBuilderX</div></div></a></div><div class="next-post pull-right"><a href="/posts/6cb6906b.html" title="Fastjson"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Fastjson</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/20e8a7f3.html" title="Windows安装emqx"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-23</div><div class="title">Windows安装emqx</div></div></a></div><div><a href="/posts/b0e9b234.html" title="Windows-AutoIt3-自动化脚本"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-19</div><div class="title">Windows-AutoIt3-自动化脚本</div></div></a></div><div><a href="/posts/6f4a6ad9.html" title="Windows精选软件"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-31</div><div class="title">Windows精选软件</div></div></a></div><div><a href="/posts/4540715a.html" title="Windows-禁止访问指定域名或ip地址"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-28</div><div class="title">Windows-禁止访问指定域名或ip地址</div></div></a></div><div><a href="/posts/fc910c42.html" title="Windows-IIS"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-03</div><div class="title">Windows-IIS</div></div></a></div><div><a href="/posts/734bcb48.html" title="Windows-ping测试"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-03</div><div class="title">Windows-ping测试</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E5%B8%AE%E5%8A%A9"><span class="toc-number">2.</span> <span class="toc-text">命令帮助</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">3.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%8C%87%E5%AE%9A%E8%84%9A%E6%9C%AC"><span class="toc-number">4.</span> <span class="toc-text">执行指定脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E7%AA%97%E5%8F%A3%E5%90%8D%E7%A7%B0-%E5%B8%B8%E7%94%A8%EF%BC%81%EF%BC%81%EF%BC%81"><span class="toc-number">5.</span> <span class="toc-text">指定窗口名称-常用！！！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E5%86%85%E6%9F%A5%E6%89%BE%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6"><span class="toc-number">6.1.</span> <span class="toc-text">当前目录内查找指定文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95-%E6%89%B9%E9%87%8F%E6%9F%A5%E6%89%BE%E6%8B%B7%E8%B4%9D"><span class="toc-number">6.2.</span> <span class="toc-text">拷贝文件到指定目录-批量查找拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95"><span class="toc-number">6.3.</span> <span class="toc-text">删除指定目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">6.4.</span> <span class="toc-text">删除指定目录下模糊匹配的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E8%B7%AF%E5%BE%84%E4%B8%8B-N-%E5%A4%A9%E5%89%8D%E6%96%87%E4%BB%B6"><span class="toc-number">6.5.</span> <span class="toc-text">删除指定路径下 N 天前文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%8C%E5%A6%82%E6%9E%9C%E4%B8%8D%E5%AD%98%E5%9C%A8%E3%80%8D"><span class="toc-number">6.6.</span> <span class="toc-text">创建文件夹「如果不存在」</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%8C%E5%8C%85%E5%90%AB%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%8D"><span class="toc-number">6.7.</span> <span class="toc-text">拷贝文件夹「包含子文件夹」</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E6%9C%BA"><span class="toc-number">7.</span> <span class="toc-text">关机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E3%80%8C%E6%9F%A5%E7%9C%8B%E3%80%81%E6%9D%80%E6%AD%BB%E3%80%8D"><span class="toc-number">8.</span> <span class="toc-text">进程「查看、杀死」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E7%AB%AF%E5%8F%A3%E6%9D%80%E6%AD%BB%E8%BF%9B%E7%A8%8B-%E6%89%B9%E9%87%8F%E8%84%9A%E6%9C%AC"><span class="toc-number">9.</span> <span class="toc-text">根据端口杀死进程-批量脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#windows-%E4%B8%AD%E6%89%B9%E9%87%8F%E6%9D%80%E6%AD%BB-Nginx-%E8%BF%9B%E7%A8%8B"><span class="toc-number">9.1.</span> <span class="toc-text">windows 中批量杀死 Nginx 进程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E8%AE%A1%E5%88%92"><span class="toc-number">10.</span> <span class="toc-text">任务计划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%BB%E5%8A%A1"><span class="toc-number">10.1.</span> <span class="toc-text">创建任务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">10.1.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8C%83%E4%BE%8B"><span class="toc-number">10.1.2.</span> <span class="toc-text">范例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">10.2.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BB%BB%E5%8A%A1"><span class="toc-number">10.3.</span> <span class="toc-text">查看任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E4%BB%BB%E5%8A%A1"><span class="toc-number">10.4.</span> <span class="toc-text">删除任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%97%B6%E5%A6%82%E4%BD%95%E9%9A%90%E8%97%8F-cmd-%E7%AA%97%E5%8F%A3"><span class="toc-number">10.5.</span> <span class="toc-text">执行时如何隐藏 cmd 窗口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E6%8E%A7%E5%88%B6"><span class="toc-number">11.</span> <span class="toc-text">窗口控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="toc-number">12.</span> <span class="toc-text">应用程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%AD%A3%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="toc-number">12.1.</span> <span class="toc-text">查看正在运行的程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%80%E6%AD%BB%E6%8C%87%E5%AE%9A%E7%A8%8B%E5%BA%8F"><span class="toc-number">12.2.</span> <span class="toc-text">杀死指定程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">13.</span> <span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7"><span class="toc-number">14.</span> <span class="toc-text">用户</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BA%E5%85%A8%E9%83%A8%E7%94%A8%E6%88%B7"><span class="toc-number">14.1.</span> <span class="toc-text">获取本机全部用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7"><span class="toc-number">14.2.</span> <span class="toc-text">当前用户</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4"><span class="toc-number">15.</span> <span class="toc-text">日期和时间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F"><span class="toc-number">15.1.</span> <span class="toc-text">日期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4"><span class="toc-number">15.2.</span> <span class="toc-text">时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F-%E6%97%B6%E9%97%B4"><span class="toc-number">15.3.</span> <span class="toc-text">日期+时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F-%E6%97%B6%E9%97%B4%E3%80%8Cyyyymmddhhmmss%E3%80%8D"><span class="toc-number">15.4.</span> <span class="toc-text">日期+时间「yyyymmddhhmmss」</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

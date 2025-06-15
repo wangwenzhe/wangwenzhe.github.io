@@ -1,0 +1,418 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linux | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="系统下载CentOS:https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;centos&#x2F;7&#x2F;isos&#x2F;x86_64&#x2F;CentOS-7-x86_64-NetInstall-2009.iso?spm&#x3D;a2c6h.25603864.0.0.74092d1c5VBGBd RPM资源下载http:&#x2F;&#x2F;www.rpmfind.net&#x2F;linux&#x2F;rpm2html&#x2F;search.php?query&#x3D;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/53d0684b.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="系统下载CentOS:https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;centos&#x2F;7&#x2F;isos&#x2F;x86_64&#x2F;CentOS-7-x86_64-NetInstall-2009.iso?spm&#x3D;a2c6h.25603864.0.0.74092d1c5VBGBd RPM资源下载http:&#x2F;&#x2F;www.rpmfind.net&#x2F;linux&#x2F;rpm2html&#x2F;search.php?query&#x3D;&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2019-06-03T12:16:41.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.737Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/53d0684b.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-06-03T12:16:41.000Z" title="发表于 2019-06-03 20:16:41">2019-06-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.737Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="系统下载"><a href="#系统下载" class="headerlink" title="系统下载"></a>系统下载</h2><p>CentOS:<a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/centos/7/isos/x86_64/CentOS-7-x86_64-NetInstall-2009.iso?spm=a2c6h.25603864.0.0.74092d1c5VBGBd">https://mirrors.aliyun.com/centos/7/isos/x86_64/CentOS-7-x86_64-NetInstall-2009.iso?spm=a2c6h.25603864.0.0.74092d1c5VBGBd</a></p>
+<h2 id="RPM资源下载"><a href="#RPM资源下载" class="headerlink" title="RPM资源下载"></a>RPM资源下载</h2><p><a target="_blank" rel="noopener" href="http://www.rpmfind.net/linux/rpm2html/search.php?query=&submit=Search+...&system=&arch=">http://www.rpmfind.net/linux/rpm2html/search.php?query=&amp;submit=Search+...&amp;system=&amp;arch=</a></p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>参考 <a target="_blank" rel="noopener" href="https://wangchujiang.com/linux-command/">https://wangchujiang.com/linux-command/</a></p>
+<h3 id="查看系统版本"><a href="#查看系统版本" class="headerlink" title="查看系统版本"></a>查看系统版本</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/version</span><br><span class="line">uname -a</span><br><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+
+<h3 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /software</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拷贝指定服务器指定目录拷贝到当前目录下</span></span><br><span class="line">scp -r root@192.168.1.33:/software/fast-zhzf2 ./</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看-IP"><a href="#查看-IP" class="headerlink" title="查看 IP"></a>查看 IP</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip add show</span><br></pre></td></tr></table></figure>
+
+<h3 id="ssh-连接"><a href="#ssh-连接" class="headerlink" title="ssh 连接"></a>ssh 连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh 账号@ip</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看-Linux-发行版名称和版本号"><a href="#查看-Linux-发行版名称和版本号" class="headerlink" title="查看 Linux 发行版名称和版本号"></a>查看 Linux 发行版名称和版本号</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/os-release</span><br><span class="line"></span><br><span class="line">/etc/*-release 文件</span><br><span class="line"></span><br><span class="line">uname 命令</span><br><span class="line"></span><br><span class="line">/proc/version 文件</span><br><span class="line"></span><br><span class="line">dmesg 命令</span><br><span class="line"></span><br><span class="line">YUM 或 DNF 命令</span><br><span class="line"></span><br><span class="line">RPM 命令</span><br><span class="line"></span><br><span class="line">APT-GET 命令</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看端口占用并杀死进程"><a href="#查看端口占用并杀死进程" class="headerlink" title="查看端口占用并杀死进程"></a>查看端口占用并杀死进程</h3><ul>
+<li><p>netstat 命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -an | grep 3306</span><br></pre></td></tr></table></figure>
+
+<p>3306 替换成需要 grep 的端口号</p>
+</li>
+<li><p>lsof 命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:80</span><br><span class="line"></span><br><span class="line">lsof -i tcp:80</span><br><span class="line"></span><br><span class="line">lsof -i tcp:8080</span><br><span class="line">kill -9 PID</span><br></pre></td></tr></table></figure>
+
+<p>-i 参数表示网络链接，:80 指明端口号</p>
+</li>
+<li><p>查看所有进程监听的端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo lsof -i -P | grep -i listen</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据端口号杀死进程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 `lsof -t -i:8888`</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="统计命令耗时"><a href="#统计命令耗时" class="headerlink" title="统计命令耗时"></a>统计命令耗时</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">time command</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">time curl https://www.baidu.com</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">curl https://www.baidu.com  0.03s user 0.03s system 31% cpu 0.182 total</span><br></pre></td></tr></table></figure>
+
+<h3 id="统计指定目录文件内容总行数"><a href="#统计指定目录文件内容总行数" class="headerlink" title="统计指定目录文件内容总行数"></a>统计指定目录文件内容总行数</h3><ol>
+<li><p>包含空行、注释</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*.java&quot;|xargs cat|wc -l</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>去除空行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*.java&quot;|xargs cat|grep -v ^$|wc -l</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="获取文件夹下的文件名"><a href="#获取文件夹下的文件名" class="headerlink" title="获取文件夹下的文件名"></a>获取文件夹下的文件名</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">get all filename <span class="keyword">in</span> specified path</span></span><br><span class="line"></span><br><span class="line">path=$1</span><br><span class="line">files=$(ls $path)</span><br><span class="line">for filename in $files</span><br><span class="line">do</span><br><span class="line">   echo $filename &gt;&gt; filename.txt</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取内存总大小"><a href="#获取内存总大小" class="headerlink" title="获取内存总大小"></a>获取内存总大小</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep MemTotal /proc/meminfo </span><br></pre></td></tr></table></figure>
+
+<h3 id="获取交换分区大小"><a href="#获取交换分区大小" class="headerlink" title="获取交换分区大小"></a>获取交换分区大小</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep SwapTotal /proc/meminfo</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看-tomcat-进程打开文件数量"><a href="#查看-tomcat-进程打开文件数量" class="headerlink" title="查看 tomcat 进程打开文件数量"></a>查看 tomcat 进程打开文件数量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">查看进程 pid：</span><br><span class="line">ps aux|grep tomcat</span><br><span class="line"></span><br><span class="line">根据 pid 查看打开文件数量：</span><br><span class="line">lsof -p pid|wc -l</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看目录下文件或目录个数"><a href="#查看目录下文件或目录个数" class="headerlink" title="查看目录下文件或目录个数"></a>查看目录下文件或目录个数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l|wc -l</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看磁盘空间分配情况"><a href="#查看磁盘空间分配情况" class="headerlink" title="查看磁盘空间分配情况"></a>查看磁盘空间分配情况</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h </span><br></pre></td></tr></table></figure>
+
+<h3 id="查看当前目录下各目录大小"><a href="#查看当前目录下各目录大小" class="headerlink" title="查看当前目录下各目录大小"></a>查看当前目录下各目录大小</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -sh * </span><br></pre></td></tr></table></figure>
+
+<h3 id="查看当前目录下每个子目录的文件数量"><a href="#查看当前目录下每个子目录的文件数量" class="headerlink" title="查看当前目录下每个子目录的文件数量"></a>查看当前目录下每个子目录的文件数量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -maxdepth 1 -type d | while read dir; do count=$(find &quot;$dir&quot; -type f | wc -l); echo &quot;$dir : $count&quot;; done</span><br></pre></td></tr></table></figure>
+
+<h3 id="路径名中含空格"><a href="#路径名中含空格" class="headerlink" title="路径名中含空格"></a>路径名中含空格</h3><ul>
+<li>使用转义字符 \</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /Users/mac126/Library/Application\ Support/Beyond\ Compare/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>加双引号 “” 或 单引号’’</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls /Users/mac126/Library/&quot;Application Support&quot;/&quot;Beyond Compare&quot;/</span><br><span class="line"></span><br><span class="line">ls /Users/mac126/Library/&#x27;Application Support&#x27;/&#x27;Beyond Compare&#x27;/</span><br></pre></td></tr></table></figure>
+
+<h3 id="时间校准"><a href="#时间校准" class="headerlink" title="时间校准"></a>时间校准</h3><ol>
+<li>安装 ntpdate，执行以下命令<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install ntpdate -y</span><br></pre></td></tr></table></figure></li>
+<li>手工同步网络时间，执行以下命令，将从 time.nist.gov 同步时间<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ntpdate 0.asia.pool.ntp.org</span><br><span class="line"></span><br><span class="line">若上面的时间服务器不可用，也可以选择以下服务器同步时间</span><br><span class="line"></span><br><span class="line">　　time.nist.gov</span><br><span class="line"></span><br><span class="line">　　time.nuri.net</span><br><span class="line"></span><br><span class="line">　　0.asia.pool.ntp.org</span><br><span class="line"></span><br><span class="line">　　1.asia.pool.ntp.org</span><br><span class="line"></span><br><span class="line">　　2.asia.pool.ntp.org</span><br><span class="line"></span><br><span class="line">　　3.asia.pool.ntp.org</span><br></pre></td></tr></table></figure></li>
+<li>使用 crontab 计划任务定时更新网络时间，修改 crontab 文件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/crontab</span><br><span class="line"></span><br><span class="line">* */1 * * * ntpdate 0.asia.pool.ntp.org //在末尾增加,每隔1小时同步一次时间。</span><br></pre></td></tr></table></figure>
+<p>4) 使用 date 命令查看当前时间</p>
+<p>5) 系统时间同步到硬件，防止系统重启后时间呗还原</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hwclock --systohc</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="防火墙设置「CentOS」"><a href="#防火墙设置「CentOS」" class="headerlink" title="防火墙设置「CentOS」"></a>防火墙设置「CentOS」</h2><p><strong>修改配置后要重启防火墙</strong></p>
+<h3 id="查看-firewall-服务状态"><a href="#查看-firewall-服务状态" class="headerlink" title="查看 firewall 服务状态"></a>查看 firewall 服务状态</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl status firewalld</span><br><span class="line"></span><br><span class="line">出现Active: active (running)切高亮显示则表示是启动状态</span><br><span class="line">出现 Active: inactive (dead)灰色表示停止</span><br></pre></td></tr></table></figure>
+
+<h3 id="关闭防火墙命令"><a href="#关闭防火墙命令" class="headerlink" title="关闭防火墙命令"></a>关闭防火墙命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#centos7</span><br><span class="line">systemctl stop firewalld.service</span><br><span class="line"></span><br><span class="line">#以下为：centOS 6.5关闭防火墙步骤</span><br><span class="line">#关闭命令：  </span><br><span class="line">service iptables stop </span><br><span class="line">#永久关闭防火墙：</span><br><span class="line">chkconfig iptables off</span><br></pre></td></tr></table></figure>
+<h3 id="开启防火墙"><a href="#开启防火墙" class="headerlink" title="开启防火墙"></a>开启防火墙</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start firewalld.service</span><br></pre></td></tr></table></figure>
+<h3 id="关闭开机自启动"><a href="#关闭开机自启动" class="headerlink" title="关闭开机自启动"></a>关闭开机自启动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure>
+<h3 id="开启开机启动"><a href="#开启开机启动" class="headerlink" title="开启开机启动"></a>开启开机启动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable firewalld.service</span><br></pre></td></tr></table></figure>
+<h3 id="查看-firewall-的状态"><a href="#查看-firewall-的状态" class="headerlink" title="查看 firewall 的状态"></a>查看 firewall 的状态</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --state</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看防火墙规则"><a href="#查看防火墙规则" class="headerlink" title="查看防火墙规则"></a>查看防火墙规则</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-all </span><br></pre></td></tr></table></figure>
+
+<h3 id="查询端口是否开放"><a href="#查询端口是否开放" class="headerlink" title="查询端口是否开放"></a>查询端口是否开放</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --query-port=8080/tcp</span><br></pre></td></tr></table></figure>
+
+<h3 id="iptables-配置文件"><a href="#iptables-配置文件" class="headerlink" title="iptables 配置文件"></a>iptables 配置文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
+
+<h3 id="开放-80-端口"><a href="#开放-80-端口" class="headerlink" title="开放 80 端口"></a>开放 80 端口</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=80/tcp</span><br></pre></td></tr></table></figure>
+
+<h3 id="移除-80-端口"><a href="#移除-80-端口" class="headerlink" title="移除 80 端口"></a>移除 80 端口</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --remove-port=8080/tcp</span><br></pre></td></tr></table></figure>
+
+<h3 id="重启防火墙"><a href="#重启防火墙" class="headerlink" title="重启防火墙"></a>重启防火墙</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<h3 id="CentOS7-如何开启-iptables-日志"><a href="#CentOS7-如何开启-iptables-日志" class="headerlink" title="CentOS7 如何开启 iptables 日志"></a>CentOS7 如何开启 iptables 日志</h3><p><a target="_blank" rel="noopener" href="https://www.crowsong.xyz/1294.html">https://www.crowsong.xyz/1294.html</a></p>
+<h2 id="lsof-命令不识别"><a href="#lsof-命令不识别" class="headerlink" title="lsof 命令不识别"></a>lsof 命令不识别</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">安装命令：yum install lsof</span><br></pre></td></tr></table></figure>
+
+<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h2><h3 id="shell-获取当前日期，当前时间"><a href="#shell-获取当前日期，当前时间" class="headerlink" title="shell 获取当前日期，当前时间"></a>shell 获取当前日期，当前时间</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DATE=&quot;`date +%Y-%m-%d`&quot;</span><br><span class="line">echo $DATE</span><br><span class="line"></span><br><span class="line">DATETIME=&quot;`date +%Y-%m-%d,%H:%m:%s`&quot;</span><br><span class="line">echo $DATE</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看当前shell"><a href="#查看当前shell" class="headerlink" title="查看当前shell"></a>查看当前shell</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $SHELL</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加开机自启动脚本"><a href="#添加开机自启动脚本" class="headerlink" title="添加开机自启动脚本"></a>添加开机自启动脚本</h2><blockquote>
+<p>在&#x2F;etc&#x2F;rc.local中添加</p>
+</blockquote>
+<h2 id="Linux-定时任务示例"><a href="#Linux-定时任务示例" class="headerlink" title="Linux 定时任务示例"></a>Linux 定时任务示例</h2><h3 id="重启-Tomcat-服务脚本-restarttomcat-sh"><a href="#重启-Tomcat-服务脚本-restarttomcat-sh" class="headerlink" title="重启 Tomcat 服务脚本 - restarttomcat.sh"></a>重启 Tomcat 服务脚本 - restarttomcat.sh</h3><h3 id="添加定时任务，实现定时重启-Tomcat-服务器"><a href="#添加定时任务，实现定时重启-Tomcat-服务器" class="headerlink" title="添加定时任务，实现定时重启 Tomcat 服务器"></a>添加定时任务，实现定时重启 Tomcat 服务器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
+
+<p>添加内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 1 * * * /bin/bash /home/wangwz/Desktop/restarttomcat.sh &gt;&gt; /home/restart.log</span><br></pre></td></tr></table></figure>
+
+<p>查看任务：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -l </span><br></pre></td></tr></table></figure>
+
+<h2 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h2><h3 id="忘记-root-密码"><a href="#忘记-root-密码" class="headerlink" title="忘记 root 密码"></a>忘记 root 密码</h3><blockquote>
+<p>以 单用户模式进入，修改 root 密码。如果 &#x2F;etc&#x2F;passwd 文件不存在，则需要手动创建，并填写如下内容「必需」</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">sssd:x:989:986:User for sssd:/:/sbin/nologin</span><br><span class="line">gdm:x:42:42::/var/lib/gdm:/sbin/nologin</span><br><span class="line">gnome-initial-setup:x:988:983::/run/gnome-initial-setup/:/sbin/nologin</span><br><span class="line">sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="切换为-root-用户"><a href="#切换为-root-用户" class="headerlink" title="切换为 root 用户"></a>切换为 root 用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> -i</span><br></pre></td></tr></table></figure>
+
+<h3 id="更换密码"><a href="#更换密码" class="headerlink" title="更换密码"></a>更换密码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">passwd root</span><br><span class="line">passwd zhangsan</span><br></pre></td></tr></table></figure>
+
+<h3 id="开启-root"><a href="#开启-root" class="headerlink" title="开启 root"></a>开启 root</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//给 root 用户设置密码</span><br><span class="line">sudo passwd root</span><br><span class="line"></span><br><span class="line">//使用 root 用户登陆</span><br><span class="line">sudo vi /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf</span><br><span class="line">在最后增加 greeter-show-manual-login=true </span><br><span class="line"></span><br><span class="line">//关闭 guest 用户</span><br><span class="line">sudo vi /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf</span><br><span class="line">在最后增加 allow-guest=false</span><br></pre></td></tr></table></figure>
+
+<h2 id="Linux免密登录"><a href="#Linux免密登录" class="headerlink" title="Linux免密登录"></a>Linux免密登录</h2><ol>
+<li><p>环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A 机器 192.168.0.200</span><br><span class="line">B 机器 192.168.0.201</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装插件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br><span class="line">sudo yum -y install openssh-clients</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 A 生成密钥配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 不要输入密码</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 A 生成的公钥文件拷贝到 B</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.201</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">回车后输入 B 机器 root 用户的密码</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">或者将 id_rsa.pub文件的内容拷贝至远程服务器的~/.ssh/authorized_keys文件中</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证是否成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.0.201</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ol>
+<li><p>异常 &#x2F;bin&#x2F;sh^M: bad interpreter: No such file or directory</p>
+<ul>
+<li><p>在 windows 下转换：利用一些编辑器如 UltraEdit 或 EditPlus 等工具先将脚本编码转换，再放到 Linux 中执行。转换方式如下（UltraEdit）：<code>File--&gt;Conversions--&gt;DOS-&gt;UNIX</code> </p>
+</li>
+<li><p>Linux 中转换</p>
+<ol>
+<li><p>首先要确保文件有可执行权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x filename</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后修改文件格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi filename</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看文件格式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> ff 或 :<span class="built_in">set</span> fileformat</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改文件格式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> ff=unix 或 :<span class="built_in">set</span> fileformat=unix</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h2><ol>
+<li><p>将 jdkXXX.tar.gz 放入&#x2F;usr&#x2F;java 文件夹中，解压</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf jdkXXX.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line">在最后添加：</span><br><span class="line">export JAVA_HOME=/usr/java/jdk1.8.0_191</span><br><span class="line">export JRE_HOME=/usr/java/jdk1.8.0_191/jre</span><br><span class="line">export PATH=$PATH:./:/usr/java/jdk1.8.0_191/bin:/sbin</span><br><span class="line">export CLASSPATH=./:/usr/java/jdk1.8.0_191/lib:/usr/java/jdk1.8.0_191/jre/lib</span><br><span class="line"></span><br><span class="line">//使刚才的修改生效</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建立软链接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//先删除软连接</span><br><span class="line">rm -fr /usr/bin/java</span><br><span class="line"></span><br><span class="line">ln –s /usr/java/1.8.0_191/bin/java  /usr/bin/java</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试 jdk 是否安装成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java –version</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="更新-centos-上的-gcc"><a href="#更新-centos-上的-gcc" class="headerlink" title="更新 centos 上的 gcc"></a>更新 centos 上的 gcc</h2><p><a target="_blank" rel="noopener" href="https://itbilu.com/linux/management/V1vdnt9ll.html">Linux升级安装GCC - IT笔录 (itbilu.com)</a></p>
+<h2 id="rsync-和-scp"><a href="#rsync-和-scp" class="headerlink" title="rsync 和 scp"></a>rsync 和 scp</h2><ul>
+<li><p>rsync 主要用于备份和镜像。具有速度快、避免复制相同内容和支持符号链接的优点</p>
+</li>
+<li><p>rsync 做文件的复制要比 scp 的速度快，rsync 只对差异文件做更新。scp 是把所有文件都复制过去</p>
+</li>
+</ul>
+<h3 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h3><h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -rvl $pdir/$fname $user@hadoop$host:$pdir/$fname</span><br></pre></td></tr></table></figure>
+
+<p>命令 选项参数 要拷贝的文件路径 &#x2F; 名称 目的用户 @主机：目的路径 &#x2F; 名称</p>
+<p><strong>选项参数说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-r</td>
+<td>递归</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示复制过程</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>拷贝符号连接</td>
+</tr>
+</tbody></table>
+<h4 id="案例实操"><a href="#案例实操" class="headerlink" title="案例实操"></a>案例实操</h4><p>（a）把 hadoop01 机器上的 &#x2F;home&#x2F;software&#x2F;rhf001 目录同步到 hadoop02 服务器的 root 用户下的 &#x2F;home&#x2F;software&#x2F; 目录</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i2.wp.com/img-blog.csdnimg.cn/20200410110109829.png" alt="img"></p>
+<h4 id="xsync-集群分发脚本"><a href="#xsync-集群分发脚本" class="headerlink" title="xsync 集群分发脚本"></a>xsync 集群分发脚本</h4><h5 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h5><p>循环复制文件到所有节点的相同目录下</p>
+<h5 id="rsync-命令原始拷贝"><a href="#rsync-命令原始拷贝" class="headerlink" title="rsync 命令原始拷贝"></a>rsync 命令原始拷贝</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -rvl /home/software/rhf001 root@hadoop02:/home/software/</span><br></pre></td></tr></table></figure>
+
+<h5 id="在-usr-local-bin-目录下创建-xsync-文件，向里面添加"><a href="#在-usr-local-bin-目录下创建-xsync-文件，向里面添加" class="headerlink" title="在 &#x2F;usr&#x2F;local&#x2F;bin 目录下创建 xsync 文件，向里面添加"></a>在 &#x2F;usr&#x2F;local&#x2F;bin 目录下创建 xsync 文件，向里面添加</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment"># 获取输入参数个数，如果没有参数，直接退出</span></span><br><span class="line">pcount=<span class="variable">$#</span></span><br><span class="line"><span class="keyword">if</span>((pcount==<span class="number">0</span>)); <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> no args...;</span><br><span class="line">        <span class="built_in">exit</span>;</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># 获取文件名称</span></span><br><span class="line">p1=<span class="variable">$1</span></span><br><span class="line">fname=`<span class="built_in">basename</span> <span class="variable">$p1</span>`</span><br><span class="line"><span class="built_in">echo</span> fname=<span class="variable">$fname</span></span><br><span class="line"><span class="comment"># 获取上级目录到绝对路径</span></span><br><span class="line">pdir=`<span class="built_in">cd</span> -P $(<span class="built_in">dirname</span> <span class="variable">$p1</span>); <span class="built_in">pwd</span>`</span><br><span class="line"><span class="built_in">echo</span> pdir=<span class="variable">$pdir</span></span><br><span class="line"><span class="comment"># 获取当前用户名称</span></span><br><span class="line">user=`<span class="built_in">whoami</span>`</span><br><span class="line"><span class="comment"># 循环</span></span><br><span class="line"><span class="keyword">for</span>((host=<span class="number">3</span>; host&lt;=<span class="number">4</span>; host++)); <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$pdir</span>/<span class="variable">$fname</span> <span class="variable">$user</span>@slave<span class="variable">$host</span>:<span class="variable">$pdir</span></span><br><span class="line">        <span class="built_in">echo</span> ==================slave<span class="variable">$host</span>==================</span><br><span class="line">        rsync -rvl <span class="variable">$pdir</span>/<span class="variable">$fname</span> <span class="variable">$user</span>@slave<span class="variable">$host</span>:<span class="variable">$pdir</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="comment">#Note:这里的slave对应自己主机名，需要做相应修改。另外，for循环中的host的边界值</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="修改脚本-xsync-具有执行权限"><a href="#修改脚本-xsync-具有执行权限" class="headerlink" title="修改脚本 xsync 具有执行权限"></a>修改脚本 xsync 具有执行权限</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 777 xsync</span><br></pre></td></tr></table></figure>
+
+<h5 id="将-filename-分发到集群中的各个节点中"><a href="#将-filename-分发到集群中的各个节点中" class="headerlink" title="将 filename 分发到集群中的各个节点中"></a>将 filename 分发到集群中的各个节点中</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xsync filename</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/53d0684b.html">https://wangwenzhe.github.io/posts/53d0684b.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/a1142efb.html" title="爱上读书2019-04"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">爱上读书2019-04</div></div></a></div><div class="next-post pull-right"><a href="/posts/2c5abc07.html" title="Windows"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Windows</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/38350507.html" title="Linux-文件批量重命名脚本"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-12</div><div class="title">Linux-文件批量重命名脚本</div></div></a></div><div><a href="/posts/997df84.html" title="Linux系统定时清理内存缓存"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-23</div><div class="title">Linux系统定时清理内存缓存</div></div></a></div><div><a href="/posts/5fdb7dfd.html" title="Linux-Samba"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-30</div><div class="title">Linux-Samba</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.</span> <span class="toc-text">系统下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RPM%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">RPM资源下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%89%88%E6%9C%AC"><span class="toc-number">3.1.</span> <span class="toc-text">查看系统版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scp"><span class="toc-number">3.2.</span> <span class="toc-text">scp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B-IP"><span class="toc-number">3.3.</span> <span class="toc-text">查看 IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh-%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.4.</span> <span class="toc-text">ssh 连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B-Linux-%E5%8F%91%E8%A1%8C%E7%89%88%E5%90%8D%E7%A7%B0%E5%92%8C%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">3.5.</span> <span class="toc-text">查看 Linux 发行版名称和版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E5%B9%B6%E6%9D%80%E6%AD%BB%E8%BF%9B%E7%A8%8B"><span class="toc-number">3.6.</span> <span class="toc-text">查看端口占用并杀死进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E5%91%BD%E4%BB%A4%E8%80%97%E6%97%B6"><span class="toc-number">3.7.</span> <span class="toc-text">统计命令耗时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%80%BB%E8%A1%8C%E6%95%B0"><span class="toc-number">3.8.</span> <span class="toc-text">统计指定目录文件内容总行数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-number">3.9.</span> <span class="toc-text">获取文件夹下的文件名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%86%85%E5%AD%98%E6%80%BB%E5%A4%A7%E5%B0%8F"><span class="toc-number">3.10.</span> <span class="toc-text">获取内存总大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA%E5%A4%A7%E5%B0%8F"><span class="toc-number">3.11.</span> <span class="toc-text">获取交换分区大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B-tomcat-%E8%BF%9B%E7%A8%8B%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E6%95%B0%E9%87%8F"><span class="toc-number">3.12.</span> <span class="toc-text">查看 tomcat 进程打开文件数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95%E4%B8%AA%E6%95%B0"><span class="toc-number">3.13.</span> <span class="toc-text">查看目录下文件或目录个数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E5%88%86%E9%85%8D%E6%83%85%E5%86%B5"><span class="toc-number">3.14.</span> <span class="toc-text">查看磁盘空间分配情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%90%84%E7%9B%AE%E5%BD%95%E5%A4%A7%E5%B0%8F"><span class="toc-number">3.15.</span> <span class="toc-text">查看当前目录下各目录大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%AF%8F%E4%B8%AA%E5%AD%90%E7%9B%AE%E5%BD%95%E7%9A%84%E6%96%87%E4%BB%B6%E6%95%B0%E9%87%8F"><span class="toc-number">3.16.</span> <span class="toc-text">查看当前目录下每个子目录的文件数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E5%90%8D%E4%B8%AD%E5%90%AB%E7%A9%BA%E6%A0%BC"><span class="toc-number">3.17.</span> <span class="toc-text">路径名中含空格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%A0%A1%E5%87%86"><span class="toc-number">3.18.</span> <span class="toc-text">时间校准</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE%E3%80%8CCentOS%E3%80%8D"><span class="toc-number">4.</span> <span class="toc-text">防火墙设置「CentOS」</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B-firewall-%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81"><span class="toc-number">4.1.</span> <span class="toc-text">查看 firewall 服务状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E9%98%B2%E7%81%AB%E5%A2%99%E5%91%BD%E4%BB%A4"><span class="toc-number">4.2.</span> <span class="toc-text">关闭防火墙命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">4.3.</span> <span class="toc-text">开启防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8"><span class="toc-number">4.4.</span> <span class="toc-text">关闭开机自启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8"><span class="toc-number">4.5.</span> <span class="toc-text">开启开机启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B-firewall-%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-number">4.6.</span> <span class="toc-text">查看 firewall 的状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E9%98%B2%E7%81%AB%E5%A2%99%E8%A7%84%E5%88%99"><span class="toc-number">4.7.</span> <span class="toc-text">查看防火墙规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE"><span class="toc-number">4.8.</span> <span class="toc-text">查询端口是否开放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iptables-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">4.9.</span> <span class="toc-text">iptables 配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E6%94%BE-80-%E7%AB%AF%E5%8F%A3"><span class="toc-number">4.10.</span> <span class="toc-text">开放 80 端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4-80-%E7%AB%AF%E5%8F%A3"><span class="toc-number">4.11.</span> <span class="toc-text">移除 80 端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%90%AF%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">4.12.</span> <span class="toc-text">重启防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CentOS7-%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF-iptables-%E6%97%A5%E5%BF%97"><span class="toc-number">4.13.</span> <span class="toc-text">CentOS7 如何开启 iptables 日志</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lsof-%E5%91%BD%E4%BB%A4%E4%B8%8D%E8%AF%86%E5%88%AB"><span class="toc-number">5.</span> <span class="toc-text">lsof 命令不识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell"><span class="toc-number">6.</span> <span class="toc-text">Shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#shell-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%97%A5%E6%9C%9F%EF%BC%8C%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4"><span class="toc-number">6.1.</span> <span class="toc-text">shell 获取当前日期，当前时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8Dshell"><span class="toc-number">6.2.</span> <span class="toc-text">查看当前shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC"><span class="toc-number">7.</span> <span class="toc-text">添加开机自启动脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%A4%BA%E4%BE%8B"><span class="toc-number">8.</span> <span class="toc-text">Linux 定时任务示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%90%AF-Tomcat-%E6%9C%8D%E5%8A%A1%E8%84%9A%E6%9C%AC-restarttomcat-sh"><span class="toc-number">8.1.</span> <span class="toc-text">重启 Tomcat 服务脚本 - restarttomcat.sh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%AE%9A%E6%97%B6%E9%87%8D%E5%90%AF-Tomcat-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">8.2.</span> <span class="toc-text">添加定时任务，实现定时重启 Tomcat 服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7"><span class="toc-number">9.</span> <span class="toc-text">用户</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%98%E8%AE%B0-root-%E5%AF%86%E7%A0%81"><span class="toc-number">9.1.</span> <span class="toc-text">忘记 root 密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E4%B8%BA-root-%E7%94%A8%E6%88%B7"><span class="toc-number">9.2.</span> <span class="toc-text">切换为 root 用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="toc-number">9.3.</span> <span class="toc-text">更换密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AF-root"><span class="toc-number">9.4.</span> <span class="toc-text">开启 root</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95"><span class="toc-number">10.</span> <span class="toc-text">Linux免密登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">11.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK"><span class="toc-number">12.</span> <span class="toc-text">JDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0-centos-%E4%B8%8A%E7%9A%84-gcc"><span class="toc-number">13.</span> <span class="toc-text">更新 centos 上的 gcc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rsync-%E5%92%8C-scp"><span class="toc-number">14.</span> <span class="toc-text">rsync 和 scp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rsync"><span class="toc-number">14.1.</span> <span class="toc-text">rsync</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">14.1.1.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D"><span class="toc-number">14.1.2.</span> <span class="toc-text">案例实操</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#xsync-%E9%9B%86%E7%BE%A4%E5%88%86%E5%8F%91%E8%84%9A%E6%9C%AC"><span class="toc-number">14.1.3.</span> <span class="toc-text">xsync 集群分发脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9C%80%E6%B1%82"><span class="toc-number">14.1.3.1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#rsync-%E5%91%BD%E4%BB%A4%E5%8E%9F%E5%A7%8B%E6%8B%B7%E8%B4%9D"><span class="toc-number">14.1.3.2.</span> <span class="toc-text">rsync 命令原始拷贝</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%A8-usr-local-bin-%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BA-xsync-%E6%96%87%E4%BB%B6%EF%BC%8C%E5%90%91%E9%87%8C%E9%9D%A2%E6%B7%BB%E5%8A%A0"><span class="toc-number">14.1.3.3.</span> <span class="toc-text">在 &#x2F;usr&#x2F;local&#x2F;bin 目录下创建 xsync 文件，向里面添加</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E8%84%9A%E6%9C%AC-xsync-%E5%85%B7%E6%9C%89%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90"><span class="toc-number">14.1.3.4.</span> <span class="toc-text">修改脚本 xsync 具有执行权限</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%86-filename-%E5%88%86%E5%8F%91%E5%88%B0%E9%9B%86%E7%BE%A4%E4%B8%AD%E7%9A%84%E5%90%84%E4%B8%AA%E8%8A%82%E7%82%B9%E4%B8%AD"><span class="toc-number">14.1.3.5.</span> <span class="toc-text">将 filename 分发到集群中的各个节点中</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

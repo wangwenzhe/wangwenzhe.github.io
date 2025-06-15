@@ -1,0 +1,359 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Android Studio | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="卸载https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;7165bcf4129a Windows123456789Android Studio: %USER%\.AndroidStudio[Preview]_version_SDK 路径 C:\Users\Administrator\AppData\Local\Android\sdk软件安装路径 C:\Program Files\Android\A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Studio">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/c3775917.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="卸载https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;7165bcf4129a Windows123456789Android Studio: %USER%\.AndroidStudio[Preview]_version_SDK 路径 C:\Users\Administrator\AppData\Local\Android\sdk软件安装路径 C:\Program Files\Android\A">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2019-08-10T06:58:39.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.687Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/c3775917.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Android Studio',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Android Studio</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-08-10T06:58:39.000Z" title="发表于 2019-08-10 14:58:39">2019-08-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.687Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Android-Studio/">Android Studio</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Android Studio"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7165bcf4129a">https://www.jianshu.com/p/7165bcf4129a</a></p>
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Android Studio: %USER%\.AndroidStudio[Preview]_version_</span><br><span class="line"></span><br><span class="line">SDK 路径 C:\Users\Administrator\AppData\Local\Android\sdk</span><br><span class="line"></span><br><span class="line">软件安装路径 C:\Program Files\Android\Android Studio</span><br><span class="line"></span><br><span class="line">默认工程目录 C:\Users\Administrator\AndroidstudioProjects</span><br><span class="line"></span><br><span class="line">Gradle 插件目录 C:\Users\Administrator.gradle\wrapper\dists\gradle-2.4-all\xxxxxxx</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><ol>
+<li><p>卸载 Android Studio</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Library/&#123;Preferences, Caches, Logs, Application Support&#125;/AndroidStudio[Preview]_version_</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除 Projects</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ~/AndroidStudioProjects</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除 gradle</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ~/.gradle</span><br><span class="line">rm -fr /Applications/Android\ Studio.app/Contents/gradle</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载 Android Virtual Devices (AVDs) and *.keystore.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ~/.android</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除 Android SDK Tools</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ~/Library/Android*</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="自动导包"><a href="#自动导包" class="headerlink" title="自动导包"></a>自动导包</h3><blockquote>
+<p> 自动导包，并去掉多余的包</p>
+</blockquote>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/20211028103436_image-20211028103436114.png" alt="image-20211028103436114" style="zoom:50%;" />
+
+<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">*.iml</span><br><span class="line">.gradle</span><br><span class="line">/local.properties</span><br><span class="line">.idea</span><br><span class="line">.DS_Store</span><br><span class="line">/build</span><br><span class="line">/captures</span><br><span class="line">.externalNativeBuild</span><br><span class="line">build</span><br></pre></td></tr></table></figure>
+
+<h3 id="忽略的文件或文件夹，搜索「File-Types」"><a href="#忽略的文件或文件夹，搜索「File-Types」" class="headerlink" title="忽略的文件或文件夹，搜索「File Types」"></a>忽略的文件或文件夹，搜索「File Types」</h3><p><code>修改后，编辑器中不再显示，且新提交的文件中不再包含「已经提交的不影响」</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//新增项</span><br><span class="line">.idea;.DS_Store;.git;.svn;.gradle;build;*.iml;local.properties;</span><br></pre></td></tr></table></figure>
+
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/image-20200622164912900.png" alt="image-20200622164912900" style="zoom:50%;" />
+
+<h3 id="Android-Studio-安装好以后会在系统盘用户目录下产生几个文件夹"><a href="#Android-Studio-安装好以后会在系统盘用户目录下产生几个文件夹" class="headerlink" title="Android Studio 安装好以后会在系统盘用户目录下产生几个文件夹"></a>Android Studio 安装好以后会在系统盘用户目录下产生几个文件夹</h3><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/CDyXwS.png" alt="CDyXwS" style="zoom:50%;" />
+
+<ol>
+<li><p><code>.android</code> 这个文件夹是 Android SDK 生成的AVD（Android Virtual Device Manager）即模拟器存放路径</p>
+<p><strong>修改：</strong>添加一个系统的环境变量<code>ANDROID_SDK_HOME</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/Fn9eVI.png" alt="Fn9eVI"></p>
+</li>
+<li><p><code>.AndroidStudio</code> 这个文件夹是 Android Studio 的配置文件夹，主要存放一些 AndroidStudio 设置和插件和项目的缓存信息</p>
+<p><strong>修改：</strong>进入 Android Studio 的安装目录，进入<code>bin</code>文件夹，用文本编辑软件打开<code>idea.properties</code>，去掉以下两项的注释符号<code>#</code>，修改对应的路径为新路径即可</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/QLACeE.png" alt="QLACeE" style="zoom:50%;" />
+</li>
+<li><p><code>.gradle</code> 这个文件夹是构建工具 Gradle 的配置文件夹，也会存储一些项目的构建缓存信息</p>
+<p><strong>修改：</strong>在Android Studio的配置选项中修改就行</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/6VJrRw.png" alt="6VJrRw" style="zoom:50%;" /></li>
+</ol>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ol>
+<li>Shift + Z     全局搜索「类似于 IDEA 中 双 Shift」</li>
+<li>Ctrl + D 删除当前行或选中行</li>
+<li>Shift + Enter 开始新的一行</li>
+<li>Ctrl + W 删除光标前 word「word之间一般以空格或逗号分隔」</li>
+<li>Ctrl + Z 撤销</li>
+<li>Ctrl + Y 恢复撤销</li>
+<li>Ctrl + F 当前文件范围内查找</li>
+<li>Ctrl + R 当前文件范围内替换</li>
+<li>Ctrl + Shift + F 全局范围内查找</li>
+<li>Ctrl + Shift + R 全局范围内替换</li>
+<li>Ctrl + L 定位到指定行 </li>
+<li>Ctrl + &#x2F; 单行注释与反注释</li>
+<li>Ctrl + Shift + &#x2F; 块注释与反注释</li>
+<li><strong>Alt+Shift + 鼠标左键选择或左键双击  选中多个单词或代码块</strong></li>
+<li>Ctrl + 鼠标左键 进入方法定义代码处; Show usages … 「定位到使用的代码处」</li>
+<li>Ctrl + 鼠标右键 进入方法实现类定义代码处</li>
+<li>Ctrl + H 查看类或接口继承关系</li>
+<li>Ctrl + Alt + H 查看方法被调用关系</li>
+<li>Ctrl + Alt + 方向下键 复制所在行或选中行</li>
+<li>Alt + 方向左键&#x2F;右键 回退&#x2F;前进</li>
+<li>Alt + 方向上键&#x2F;下键 移动所在行或选中行</li>
+<li>Alt + U 切换大小写 <code>Toggle Case</code></li>
+<li>Alt + F  代码格式化 <code>Reformat Code</code></li>
+<li>Alt + S <code>Surround With</code></li>
+<li>Alt + G <code>Generate</code></li>
+<li>F4 打开文件所在目录 <code>Show In Explorer</code></li>
+<li>F2 文件重命名</li>
+<li>F5 进入函数</li>
+<li>F6 单步执行</li>
+<li>F7 跳出函数</li>
+<li>F8 运行至下一个断点</li>
+<li>Alt + R  运行 Run</li>
+<li>for 循环<ol>
+<li>100.for</li>
+<li>array.for</li>
+<li>list.for</li>
+<li>map.for</li>
+</ol>
+</li>
+<li>psvm 生成 main 方法</li>
+<li>sout 生成代码 <code>System.out.println();</code></li>
+<li>IDEA 默认自动保存，所以不用 Ctrl + S 手动保存了</li>
+<li>在打开文件页签上右键，Split Vertically 竖向分隔 和 Split Horizontally 横向分隔</li>
+<li>Ctrl + Alt +M  <code>Extract Method</code></li>
+<li>Ctrl + Alt + S  <code>Settings</code></li>
+<li>Alt + V <code>Split Vertically</code></li>
+<li>Alt + H <code>Split Horizontally</code></li>
+</ol>
+<h2 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lyj1005353553/article/details/55100563">https://blog.csdn.net/lyj1005353553/article/details/55100563</a></p>
+<ol>
+<li><p>Google Library Version Querier ——快速添加依赖库和查询历史版本</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/wuyr/GoogleLibraryVersionQuerier">https://github.com/wuyr/GoogleLibraryVersionQuerier</a></p>
+</li>
+<li><p><strong>CodeGlance</strong></p>
+</li>
+<li><p><strong>findBugs-IDEA</strong></p>
+</li>
+<li><p><strong>Android Postfix Completion</strong></p>
+</li>
+<li><p><strong>Android Studio Prettify</strong></p>
+</li>
+<li><p><strong>RxHttp</strong></p>
+</li>
+</ol>
+<h2 id="SDK"><a href="#SDK" class="headerlink" title="SDK"></a>SDK</h2><p><a target="_blank" rel="noopener" href="https://developer.android.com/studio/intro/update#sdk-manager">https://developer.android.com/studio/intro/update#sdk-manager</a></p>
+<h2 id="问题汇总"><a href="#问题汇总" class="headerlink" title="问题汇总"></a>问题汇总</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Life_s/article/details/131458426">Android Installed Build Tools revision 34.0.0 is corrupted. Remove and install again using the SDK-CSDN博客</a></p>
+<h3 id="Gradle-sync-failed-Sync-failed-reason-unknown"><a href="#Gradle-sync-failed-Sync-failed-reason-unknown" class="headerlink" title="Gradle sync failed: Sync failed: reason unknown"></a>Gradle sync failed: Sync failed: reason unknown</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Project ecplyx_hfyh is using the following JDK location when running Gradle:</span><br><span class="line">        D:/Program Files/Android/Android Studio/jre</span><br><span class="line">        Using different JDK locations on different processes might cause Gradle to</span><br><span class="line">        spawn multiple daemons, for example, by executing Gradle tasks from a terminal</span><br><span class="line">        while using Android Studio.</span><br><span class="line">        More info...</span><br><span class="line">        Select a JDK</span><br><span class="line">        Do not show this warning again</span><br></pre></td></tr></table></figure>
+
+<p>解决：查看 studio 日志文件， 文件路径：<code>C:\Users\用户名\AppData\Local\Google\AndroidStudio2020.3\log\idea.log</code></p>
+<h3 id="The-application-could-not-be-installed-INSTALL-FAILED-CONFLICTING-PROVIDER"><a href="#The-application-could-not-be-installed-INSTALL-FAILED-CONFLICTING-PROVIDER" class="headerlink" title="The application could not be installed: INSTALL_FAILED_CONFLICTING_PROVIDER"></a>The application could not be installed: INSTALL_FAILED_CONFLICTING_PROVIDER</h3><p>解决：AndroidManifest.xml 中 provider 中使用 ${applicationId}</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">provider</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:name</span>=<span class="string">&quot;io.dcloud.common.util.DCloud_FileProvider&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:authorities</span>=<span class="string">&quot;$&#123;applicationId&#125;.fileprovider&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:exported</span>=<span class="string">&quot;false&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:grantUriPermissions</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;android.support.FILE_PROVIDER_PATHS&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:resource</span>=<span class="string">&quot;@xml/dcloud_file_provider&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">provider</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Gradle-插件版本与-Gradle-版本对于关系问题"><a href="#Gradle-插件版本与-Gradle-版本对于关系问题" class="headerlink" title="Gradle 插件版本与 Gradle 版本对于关系问题"></a>Gradle 插件版本与 Gradle 版本对于关系问题</h3><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangqinpei.oss-cn-qingdao.aliyuncs.com/uPic/image-20200703082718033.png" alt="image-20200703082718033" style="zoom:50%;" />
+
+<h3 id="项目-build-gradle-中依赖下载失败"><a href="#项目-build-gradle-中依赖下载失败" class="headerlink" title="项目 build.gradle 中依赖下载失败"></a>项目 build.gradle 中依赖下载失败</h3><blockquote>
+<p>Could not GET ‘<a target="_blank" rel="noopener" href="https://maven.aliyun.com/repository/jcenter/com/android/tools/build/gradle/3.0.1/gradle-3.0.1.pom">https://maven.aliyun.com/repository/jcenter/com/android/tools/build/gradle/3.0.1/gradle-3.0.1.pom</a>‘. Received status code 400 from server: Bad Request</p>
+</blockquote>
+<p>解决：<code>用户目录/.gradle/gradle.properties</code>，把其中配置的所有代理都注释掉就 ok 了</p>
+<h3 id="Gradle’s-dependency-cache-may-be-corrupt-解决方案"><a href="#Gradle’s-dependency-cache-may-be-corrupt-解决方案" class="headerlink" title="Gradle’s dependency cache may be corrupt 解决方案"></a>Gradle’s dependency cache may be corrupt 解决方案</h3><blockquote>
+<p>Error:Failed to open zip file. Gradle’s dependency cache may be corrupt (this sometimes occurs after a network connection timeout.) <a href="syncProject">Re-download dependencies and sync project (requires network)</a> <a href="syncProject">Re-download dependencies and sync project (requires network)</a></p>
+</blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/daihuimaozideren/article/details/77850330">https://blog.csdn.net/daihuimaozideren/article/details/77850330</a></p>
+<h3 id="Unable-to-tunnel-through-proxy-Proxy-returns-“HTTP-1-1-400-Bad-Request”"><a href="#Unable-to-tunnel-through-proxy-Proxy-returns-“HTTP-1-1-400-Bad-Request”" class="headerlink" title="Unable to tunnel through proxy. Proxy returns “HTTP&#x2F;1.1 400 Bad Request”"></a>Unable to tunnel through proxy. Proxy returns “HTTP&#x2F;1.1 400 Bad Request”</h3><p><code>gradle-wrapper.properties</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">distributionUrl=https\://services.gradle.org/distributions/gradle-4.6-all.zip</span><br></pre></td></tr></table></figure>
+
+<h3 id="Unknown-host-‘dl-google-com’-You-may-need-to-adjust-the-proxy-settings"><a href="#Unknown-host-‘dl-google-com’-You-may-need-to-adjust-the-proxy-settings" class="headerlink" title="Unknown host ‘dl.google.com’. You may need to adjust the proxy settings"></a>Unknown host ‘dl.google.com’. You may need to adjust the proxy settings</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在 hosts 文件添加如下内容：</span><br><span class="line">Mac: /etc/hosts</span><br><span class="line">203.208.40.36 dl.google.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="Android-SDK-not-being-installed-on-Android-Studio"><a href="#Android-SDK-not-being-installed-on-Android-Studio" class="headerlink" title="Android SDK not being installed on Android Studio"></a>Android SDK not being installed on Android Studio</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">当您首次运行 Android Studio 的主要版本时，它会查找包含缓存、设置、索引和日志的目录，以确定找不到对应安装内容的 Android Studio 的版本。然后，**Delete Unused Android Studio Directories** 对话框中会显示这些未使用目录的位置、大小和最后修改时间，并提供删除它们的选项。</span><br><span class="line"></span><br><span class="line">Android Studio 考虑删除的目录如下所示：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="下载资源慢的问题"><a href="#下载资源慢的问题" class="headerlink" title="下载资源慢的问题"></a>下载资源慢的问题</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/anyanyan07/article/details/79300063">https://blog.csdn.net/anyanyan07/article/details/79300063</a></p>
+<h3 id="ERROR-Crashlytics-could-not-find-the-manifest-Not-found-at-G-androidstudio-ws-scm-pengyang-Scm-demo-build-intermediates-merged-manifests-debug-AndroidManifest-xml"><a href="#ERROR-Crashlytics-could-not-find-the-manifest-Not-found-at-G-androidstudio-ws-scm-pengyang-Scm-demo-build-intermediates-merged-manifests-debug-AndroidManifest-xml" class="headerlink" title="ERROR: Crashlytics could not find the manifest. Not found at G:\androidstudio-ws\scm-pengyang\Scm\demo\build\intermediates\merged_manifests\debug\AndroidManifest.xml"></a>ERROR: Crashlytics could not find the manifest. Not found at G:\androidstudio-ws\scm-pengyang\Scm\demo\build\intermediates\merged_manifests\debug\AndroidManifest.xml</h3><p><strong>解决：</strong></p>
+<p><code>模块 build.gradle</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wangwenzhe.oss-cn-beijing.aliyuncs.com/UTOOLS1576637852783.png" alt="UTOOLS1576637852783.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">crashlytics &#123;</span><br><span class="line">    manifestPath = &quot;AndroidManifest.xml&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Error-Internal-error-java-lang-ClassNotFoundException-com-google-wireless-android-sdk-stats-IntellijIndexingStats-Index"><a href="#Error-Internal-error-java-lang-ClassNotFoundException-com-google-wireless-android-sdk-stats-IntellijIndexingStats-Index" class="headerlink" title="Error:Internal error: (java.lang.ClassNotFoundException) com.google.wireless.android.sdk.stats.IntellijIndexingStats$Index"></a>Error:Internal error: (java.lang.ClassNotFoundException) com.google.wireless.android.sdk.stats.IntellijIndexingStats$Index</h3><p>解决：在 studio 的 <code>File--&gt;Settings--&gt;Build, Execution, Deployment---&gt; Java Compiler</code> 选项中，</p>
+<p>将 javac 改为 eclipse，最后 apply 一下，如图</p>
+<h3 id="Android-Studio-cannot-open-this-project-please-retry-with-Android-Studio-3-5-or-new"><a href="#Android-Studio-cannot-open-this-project-please-retry-with-Android-Studio-3-5-or-new" class="headerlink" title="Android Studio cannot open this project, please retry with Android Studio 3.5 or new"></a>Android Studio cannot open this project, please retry with Android Studio 3.5 or new</h3><p>出现这个问题是因为使用的 Gradle 版本太高，只需要将 gradle 降级就可以，或者使用本地还能编译的配置版本替换即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">classpath &#x27;com.android.tools.build:gradle:3.5.3&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Entry-name-‘res-anim-fade-in-xml’-collided"><a href="#Entry-name-‘res-anim-fade-in-xml’-collided" class="headerlink" title="Entry name ‘res&#x2F;anim&#x2F;fade_in.xml’ collided"></a>Entry name ‘res&#x2F;anim&#x2F;fade_in.xml’ collided</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/luo_boke/article/details/106113266">https://blog.csdn.net/luo_boke/article/details/106113266</a></p>
+<p>方案一：gradle版本退回3.5.3</p>
+<p>方案可行，但是对于我这样的升级狂魔，升级了让我降级是不可能的，降级是不能接受的，不建议采纳。</p>
+<p>方案二：使用旧打包工具</p>
+<p>方案可行，在gradle.properties文件中添加以下内容，Android studio已经明确将要取消该打包方案，且不推荐使用了，优化的新打包方案在apk体积压缩等其他方面是很有优势的，不能为了解决这个问题丢失其他的优势，不建议采纳。</p>
+<p>android.useNewApkCreator&#x3D;false<br>方案三：删除项目中的所有build文件</p>
+<p>该方案纯属扯淡，没有毛线用，方案不可行</p>
+<p>方案四：关机重启或Invalidate Caches&#x2F;Restart重启Android studio</p>
+<p>该方案只会让你更失望，方案不可行</p>
+<p>终极方案：更改打包生成路径</p>
+<h3 id="Connection-timed-out-connect-If-you-are-behind-an-HTTP-proxy-please-configure"><a href="#Connection-timed-out-connect-If-you-are-behind-an-HTTP-proxy-please-configure" class="headerlink" title="Connection timed out: connect. If you are behind an HTTP proxy, please configure"></a>Connection timed out: connect. If you are behind an HTTP proxy, please configure</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yechaoa/article/details/76437311">https://blog.csdn.net/yechaoa/article/details/76437311</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/c3775917.html">https://wangwenzhe.github.io/posts/c3775917.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Android/">Android</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/3c74b3e0.html" title="Spring Redis"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Spring Redis</div></div></a></div><div class="next-post pull-right"><a href="/posts/8ead567e.html" title="MongoDB"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">MongoDB</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/7ff8c976.html" title="Android-保活"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-28</div><div class="title">Android-保活</div></div></a></div><div><a href="/posts/296f51d2.html" title="Android-Websocket"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-01</div><div class="title">Android-Websocket</div></div></a></div><div><a href="/posts/387f49d8.html" title="Android-AndroidX"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-29</div><div class="title">Android-AndroidX</div></div></a></div><div><a href="/posts/1b337eff.html" title="Android-省市县地址选择"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-27</div><div class="title">Android-省市县地址选择</div></div></a></div><div><a href="/posts/cb4a5592.html" title="Android-控件"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-07</div><div class="title">Android-控件</div></div></a></div><div><a href="/posts/28364d61.html" title="Android-打包"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-03</div><div class="title">Android-打包</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD"><span class="toc-number">1.</span> <span class="toc-text">卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows"><span class="toc-number">1.1.</span> <span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac"><span class="toc-number">1.2.</span> <span class="toc-text">Mac</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%8C%85"><span class="toc-number">2.1.</span> <span class="toc-text">自动导包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gitignore"><span class="toc-number">2.2.</span> <span class="toc-text">.gitignore</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%BD%E7%95%A5%E7%9A%84%E6%96%87%E4%BB%B6%E6%88%96%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E6%90%9C%E7%B4%A2%E3%80%8CFile-Types%E3%80%8D"><span class="toc-number">2.3.</span> <span class="toc-text">忽略的文件或文件夹，搜索「File Types」</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-Studio-%E5%AE%89%E8%A3%85%E5%A5%BD%E4%BB%A5%E5%90%8E%E4%BC%9A%E5%9C%A8%E7%B3%BB%E7%BB%9F%E7%9B%98%E7%94%A8%E6%88%B7%E7%9B%AE%E5%BD%95%E4%B8%8B%E4%BA%A7%E7%94%9F%E5%87%A0%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">2.4.</span> <span class="toc-text">Android Studio 安装好以后会在系统盘用户目录下产生几个文件夹</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">3.</span> <span class="toc-text">快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">常用插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SDK"><span class="toc-number">5.</span> <span class="toc-text">SDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="toc-number">6.</span> <span class="toc-text">问题汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradle-sync-failed-Sync-failed-reason-unknown"><span class="toc-number">6.1.</span> <span class="toc-text">Gradle sync failed: Sync failed: reason unknown</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-application-could-not-be-installed-INSTALL-FAILED-CONFLICTING-PROVIDER"><span class="toc-number">6.2.</span> <span class="toc-text">The application could not be installed: INSTALL_FAILED_CONFLICTING_PROVIDER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradle-%E6%8F%92%E4%BB%B6%E7%89%88%E6%9C%AC%E4%B8%8E-Gradle-%E7%89%88%E6%9C%AC%E5%AF%B9%E4%BA%8E%E5%85%B3%E7%B3%BB%E9%97%AE%E9%A2%98"><span class="toc-number">6.3.</span> <span class="toc-text">Gradle 插件版本与 Gradle 版本对于关系问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE-build-gradle-%E4%B8%AD%E4%BE%9D%E8%B5%96%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5"><span class="toc-number">6.4.</span> <span class="toc-text">项目 build.gradle 中依赖下载失败</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradle%E2%80%99s-dependency-cache-may-be-corrupt-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">6.5.</span> <span class="toc-text">Gradle’s dependency cache may be corrupt 解决方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unable-to-tunnel-through-proxy-Proxy-returns-%E2%80%9CHTTP-1-1-400-Bad-Request%E2%80%9D"><span class="toc-number">6.6.</span> <span class="toc-text">Unable to tunnel through proxy. Proxy returns “HTTP&#x2F;1.1 400 Bad Request”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unknown-host-%E2%80%98dl-google-com%E2%80%99-You-may-need-to-adjust-the-proxy-settings"><span class="toc-number">6.7.</span> <span class="toc-text">Unknown host ‘dl.google.com’. You may need to adjust the proxy settings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-SDK-not-being-installed-on-Android-Studio"><span class="toc-number">6.8.</span> <span class="toc-text">Android SDK not being installed on Android Studio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E8%B5%84%E6%BA%90%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">6.9.</span> <span class="toc-text">下载资源慢的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ERROR-Crashlytics-could-not-find-the-manifest-Not-found-at-G-androidstudio-ws-scm-pengyang-Scm-demo-build-intermediates-merged-manifests-debug-AndroidManifest-xml"><span class="toc-number">6.10.</span> <span class="toc-text">ERROR: Crashlytics could not find the manifest. Not found at G:\androidstudio-ws\scm-pengyang\Scm\demo\build\intermediates\merged_manifests\debug\AndroidManifest.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Error-Internal-error-java-lang-ClassNotFoundException-com-google-wireless-android-sdk-stats-IntellijIndexingStats-Index"><span class="toc-number">6.11.</span> <span class="toc-text">Error:Internal error: (java.lang.ClassNotFoundException) com.google.wireless.android.sdk.stats.IntellijIndexingStats$Index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-Studio-cannot-open-this-project-please-retry-with-Android-Studio-3-5-or-new"><span class="toc-number">6.12.</span> <span class="toc-text">Android Studio cannot open this project, please retry with Android Studio 3.5 or new</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Entry-name-%E2%80%98res-anim-fade-in-xml%E2%80%99-collided"><span class="toc-number">6.13.</span> <span class="toc-text">Entry name ‘res&#x2F;anim&#x2F;fade_in.xml’ collided</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Connection-timed-out-connect-If-you-are-behind-an-HTTP-proxy-please-configure"><span class="toc-number">6.14.</span> <span class="toc-text">Connection timed out: connect. If you are behind an HTTP proxy, please configure</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>音视频-Tecent | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="概念房间房间是一个音视频空间，同一房间内的用户可以互相接收对方的实时音视频  实时音视频使用房间这个虚拟的概念，用于用户之间的相互隔离。 只有在同一个房间里的用户才可以相互接收音视频。 一个用户同一时间只能在一个房间内。如果要进入另一个房间，必须从前一个房间内退出。   注意：  第一个创建房间的用户即这个房间的所有者，但该用户无法主动解散房间。 所有用户都主动退出房间时，服务端会马上解散房间。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="音视频-Tecent">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/78c4f967.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="概念房间房间是一个音视频空间，同一房间内的用户可以互相接收对方的实时音视频  实时音视频使用房间这个虚拟的概念，用于用户之间的相互隔离。 只有在同一个房间里的用户才可以相互接收音视频。 一个用户同一时间只能在一个房间内。如果要进入另一个房间，必须从前一个房间内退出。   注意：  第一个创建房间的用户即这个房间的所有者，但该用户无法主动解散房间。 所有用户都主动退出房间时，服务端会马上解散房间。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2020-10-13T09:56:06.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.893Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="音视频">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/78c4f967.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '音视频-Tecent',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">音视频-Tecent</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-10-13T09:56:06.000Z" title="发表于 2020-10-13 17:56:06">2020-10-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.893Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91%E9%80%9A%E4%BF%A1/">音视频通信</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91%E9%80%9A%E4%BF%A1/Tecent/">Tecent</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="音视频-Tecent"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="房间"><a href="#房间" class="headerlink" title="房间"></a>房间</h3><p>房间是一个音视频空间，同一房间内的用户可以互相接收对方的实时音视频</p>
+<ul>
+<li>实时音视频使用房间这个虚拟的概念，用于用户之间的相互隔离。</li>
+<li>只有在同一个房间里的用户才可以相互接收音视频。</li>
+<li>一个用户同一时间只能在一个房间内。如果要进入另一个房间，必须从前一个房间内退出。</li>
+</ul>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>第一个创建房间的用户即这个房间的所有者，但该用户无法主动解散房间。</li>
+<li>所有用户都主动退出房间时，服务端会马上解散房间。</li>
+<li>如果单个用户异常掉线，30 秒后服务端会将该用户清理出房间；如果所有的用户都异常掉线，30 秒后服务端会自动解散这个房间。</li>
+<li>当用户要加入的房间不存在时，实时音视频后台会先创建一个房间，然后再把用户加入。</li>
+</ul>
+</blockquote>
+<h3 id="旁路直播"><a href="#旁路直播" class="headerlink" title="旁路直播"></a>旁路直播</h3><p>旁路直播是一种直播方式，通常用于不同协议的音视频系统之间进行数据转发。实时音视频服务端通过旁路直播的方式，将通话房间中的音视频数据以 RTMP 推流的形式，推送至云直播服务，从而实现旁路直播、旁路转推、云端混流以及云端录制等功能。</p>
+<h3 id="RoomID"><a href="#RoomID" class="headerlink" title="RoomID"></a>RoomID</h3><p>实时音视频服务里使用 RoomID（房间号）来唯一标识一个房间。RoomID 是由开发者自行维护和分配的一个 uint32 范围内的数字</p>
+<h3 id="UserID"><a href="#UserID" class="headerlink" title="UserID"></a>UserID</h3><p>UserID（用户标识）用于在一个实时音视频应用中唯一标识一个用户。</p>
+<ul>
+<li>用户标识是用户登录开发者业务系统的帐号在腾讯云上的映射。通常情况下，开发者可直接使用用户名作为 UserID。</li>
+<li>长度建议不超过 32 字节。请使用英文字符、数字或下划线，不能全为数字，大小写不敏感。</li>
+</ul>
+<h3 id="UserSig"><a href="#UserSig" class="headerlink" title="UserSig"></a>UserSig</h3><p>UserSig（用户签名）用于对一个用户进行登录鉴权认证，确认用户是否真实。用户签名生成方法可参考 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/647/17275">生成签名</a> 文档。</p>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p><a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/trtc/app/detail/quickstart/">https://console.cloud.tencent.com/trtc/app/detail/quickstart/</a></p>
+<h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//loginname 发起方 </span></span><br><span class="line"><span class="comment">// peer_username 被发起方</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">open</span>(<span class="string">&quot;https://ip:8443/TRTC/index.html?user=&quot;</span> + loginname + <span class="string">&quot;&amp;peer=&quot;</span> + <span class="built_in">encodeURIComponent</span>(peer_username), <span class="string">&quot;new&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><p>IM 登录，向指定用户发送自定义消息「加入指定房间，进行音视频通信」</p>
+<ol>
+<li><p>GenerateTestUserSig.js </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">配置 SDKAPPID、SECRETKEY</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>common.js</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//原有代码-音视频客户端初始化-加入指定房间</span></span><br><span class="line">rtc = <span class="keyword">new</span> <span class="title class_">RtcClient</span>(options);</span><br><span class="line"><span class="title function_">join</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//新增代码-IM 登录后向对方发送自定义消息：「加入指定房间，进行音视频通信」</span></span><br><span class="line"><span class="keyword">var</span> tim_options = &#123;</span><br><span class="line">  <span class="title class_">SDKAppID</span>: options.<span class="property">sdkAppId</span> <span class="comment">// 接入时需要将0替换为您的即时通信 IM 应用的 SDKAppID</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 创建 SDK 实例，`TIM.create()`方法对于同一个 `SDKAppID` 只会返回同一份实例</span></span><br><span class="line"><span class="keyword">var</span> tim = <span class="variable constant_">TIM</span>.<span class="title function_">create</span>(tim_options);</span><br><span class="line"><span class="comment">// 设置 SDK 日志输出级别，详细分级请参见 setLogLevel 接口的说明</span></span><br><span class="line">tim.<span class="title function_">setLogLevel</span>(<span class="number">0</span>); <span class="comment">// 普通级别，日志量较多，接入时建议使用</span></span><br><span class="line"><span class="comment">// tim.setLogLevel(1); // release 级别，SDK 输出关键信息，生产环境时建议使用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册 COS SDK 插件，发送图片、文件等消息需要的 COS SDK</span></span><br><span class="line"><span class="comment">// tim.registerPlugin(&#123;&#x27;cos-js-sdk&#x27;: COS&#125;);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 接下来可以通过 tim 进行事件绑定和构建 IM 应用</span></span><br><span class="line"><span class="comment">// 监听事件，例如：</span></span><br><span class="line">tim.<span class="title function_">on</span>(<span class="variable constant_">TIM</span>.<span class="property">EVENT</span>.<span class="property">SDK_READY</span>, <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">  <span class="comment">// 收到离线消息和会话列表同步完毕通知，接入侧可以调用 sendMessage 等需要鉴权的接口</span></span><br><span class="line">  <span class="comment">// event.name - TIM.EVENT.SDK_READY</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> roomId = $(<span class="string">&quot;#roomId&quot;</span>).<span class="title function_">val</span>();</span><br><span class="line">  <span class="keyword">var</span> peerUser = $(<span class="string">&quot;#peerUser&quot;</span>).<span class="title function_">val</span>();</span><br><span class="line">  <span class="keyword">if</span>(peerUser == <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 1. 创建消息实例-向手机端发送视频通话消息</span></span><br><span class="line">  <span class="keyword">let</span> message = tim.<span class="title function_">createCustomMessage</span>(&#123;</span><br><span class="line">    <span class="attr">to</span>: peerUser,</span><br><span class="line">    <span class="attr">conversationType</span>: <span class="variable constant_">TIM</span>.<span class="property">TYPES</span>.<span class="property">CONV_C2C</span>,</span><br><span class="line">    <span class="comment">// 消息优先级，用于群聊（v2.4.2起支持）。如果某个群的消息超过了频率限制，后台会优先下发高优先级的消息，详细请参考 消息优先级与频率控制</span></span><br><span class="line">    <span class="comment">// 支持的枚举值：TIM.TYPES.MSG_PRIORITY_HIGH, TIM.TYPES.MSG_PRIORITY_NORMAL（默认）, TIM.TYPES.MSG_PRIORITY_LOW, TIM.TYPES.MSG_PRIORITY_LOWEST</span></span><br><span class="line">    <span class="comment">// priority: TIM.TYPES.MSG_PRIORITY_HIGH,</span></span><br><span class="line">    <span class="attr">payload</span>: &#123;</span><br><span class="line">      <span class="attr">data</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123;<span class="string">&#x27;call_type&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;room_id&#x27;</span>: <span class="built_in">parseInt</span>(roomId), <span class="string">&#x27;version&#x27;</span>: <span class="number">1</span>&#125;), <span class="comment">// 用于标识该消息是骰子类型消息</span></span><br><span class="line">      <span class="attr">description</span>: <span class="string">&#x27;description&#x27;</span>,</span><br><span class="line">      <span class="attr">extension</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">// 3. 发送消息</span></span><br><span class="line">  <span class="keyword">let</span> promise = tim.<span class="title function_">sendMessage</span>(message);</span><br><span class="line">  promise.<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">imResponse</span>) &#123;</span><br><span class="line">    <span class="comment">// 发送成功</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(imResponse);</span><br><span class="line">  &#125;).<span class="title function_">catch</span>(<span class="keyword">function</span> (<span class="params">imError</span>) &#123;</span><br><span class="line">    <span class="comment">// 发送失败</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">warn</span>(<span class="string">&#x27;sendMessage error:&#x27;</span>, imError);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">tim.<span class="title function_">on</span>(<span class="variable constant_">TIM</span>.<span class="property">EVENT</span>.<span class="property">MESSAGE_RECEIVED</span>, <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">  <span class="comment">// 收到推送的单聊、群聊、群提示、群系统通知的新消息，可通过遍历 event.data 获取消息列表数据并渲染到页面</span></span><br><span class="line">  <span class="comment">// event.name - TIM.EVENT.MESSAGE_RECEIVED</span></span><br><span class="line">  <span class="comment">// event.data - 存储 Message 对象的数组 - [Message]</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(event.<span class="property">data</span>);</span><br><span class="line">  event.<span class="property">data</span>.<span class="title function_">forEach</span>(<span class="function"><span class="params">msg</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(msg.<span class="property">payload</span>.<span class="property">data</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> data = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(msg.<span class="property">payload</span>.<span class="property">data</span>);</span><br><span class="line">      <span class="keyword">if</span>(data.<span class="property">line_busy</span> == <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="comment">//对方忙</span></span><br><span class="line">        layer.<span class="title function_">msg</span>(<span class="string">&quot;对方已挂断，请稍后再拨&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 开始登录</span></span><br><span class="line">tim.<span class="title function_">login</span>(&#123;<span class="attr">userID</span>: options.<span class="property">userId</span>, <span class="attr">userSig</span>: options.<span class="property">userSig</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><p>解析来自 Web 发送的自定义消息，解析房间 Id，进入房间，音视频通话</p>
+<ol>
+<li><p>配置 GenerateTestUserSig.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SDKAPPID、SECRETKEY</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>核心 TRTCCallingImpl.java -&gt; login()</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//监听普通消息-web 发起的音视频等消息。默认只有音视频消息信令监听器</span></span><br><span class="line">V2TIMManager.getInstance().addSimpleMsgListener(<span class="keyword">new</span> <span class="title class_">V2TIMSimpleMsgListener</span>() &#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onRecvC2CCustomMessage</span><span class="params">(String msgID, V2TIMUserInfo s, <span class="type">byte</span>[] customData)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(customData).toString();</span><br><span class="line">    <span class="keyword">final</span> <span class="type">String</span> <span class="variable">sender</span> <span class="operator">=</span> s.getUserID();</span><br><span class="line">    TRTCLogger.d(TAG, <span class="string">&quot;sender:&quot;</span> + sender + <span class="string">&quot; data:&quot;</span> + data);</span><br><span class="line">    Map&lt;String, Object&gt; extraMap = <span class="keyword">new</span> <span class="title class_">Gson</span>().fromJson(data, Map.class);</span><br><span class="line">    <span class="keyword">if</span> (extraMap.containsKey(CallModel.SIGNALING_EXTRA_KEY_CALL_TYPE)) &#123;</span><br><span class="line">      <span class="type">int</span> <span class="variable">callType</span> <span class="operator">=</span> ((Double) extraMap.get(CallModel.SIGNALING_EXTRA_KEY_CALL_TYPE)).intValue();</span><br><span class="line">      <span class="keyword">switch</span> (callType) &#123;</span><br><span class="line">        <span class="keyword">case</span> TRTCCalling.TYPE_VIDEO_CALL:</span><br><span class="line">          <span class="comment">//视频通话请求</span></span><br><span class="line">          <span class="keyword">if</span> (!isCallingData(data)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          mCurCallID = msgID;</span><br><span class="line">          processInvite(msgID, sender, <span class="literal">null</span>, Arrays.asList(sender), data);</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> CallModel.VIDEO_CALL_ACTION_ACCEPT:</span><br><span class="line">          <span class="comment">//对方接通</span></span><br><span class="line">          <span class="comment">//                            TRTCLogger.d(TAG, &quot;对方接通: msgID:&quot; + msgID + &quot;, sender:&quot; + sender + &quot; data:&quot; + data);</span></span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span> (!isCallingData(data)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          mCurInvitedList.remove(sender);</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> CallModel.VIDEO_CALL_ACTION_HANGUP:</span><br><span class="line">          <span class="comment">//对方挂断</span></span><br><span class="line"></span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/78c4f967.html">https://wangwenzhe.github.io/posts/78c4f967.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/">音视频</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/a72db847.html" title="Android-BadgeView"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Android-BadgeView</div></div></a></div><div class="next-post pull-right"><a href="/posts/d259e32a.html" title="音视频通信功能及技术标准要求"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">音视频通信功能及技术标准要求</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/4748bf37.html" title="融云-音视频"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-05</div><div class="title">融云-音视频</div></div></a></div><div><a href="/posts/d259e32a.html" title="音视频通信功能及技术标准要求"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-13</div><div class="title">音视频通信功能及技术标准要求</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%BF%E9%97%B4"><span class="toc-number">1.1.</span> <span class="toc-text">房间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%81%E8%B7%AF%E7%9B%B4%E6%92%AD"><span class="toc-number">1.2.</span> <span class="toc-text">旁路直播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RoomID"><span class="toc-number">1.3.</span> <span class="toc-text">RoomID</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UserID"><span class="toc-number">1.4.</span> <span class="toc-text">UserID</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UserSig"><span class="toc-number">1.5.</span> <span class="toc-text">UserSig</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-number">2.</span> <span class="toc-text">入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">3.</span> <span class="toc-text">使用案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web"><span class="toc-number">3.2.</span> <span class="toc-text">Web</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android"><span class="toc-number">3.3.</span> <span class="toc-text">Android</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

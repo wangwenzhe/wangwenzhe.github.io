@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SSL证书 | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="参考阿里云：免费SSL证书概述 (aliyun.com) 汇智云安 - 知乎 (zhihu.com) 申请SSL证书，建议先看完这14个问题 - 知乎 (zhihu.com) SSL 证书 域名型（DV）SSL 证书提交流程-证书申请-文档中心-腾讯云 (tencent.com) SSL 证书 Nginx 服务器 SSL 证书安装部署-证书安装-文档中心-腾讯云 (tencent.com) 简介1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSL证书">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/c08a993.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="参考阿里云：免费SSL证书概述 (aliyun.com) 汇智云安 - 知乎 (zhihu.com) 申请SSL证书，建议先看完这14个问题 - 知乎 (zhihu.com) SSL 证书 域名型（DV）SSL 证书提交流程-证书申请-文档中心-腾讯云 (tencent.com) SSL 证书 Nginx 服务器 SSL 证书安装部署-证书安装-文档中心-腾讯云 (tencent.com) 简介1">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2022-06-29T07:47:41.000Z">
+<meta property="article:modified_time" content="2025-06-15T13:17:21.761Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="SSL证书">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/c08a993.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SSL证书',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-15 21:17:21'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SSL证书</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-29T07:47:41.000Z" title="发表于 2022-06-29 15:47:41">2022-06-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-15T13:17:21.761Z" title="更新于 2025-06-15 21:17:21">2025-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/">数据安全</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/SSL%E8%AF%81%E4%B9%A6/">SSL证书</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="SSL证书"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>阿里云：<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/205510.html">免费SSL证书概述 (aliyun.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/org/shu-zi-zheng-shu-shang-dian/answers">汇智云安 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/374136881">申请SSL证书，建议先看完这14个问题 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/400/47285">SSL 证书 域名型（DV）SSL 证书提交流程-证书申请-文档中心-腾讯云 (tencent.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/400/35244">SSL 证书 Nginx 服务器 SSL 证书安装部署-证书安装-文档中心-腾讯云 (tencent.com)</a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="1-什么是SSL证书"><a href="#1-什么是SSL证书" class="headerlink" title="1 . 什么是SSL证书"></a>1 . 什么是SSL证书</h3><p>通俗的说，只要有网站就需要SSL证书。它是帮助网站从不安全的http协议变为安全的https协议的一种数字证书。SSL证书以pem&#x2F;pfx&#x2F;cer&#x2F;crt&#x2F;jks等格式的文件部署在网站的服务器上。</p>
+<p>SSL证书就是利用Web服务器与浏览器以及客户端之间建立加密链接的加密技术，通过配置和应用SSL证书来启用HTTPS协议，来保证互联网数据传输安全的行之有效的解决方案。</p>
+<h3 id="2-关于SSL证书有效期"><a href="#2-关于SSL证书有效期" class="headerlink" title="2 . 关于SSL证书有效期"></a>2 . 关于SSL证书有效期</h3><p>由于SSL证书行业规则调整，自2020年9月1日起，SSL证书一次性最多只能签发1年（准确的说是13 个月），但您依然可以一次性采购1-6年，这样的好处是避免每年都要走一次证书采购的商务流程，只要在采购的年限内，任何时间内生成的新证书均为13个月，在13个月到期之前会自动给您下一个13个月的证书，您直接更新到服务器上即可。</p>
+<h3 id="3-SSL证书根据验证级别不同分为三种："><a href="#3-SSL证书根据验证级别不同分为三种：" class="headerlink" title="3 . SSL证书根据验证级别不同分为三种："></a>3 . SSL证书根据验证级别不同分为三种：</h3><p>域名型SSL证书（DV SSL）、企业型SSL证书（OV SSL）、增强型SSL证书（EV SSL）</p>
+<p>DV SSL证书仅仅需要验证一下域名管理权。</p>
+<p>验证方式：验证SSL申请人是否对域名拥有管理权限的时候，向购买域名时填写的管理员邮箱（即域名的whois信息中的邮箱地址）或 <a href="mailto:&#97;&#100;&#109;&#105;&#110;&#64;&#x79;&#x6f;&#117;&#114;&#x64;&#x6f;&#x6d;&#x61;&#105;&#110;&#x2e;&#x63;&#111;&#109;">&#97;&#100;&#109;&#105;&#110;&#64;&#x79;&#x6f;&#117;&#114;&#x64;&#x6f;&#x6d;&#x61;&#105;&#110;&#x2e;&#x63;&#111;&#109;</a>（包括admin、administrator、postmaster、webmaster前缀）发一封邮件，申请人需要登录该邮箱，点击确认链接完成验证。除此之外，还可以通过添加一个临时的DNS解析来验证域名管理权。</p>
+<p>OV SSL证书需要经过对网站所有者的企业信息验证和域名管理权的验证后签发。签发出来的SSL证书中包含网站经营者信息，这类证书需要验证域名的管理权限和企业的真实性。</p>
+<p>增强型SSL证书（EVSSL）需要验证域名管理权限和企业真实性（这两项验证方式同以上企业型SSL证书的验证方式一样）。另外，如果公司成立未满三年，部分品牌的EV SSL证书需要提供银行的开户许可证等额外的公司证明材料。</p>
+<h3 id="4-申请SSL证书需要什么条件？注意哪些问题？"><a href="#4-申请SSL证书需要什么条件？注意哪些问题？" class="headerlink" title="4 . 申请SSL证书需要什么条件？注意哪些问题？"></a>4 . 申请SSL证书需要什么条件？注意哪些问题？</h3><p>首先，申请者要有一个自己的域名或者公网IP地址，确保域名或IP状态正常，如域名未过期，未被停止服务等。</p>
+<p>其次，如果是申请OV或者EV SSL证书，一定要确保企业状态是正常的，没有吊销等异常状态。</p>
+<p>最后，特别提示，SSL证书不支持任何违法犯罪的网站来申请，一旦发现，立即吊销且不退款。</p>
+<h3 id="5-网站为什么需要安装配置SSL证书"><a href="#5-网站为什么需要安装配置SSL证书" class="headerlink" title="5. 网站为什么需要安装配置SSL证书?"></a>5. 网站为什么需要安装配置SSL证书?</h3><p>加密重要数据，防止网站访问者个人敏感信息(账号、地址、手机号等机密信息)被劫持或窃取。</p>
+<p>达到PCI的安全标准，SSL是PCI（支付卡行业）合规性的关键组成部分。</p>
+<p>安全身份认证，验证网站的真实身份，有效防止钓鱼网站。</p>
+<p>防止数据在传输过程中被篡改，保证数据的完整性和安全性。</p>
+<p>地址栏安全锁，地址栏的“锁”型标志给用户安全感， 提升用户信任度。</p>
+<p>提升品牌形象，确保网站的安全性，从而树立网站可信形象。</p>
+<p>更符合搜索引擎对网站的SEO要求，提高搜索排名顺序，给企业带来更多访问量。</p>
+<p>提高页面访问速度，提高用户体验，防止客户流失。</p>
+<p>消除浏览器对网站的“不安全”提示，减少用户流失风险。</p>
+<p>满足与第三方合作的连接安全标准，很多第三方平台，例如小程序、抖音等都不支持没有SSL证书的网站。</p>
+<h3 id="6-SSL数字证书厂商为什么大多数都是国外的"><a href="#6-SSL数字证书厂商为什么大多数都是国外的" class="headerlink" title="6 . SSL数字证书厂商为什么大多数都是国外的"></a>6 . SSL数字证书厂商为什么大多数都是国外的</h3><p>网站的安全离不开SSL数字证书，安全的SSL数字证书需要从正规的SSL数字证书厂商申请。只有在访问拥有“信任根”的网站时，浏览器才会默认网站是安全、合法的，而没有“信任根”预埋的网站则会自动弹出安全警告，提示网民该网站存在安全隐患。</p>
+<p>由于中国的数字证书相关领域起步相对较晚，所以很多中国品牌的SSL证书都没有进入到一些稍微老旧一些的浏览器版本和操作系统中，所以，在兼容性方面，目前还是以国外的证书品牌更为成熟。</p>
+<h3 id="7-如何选择SSL证书"><a href="#7-如何选择SSL证书" class="headerlink" title="7 . 如何选择SSL证书"></a>7 . 如何选择SSL证书</h3><p>SSL证书有数十款，种类复杂，品牌繁多，价格在百元至万元不等。首先要考虑自身拥有的域名数量情况以及后续域名增加情况。</p>
+<p>只有1个域名，以后也不会再增加其他域名，推荐购买单域名证书；</p>
+<p>有多个子域名，建议购买通配符SSL证书；</p>
+<p>有多个不同的主域名，而且以后还会新增其他域名，推荐购买多域名证书。</p>
+<p>建议使用沃通CA的SSL证书选购助手：<a href="https://link.zhihu.com/?target=https://www.wosign.com/Products/ssl.htm">https://www.wosign.com/Products/ssl.htm</a>，或者直接沃通CA的在线客服来为您筛选证书类型。</p>
+<h3 id="8-不同SSL证书价格不同的原因是什么？为什么相差那么大？"><a href="#8-不同SSL证书价格不同的原因是什么？为什么相差那么大？" class="headerlink" title="8. 不同SSL证书价格不同的原因是什么？为什么相差那么大？"></a>8. 不同SSL证书价格不同的原因是什么？为什么相差那么大？</h3><p>首先，不同品牌的SSL证书所需的人力成本、技术、推广费用、售后服务等因素会对价格产生影响。</p>
+<p>其次，不同类型的证书价格也会不同：</p>
+<p>1、按域名数量可以分为单域名证书、多域名证书、通配符证书这三类。单域名SSL证书只能保护一个域名，因此价格相对便宜。多域名SSL证书可以保护多个域名，所以价格会高一些。通配符证书可以保护一个域名以及它所有的下一级子域名，而且增加新的子域名不用另外审核及付费，所以价格更高一些。</p>
+<p>2、按照验证方式可以分为DV证书（域名验证型）、OV证书（企业验证型）、EV证书（扩展验证型）。<strong>DV SSL证书只需验证网站的域名所有权，10分钟左右即可颁发证书，因此价格相对便宜</strong>。OV SSL证书和EV SSL证书不仅需要验证域名的所有权，还需要验证企业信息，需提供公司营业执照扫描件和相关信息等材料，需要经过人工审核，一般需要2-3个工作日颁发，所以价格要高一些。</p>
+<p>此外，还有一些证书本身附带有一些更加丰富的功能，这也是导致价格出现很大差异的原因。</p>
+<h3 id="9-SSL证书申请的流程"><a href="#9-SSL证书申请的流程" class="headerlink" title="9 . SSL证书申请的流程"></a>9 . SSL证书申请的流程</h3><p>首先：选择购买SSL证书后，在线生成CSR文件(同时也会生成密钥KEY文件)，提交订单的同时将CSR文件一起提交到沃通ca证书管理系统，我们将通过api将相关信息提交给CA系统。</p>
+<p>其次：CA机构在收到申请之后会进行验证。DV证书只需验证域名，验证通过就会收到CA机构发送给域名管理员的邮件，打开邮件并点击确认即可完成邮件验证。OV或EV证书还需要对企业相关电子信息进行验证，基本是人工审核，需要1-5个工作日。</p>
+<p>最后： CA机构的验证通过之后就会颁发证书了，用户可在沃通CA的证书管理系统中自行下载然后部署在服务器上，这就完成了所有的操作步骤。</p>
+<h3 id="10-SSL证书过期了怎么续费？"><a href="#10-SSL证书过期了怎么续费？" class="headerlink" title="10 . SSL证书过期了怎么续费？"></a>10 . SSL证书过期了怎么续费？</h3><p>SSL证书需要用新的证书文件来替换即将过期的SSL证书文件，当您的旧证书还没到期时，沃通CA会把老证书未用完的有效期加载到续费后获取到的新证书中，避免浪费。</p>
+<h3 id="11-网站安装了SSL证书，但是提示SSL证书无效是什么原因？"><a href="#11-网站安装了SSL证书，但是提示SSL证书无效是什么原因？" class="headerlink" title="11 . 网站安装了SSL证书，但是提示SSL证书无效是什么原因？"></a>11 . 网站安装了SSL证书，但是提示SSL证书无效是什么原因？</h3><p>A、使用自签名SSL证书：自签名证书是一种自己生成的SSL证书，其并没有通过合法第三方CA机构进行审核签发，所以任何人都是可以签发生成(钓鱼网站也不例外)，所以容易被仿冒或者伪造，以及受到中间人的攻击，其风险是非常大的，因此许多浏览器都是不信任自签名证书。</p>
+<p>B、SSL证书兼容性较差：并不是所有的CA机构签发的SSL证书都是支持全球通用所有浏览器都信任的。若用户选择的CA机构并不是通过国际WebTrust认证，那么他签发的SSL证书在许多浏览器上都不被信任。所以网站申请SSL证书时，一定要选择通过国际WebTrust认证的CA机构，且能够兼容老旧系统的品牌。</p>
+<p>C、SSL证书没有正确安装：如果网站的SSL证书没有正确的安装，用户在进行访问的时候也会有一些风险提示，如提示该页面存在不安全因素。这时只需要将这些http调用资源改为https调用即可。</p>
+<p>D、浏览器对指定的SSL证书不信任：有部分SSL证书品牌因为某些原因被浏览器列入”黑名单”，也是公开宣布将不再信任该CA机构签发的SSL证书。所以用户若选择这类的SSL证书，浏览器就会提示证书无效。</p>
+<p>E、网站SSL证书已经过期或者还没有生效：出现这种原因主要是电脑系统的日期出现了错误，或者是安装的SSL证书已经过有效期。</p>
+<p>F、SSL证书中包含的域名和网站不一致：通常情况下每个SSL证书所对应的网站域名也都是唯一的，当网站部署的SSL证书中所包含的域名与访问的域名不一致，系统就会发出SSL证书无效警告等。解决方法：用户可以重新去申请一个SSL证书，或者原先申请的是多域名型证书可以直接将该域名增加到证书上即可。</p>
+<p>G、网站页面中存在不安全信息，目前都提倡每一个页面使用HTTPS，则网站所有的内容都必须是HTTPS。如果遇到图片、JS脚本，FLASH插件是通过HTTP方式去调用的，就会发生这种错误。解决方法：将调用的元素http改成HTTPS即可。</p>
+<h3 id="12-浏览器是如何验证SSL证书的有效性的？"><a href="#12-浏览器是如何验证SSL证书的有效性的？" class="headerlink" title="12 . 浏览器是如何验证SSL证书的有效性的？"></a>12 . 浏览器是如何验证SSL证书的有效性的？</h3><p>A、检查SSL证书中的域名是否与该网站的域名一致</p>
+<p>浏览器会对域名和SSL证书的一致性进行检查，如果不一致，则浏览器会发出“此网站出具的安全证书是为其他网站地址颁发的。安全证书问题可能显示试图欺骗您或截获您向服务器发送的数据。建议关闭此网页，并且不要继续浏览该网站”等类似这样的警告信息。</p>
+<p>B、检查SSL证书是否由受信任的CA机构颁发</p>
+<p>正规CA机构的根证书都会被植入到各大浏览器中，如果浏览器发现SSL证书不是由受信任的CA机构颁发的，则会有安全警告发出，例如非正规CA机构颁发的自签名SSL证书就会出现这种情况。</p>
+<p>C、检查SSL证书是否在有效期内</p>
+<p>浏览器会检查SSL证书的有效期的，如果证书过期，则会发出“此网站出具的安全证书已过期或还未生效“。安全证书问题可能显示试图欺骗您或截获您向服务器发送的数据。</p>
+<p>D、检查SSL证书的吊销列表是否可用</p>
+<p>浏览器会检查SSL证书中的证书吊销列表，如果已经被吊销，浏览器则会显示警告信息：“此组织的证书已被吊销”。安全证书问题可能显示试图欺骗您或截获您向服务器发送的数据。</p>
+<h3 id="13-HTTPS网站可以打开，但浏览器地址栏没有安全锁，是因为证书的问题吗？"><a href="#13-HTTPS网站可以打开，但浏览器地址栏没有安全锁，是因为证书的问题吗？" class="headerlink" title="13 . HTTPS网站可以打开，但浏览器地址栏没有安全锁，是因为证书的问题吗？"></a>13 . HTTPS网站可以打开，但浏览器地址栏没有安全锁，是因为证书的问题吗？</h3><p>除非证书过期，否则这种情况与证书无关。地址栏没有安全锁的原因是网站源码不符合SSL证书规范，由于HTTPS是一个安全协议抬头，源码中的HTTP是普通的协议资源，这个源码是不支持HTTPS的，所以在HTTPS网站调用就会不安全，因此就要将自己的网站源码所有HTTP协议的改成&#x2F;&#x2F;自动协议或者HTTPS:&#x2F;&#x2F;抬头。同理，电脑的浏览器打开HTTPS都正常，但一些手机比如安卓手机反而提示不信任，所以每次安卓手机浏览器访问都会有警告提示，只要将这个代码删除就好了。</p>
+<h3 id="14-如何判断SSL证书是否安装成功呢？"><a href="#14-如何判断SSL证书是否安装成功呢？" class="headerlink" title="14 . 如何判断SSL证书是否安装成功呢？"></a>14 . 如何判断SSL证书是否安装成功呢？</h3><p>打开地址栏输入：https:&#x2F;&#x2F;+ssl证书绑定的域名，可以看到https:&#x2F;&#x2F;+域名的页面能正常访问，且浏览器地址栏中显示安全锁标志，说明SSL证书已经生效。</p>
+<p>注意：比较老的IE6、IE7，还有安卓2.2这种非常老旧的版本，因为CA机构都不会让他们信任，所以这些浏览器提示有安全隐患，打不开也是正常的。</p>
+<h3 id="15-没有域名（只有IP）可以也可以申请SSL证书"><a href="#15-没有域名（只有IP）可以也可以申请SSL证书" class="headerlink" title="15. 没有域名（只有IP）可以也可以申请SSL证书"></a>15. 没有域名（只有IP）可以也可以申请SSL证书</h3><h3 id="没有域名（只有IP）可以申请SSL证书吗？-知乎-zhihu-com"><a href="#没有域名（只有IP）可以申请SSL证书吗？-知乎-zhihu-com" class="headerlink" title="没有域名（只有IP）可以申请SSL证书吗？ - 知乎 (zhihu.com)"></a><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/346772610">没有域名（只有IP）可以申请SSL证书吗？ - 知乎 (zhihu.com)</a></h3><p><strong>IP申请SSL证书需要注意以下几点：</strong></p>
+<p>1、须是公网IP （内网IP不可以）；</p>
+<p>2、申请者对这个IP具有管理权限；</p>
+<p>3、申请者必须是企业或者组织机构（目前个人不可以申请）；</p>
+<p>4、可以申请单IP证书或多IP证书，不支持IP段的通配。</p>
+<h2 id="免费SSL证书申请"><a href="#免费SSL证书申请" class="headerlink" title="免费SSL证书申请"></a>免费SSL证书申请</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158708655">免费SSL证书申请，给网站添加HTTPS安全加密 - 知乎 (zhihu.com)</a></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://letsencrypt.org/zh-cn/docs/">文档 - Let’s Encrypt - 免费的SSL&#x2F;TLS证书 (letsencrypt.org)</a></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/196638669">Let’s Encrypt 安装配置教程，免费的 SSL 证书 - 知乎 (zhihu.com)</a></p>
+<p>推荐：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3ae2f024c291">申请Let’s Encrypt永久免费SSL证书 - 简书 (jianshu.com)</a></p>
+<p>推荐：[<a target="_blank" rel="noopener" href="https://www.landiannews.com/archives/93605.html">白嫖] 纯IP地址也可以申请TLS证书实现HTTPS 完全免费不用每年花3000块 - 蓝点网 (landiannews.com)</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1. 点击这里注册zeroSSL账号：https://ourl.co/zerossl 邮箱验证即可</span><br><span class="line">2. 转到控制面板点击创建新证书：</span><br><span class="line">3. 在域名里输入ip地址即可</span><br><span class="line">4. 免费版是90天的</span><br><span class="line">5. 选择自动生成CSR即可，如果你有需要的话，也可以自己生成CSR提交</span><br><span class="line">6. 这里我们选择文件验证，因为DNS验证要域名的解析权限这个估计大家都没吧</span><br><span class="line">7. 下载验证文件并在服务器上创建对应文件夹，要确保IP地址+文件夹+文件能够正常访问。宝塔用户可以在网站里创建新网站，域名就直接输入ip地址即可</span><br><span class="line">8. 点击验证</span><br><span class="line">9. 验证完成等待签发证书</span><br><span class="line">10. 证书签发完成可以下载了</span><br><span class="line">11. 下载的证书有ca_bundle.crt和certificate.crt以及私钥key，NGINX里使用certificate.crt+key即可，有的环境可能要两个crt拼接下，具体得各位自己按使用环境测试</span><br><span class="line">12. 在服务器上部署TLS证书后即可访问</span><br><span class="line"></span><br><span class="line">到期后怎么续期：</span><br><span class="line">zeroSSL也提供API能够实现自动需求但需要各位自己动手实现证书自动化申请和续期，如果没有开发能力的话只能90天一次手动申请新证书来实现人肉需求。</span><br><span class="line">也有开发者使用golang写了个工具可以实现更新：https://github.com/tinkernels/zerossl-ip-cert</span><br></pre></td></tr></table></figure>
+
+<h2 id="阿里云申请"><a href="#阿里云申请" class="headerlink" title="阿里云申请"></a>阿里云申请</h2><p><a target="_blank" rel="noopener" href="https://www.aliyun.com/product/cas">证书服务_SSL数字证书_HTTPS加密_服务器证书_CA认证-阿里云 (aliyun.com)</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/c08a993.html">https://wangwenzhe.github.io/posts/c08a993.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SSL%E8%AF%81%E4%B9%A6/">SSL证书</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/955b8d7e.html" title="SpringBoot-看门狗"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">SpringBoot-看门狗</div></div></a></div><div class="next-post pull-right"><a href="/posts/59b5a436.html" title="Vue-全局配置文件"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Vue-全局配置文件</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFSSL%E8%AF%81%E4%B9%A6"><span class="toc-number">2.1.</span> <span class="toc-text">1 . 什么是SSL证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%B3%E4%BA%8ESSL%E8%AF%81%E4%B9%A6%E6%9C%89%E6%95%88%E6%9C%9F"><span class="toc-number">2.2.</span> <span class="toc-text">2 . 关于SSL证书有效期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-SSL%E8%AF%81%E4%B9%A6%E6%A0%B9%E6%8D%AE%E9%AA%8C%E8%AF%81%E7%BA%A7%E5%88%AB%E4%B8%8D%E5%90%8C%E5%88%86%E4%B8%BA%E4%B8%89%E7%A7%8D%EF%BC%9A"><span class="toc-number">2.3.</span> <span class="toc-text">3 . SSL证书根据验证级别不同分为三种：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%94%B3%E8%AF%B7SSL%E8%AF%81%E4%B9%A6%E9%9C%80%E8%A6%81%E4%BB%80%E4%B9%88%E6%9D%A1%E4%BB%B6%EF%BC%9F%E6%B3%A8%E6%84%8F%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">2.4.</span> <span class="toc-text">4 . 申请SSL证书需要什么条件？注意哪些问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%BD%91%E7%AB%99%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AESSL%E8%AF%81%E4%B9%A6"><span class="toc-number">2.5.</span> <span class="toc-text">5. 网站为什么需要安装配置SSL证书?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-SSL%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%E5%8E%82%E5%95%86%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A4%A7%E5%A4%9A%E6%95%B0%E9%83%BD%E6%98%AF%E5%9B%BD%E5%A4%96%E7%9A%84"><span class="toc-number">2.6.</span> <span class="toc-text">6 . SSL数字证书厂商为什么大多数都是国外的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9SSL%E8%AF%81%E4%B9%A6"><span class="toc-number">2.7.</span> <span class="toc-text">7 . 如何选择SSL证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%B8%8D%E5%90%8CSSL%E8%AF%81%E4%B9%A6%E4%BB%B7%E6%A0%BC%E4%B8%8D%E5%90%8C%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E7%9B%B8%E5%B7%AE%E9%82%A3%E4%B9%88%E5%A4%A7%EF%BC%9F"><span class="toc-number">2.8.</span> <span class="toc-text">8. 不同SSL证书价格不同的原因是什么？为什么相差那么大？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-SSL%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="toc-number">2.9.</span> <span class="toc-text">9 . SSL证书申请的流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-SSL%E8%AF%81%E4%B9%A6%E8%BF%87%E6%9C%9F%E4%BA%86%E6%80%8E%E4%B9%88%E7%BB%AD%E8%B4%B9%EF%BC%9F"><span class="toc-number">2.10.</span> <span class="toc-text">10 . SSL证书过期了怎么续费？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E7%BD%91%E7%AB%99%E5%AE%89%E8%A3%85%E4%BA%86SSL%E8%AF%81%E4%B9%A6%EF%BC%8C%E4%BD%86%E6%98%AF%E6%8F%90%E7%A4%BASSL%E8%AF%81%E4%B9%A6%E6%97%A0%E6%95%88%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0%EF%BC%9F"><span class="toc-number">2.11.</span> <span class="toc-text">11 . 网站安装了SSL证书，但是提示SSL证书无效是什么原因？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E9%AA%8C%E8%AF%81SSL%E8%AF%81%E4%B9%A6%E7%9A%84%E6%9C%89%E6%95%88%E6%80%A7%E7%9A%84%EF%BC%9F"><span class="toc-number">2.12.</span> <span class="toc-text">12 . 浏览器是如何验证SSL证书的有效性的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-HTTPS%E7%BD%91%E7%AB%99%E5%8F%AF%E4%BB%A5%E6%89%93%E5%BC%80%EF%BC%8C%E4%BD%86%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9C%B0%E5%9D%80%E6%A0%8F%E6%B2%A1%E6%9C%89%E5%AE%89%E5%85%A8%E9%94%81%EF%BC%8C%E6%98%AF%E5%9B%A0%E4%B8%BA%E8%AF%81%E4%B9%A6%E7%9A%84%E9%97%AE%E9%A2%98%E5%90%97%EF%BC%9F"><span class="toc-number">2.13.</span> <span class="toc-text">13 . HTTPS网站可以打开，但浏览器地址栏没有安全锁，是因为证书的问题吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%ADSSL%E8%AF%81%E4%B9%A6%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E5%91%A2%EF%BC%9F"><span class="toc-number">2.14.</span> <span class="toc-text">14 . 如何判断SSL证书是否安装成功呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E6%B2%A1%E6%9C%89%E5%9F%9F%E5%90%8D%EF%BC%88%E5%8F%AA%E6%9C%89IP%EF%BC%89%E5%8F%AF%E4%BB%A5%E4%B9%9F%E5%8F%AF%E4%BB%A5%E7%94%B3%E8%AF%B7SSL%E8%AF%81%E4%B9%A6"><span class="toc-number">2.15.</span> <span class="toc-text">15. 没有域名（只有IP）可以也可以申请SSL证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B2%A1%E6%9C%89%E5%9F%9F%E5%90%8D%EF%BC%88%E5%8F%AA%E6%9C%89IP%EF%BC%89%E5%8F%AF%E4%BB%A5%E7%94%B3%E8%AF%B7SSL%E8%AF%81%E4%B9%A6%E5%90%97%EF%BC%9F-%E7%9F%A5%E4%B9%8E-zhihu-com"><span class="toc-number">2.16.</span> <span class="toc-text">没有域名（只有IP）可以申请SSL证书吗？ - 知乎 (zhihu.com)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8D%E8%B4%B9SSL%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7"><span class="toc-number">3.</span> <span class="toc-text">免费SSL证书申请</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E7%94%B3%E8%AF%B7"><span class="toc-number">4.</span> <span class="toc-text">阿里云申请</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系.md</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

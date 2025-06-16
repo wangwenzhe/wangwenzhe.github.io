@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Web-windows文本语音播放 | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="123456789101112131415161718192021222324&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web-windows文本语音播放">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/7c1d440e.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="123456789101112131415161718192021222324&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; co">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2023-06-16T09:10:43.000Z">
+<meta property="article:modified_time" content="2025-06-16T00:45:46.539Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="Web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Web-windows文本语音播放",
+  "url": "https://wangwenzhe.github.io/posts/7c1d440e.html",
+  "image": "https://wangwenzhe.github.io/about/logo.png",
+  "datePublished": "2023-06-16T09:10:43.000Z",
+  "dateModified": "2025-06-16T00:45:46.539Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "王文哲",
+      "url": "https://wangwenzhe.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/7c1d440e.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.3.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Web-windows文本语音播放',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(url(https://wangwenzhe.oss-cn-beijing.aliyuncs.com/mmexport1718427367820.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/top_img.jpeg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">王文哲的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">Web-windows文本语音播放</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Web-windows文本语音播放</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-16T09:10:43.000Z" title="发表于 2023-06-16 17:10:43">2023-06-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-16T00:45:46.539Z" title="更新于 2025-06-16 08:45:46">2025-06-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/%E6%96%87%E6%9C%AC%E8%AF%AD%E9%9F%B3%E6%92%AD%E6%94%BE-SpeechSynthesisUtterance/">文本语音播放-SpeechSynthesisUtterance</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">154</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>123123<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> synth = <span class="variable language_">window</span>.<span class="property">speechSynthesis</span>;</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> utterThis = <span class="keyword">new</span> <span class="title class_">SpeechSynthesisUtterance</span>();</span></span><br><span class="line"><span class="language-javascript">  utterThis.<span class="property">volume</span> = <span class="number">1</span>; <span class="comment">// 声音的音量 范围是0到1</span></span></span><br><span class="line"><span class="language-javascript">  utterThis.<span class="property">rate</span> = <span class="number">0.7</span>; <span class="comment">//语速，数值，默认值是1，范围是0.1到10</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">function</span> <span class="title function_">AddVoice</span>(<span class="params">text</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> utterance = <span class="keyword">new</span> <span class="title class_">SpeechSynthesisUtterance</span>(text);</span></span><br><span class="line"><span class="language-javascript">    synth.<span class="title function_">speak</span>(utterance);</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="title class_">AddVoice</span>(<span class="string">&quot;您有新的消息,请注意查收&quot;</span>)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/7c1d440e.html">https://wangwenzhe.github.io/posts/7c1d440e.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Web/">Web</a></div><div class="post-share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/f47d4df4.html" title="Java-ThreadLocal"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Java-ThreadLocal</div></div><div class="info-2"><div class="info-item-1">ThreadLocalThreadLocal 为线程局部变量，或许将它命名为ThreadLocalVariable更为合适。其主要作用就是实现线程本地存储功能，通过线程本地资源隔离，解决多线程并发场景下线程安全问题 如果没有 ThreadLocal 的话，就需要在各线程执行代码内部都加上大量重复代码【相同变量定义】。使用 ThreadLocal 的话，代码上复用一份，但实际各自线程维护各自局部变量数据 Java 中的 ThreadLocal 和 InheritableThreadLocal 都是用来实现线程本地存储的，它们都是线程局部变量。ThreadLocal 为每个线程提供了一个独立的变量副本，而 InheritableThreadLocal 则允许在子线程中访问父线程中设置的值。12 ThreadLocal 是一个本地线程副本变量工具类，主要用于将私有线程和该线程存放的副本对象做一个映射，各个线程之间的变量互不干扰，在高并发场景下，可以实现无锁化的状态共享。1 InheritableThreadLocal子线程想使用父线程的变量，如果没有...</div></div></div></a><a class="pagination-related" href="/posts/2f10c1e2.html" title="Web-localStorage"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Web-localStorage</div></div><div class="info-2"><div class="info-item-1">localstorage最大容量修改LocalStorage 的大小是由浏览器实现决定的，并且通常有一个最大的存储限制。在不同的浏览器中，这个限制可能不同，但一般在 5MB 左右。 不能通过代码修改 LocalStorage 的大小限制，如果需要存储更多的数据，可以考虑使用其他存储方式，例如 IndexedDB 或 Web SQL </div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/56dcf0a1.html" title="Web-removeEventListener不生效问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-14</div><div class="info-item-2">Web-removeEventListener不生效问题</div></div><div class="info-2"><div class="info-item-1">在使用 addEventListener 添加监听后，需要通过 removeEventListener 移除通知，但是不生效，所以需要注意： 添加 跟 移除 的监听方法要一致，也就是监听绑定的是哪个 function，移除也得一致。 错误写法12345678910// 添加消息监听window.addEventListener(&#x27;message&#x27;, function (msg) &#123;  // 输出  console.log(msg)  // 移除消息监听  window.removeEventListener(&#x27;message&#x27;, function (msg) &#123;    // 输出    console.log(msg)  &#125;, false)&#125;)  正确写法123456789// 添加消息监听window.addEventListener(&#x27;message&#x27;, receiveMessage)// 接收消息function receiveMessage (msg) &#123; ...</div></div></div></a><a class="pagination-related" href="/posts/2f10c1e2.html" title="Web-localStorage"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-30</div><div class="info-item-2">Web-localStorage</div></div><div class="info-2"><div class="info-item-1">localstorage最大容量修改LocalStorage 的大小是由浏览器实现决定的，并且通常有一个最大的存储限制。在不同的浏览器中，这个限制可能不同，但一般在 5MB 左右。 不能通过代码修改 LocalStorage 的大小限制，如果需要存储更多的数据，可以考虑使用其他存储方式，例如 IndexedDB 或 Web SQL </div></div></div></a><a class="pagination-related" href="/posts/bed334e6.html" title="Web-html转pdf-带分页"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-31</div><div class="info-item-2">Web-html转pdf-带分页</div></div><div class="info-2"><div class="info-item-1">参考前端JS生成PDF的一次踩坑之行 - 知乎 (zhihu.com) 前端使用html2canvas和jspdf生成pdf，以及清晰度问题_心态真好的博客-CSDN博客_html2canvas+jspdf GitHub - simonbengtsson&#x2F;jsPDF-AutoTable: jsPDF plugin for generating PDF tables with javascript </div></div></div></a><a class="pagination-related" href="/posts/d803ba6f.html" title="Web-文件下载"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-20</div><div class="info-item-2">Web-文件下载</div></div><div class="info-2"><div class="info-item-1">说明web 页面中文件下载方式说明 参考https://juejin.im/post/5bdd58db51882517217fb36d 方式window.open浏览器无法解析，它就会把该文件下载下来 。html、pdf、png 等则会打开打开新页签，不会自动下载。 12345function downFile(filepath) &#123;		//项目路径+相对路径		window.open(filepath, &quot;downfile&quot;);		return;&#125;  a 标签不需要打开一个新的窗口，在当前窗口下实现下载。代表性的解决案例是：Github Docunload Zip， download 属性为下载后生成的文件名称 123&lt;a href=&quot;https://xxx/file.zip&quot; download=&quot;blog&quot;&gt;  Download ZIP&lt;/a&gt;  动态创建 a 链接创建一个 a 标签，添加 href 、 download...</div></div></div></a><a class="pagination-related" href="/posts/ed3e76cb.html" title="Web-图片压缩"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-20</div><div class="info-item-2">Web-图片压缩</div></div><div class="info-2"><div class="info-item-1">说明浏览器选择本地图片，压缩、上传 参考...</div></div></div></a><a class="pagination-related" href="/posts/a6aa176e.html" title="Web-input-file"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-08</div><div class="info-item-2">Web-input-file</div></div><div class="info-2"><div class="info-item-1">https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file 文件类型可以通过 accept 属性指定，accept 属性的值是一个包含一个或多个（用逗号分隔）这种唯一文件类型说明符的字符串  一个以英文句号（”.”）开头的合法的不区分大小写的文件名扩展名。例如： .jpg .pdf  .doc 一个不带扩展名的 MIME 类型字符串 字符串 audio/*， 表示 “任何音频文件” 字符串 video/*，表示 “任何视频文件” 字符串 image/*，表示 “任何图片文件”  示例：任何图片+ pdf 文件 1&lt;input type=&quot;file&quot; accept=&quot;image/*,.pdf&quot;&gt;  文档 .docx 1&lt;input type=&quot;file&quot; accept=&quot;.docx&quot;&gt;  </div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">王文哲</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">588</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">351</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">549</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ddd69226.html" title="Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系">Maven一文搞懂项目pom.xml配置文件setting.xml 配置项之间的关系</a><time datetime="2025-06-15T14:19:06.000Z" title="发表于 2025-06-15 22:19:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7d3170cb.html" title="软件系统中通知公告和系统消息的区别">软件系统中通知公告和系统消息的区别</a><time datetime="2025-06-15T14:06:06.000Z" title="发表于 2025-06-15 22:06:06">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/41a29295.html" title="SpringBoot下使用Redis，配置多个database数据源">SpringBoot下使用Redis，配置多个database数据源</a><time datetime="2025-06-15T14:05:49.000Z" title="发表于 2025-06-15 22:05:49">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c4ea753b.html" title="Redis-集群模式下，数据为什么都存储在database0中">Redis-集群模式下，数据为什么都存储在database0中</a><time datetime="2025-06-15T14:05:32.000Z" title="发表于 2025-06-15 22:05:32">2025-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2e22825.html" title="NLP">NLP</a><time datetime="2025-06-15T14:05:17.000Z" title="发表于 2025-06-15 22:05:17">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.3.5"></script><script src="/js/main.js?v=5.3.5"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

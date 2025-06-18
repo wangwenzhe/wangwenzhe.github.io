@@ -1,0 +1,312 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Java-JUC-Executors | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Java JUC 工具包中 Executors 详解：线程池的 “开挂” 玩法！ 兄弟们！今天咱来唠一唠 Java JUC 工具包里的Executors ！是不是在开发中经常遇到这种情况：多线程任务咔咔来，创建线程像不要钱一样，结果程序直接 “原地爆炸”？别慌！Executors就是拯救你的 “多线程神器”！这篇文章咱就掰开揉碎了讲，保证让你彻底拿捏！ 一、为啥要用 Executors？先看个 “">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-JUC-Executors">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/1e40bac5.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="Java JUC 工具包中 Executors 详解：线程池的 “开挂” 玩法！ 兄弟们！今天咱来唠一唠 Java JUC 工具包里的Executors ！是不是在开发中经常遇到这种情况：多线程任务咔咔来，创建线程像不要钱一样，结果程序直接 “原地爆炸”？别慌！Executors就是拯救你的 “多线程神器”！这篇文章咱就掰开揉碎了讲，保证让你彻底拿捏！ 一、为啥要用 Executors？先看个 “">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2025-06-18T09:27:58.000Z">
+<meta property="article:modified_time" content="2025-06-18T14:13:09.442Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="Java-JUC-Executors">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/1e40bac5.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java-JUC-Executors',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-18 22:13:09'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">593</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">354</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">555</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/top_img.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="王文哲的博客"><span class="site-name">王文哲的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java-JUC-Executors</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-18T09:27:58.000Z" title="发表于 2025-06-18 17:27:58">2025-06-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-18T14:13:09.442Z" title="更新于 2025-06-18 22:13:09">2025-06-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java-JUC-Executors/">Java-JUC-Executors</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java-JUC-Executors"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>Java JUC 工具包中 Executors 详解：线程池的 “开挂” 玩法！</p>
+<p>兄弟们！今天咱来唠一唠 Java JUC 工具包里的<code>Executors</code> ！是不是在开发中经常遇到这种情况：多线程任务咔咔来，创建线程像不要钱一样，结果程序直接 “原地爆炸”？别慌！<code>Executors</code>就是拯救你的 “多线程神器”！这篇文章咱就掰开揉碎了讲，保证让你彻底拿捏！</p>
+<h2 id="一、为啥要用-Executors？先看个-“血案现场”"><a href="#一、为啥要用-Executors？先看个-“血案现场”" class="headerlink" title="一、为啥要用 Executors？先看个 “血案现场”"></a>一、为啥要用 Executors？先看个 “血案现场”</h2><p>上周新来的实习生写了个多线程任务处理的代码，好家伙，直接在循环里<code>new Thread()</code> ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 0; i &lt; 1000; i++) &#123;</span><br><span class="line">     new Thread(() -&gt; &#123;</span><br><span class="line">          // 处理业务逻辑</span><br><span class="line">          System.out.println(&quot;任务执行中...&quot;);</span><br><span class="line">     &#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果服务器没扛住 10 分钟，CPU 直接飙到 100%，程序卡死！这就是典型的 “线程滥用”。创建太多线程不仅占用大量资源，还会导致频繁的上下文切换，效率反而更低。</p>
+<p>而<code>Executors</code>就像线程的 “智能管家”，它能帮我们：</p>
+<ul>
+<li><p><strong>复用线程</strong>：避免频繁创建和销毁线程，节省资源</p>
+</li>
+<li><p><strong>控制并发</strong>：限制同时执行的线程数量，防止服务器被 “压垮”</p>
+</li>
+<li><p><strong>统一管理</strong>：方便监控和管理线程任务，出了问题也好排查</p>
+</li>
+</ul>
+<h2 id="二、Executors-的四大-“杀手锏”：创建线程池的核心方法"><a href="#二、Executors-的四大-“杀手锏”：创建线程池的核心方法" class="headerlink" title="二、Executors 的四大 “杀手锏”：创建线程池的核心方法"></a>二、Executors 的四大 “杀手锏”：创建线程池的核心方法</h2><p><code>Executors</code>类提供了几个常用的静态方法来创建不同类型的线程池，每一个都有自己的 “绝活”！</p>
+<h3 id="1-newFixedThreadPool：固定大小的线程池"><a href="#1-newFixedThreadPool：固定大小的线程池" class="headerlink" title="1. newFixedThreadPool：固定大小的线程池"></a>1. newFixedThreadPool：固定大小的线程池</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>核心参数</strong>：<code>5</code>表示线程池里固定有 5 个线程，不多也不少</p>
+</li>
+<li><p><strong>使用场景</strong>：适合任务量比较稳定，对资源占用有明确限制的场景。比如电商的订单处理，同时处理 5 个订单，不会因为订单突然增多而把服务器搞崩</p>
+</li>
+<li><p><strong>底层原理</strong>：基于<code>ThreadPoolExecutor</code>实现，核心线程数和最大线程数都等于传入的参数（这里是 5），任务队列是无界队列<code>LinkedBlockingQueue</code> ，所以任务不会被拒绝，而是排队等待执行</p>
+</li>
+</ul>
+<h3 id="2-newCachedThreadPool：可缓存的线程池"><a href="#2-newCachedThreadPool：可缓存的线程池" class="headerlink" title="2. newCachedThreadPool：可缓存的线程池"></a>2. newCachedThreadPool：可缓存的线程池</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService cachedThreadPool = Executors.newCachedThreadPool();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>特点</strong>：线程数量不固定，可以无限扩大（理论上）。如果有空闲线程就复用，没有就创建新线程；当线程闲置 60 秒后会被回收</p>
+</li>
+<li><p><strong>使用场景</strong>：适合处理突发性、短时间的大量任务。比如秒杀活动，瞬间大量请求过来，它能快速创建线程处理，活动结束后又自动回收线程</p>
+</li>
+<li><p><strong>底层原理</strong>：核心线程数为 0，最大线程数为<code>Integer.MAX_VALUE</code> ，任务队列是<code>SynchronousQueue</code> ，这个队列不存储任务，每个插入操作必须等待另一个线程的移除操作，所以任务一来就会创建新线程处理</p>
+</li>
+</ul>
+<h3 id="3-newSingleThreadExecutor：单线程的线程池-xA"><a href="#3-newSingleThreadExecutor：单线程的线程池-xA" class="headerlink" title="3. newSingleThreadExecutor：单线程的线程池&#xA;"></a>3. newSingleThreadExecutor：单线程的线程池&#xA;</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>作用</strong>：只有一个线程来执行所有任务，保证任务的顺序执行</p>
+</li>
+<li><p><strong>使用场景</strong>：适合有顺序要求的任务，比如数据库的单表插入操作，保证数据不会因为多线程并发插入而出错</p>
+</li>
+<li><p><strong>底层原理</strong>：其实就是固定大小为 1 的线程池，核心线程数和最大线程数都是 1 ，任务队列同样是<code>LinkedBlockingQueue</code></p>
+</li>
+</ul>
+<h3 id="4-newScheduledThreadPool：定时任务线程池-xA"><a href="#4-newScheduledThreadPool：定时任务线程池-xA" class="headerlink" title="4. newScheduledThreadPool：定时任务线程池&#xA;"></a>4. newScheduledThreadPool：定时任务线程池&#xA;</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(3);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>核心功能</strong>：可以定时执行任务，或者周期性地执行任务</p>
+</li>
+<li><p><strong>使用场景</strong>：太实用了！比如电商的优惠券定时发放、系统的定时备份等。像这样延迟 3 秒执行任务：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scheduledThreadPool.schedule(() -&gt; &#123;</span><br><span class="line">	System.out.println(&quot;3秒后执行的任务&quot;);</span><br><span class="line">&#125;, 3, TimeUnit.SECONDS);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>底层原理</strong>：基于<code>ScheduledThreadPoolExecutor</code> ，核心线程数是传入的参数（这里是 3），最大线程数是<code>Integer.MAX_VALUE</code> ，任务队列是<code>DelayedWorkQueue</code> ，用于存储延迟执行的任务</li>
+</ul>
+<h3 id="5-newSingleThreadScheduledExecutor"><a href="#5-newSingleThreadScheduledExecutor" class="headerlink" title="5. newSingleThreadScheduledExecutor"></a>5. newSingleThreadScheduledExecutor</h3><p>前面四个方法已经很厉害了，但<code>Executors</code>还有个 “隐藏大招”——<code>newSingleThreadScheduledExecutor</code> ！光听名字就能猜到，它结合了 “单线程” 和 “定时任务” 的双重特性，堪称 “时间管理大师”+“秩序守护者” 的结合体！</p>
+<ol>
+<li>创建方式</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ScheduledExecutorService singleThreadScheduledExecutor = Executors.newSingleThreadScheduledExecutor();</span><br></pre></td></tr></table></figure>
+
+<p>就这么一行代码，一个单线程的定时任务线程池就创建好了！简单得让人怀疑它是不是真有两把刷子，别急，往下看！</p>
+<ol start="2">
+<li>功能特性</li>
+</ol>
+<ul>
+<li><p><strong>单线程执行</strong>：和<code>newSingleThreadExecutor</code>一样，它只有一个线程来执行任务。这就意味着所有任务都会老老实实排队，按照顺序一个一个执行，绝对不会出现任务执行顺序混乱的情况。就好比食堂打饭，大家都乖乖排好队，一个接一个打，秩序井然。</p>
+</li>
+<li><p><strong>定时 &#x2F; 周期任务</strong>：又和<code>newScheduledThreadPool</code>类似，它能执行定时任务和周期性任务。比如延迟 5 秒执行某个任务，或者每隔 1 分钟执行一次任务，都能轻松搞定。</p>
+</li>
+</ul>
+<ol start="3">
+<li>使用场景</li>
+</ol>
+<ul>
+<li><p><strong>顺序性要求高的定时任务</strong>：比如银行的账单生成任务，不仅要每天定时生成，还得保证每一步操作按顺序执行，不能乱了套。这时候<code>newSingleThreadScheduledExecutor</code>就派上用场了，先定时触发任务，再用单线程保证顺序，稳稳当当。</p>
+</li>
+<li><p><strong>资源敏感的定时任务</strong>：如果服务器资源紧张，不适合开多个线程执行定时任务，那这个单线程的定时任务线程池就能完美解决问题。它只用一个线程，不会占用过多资源，还能按时完成任务。</p>
+</li>
+</ul>
+<ol start="4">
+<li>底层原理</li>
+</ol>
+<p>它底层同样基于<code>ScheduledThreadPoolExecutor</code> ，不过核心线程数和最大线程数都设置为 1 ，任务队列依然是<code>DelayedWorkQueue</code> 。这样既保证了任务的定时 &#x2F; 周期性执行，又通过单线程限制，确保任务执行的顺序性和资源可控性。</p>
+<h2 id="三、小心-“踩坑”！Executors-使用的注意事项"><a href="#三、小心-“踩坑”！Executors-使用的注意事项" class="headerlink" title="三、小心 “踩坑”！Executors 使用的注意事项"></a>三、小心 “踩坑”！Executors 使用的注意事项</h2><p>虽然<code>Executors</code>很好用，但如果用错了，那就是 “埋雷”！</p>
+<h3 id="1-慎用无界队列的线程池-xA"><a href="#1-慎用无界队列的线程池-xA" class="headerlink" title="1. 慎用无界队列的线程池&#xA;"></a>1. 慎用无界队列的线程池&#xA;</h3><p><code>newFixedThreadPool</code>、<code>newSingleThreadExecutor</code> 以及<code>newSingleThreadScheduledExecutor</code> 底层用的是无界队列<code>LinkedBlockingQueue</code> ，如果任务量突然暴增，队列会一直堆积任务，导致内存溢出！之前有个项目就因为这个问题，半夜服务器内存被占满，直接宕机！</p>
+<h3 id="2-避免创建过多线程-xA"><a href="#2-避免创建过多线程-xA" class="headerlink" title="2. 避免创建过多线程&#xA;"></a>2. 避免创建过多线程&#xA;</h3><p><code>newCachedThreadPool</code>虽然灵活，但要是任务量太大，创建的线程数可能会把服务器资源耗尽。建议在使用时结合业务场景，设置合理的线程上限</p>
+<h3 id="3-及时关闭线程池-xA"><a href="#3-及时关闭线程池-xA" class="headerlink" title="3. 及时关闭线程池&#xA;"></a>3. 及时关闭线程池&#xA;</h3><p>线程池使用完后，一定要记得关闭！不然会一直占用资源。可以用<code>shutdown()</code> 或<code>shutdownNow()</code>方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">executorService.shutdown(); // 平滑关闭，等任务执行完再关闭</span><br><span class="line"></span><br><span class="line">// executorService.shutdownNow(); // 立即关闭，可能会中断正在执行的任务</span><br></pre></td></tr></table></figure>
+
+<p>五、总结：Executors 的正确打开方式</p>
+<ul>
+<li><p><strong>固定任务量</strong>：用<code>newFixedThreadPool</code> ，控制好线程数量，稳得一批</p>
+</li>
+<li><p><strong>突发任务</strong>：<code>newCachedThreadPool</code>能快速响应，但要注意线程上限</p>
+</li>
+<li><p><strong>顺序执行</strong>：<code>newSingleThreadExecutor</code>和<code>newSingleThreadScheduledExecutor</code> 保证任务按顺序执行，不出乱子</p>
+</li>
+<li><p><strong>定时任务</strong>：普通定时任务用<code>newScheduledThreadPool</code> ，对顺序和资源要求高的定时任务就选<code>newSingleThreadScheduledExecutor</code></p>
+</li>
+</ul>
+<p>兄弟们，看完这篇文章，<code>Executors</code>的各种玩法就都被咱拿捏了！以后再遇到多线程任务，可别再 “瞎搞” 了，根据需求选对线程池，让代码性能直接 “起飞”！要是还有啥不明白的，评论区唠唠，咱一起把多线程这事儿彻底整明白！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/1e40bac5.html">https://wangwenzhe.github.io/posts/1e40bac5.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java-JUC-Executors/">Java-JUC-Executors</a></div><div class="post_share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/a48b71a9.html" title="Java-负载均衡策略-最小连接"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java-负载均衡策略-最小连接</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王文哲</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">593</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">354</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">555</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="card-widget card-cheesy_pick-up_lines"><div class="card-content"><div class="item-headline"><i class="fas fa-heart" style="color:pink"></i><span>想对你说</span></div><div id="cheesy_pick-up_lines-container"></div></div></div><script data-pjax="data-pjax" src="/js/cheesy_pick-up_lines.js"></script><div class="js-pjax"><script>cheesy_pick_up_lines()</script></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%B8%BA%E5%95%A5%E8%A6%81%E7%94%A8-Executors%EF%BC%9F%E5%85%88%E7%9C%8B%E4%B8%AA-%E2%80%9C%E8%A1%80%E6%A1%88%E7%8E%B0%E5%9C%BA%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">一、为啥要用 Executors？先看个 “血案现场”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Executors-%E7%9A%84%E5%9B%9B%E5%A4%A7-%E2%80%9C%E6%9D%80%E6%89%8B%E9%94%8F%E2%80%9D%EF%BC%9A%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">二、Executors 的四大 “杀手锏”：创建线程池的核心方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-newFixedThreadPool%EF%BC%9A%E5%9B%BA%E5%AE%9A%E5%A4%A7%E5%B0%8F%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">2.1.</span> <span class="toc-text">1. newFixedThreadPool：固定大小的线程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-newCachedThreadPool%EF%BC%9A%E5%8F%AF%E7%BC%93%E5%AD%98%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">2.2.</span> <span class="toc-text">2. newCachedThreadPool：可缓存的线程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-newSingleThreadExecutor%EF%BC%9A%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0-xA"><span class="toc-number">2.3.</span> <span class="toc-text">3. newSingleThreadExecutor：单线程的线程池
+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-newScheduledThreadPool%EF%BC%9A%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%BA%BF%E7%A8%8B%E6%B1%A0-xA"><span class="toc-number">2.4.</span> <span class="toc-text">4. newScheduledThreadPool：定时任务线程池
+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-newSingleThreadScheduledExecutor"><span class="toc-number">2.5.</span> <span class="toc-text">5. newSingleThreadScheduledExecutor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%B0%8F%E5%BF%83-%E2%80%9C%E8%B8%A9%E5%9D%91%E2%80%9D%EF%BC%81Executors-%E4%BD%BF%E7%94%A8%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.</span> <span class="toc-text">三、小心 “踩坑”！Executors 使用的注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%85%8E%E7%94%A8%E6%97%A0%E7%95%8C%E9%98%9F%E5%88%97%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0-xA"><span class="toc-number">3.1.</span> <span class="toc-text">1. 慎用无界队列的线程池
+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%81%BF%E5%85%8D%E5%88%9B%E5%BB%BA%E8%BF%87%E5%A4%9A%E7%BA%BF%E7%A8%8B-xA"><span class="toc-number">3.2.</span> <span class="toc-text">2. 避免创建过多线程
+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%8A%E6%97%B6%E5%85%B3%E9%97%AD%E7%BA%BF%E7%A8%8B%E6%B1%A0-xA"><span class="toc-number">3.3.</span> <span class="toc-text">3. 及时关闭线程池
+</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1e40bac5.html" title="Java-JUC-Executors">Java-JUC-Executors</a><time datetime="2025-06-18T09:27:58.000Z" title="发表于 2025-06-18 17:27:58">2025-06-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/a48b71a9.html" title="Java-负载均衡策略-最小连接">Java-负载均衡策略-最小连接</a><time datetime="2025-06-18T06:49:05.000Z" title="发表于 2025-06-18 14:49:05">2025-06-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/429b593d.html" title="Redis-用户签到方案">Redis-用户签到方案</a><time datetime="2025-06-17T09:55:08.000Z" title="发表于 2025-06-17 17:55:08">2025-06-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/e8154c21.html" title="开发规范-Git分支管理">开发规范-Git分支管理</a><time datetime="2025-06-17T06:56:23.000Z" title="发表于 2025-06-17 14:56:23">2025-06-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/cf577558.html" title="开发规范-前端">开发规范-前端</a><time datetime="2025-06-17T06:55:55.000Z" title="发表于 2025-06-17 14:55:55">2025-06-17</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>

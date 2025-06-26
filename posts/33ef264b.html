@@ -1,0 +1,266 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>singularity-启动参数说明 | 王文哲的博客</title><meta name="author" content="王文哲"><meta name="copyright" content="王文哲"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="说明 可以使用同一个 Singularity 镜像文件启动多个实例 确保实例名称、端口映射、MAC 不冲突  查看所有运行中的实例12345678&#x2F;&#x2F; 查看所有运行中的实例singularity instance list&#x2F;&#x2F; 启动实例singularity instance start 参数 xxx&#x2F;&#x2F; 停止实例singularity instance stop xxx  以 systemd 服">
+<meta property="og:type" content="article">
+<meta property="og:title" content="singularity-启动参数说明">
+<meta property="og:url" content="https://wangwenzhe.github.io/posts/33ef264b.html">
+<meta property="og:site_name" content="王文哲的博客">
+<meta property="og:description" content="说明 可以使用同一个 Singularity 镜像文件启动多个实例 确保实例名称、端口映射、MAC 不冲突  查看所有运行中的实例12345678&#x2F;&#x2F; 查看所有运行中的实例singularity instance list&#x2F;&#x2F; 启动实例singularity instance start 参数 xxx&#x2F;&#x2F; 停止实例singularity instance stop xxx  以 systemd 服">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangwenzhe.github.io/about/logo.png">
+<meta property="article:published_time" content="2025-06-26T02:28:28.000Z">
+<meta property="article:modified_time" content="2025-06-26T02:29:10.391Z">
+<meta property="article:author" content="王文哲">
+<meta property="article:tag" content="singularity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangwenzhe.github.io/about/logo.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "singularity-启动参数说明",
+  "url": "https://wangwenzhe.github.io/posts/33ef264b.html",
+  "image": "https://wangwenzhe.github.io/about/logo.png",
+  "datePublished": "2025-06-26T02:28:28.000Z",
+  "dateModified": "2025-06-26T02:29:10.391Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "王文哲",
+      "url": "https://wangwenzhe.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangwenzhe.github.io/posts/33ef264b.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.3.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'singularity-启动参数说明',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(url(https://wangwenzhe.oss-cn-beijing.aliyuncs.com/mmexport1718427367820.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">597</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">356</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">558</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/top_img.jpeg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">王文哲的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">singularity-启动参数说明</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">singularity-启动参数说明</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-26T02:28:28.000Z" title="发表于 2025-06-26 10:28:28">2025-06-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-26T02:29:10.391Z" title="更新于 2025-06-26 10:29:10">2025-06-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/singularity/">singularity</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">824</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
+<li>可以使用同一个 Singularity 镜像文件启动多个实例</li>
+<li>确保实例名称、端口映射、MAC 不冲突</li>
+</ul>
+<h2 id="查看所有运行中的实例"><a href="#查看所有运行中的实例" class="headerlink" title="查看所有运行中的实例"></a>查看所有运行中的实例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 查看所有运行中的实例</span><br><span class="line">singularity instance list</span><br><span class="line"></span><br><span class="line">// 启动实例</span><br><span class="line">singularity instance start 参数 xxx</span><br><span class="line"></span><br><span class="line">// 停止实例</span><br><span class="line">singularity instance stop xxx</span><br></pre></td></tr></table></figure>
+
+<h2 id="以-systemd-服务运行"><a href="#以-systemd-服务运行" class="headerlink" title="以 systemd 服务运行"></a>以 systemd 服务运行</h2><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><blockquote>
+<p>&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;asr_railway_gpu_0.service</p>
+</blockquote>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=asr_railway_gpu_0</span><br><span class="line"><span class="attr">After</span>=network.target deviceQuery.target</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=forking</span><br><span class="line"><span class="attr">Environment</span>=<span class="string">&quot;SINGULARITYENV_CUDA_VISIBLE_DEVICES=0&quot;</span></span><br><span class="line"><span class="attr">ExecStart</span>=/usr/bin/singularity instance  start -B <span class="variable">$PWD</span>/logs:/opt/logs -B <span class="variable">$PWD</span>/license:/opt/license -B <span class="variable">$PWD</span>/data:/opt/data --nv --contain --cleanenv --writable-tmpfs  --hostname localhost --net --network-args <span class="string">&quot;portmap=8867:8885/tcp,MAC=12:34:56:78:01:01&quot;</span>   <span class="variable">$PWD</span>/asr-railway-gpu.sif  asr_railway_gpu_0</span><br><span class="line"><span class="attr">ExecStop</span>=/usr/bin/singularity instance stop asr_railway_gpu_0</span><br><span class="line"><span class="attr">SuccessExitStatus</span>=<span class="number">143</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<h3 id="Environment-详解"><a href="#Environment-详解" class="headerlink" title="Environment 详解"></a>Environment 详解</h3><p><code>Environment=&quot;SINGULARITYENV_CUDA_VISIBLE_DEVICES=0&quot;</code> </p>
+<p>设置容器内的 CUDA 可见性，限制容器内的应用只能访问主机的第一块 GPU（索引为 0）</p>
+<h4 id="传递多个-CUDA-参数"><a href="#传递多个-CUDA-参数" class="headerlink" title="传递多个 CUDA 参数"></a><strong>传递多个 CUDA 参数</strong></h4><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Environment</span>=<span class="string">&quot;SINGULARITYENV_CUDA_VISIBLE_DEVICES=0,1&quot;</span>  <span class="comment"># 允许多个 GPU</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="多个参数"><a href="#多个参数" class="headerlink" title="多个参数"></a><strong>多个参数</strong></h4><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Environment</span>=<span class="string">&quot;PATH=/opt/myapp/bin:$PATH&quot;</span></span><br><span class="line"><span class="attr">Environment</span>=<span class="string">&quot;SINGULARITYENV_CUDA_VISIBLE_DEVICES=0&quot;</span> <span class="string">&quot;SINGULARITYENV_LOG_LEVEL=debug&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ExecStart-内容详解"><a href="#ExecStart-内容详解" class="headerlink" title="ExecStart 内容详解"></a>ExecStart 内容详解</h3><h4 id="1-基本命令部分"><a href="#1-基本命令部分" class="headerlink" title="1. 基本命令部分"></a>1. <strong>基本命令部分</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/singularity instance start</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>singularity instance start</code>：启动一个持久运行的容器实例（类似于后台服务）。</li>
+<li><code>instance</code> 模式允许同时运行多个相同镜像的实例，并通过名称管理它们。</li>
+</ul>
+<h4 id="2-目录挂载参数"><a href="#2-目录挂载参数" class="headerlink" title="2. 目录挂载参数"></a>2. <strong>目录挂载参数</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-B <span class="variable">$PWD</span>/logs:/opt/logs \</span><br><span class="line">-B <span class="variable">$PWD</span>/license:/opt/license \</span><br><span class="line">-B <span class="variable">$PWD</span>/data:/opt/data \</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-B（或 –bind）：将主机目录挂载到容器内的指定路径。<ul>
+<li>$PWD&#x2F;logs:&#x2F;opt&#x2F;logs：挂载当前目录下的 logs 目录到容器的 &#x2F;opt&#x2F;logs，用于存储日志</li>
+<li>$PWD&#x2F;license:&#x2F;opt&#x2F;license：挂载许可证文件目录。</li>
+<li>$PWD&#x2F;data:&#x2F;opt&#x2F;data：挂载应用数据目录。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li><strong>GPU 支持参数</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--nv</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>--nv</code>：启用 NVIDIA GPU 支持，允许容器内的应用访问主机的 GPU 设备。</li>
+<li>相当于在容器内注入 NVIDIA 驱动和 CUDA 库。</li>
+</ul>
+<h4 id="4-容器隔离参数"><a href="#4-容器隔离参数" class="headerlink" title="4. 容器隔离参数"></a>4. <strong>容器隔离参数</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--contain \</span><br><span class="line">--cleanenv \</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>--contain</code>：增强容器的隔离性，限制对主机系统的访问（如不共享 <code>/tmp</code> 目录）。</li>
+<li><code>--cleanenv</code>：清除容器内的环境变量，仅保留显式设置的变量（如 <code>CUDA_VISIBLE_DEVICES</code>）。</li>
+</ul>
+<h4 id="5-临时文件系统参数"><a href="#5-临时文件系统参数" class="headerlink" title="5. 临时文件系统参数"></a>5. <strong>临时文件系统参数</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--writable-tmpfs</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>--writable-tmpfs</code>：为容器的 <code>/tmp</code> 目录创建可写的临时文件系统（基于内存）。</li>
+<li>提高容器的安全性，避免写入持久存储。</li>
+</ul>
+<h4 id="6-网络配置参数"><a href="#6-网络配置参数" class="headerlink" title="6. 网络配置参数"></a>6. <strong>网络配置参数</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--hostname localhost \</span><br><span class="line">--net \</span><br><span class="line">--network-args <span class="string">&quot;portmap=8867:8885/tcp,MAC=12:34:56:78:01:01&quot;</span> \</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>--hostname localhost</code>：设置容器内的主机名为 <code>localhost</code>。</p>
+</li>
+<li><p><code>--net</code>：启用容器网络栈（默认情况下，Singularity 容器共享主机网络）。</p>
+</li>
+<li><pre><code>--network-args
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  ：配置网络参数：</span><br><span class="line"></span><br><span class="line">  - `portmap=8867:8885/tcp`：将主机的 8867 端口映射到容器的 8885 端口（TCP 协议）。</span><br><span class="line">  - `MAC=12:34:56:78:01:02`：为容器分配自定义 MAC 地址（用于网络识别），保证唯一性。</span><br><span class="line"></span><br><span class="line">#### 7. **镜像与实例名称**</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">$PWD/asr-railway-gpu.sif</span><br><span class="line">asr_railway_gpu_0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p><code>$PWD/asr-railway-gpu.sif</code>：指定 Singularity 镜像文件的路径（<code>.sif</code> 是 Singularity 的标准镜像格式）。</p>
+</li>
+<li><p><code>asr_railway_gpu_0</code>：为容器实例指定名称，用于后续管理（如停止实例）。</p>
+</li>
+</ul>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li><strong>实例名称必须唯一</strong>（如 <code>asr_railway_gpu_0</code>, <code>asr_railway_gpu_1</code>）</li>
+<li><strong>端口映射不能冲突</strong>（如主机端口 8867→8868→8869…）</li>
+<li><strong>MAC 地址必须唯一</strong>（否则网络会冲突）</li>
+<li><strong>GPU 分配</strong>：通过 <code>CUDA_VISIBLE_DEVICES</code> 环境变量指定不同 GPU（0, 1, 2…）</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io">王文哲</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangwenzhe.github.io/posts/33ef264b.html">https://wangwenzhe.github.io/posts/33ef264b.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wangwenzhe.github.io" target="_blank">王文哲的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/singularity/">singularity</a></div><div class="post-share"><div class="social-share" data-image="/about/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/posts/f0ae50d.html" title="Linux-查看NVIDIA显卡信息"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Linux-查看NVIDIA显卡信息</div></div><div class="info-2"><div class="info-item-1">命令1nvidia-smi  结果解析| NVIDIA-SMI 550.54.14              Driver Version: 550.54.14      CUDA Version: 12.4     ||—————————————–+————————+———————-+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC || Fan  Temp   Perf          Pwr:Usage&#x2F;Cap |           Memory-Usage | GPU-Util  Compute M. ||                                         |                        |               MIG M....</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/about/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">王文哲</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">597</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">356</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">558</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">风雨无阻，灯火为你，星光虽微，照耀夜空。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E8%BF%90%E8%A1%8C%E4%B8%AD%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">查看所有运行中的实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5-systemd-%E6%9C%8D%E5%8A%A1%E8%BF%90%E8%A1%8C"><span class="toc-number">3.</span> <span class="toc-text">以 systemd 服务运行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.1.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Environment-%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.2.</span> <span class="toc-text">Environment 详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E9%80%92%E5%A4%9A%E4%B8%AA-CUDA-%E5%8F%82%E6%95%B0"><span class="toc-number">3.2.1.</span> <span class="toc-text">传递多个 CUDA 参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA%E5%8F%82%E6%95%B0"><span class="toc-number">3.2.2.</span> <span class="toc-text">多个参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ExecStart-%E5%86%85%E5%AE%B9%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.3.</span> <span class="toc-text">ExecStart 内容详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E9%83%A8%E5%88%86"><span class="toc-number">3.3.1.</span> <span class="toc-text">1. 基本命令部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%9B%AE%E5%BD%95%E6%8C%82%E8%BD%BD%E5%8F%82%E6%95%B0"><span class="toc-number">3.3.2.</span> <span class="toc-text">2. 目录挂载参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%AE%B9%E5%99%A8%E9%9A%94%E7%A6%BB%E5%8F%82%E6%95%B0"><span class="toc-number">3.3.3.</span> <span class="toc-text">4. 容器隔离参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0"><span class="toc-number">3.3.4.</span> <span class="toc-text">5. 临时文件系统参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">3.3.5.</span> <span class="toc-text">6. 网络配置参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">4.</span> <span class="toc-text">注意事项</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/33ef264b.html" title="singularity-启动参数说明">singularity-启动参数说明</a><time datetime="2025-06-26T02:28:28.000Z" title="发表于 2025-06-26 10:28:28">2025-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/f0ae50d.html" title="Linux-查看NVIDIA显卡信息">Linux-查看NVIDIA显卡信息</a><time datetime="2025-06-26T02:18:57.000Z" title="发表于 2025-06-26 10:18:57">2025-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/473eb3f9.html" title="Java-安全加密工具-XJar-jasypt-classfinal-classwinter">Java-安全加密工具-XJar-jasypt-classfinal-classwinter</a><time datetime="2025-06-20T03:53:01.000Z" title="发表于 2025-06-20 11:53:01">2025-06-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b8be9268.html" title="Quartz-注解@DisallowConcurrentExecution详解">Quartz-注解@DisallowConcurrentExecution详解</a><time datetime="2025-06-20T01:37:01.000Z" title="发表于 2025-06-20 09:37:01">2025-06-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1e40bac5.html" title="Java-JUC-Executors">Java-JUC-Executors</a><time datetime="2025-06-18T09:27:58.000Z" title="发表于 2025-06-18 17:27:58">2025-06-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 王文哲</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.3.5"></script><script src="/js/main.js?v=5.3.5"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="/js/fishes.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start -->
+      <div id="xf-MusicPlayer" data-cdnName="https://player.xfyun.club/js"  data-themeColor="xf-darkGreen"data-memory="1"></div>
+<script src="https://player.xfyun.club/js/xf-MusicPlayer/js/xf-MusicPlayer.min.js"></script><!-- hexo injector body_end end --></body></html>
